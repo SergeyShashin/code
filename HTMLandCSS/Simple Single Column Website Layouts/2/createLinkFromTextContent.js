@@ -1,22 +1,22 @@
 "use strict";
 
-
-const createLinkFromTextContent = (idEl, text, color) => {
+const createLinkFromTextContent = (idEl, text) => {
   let elHTML = document.getElementById(idEl);
-
+  let contentHTML = elHTML.outerHTML;
+  
   text.map(element => {
-    let contentHTML = elHTML.outerHTML;
     let rgxp = new RegExp(`${element}`);
     
     if (rgxp.test(contentHTML)) {
-      elHTML.innerHTML = '';
       contentHTML = contentHTML.replace(rgxp, `<a href="#">${element}</a>`);
-      elHTML.innerHTML = contentHTML;
+      console.dir(elHTML);
+      console.log(contentHTML);
     }
+    elHTML.innerHTML = contentHTML;
 
   });
 
 };
 
-window.onload = () => createLinkFromTextContent('content', ['может быть сделано', 'Лучше'], 'blue');
+window.onload = () => createLinkFromTextContent('content', ['может быть сделано', 'Лучше']);
 
