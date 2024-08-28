@@ -6,13 +6,13 @@
 
 #menu {
   display: flex;
-  justify-content: center;
+  justify-content: start;
   margin-bottom: 20px;
   background-color: #484848;
 }
 
 #menu a {
-  margin: 0 5px;
+  padding: 0 5px;
   padding: 15px 25px;
   text-decoration: none;
   color: #fff;

@@ -20,6 +20,9 @@ const createSimpleSingleColumnWebsite = (idNameBlock, menu, content) => {
       let aHTML = createElement('a');
       aHTML.textContent = label;
       aHTML.href = menu.links[idx];
+      if(idx==menu.classActive){
+        aHTML.className = 'active';
+      }
       menuHTML.appendChild(aHTML);
     });
   }
