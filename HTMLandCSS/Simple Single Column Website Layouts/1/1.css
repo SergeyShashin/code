@@ -1,0 +1,33 @@
+.wrap {
+  width: 100%;
+}
+
+nav {
+  background-color: gray;
+  height: 5vh;
+  display: flex;
+  justify-content: space-around;
+}
+
+nav a {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  padding: 0 10px;
+}
+
+nav a:hover,
+.active {
+  background-color: white;
+  color: gray;
+}
+
+.content {
+  padding: 20px;
+}
+
+h2 {
+  text-align: center;
+}
