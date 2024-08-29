@@ -5,9 +5,7 @@
 }
 
 .wraper {
-  position: relative;
   text-align: center;
-  border: 1px solid orange;
 }
 
 .center {
@@ -16,6 +14,7 @@
 
 header,
 section {
+  text-align: center;
   padding: 20px;
   display: flex;
   justify-content: center;
