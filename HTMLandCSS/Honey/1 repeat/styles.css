@@ -17,9 +17,9 @@ p {
 
 table{
 	border-spacing: 2px;
+	width: 100%;
 }
 
-table,
 tr,
 th,
 td {
