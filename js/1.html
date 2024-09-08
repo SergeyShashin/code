@@ -12,8 +12,16 @@
 
   <script>
 
-    let obj = { x: 1, y: 2, z: 3 };
-    console.log(Object.values(obj).length);
+
+    let num = 123322;
+    let sum1 = 0;
+    let sum2 = 0;
+
+    String(num).split('').map((el, idx) => idx < 3 ? sum1 += +el : sum2 += +el);
+
+    console.log(sum1 === sum2);
+
+
 
   </script>
 
