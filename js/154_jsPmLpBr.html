@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Break</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/loops/break/">
+    Инструкция break в JavaScript
+  </a>
+
+  <script>
+    console.log(`1. Дан массив arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0] с числами.
+    Запустите цикл, который будет по очереди выводить элементы этого массива в консоль до тех пор,
+    пока не встретится элемент со значением 0. После этого цикл должен завершить свою работу.`);
+
+    let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+
+    for (let el of arr) {
+      if (el === 0) {
+        break;
+      }
+      console.log(el);
+    }
+  </script>
+
+  <script>
+    console.log(`2. Дан массив arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, -0] с числами.
+     Найдите сумму элементов, расположенных от начала массива до первого отрицательного числа.`);
+
+    let arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, -0];
+    let sumOfElem = 0;
+
+    for (let el of arr) {
+      if (el < 0) {
+        break;
+      }
+      sumOfElem += el;
+    }
+
+    console.log(sumOfElem);
+  </script>
+
+  <script>
+    console.log(`3. Дан массив arr3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, -0] с числами.
+    Найдите позицию первого числа 3 в этом массиве (считаем, что это число обязательно есть в массиве).`);
+
+    let arr3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, -0];
+
+    console.log(`Позиция первого числа 3 = ${arr.indexOf(3)}.`);
+
+  </script>
+
+  <script>
+    console.log(`4. Определите, сколько целых чисел, начиная с числа 1, нужно сложить, чтобы сумма получилась больше 100.`);
+
+    let sum = 0, counter = 0;
+
+    for (let i = 1; sum < 100; sum += i, i++, counter++) { }
+
+    console.log(`Нужно сложить ${counter} целых чисел.`);
+  </script>
+
+</body>
+
+</html>
