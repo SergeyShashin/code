@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conditions in loops</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/loops/conditions/">
+    Условия в циклах в JavaScript
+  </a>
+
+  <script>
+    console.log('1. Выведите в консоль те элементы массива [2, 5, 9, 15, 1, 4], которые больше 3-х, но меньше 10.');
+    let arr = [2, 5, 9, 15, 1, 4];
+    for (let el of arr) {
+      el > 3 && el < 10 ? console.log(el) : '';
+    }
+  </script>
+
+  <script>
+    console.log('Выведите в консоль те элементы объекта, значения которых - нечетные числа.');
+
+    let obj = { a: 1, b: 2, c: 3, d: 4, e: 5 };
+    for (let key in obj) {
+      let el = obj[key];
+      el % 2 ? console.log(el) : '';
+    }
+  </script>
+
+</body>
+
+</html>
