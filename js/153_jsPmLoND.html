@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Numbers-digits</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/loops/numbers-digits/">
+    Цифры числа при переборе циклом JavaScript
+  </a>
+
+  <script>
+    console.log('1. Переберите циклом числа от 10 до 1000 и выведите в консоль первую цифру каждого числа.');
+
+    for (let i = 10; i < 1001; i++) {
+      console.log(String(i)[0]);
+    }
+
+  </script>
+
+  <script>
+    console.log('2. Переберите циклом числа от 10 до 1000 и выведите в консоль сумму первой и второй цифры каждого числа.');
+
+    for (let i = 10; i < 1001; i++) {
+      console.log(`${i} =  ${Number(String(i)[0]) + Number(String(i)[1])}`);
+    }
+
+  </script>
+
+  <script>
+    console.log('3. Переберите циклом числа от 10 до 1000 и выведите те числа, первая цифра которых равна 1.');
+
+    for (let i = 10; i < 1001; i++) {
+      String(i)[0] === '1' ? console.log(i) : '';
+    }
+
+  </script>
+
+  <script>
+    console.log('4. Переберите циклом числа от 10 до 1000 и выведите на экран те числа, сумма двух первых цифр которых равна 5.');
+
+    for (let i = 10; i < 1001; i++) {
+      Number(String(i)[0]) + Number(String(i)[1]) === 5 ? console.log(i) : '';
+    }
+
+  </script>
+
+</body>
+
+</html>
