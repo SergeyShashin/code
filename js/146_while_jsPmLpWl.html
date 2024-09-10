@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>While</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/loops/while/">
+    Цикл while в JavaScript
+  </a>
+
+  <script>
+    //1. Выведите в консоль числа от 1 до 100.
+    let i = 1;
+
+    while (i < 101) {
+      console.log(i);
+      i++;
+    }
+  </script>
+
+  <script>
+    //2. Выведите в консоль числа от 11 до 33.
+
+    let j = 11;
+
+    while (j < 34) {
+      console.log(j);
+      j++;
+    }
+  </script>
+
+  <script>
+    //3. Дано число num с неким начальным значением. Умножайте его на 3 столько раз, пока результат умножения не станет больше 1000.
+    // Какое число получится? Посчитайте количество итераций, необходимых для этого.
+
+    let k = 333;
+    let number3 = 3;
+    let iteration = 0;
+
+    while (k * number3 < 1000) {
+      console.log(k * number3);
+      k++;
+      iteration++;
+      console.log(iteration);
+    }
+  </script>
+
+</body>
+
+</html>

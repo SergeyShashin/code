@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Conditions</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/conditions/practicum/">
+    Практика на условия if-else в JavaScript
+  </a>
+
+  <script>
+    /*
+    5. Дано число из 6-ти цифр.
+     Проверьте, что сумма первых трех цифр равняется сумме вторых трех цифр.
+     Если это так - выведите 'да', в противном случае выведите 'нет'.
+    */
+
+    let num = 123321;
+    let sum1 = 0;
+    let sum2 = 0;
+
+    String(num).split('').map((el, idx) => idx < 3 ? sum1 += +el : sum2 += +el);
+
+    console.log(sum1 === sum2);
+
+  </script>
+
+</body>
+
+</html>
