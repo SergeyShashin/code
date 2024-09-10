@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array-elements-accumulation</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/loops/array-elements-accumulation/">
+    Накопление элементов массивов в циклах JavaScript
+  </a>
+
+  <script>
+    console.log('1. Найдите сумму элементов этого массива.');
+
+    let arr = [2, 5, 9, 3, 1, 4];
+    let sum = arr.reduce((acc, el) => acc + el);
+
+    console.log(sum);
+  </script>
+
+  <script>
+    console.log('2. Найдите сумму элементов элементов, являющихся четными числами.');
+
+    let arr1 = [2, 5, 9, 3, 1, 8];
+    let sumEvenNumber = arr1.reduce((acc, el) => el % 2 === 0 ? acc + el : acc);
+
+    console.log(sumEvenNumber);
+  </script>
+
+  <script>
+    console.log('3. Найдите сумму квадратов элементов этого массива.');
+
+    let arr2 = [2, 5, 9, 3, 1, 8];
+    let sumSqrOfArr = arr2.reduce((acc, el) => acc + Math.sqrt(el));
+
+    console.log(sumSqrOfArr);
+  </script>
+
+  <script>
+    console.log('4. Найдите произведение элементов этого массива.');
+
+    let arr3 = [2, 5, 9, 3, 1, 8];
+    let multiply = arr3.reduce((acc, el, idx) => idx > 0 ? acc * el : acc);
+
+    console.log(multiply);
+  </script>
+
+</body>
+
+</html>
