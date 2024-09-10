@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>String forming</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/loops/string-forming/">
+    Формирование строк через циклы в JavaScript
+  </a>
+
+  <script>
+    console.log('1. С помощью цикла сформируйте строку, заполненную 5-тью дефисами.');
+    let str = '';
+    for (let i = 0; i < 5; str += '-', i++) { }
+
+    console.log(str);
+  </script>
+
+  <script>
+    console.log('2. С помощью цикла сформируйте строку "123456789".');
+    let str2 = '';
+    for (let i = 1; i < 10; str2 += i, i++) { }
+
+    console.log(str2);
+  </script>
+
+  <script>
+    console.log('3. С помощью цикла сформируйте строку "987654321".');
+    let str3 = '';
+    for (let i = 9; i; str3 += i, i--) { }
+
+    console.log(str3);
+  </script>
+
+  <script>
+    console.log('4. С помощью цикла сформируйте строку "-1-2-3-4-5-6-7-8-9-".');
+    let str4 = '';
+    for (let i = 1; i < 10; str4 += `-${i}`, i++) { }
+    str4 += '-';
+
+    console.log(str4);
+  </script>
+</body>
+
+</html>
