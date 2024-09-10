@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Numbers-Accumulation</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/loops/numbers-accumulation/">
+    Накопление чисел в циклах JavaScript
+  </a>
+
+  <script>
+    console.log('1. Найдите сумму четных чисел от 2 до 100.');
+    let acc = 0;
+    for (let i = 2; i < 100; acc += i, i += 2) { }
+    console.log(acc);
+  </script>
+
+  <script>
+    console.log('2. Найдите сумму нечетных чисел от 1 до 99.');
+    let acc1 = 0;
+    for (let i = 1; i < 100; acc1 += i, i += 2) { }
+    console.log(acc1);
+  </script>
+  <script>
+    console.log('3. Найдите произведение целых чисел от 1 до 20.');
+    let acc2 = 0;
+    for (let i = 1, j = 2; j < 21; acc2 += i * j, i++, j++) {}
+    console.log(acc2);
+  </script>
+
+</body>
+
+</html>
