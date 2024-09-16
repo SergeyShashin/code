@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Objects Filling</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/loops/objects-filling/">
+    Заполнение объектов через цикл в JavaScript
+  </a>
+  <script>
+    console.log(
+      `1. Даны два массива: первый с названиями дней недели, а второй - с их порядковыми номерами:
+      С помощью цикла создайте объект, ключами которого будут названия дней, а значениями - их номера.`
+    );
+
+    let arr1 = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
+    let arr2 = [1, 2, 3, 4, 5, 6, 7];
+    let daysWeek = {};
+
+    for (let el in arr1) {
+      daysWeek[arr1[el]] = arr2[el];
+    }
+
+    console.log(daysWeek);
+
+  </script>
+
+  <script>
+    console.log('Переберите этот объект циклом и запишите в новый объект те элементы, которые являются четными числами.');
+    let obj = { a: 1, b: 2, c: 3, d: 4, e: 5 };
+    let evenNumbers = {};
+
+    for (let key in obj) {
+      obj[key] % 2 === 0 ? evenNumbers[key] = obj[key] : '';
+    }
+
+    console.log(evenNumbers);
+
+  </script>
+
+  <script>
+    console.log('Переберите этот объект циклом и создайте новый объект так, чтобы его ключами стали элементы старого объекта, а значениями - ключи старого объекта.');
+    let obj1 = { a: 1, b: 2, c: 3, d: 4, e: 5 };
+    let newObj1 = {};
+
+    for (let key in obj1) {
+      let value = obj1[key];
+      newObj1[value] = key;
+    }
+
+    console.log(newObj1);
+
+  </script>
+
+  <script>
+
+  </script>
+
+</body>
+
+</html>
