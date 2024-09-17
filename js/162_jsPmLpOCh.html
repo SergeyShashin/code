@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Object changing</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/loops/objects-changing/">Изменение объектов через цикл в
+    JavaScript</a>
+
+  <script>
+    console.log(`Переберите этот объект циклом и возведите каждый элемент этого объекта в квадрат.`);
+
+    let obj = { x: 1, y: 2, z: 3 };
+
+    for (let key in obj) {
+      obj[key] *= obj[key];
+    }
+
+    console.log(obj);
+  </script>
+
+  <script>
+    console.log(`Переберите этот объект циклом и увеличьте каждый элемент этого объекта на единицу.`);
+
+    let obj1 = { x: 1, y: 2, z: 3 };
+
+    for (let key in obj1) {
+      obj1[key]++;
+    }
+
+    console.log(obj1);
+  </script>
+</body>
+
+</html>
