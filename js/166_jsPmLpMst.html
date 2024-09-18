@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mistakes</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/loops/mistakes/">
+    Поиск ошибок в коде с циклами JavaScript
+  </a>
+
+  <script>
+    console.log('1. Код должен вывести числа от 0 до 10.');
+    for (let i = 0; i < 11; i++) {
+      console.log(i);
+    }
+  </script>
+
+  <script>
+    console.log('2. Код должен вывести числа от 10 до 0.');
+    for (let i = 10; i > -1; i--) {
+      console.log(i);
+    }
+  </script>
+
+  <script>
+    console.log('3. Код должен вывести числа от 10 до 0.');
+    for (let i = 10; i !== -1; i--) {
+      console.log(i);
+    }
+  </script>
+
+  <script>
+    console.log('4. Код должен вывести числа от 0 до 10.');
+    let i = 0;
+
+    while (i < 11) {
+      console.log(i);
+      i++;
+    }
+  </script>
+
+  <script>
+    console.log('5. Код должен найти сумму целых чисел от 1 до 10.');
+    let res = 0;
+
+    for (let i = 1; i < 11; i++) {
+      res += i;
+    }
+
+    console.log(res);
+  </script>
+
+  <script>
+    console.log('6. Код должен найти произведение целых чисел от 1 до 10.');
+    let res1 = 1;
+
+    for (let i = 2; i < 11; i++) {
+      res1 *= i;
+    }
+
+    console.log(res1);
+
+  </script>
+
+  <script>
+    console.log('7. Код должен найти сумму элементов массива.');
+    let arr = ['1', '2', '3', '4', '5'];
+    let sum = 0;
+
+    for (let elem of arr) {
+      sum += Number(elem);
+    }
+
+    console.log(sum); // должно вывести 15
+  </script>
+
+  <script>
+    console.log('8. Код должен найти сумму элементов массива.');
+    let arr1 = ['1', '2', '3', '4', '5'];
+    let sum1 = 0;
+
+    for (let elem of arr1) {
+      sum1 += +elem;
+    }
+
+    console.log(sum1); // должно вывести 15
+  </script>
+
+  <script>
+    console.log('9. Код должен найти сумму элементов массива.');
+
+    let arr2 = ['1', '2', '3', '4', '5'];
+    let sum2 = 0;
+
+    for (let elem of arr2) {
+      sum2 += +elem;
+    }
+
+    console.log(sum2); // должно вывести 15
+  </script>
+
+  <script>
+    console.log('10. Код должен найти сумму элементов массива, однако, всегда выводит NaN.');
+
+    let arr3 = ['1', '2', '3', '4', '5'];
+    let sum3 = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+      sum3 += +arr3[i];
+    }
+
+    console.log(sum3); // почему-то выводит NaN
+  </script>
+
+  <script>
+    console.log('11. Код должен найти сумму элементов массива.');
+    let arr4 = ['1', '2', '3', '4', '5'];
+    let sum4 = 0;
+
+    for (let i = 0; i < arr4.length; i++) {
+      sum4 += +arr4[i];
+    }
+
+    console.log(sum4); // почему-то выводит не 15
+  </script>
+
+  <script>
+    console.log('12. Код должен найти сумму элементов массива.');
+
+    let arr5 = ['1', '2', '3', '4', '5'];
+    let sum5 = 0;
+
+    for (let i = 0; i < arr5.length; i++) {
+      sum5 += +arr5[i];
+    }
+
+    console.log(sum5); // почему-то выводит не 15
+  </script>
+
+  <script>
+    console.log('13. Код должен возвести в квадрат каждый элемент массива.');
+    let arr7 = [1, 2, 3, 4, 5];
+
+    for (let key in arr7) {
+      arr7[key] *= arr7[key];
+    }
+
+    console.log(arr7);
+  </script>
+
+  <script>
+    console.log('14. Код должен заполнить массив числами от 1 до 5.');
+    let arr8 = [];
+
+    for (let i = 1; i <= 5; i++) {
+      arr8.push(i);
+    }
+
+    console.log(arr8);
+  </script>
+
+  <script>
+    console.log('15. Код должен найти сумму элементов объекта.');
+
+    let obj = { a: 1, b: 2, c: 3 };
+    let sum9 = 0;
+
+    for (let elem in obj) {
+      sum9 += obj[elem];
+    }
+
+    console.log(sum9);
+  </script>
+
+  <script>
+    console.log('16. Код должен найти сумму элементов объекта.');
+
+    let obj1 = { a: 1, b: 2, c: 3 };
+    let sum10 = 0;
+
+    for (let key in obj1) {
+      sum10 += obj1[key];
+    }
+
+    console.log(sum10);
+  </script>
+
+  <script>
+    console.log('17. Код должен проверить, есть ли в массиве число 3 или нет.');
+
+    let arr17 = [1, 2, 3, 4, 5];
+    let res17 = '---';
+
+    for (let elem of arr17) {
+      if (elem === 3) {
+        res17 = '+++';
+        break;
+      }
+    }
+
+    console.log(res17);
+
+  </script>
+
+  <script>
+    console.log('18. Код должен заполнить массив числами от 1 до 5.');
+    let arr18 = [];
+
+    for (let i = 1; i <= 5; i++) {
+      arr18.push(i);
+    }
+
+    console.log(arr18);
+
+  </script>
+
+  <script>
+    console.log('19. Код должен проверить, есть ли в массиве число 3 или нет.');
+    let arr19 = [1, 2, 3, 4, 5];
+    let res19 = false;
+
+    for (let elem of arr19) {
+      if (elem === 3) {
+        res19 = true;
+        break;
+      }
+    }
+
+    console.log(res19);
+  </script>
+
+  <script>
+    console.log('20. Код должен вывести только четные элементы из массива.');
+    let arr20 = [1, 2, 3, 4, 5];
+
+    for (let elem of arr20) {
+      if (elem % 2 === 0) {
+        console.log(elem);
+      }
+    }
+  </script>
+
+  <script>
+    console.log('21. Код должен записать в новый массив только нечетные элементы старого массива.');
+    let arr21 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    let res21 = [];
+
+    for (let elem of arr21) {
+      if (elem % 2 != 0) {
+        res21.push(elem);
+      }
+    }
+
+    console.log(res21);
+  </script>
+
+
+
+</body>
+
+</html>
