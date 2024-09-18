@@ -93,6 +93,27 @@
 
   </script>
 
+  <script>
+    console.log('12. Заполните массив числами от 10 до 1 с помощью цикла.');
+    let arrNumbers12 = [];
+    for (let i = 10; i > -1; arrNumbers12.push(i), i--) { };
+    console.log(arrNumbers12);
+  </script>
+
+  <script>
+    console.log('13. Дан массив с числами. Числа могут быть положительными и отрицательными. Найдите сумму положительных элементов массива.');
+    let randomArr = [];
+    while (randomArr.length < 10) {
+      randomArr.push(Math.round(Math.random() * 20 - 10));
+    }
+    console.log(randomArr);
+    let sum13 = 0;
+    for (let el of randomArr) {
+      el > -1 ? sum13 += el : '';
+    }
+    console.log(sum13);
+  </script>
+
 </body>
 
 </html>
