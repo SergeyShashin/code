@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practicum</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/loops/practicum/">
+    Отработка циклов JavaScript
+  </a>
+
+  <script>
+    console.log('1. Выведите с помощью цикла столбец чисел от 1 до 100.');
+    for (let i = 1; i < 101; console.log(i), i++) { };
+  </script>
+
+  <script>
+    console.log('2. Выведите с помощью цикла столбец чисел от 100 до 1.');
+    for (let i = 100; i > 0; console.log(i), i--) { };
+  </script>
+
+  <script>
+    console.log('3. Выведите с помощью цикла столбец чётных чисел от 1 до 100.');
+    for (let i = 0; i < 101; console.log(i), i += 2) { };
+  </script>
+
+  <script>
+    console.log('4. Заполните массив 10-ю иксами с помощью цикла.');
+    let arrX = [];
+    for (let i = 0; i < 10; arrX.push('x'), i++) { };
+    console.log(arrX);
+  </script>
+
+  <script>
+    console.log('5. Заполните массив числами от 1 до 10 с помощью цикла.');
+    let arrNumbers1 = [];
+    for (let i = 1; i < 11; arrNumbers1.push(i), i++) { };
+    console.log(arrNumbers1);
+
+    console.log('6. Дан массив с числами. С помощью цикла выведите только те элементы массива, которые больше нуля и меньше 10-ти.');
+    for (let el of arrNumbers1) {
+      el > 0 && el < 10 ? console.log(el) : '';
+    }
+
+    console.log('7. Дан массив с числами. С помощью цикла проверьте, что в нем есть элемент со значением 5.');
+    for (let el of arrNumbers1) {
+      if (el === 5) {
+        console.log('Eсть элемент со значением 5.');
+        break;
+      };
+    }
+
+    console.log('8. Дан массив с числами. С помощью цикла найдите сумму элементов этого массива.');
+    let sum8 = 0;
+    for (let el of arrNumbers1) {
+      sum8 += el;
+    }
+    console.log(sum8);
+
+    console.log('9. Дан массив с числами. С помощью цикла найдите сумму элементов этого массива.');
+    let sumOfSquareElements = 0;
+    for (let el of arrNumbers1) {
+      sumOfSquareElements += el * el;
+    }
+    console.log(sumOfSquareElements);
+
+    console.log('10. Дан массив с числами. Найдите среднее арифметическое его элементов.');
+    let sum10 = 0;
+    for (let el of arrNumbers1) {
+      sum10 += el;
+    }
+    console.log('среднее арифметическое ' + sum10 / arrNumbers1.length);
+  </script>
+
+  <script>
+    console.log('11. Напишите скрипт, который будет находить факториал числа. Факториал - это произведение всех целых чисел от единицы до заданного числа.');
+    let inputNumber = Number(prompt('Факториал какого числа будем искать?', 8));
+    let result = 1;
+
+    for (let i = inputNumber; i > 1; i--) {
+      result *= i;
+    }
+
+    function factorial(inputNumber) {
+      return inputNumber === 1 ? inputNumber : inputNumber * factorial(inputNumber - 1);
+    };
+
+    console.log(result);
+    console.log(factorial(inputNumber));
+
+  </script>
+
+</body>
+
+</html>
