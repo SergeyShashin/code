@@ -114,6 +114,71 @@
     console.log(sum13);
   </script>
 
+  <script>
+    console.log('14. Выведите на экран только те числа из массива, которые начинаются на цифру 1, 2 или 5.');
+    let arr14 = [10, 20, 30, 50, 235, 3000];
+    for (let el of arr14) {
+      let firstChar = String(el)[0];
+      firstChar === '1' || firstChar === '2' || firstChar === '5' ? console.log(el) : '';
+    }
+  </script>
+
+  <script>
+    console.log('15. Дан массив с числами. Выведите элементы этого массива в обратном порядке.');
+    let arr15 = [10, 20, 30, 50, 235, 3000];
+
+    console.log(arr15.reverse());
+  </script>
+
+  <script>
+    console.log('16. Дан массив с числами. С помощью цикла выведите на экран все элементы, значение которых совпадает с их порядковым номером в массиве.');
+    let arr16 = [0, 10, 20, 30, 50, 5, 3000];
+    for (let key in arr16) {
+      let el = arr16[key];
+      el === Number(key) ? console.log(el) : '';
+    }
+  </script>
+
+  <script>
+    let arr17 = [0, 10, 20, 30, 50, 5, 3000];
+    console.log('17. Дан массив с числами. С помощью цикла for и функции document.write выведите каждый элемент массива с новой строки. Используйте для этого тег br.');
+    for (let el of arr17) {
+      document.write(`<br>${el}`);
+    }
+  </script>
+
+  <script>
+    let arr18 = [0, 10, 20, 30, 50, 5, 3000];
+    console.log('18. Дан массив с числами. С помощью цикла for и функции document.write выведите каждый элемент массива в отдельном абзаце.');
+    for (let el of arr18) {
+      document.write(`<p>${el}</p>`);
+    }
+  </script>
+
+
+  <script>
+    let daysWeek = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
+    console.log('19. Составьте массив дней недели. С помощью цикла for выведите все дни недели, а выходные дни выведите жирным.');
+
+    for (let el of daysWeek) {
+      if (el === 'сб' || el === 'вс') {
+        document.write(`<p><strong>${el}<strong/></p>`);
+      } else {
+        document.write(`<p>${el}</p>`);
+      }
+    }
+
+  </script>
+
+  <script>
+    console.log(`20. Составьте массив дней недели.
+    С помощью цикла for выведите все дни недели, а текущий день выведите курсивом.
+    Номер текущего дня должен храниться в переменной day.`);
+    let daysWeek20 = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
+
+  </script>
+
+
 </body>
 
 </html>
