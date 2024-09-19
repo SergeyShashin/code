@@ -265,6 +265,51 @@
     console.log(arr252);
   </script>
 
+  <script>
+    console.log(`26. Запишите в новый массив элементы, значение которых начинается с цифры 1 или цифры 2.
+     То есть у вас в результате получится вот такой массив`);
+
+    let obj26 = {
+      1: 125,
+      2: 225,
+      3: 128,
+      4: 356,
+      5: 145,
+      6: 281,
+      7: 452,
+    };
+
+    let arr26 = Object.values(obj26).filter(el => /^[12]/.test(String(el)));
+
+    console.log(arr26);
+  </script>
+
+  <script>
+    let arr27 = ['a', 'b', 'c', 'd', 'e'];
+    let obj27 = {};
+    console.log('27. Создайте из этого массива следующий объект {1: a, 2: b, 3: c, 4: d, 5: e}');
+
+    for (let key in arr27) {
+      obj27[Number(key) + 1] = arr27[key];
+    }
+
+    console.log(obj27);
+
+  </script>
+
+  <script>
+    let arr28 = ['a', 'b', 'c', 'd', 'e'];
+    let obj28 = {};
+    console.log('28. Создайте из этого массива следующий объект: {a: 1, b: 2, c: 3, d: 4, e: 5}');
+
+    for (let key in arr28) {
+      obj28[arr28[key]] = Number(key)+1;
+    }
+
+    console.log(obj28);
+
+  </script>
+
 
 </body>
 
