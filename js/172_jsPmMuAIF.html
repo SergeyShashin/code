@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/multi/arrays-iteration/">
+    Перебор многомерных массивов в JavaScript
+  </a>
+  <script>
+    console.log('1. С помощью вложенных циклов найдите сумму элементов этого массива.');
+    let arr = [[1, 2, 3], [4, 5], [6]];
+    let sum = 0;
+
+    for (let keyRow = 0; keyRow < arr.length; keyRow++) {
+      let row = arr[keyRow];
+      for (let keyEl = 0; keyEl < row.length; keyEl++) {
+        sum += row[keyEl];
+      }
+    }
+
+    console.log(sum);
+  </script>
+
+  <script>
+    console.log('2. С помощью вложенных циклов найдите сумму элементов этого массива.');
+    let arr2 = [
+      [
+        [1, 2], [3, 4]
+      ],
+      [
+        [5, 6], [7, 8]
+      ]];
+    let sum2 = 0;
+
+    for (let keyRow = 0; keyRow < arr2.length; keyRow++) {
+      let row = arr2[keyRow];
+      console.log(row);
+
+      for (let keyEl = 0; keyEl < row.length; keyEl++) {
+        let el = row[keyEl];
+        for (let i = 0; i < el.length; i++) {
+          sum2 += el[i];
+        }
+      }
+    }
+
+    console.log(sum2);
+  </script>
+
+</body>
+
+</html>
