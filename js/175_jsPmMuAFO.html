@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arrays filling order</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/multi/arrays-filling-order/">
+    Заполнение многомерных массивов по порядку в JavaScript
+  </a>
+
+  <script>
+    console.log(`1. Сформируйте с помощью двух вложенных циклов следующий массив:
+                [[1, 2], [3, 4], [5, 6], [7, 8]]`);
+
+    let arr = [];
+    for (let i = 0, number = 1; i < 4; i++) {
+      arr[i] = [];
+      for (let j = 0; j < 2; j++, number++) {
+        arr[i][j] = number;
+      }
+    }
+
+    console.log(arr);
+  </script>
+
+  <script>
+    console.log(`2. Сформируйте с помощью двух вложенных циклов следующий массив:
+                [[2, 4, 6], [8, 10, 12], [14, 16, 18], [20, 22, 24]]`);
+
+    let arr2 = [];
+    for (let i = 0, number = 2; i < 4; i++) {
+      arr2[i] = [];
+      for (let j = 0; j < 3; j++, number += 2) {
+        arr2[i][j] = number;
+      }
+    }
+
+    console.log(arr2);
+  </script>
+
+  <script>
+    console.log(`3. Сформируйте с помощью трех вложенных циклов следующий трехмерный массив:
+                [[[1, 2], [3, 4]], [[5, 6], [7, 8]]]`);
+
+    let arr3 = [];
+    for (let i = 0, number = 1; i < 2; i++) {
+      arr3[i] = [];
+      for (let j = 0; j < 2; j++) {
+        arr3[i][j] = [];
+        for (let k = 0; k < 2; k++, number++) {
+          arr3[i][j][k] = number;
+        }
+      }
+    }
+
+    console.log(arr3);
+  </script>
+
+  <script>
+    console.log(`4. Исправить ошибку.
+                [[1, 2, 3], [4, 5, 6], [7, 8, 9]]`);
+
+    let arr4 = [];
+
+    for (let i = 0, k = 1; i < 3; i++) {
+      arr4[i] = [];
+
+      for (let j = 0; j < 3; j++) {
+        arr4[i][j] = k;
+        k++;
+      }
+    }
+
+    console.log(arr4);
+  </script>
+
+  <script>
+    console.log(`5. Исправить ошибку.
+                [[1, 2, 3], [4, 5, 6], [7, 8, 9]]`);
+
+    let arr5 = [];
+
+    let k = 1;
+
+    for (let i = 0; i < 3; i++) {
+      arr5[i] = [];
+
+      for (let j = 0; j < 3; j++, k++) {
+        arr5[i][j] = k;
+      }
+    }
+
+
+    console.log(arr5);
+  </script>
+
+  <script>
+    console.log(`6. Исправить ошибку.
+                [[1, 2, 3], [4, 5, 6], [7, 8, 9]]`);
+
+    let arr6 = [];
+    let k6 = 1;
+
+    for (let i = 0; i < 3; i++) {
+      arr6[i] = [];
+
+      for (let j = 0; j < 3; j++) {
+        arr6[i][j] = k6;
+        k6++;
+      }
+    }
+
+    console.log(arr6);
+  </script>
+
+  <script>
+    console.log(`7. Исправить ошибку.
+                [[1, 2, 3], [4, 5, 6], [7, 8, 9]]`);
+
+    let arr7 = [];
+    let k7 = 1;
+
+    for (let i = 0; i < 3; i++) {
+      arr7[i] = [];
+
+      for (let j = 0; j < 3; j++) {
+        arr7[i][j] = k7;
+        k7++;
+      }
+    }
+
+    console.log(arr7);
+  </script>
+
+  <script>
+    console.log(`8. Исправить ошибку.
+                [[1, 2, 3], [4, 5, 6], [7, 8, 9]]`);
+
+    let arr8 = [];
+
+    for (let i = 0, k8 = 1; i < 3; i++) {
+      arr8[i] = [];
+
+      for (let j = 0; j < 3; j++, k8++) {
+        arr8[i][j] = k8;
+      }
+    }
+
+    console.log(arr8);
+  </script>
+
+  <script>
+    console.log(`9. Исправить ошибку.
+                [[1, 2, 3], [4, 5, 6], [7, 8, 9]]`);
+
+    let arr9 = [];
+
+    for (let i = 0, k9 = 1; i < 3; i++) {
+      arr9[i] = [];
+
+      for (let j = 0; j < 3; j++, k9++) {
+        arr9[i][j] = k9;
+      }
+    }
+
+    console.log(arr9);
+  </script>
+
+  <script>
+    console.log(`10. Исправить ошибку.
+                [[1, 2, 3], [4, 5, 6], [7, 8, 9]]`);
+
+    let arr10 = [];
+
+    for (let i = 0, k10 = 1; i < 3; i++) {
+      arr10[i] = [];
+
+      for (let j = 0; j < 3; j++, k10++) {
+        arr10[i][j] = k10;
+      }
+    }
+
+    console.log(arr10);
+  </script>
+
+  <script>
+    console.log(`11. Исправить ошибку.
+                [[1, 2, 3], [4, 5, 6], [7, 8, 9]]`);
+
+    let arr11 = [];
+
+    for (let i = 0, k = 1; i < 3; i++) {
+      arr11[i] = [];
+
+      for (let j = 0; j < 3; j++) {
+        arr11[i][j] = k++;
+      }
+    }
+
+    console.log(arr11);
+  </script>
+
+  <script>
+    console.log(`12. Исправить ошибку.
+                [[1, 2, 3], [4, 5, 6], [7, 8, 9]]`);
+
+    let arr12 = [];
+    let k12 = 1;
+
+    for (let i = 0; i < 3; i++) {
+      arr12[i] = [];
+
+      for (let j = 0; j < 3; j++) {
+        arr12[i][j] = k12;
+        k12++;
+      }
+    }
+
+    console.log(arr12);
+  </script>
+
+  <script>
+    console.log(`13. Исправить ошибку.
+                [[1, 2, 3], [4, 5, 6], [7, 8, 9]]`);
+
+    let arr13 = [];
+
+    for (let i = 0, k = 1; i < 3; i++) {
+      arr13[i] = [];
+
+      for (let j = 0; j < 3; j++, k++) {
+        arr13[i][j] = k;
+      }
+    }
+
+    console.log(arr13);
+  </script>
+</body>
+
+</html>
