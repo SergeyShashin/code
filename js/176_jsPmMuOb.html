@@ -13,7 +13,7 @@
   </a>
 
   <script>
-    console.log('Найдите сумму элементов приведенного объекта.');
+    console.log('1. Найдите сумму элементов приведенного объекта.');
     let sum = 0;
 
     let obj = {
@@ -37,6 +37,47 @@
     sum = Object.values(obj).reduce((acc, el) => acc + Object.values(el).reduce((accIn, elIn) => accIn + elIn, 0), 0);
 
     console.log(sum);
+
+  </script>
+
+  <script>
+    console.log(`2. Выведите на экран элемент 'b2' и элемент 'c1'.`);
+    let obj2 = {
+      1: {
+        1: 'a1',
+        2: 'a2',
+        3: 'a3',
+      },
+      2: {
+        1: 'b1',
+        2: 'b2',
+        3: 'b3',
+      },
+      3: {
+        1: 'c1',
+        2: 'c2',
+        3: 'c3',
+      },
+    }
+    console.log(`${obj2[2][2]}_${obj2[3][1]}`);
+  </script>
+
+  <script>
+    console.log('3. Вручную, без цикла, найдите сумму всех элементов-чисел.');
+
+    let obj3 = {
+      key1: {
+        a: 1, b: 2, c: {
+          d: 3,
+          e: 4,
+        }, f: 5,
+      },
+      key2: {
+        g: 6, h: 7,
+      },
+    }
+
+    console.log(obj3['key1']['a'] + obj3['key1']['b'] + obj3['key1']['c']['d'] + obj3['key1']['c']['e'] + obj3['key1']['f'] + obj3['key2']['g'] + obj3['key2']['h']);
 
   </script>
 </body>
