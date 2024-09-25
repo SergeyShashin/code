@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vars keys</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/multi/vars-keys/">
+    Ключи из переменных в многомерных структурах JavaScript.
+  </a>
+
+  <script>
+    console.log('1. Выведите на экран название месяца, соответствующее значениям переменных lang и month.');
+
+    let lang = 'ru'; // может быть или 'ru' или 'en'
+    let month = 5;   // число от 0 до 11
+
+    let months = {
+      'ru': [
+        'январь',
+        'февраль',
+        'март',
+        'апрель',
+        'май',
+        'июнь',
+        'июль',
+        'август',
+        'сентябрь',
+        'октябрь',
+        'ноябрь',
+        'декабрь',
+      ],
+      'en': [
+        'january',
+        'february',
+        'march',
+        'april',
+        'may',
+        'june',
+        'july',
+        'august',
+        'september',
+        'october',
+        'november',
+        'december',
+      ],
+    };
+
+    console.log(months[lang][month]);
+
+  </script>
+
+  <script>
+    console.log('2. Пусть даны также три переменные, содержащие год, месяц и день. Выведите дело, соответствующее значениям переменных.');
+
+    let year = '2019';
+    let month2 = 12;
+    let day = 29;
+
+    let affairs = {
+      '2018': {
+        11: {
+          29: ['дело111', 'дело112', 'дело113'],
+          30: ['дело121', 'дело122', 'дело123'],
+        },
+        12: {
+          30: ['дело211', 'дело212', 'дело213'],
+          31: ['дело221', 'дело222', 'дело223'],
+        },
+      },
+      '2019': {
+        12: {
+          29: ['дело311', 'дело312', 'дело313'],
+          30: ['дело321', 'дело322', 'дело323'],
+          31: ['дело331', 'дело332', 'дело333'],
+        }
+      },
+    }
+
+    console.log(affairs[year][month2][day][2]);
+  </script>
+
+</body>
+
+</html>
