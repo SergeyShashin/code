@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Structures iteration</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/multi/structures-iteration/">
+    Перебор многомерных структур JavaScript
+  </a>
+
+  <script>
+    console.log('1. С помощью вложенных циклов выведите на экран все строки с данными.');
+
+    let data = {
+      1: [
+        'data11',
+        'data12',
+        'data13',
+      ],
+      2: [
+        'data21',
+        'data22',
+        'data23',
+      ],
+      3: [
+        'data31',
+        'data32',
+        'data33',
+      ],
+      4: [
+        'data41',
+        'data42',
+        'data43',
+      ],
+    };
+
+    for (let el in data) {
+      for (let val of data[el]) {
+        console.log(val);
+      }
+    }
+
+  </script>
+
+  <script>
+    console.log('2. С помощью вложенных циклов выведите на экран все строки с данными.');
+
+    let data2 = [
+      {
+        1: 'data11',
+        2: 'data12',
+        3: 'data13',
+      },
+      {
+        1: 'data21',
+        2: 'data22',
+        3: 'data33',
+      },
+      {
+        1: 'data31',
+        2: 'data32',
+        3: 'data33',
+      },
+    ];
+
+    for (let el of data2) {
+      for (let key in el) {
+        console.log(el[key]);
+      }
+    }
+
+  </script>
+
+  <script>
+    console.log('3. С помощью вложенных циклов выведите на экран все строки с данными.');
+
+    let data3 = [
+      {
+        1: [
+          'data111',
+          'data112',
+          'data113',
+        ],
+        2: [
+          'data121',
+          'data122',
+          'data123',
+        ],
+      },
+      {
+        1: [
+          'data211',
+          'data212',
+          'data213',
+        ],
+        2: [
+          'data221',
+          'data222',
+          'data223',
+        ],
+      },
+      {
+        1: [
+          'data411',
+          'data412',
+          'data413',
+        ],
+        2: [
+          'data421',
+          'data422',
+          'data423',
+        ],
+      },
+    ];
+
+    for (let el of data3) {
+      for (let key in el) {
+        for (let val of el[key]) {
+          console.log(val);
+        }
+      }
+    }
+
+  </script>
+
+</body>
+
+</html>
