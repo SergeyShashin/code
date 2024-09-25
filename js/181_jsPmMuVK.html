@@ -83,6 +83,86 @@
     console.log(affairs[year][month2][day][2]);
   </script>
 
+  <script>
+    console.log(`3. Вывести элемент со значением '24'`);
+
+    let obj3 = {
+      key1: {
+        key2: '12',
+        key3: '13',
+      },
+      key2: {
+        key4: '24',
+        key5: '25',
+      },
+    }
+
+    let key1 = 'key2';
+    let key4 = 'key4';
+
+    console.log(obj3[key1][key4]);
+
+  </script>
+
+  <script>
+    console.log(`4. Вывести элемент со значением '24'`);
+
+    let obj4 = {
+      key1: {
+        key2: '12',
+        key3: '13',
+      },
+      key42: {
+        key44: '24',
+        key5: '25',
+      },
+    }
+
+    let key42 = 'key42';
+    let key44 = 'key44';
+    console.log(obj4.key42.key44);
+
+  </script>
+
+  <script>
+    console.log(`5. Вывести элемент со значением '24'`);
+
+    let obj5 = {
+      key1: {
+        key2: '12',
+        key3: '13',
+      },
+      key51: {
+        key52: '24',
+        key5: '25',
+      },
+    }
+
+    let key51 = 'key51';
+    let key52 = 'key52';
+
+    console.log(obj5.key51[key52]);
+  </script>
+
+  <script>
+    console.log(`6. Вывести элемент со значением '24'`);
+
+    let obj = {
+      key1: {
+        key2: '12',
+        key3: '13',
+      },
+      key62: {
+        key64: '24',
+        key5: '25',
+      },
+    }
+
+    let key62 = 'key62';
+    let key64 = 'key64';
+    console.log(obj[key62][key64]);
+  </script>
+
 </body>
 
 </html>
