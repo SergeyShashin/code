@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array of objects</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/multi/array-of-objects/">
+    Массив объектов в JavaScript
+  </a>
+
+  <script>
+    console.log('1. Выведите на экран данные каждого работника в формате имя - зарплата.');
+
+    let employees = [
+      {
+        name: 'name1',
+        salary: 300,
+      },
+      {
+        name: 'name2',
+        salary: 400,
+      },
+      {
+        name: 'name3',
+        salary: 500,
+      },
+    ];
+
+    for (let employee of employees) {
+      console.log(employee.name + '-' + employee.salary);
+    }
+  </script>
+
+  <script>
+    console.log('2. Выведите на экран сумму зарплат всех работников.');
+
+    let employees2 = [
+      {
+        name: 'name1',
+        salary: 300,
+      },
+      {
+        name: 'name2',
+        salary: 400,
+      },
+      {
+        name: 'name3',
+        salary: 500,
+      },
+    ];
+
+    let sum = 0;
+
+    for (let employee of employees2) {
+      sum += employee.salary;
+    }
+
+    console.log(sum);
+  </script>
+
+  <script>
+    console.log('Выведите на экран сумму зарплат тех работников, возраст которых равен или более 30 лет.');
+
+    let employees3 = [
+      {
+        name: 'name1',
+        salary: 300,
+        age: 28,
+      },
+      {
+        name: 'name2',
+        salary: 400,
+        age: 29,
+      },
+      {
+        name: 'name3',
+        salary: 500,
+        age: 30,
+      },
+      {
+        name: 'name4',
+        salary: 600,
+        age: 31,
+      },
+      {
+        name: 'name5',
+        salary: 700,
+        age: 32,
+      },
+    ];
+
+    let sumSalary3 = 0;
+
+    for (let employee of employees3) {
+      employee.age > 31 ? sumSalary3 += employee.salary : '';
+    }
+
+    console.log(sumSalary3);
+
+  </script>
+
+</body>
+
+</html>
