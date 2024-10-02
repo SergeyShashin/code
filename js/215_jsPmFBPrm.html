@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practicum</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/functions/basis/practicum/">
+    Практика на функции в JavaScript
+  </a>
+
+  <script>
+    console.log(`1. Сделайте функцию, которая параметром будет принимать массив и возвращать сумму его элементов.`);
+    function sumElOfArr(arr) {
+      return arr.reduce((acc, el) => acc + el, 0);
+    }
+    console.log(sumElOfArr([2, 2, 8]));
+  </script>
+
+  <script>
+    console.log(`2. Сделайте функцию, которая параметром будет принимать число и возвращать массив его делителей.`);
+
+    function getDividersNum(num) {
+      let dividers = [];
+      for (let i = 2; i < num; i++) {
+        num % i === 0 ? dividers.push(i) : '';
+      }
+      return dividers
+    }
+
+    console.log(getDividersNum(6));
+  </script>
+
+  <script>
+    console.log(`3. Сделайте функцию, которая параметром будет принимать строку и возвращать массив ее символов.`);
+
+    function splitStr(str) {
+      return str.split('');
+    }
+
+    console.log(splitStr('string'));
+  </script>
+
+  <script>
+    console.log(`4. Сделайте функцию, которая параметром будет принимать строку и переворачивать ее символы в обратном порядке.`);
+
+    function reverseStr(str) {
+      return str.split('').reverse().join('');
+    }
+
+    console.log(reverseStr('aбвгд'));
+  </script>
+
+  <script>
+    console.log('5. Сделайте функцию, которая параметром будет принимать строку и делать заглавной первую букву этой строки.');
+    function upperCaseFirst(str) {
+      str = str[0].toUpperCase() + str.slice(1);
+      return str
+    }
+
+    console.log(upperCaseFirst('aбв'));
+  </script>
+
+  <script>
+    console.log(`Сделайте функцию, которая параметром будет принимать строку и делать заглавной первую букву каждого слова этой строки.`);
+
+    function upperCaseAllFirstChar(str) {
+      let res = [];
+
+      str.split(' ').map(el => res.push(upperCaseFirst(el))).join('');
+
+      return res
+    }
+
+    console.log(upperCaseAllFirstChar('Нам не дано предугадать как слово наше отзовётся ...'));
+
+  </script>
+
+</body>
+
+</html>
