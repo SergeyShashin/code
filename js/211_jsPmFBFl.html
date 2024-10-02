@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/functions/basis/flags/">
+    Флаги в функциях JavaScript
+  </a>
+
+  <script>
+    console.log(`1. Сделайте функцию, которая параметром будет принимать массив с числами, 
+    и проверять, что все элементы в этом массиве являются четными числами.`);
+    function includesEven(arr) {
+      for (let val of arr) {
+        if (val % 2 === 0) {
+          return true
+        }
+      }
+      return false
+    }
+
+    console.log(includesEven([1, 2, 3]));
+  </script>
+
+  <script>
+    console.log(`2. Сделайте функцию, которая параметром будет принимать массив с числами, 
+    и проверять, что все элементы в этом массиве являются четными числами.`);
+    function includesNotEven(arr) {
+      for (let val of arr) {
+        if (val % 2 !== 0) {
+          return true
+        }
+      }
+      return false
+    }
+
+    console.log(includesNotEven([8, 1, 2, 3]));
+  </script>
+
+  <script>
+    console.log(` Сделайте функцию, которая параметром будет принимать массив и проверять,
+     есть ли в этом массиве два одинаковых элемента подряд.`);
+
+    function includesSameEl(arr) {
+      for (let i = 1; i < arr.length; i++) {
+        if (arr[i] === arr[i - 1]) {
+          return true
+        };
+      }
+
+      return false
+    }
+
+    console.log(includesSameEl([8, 1, 2, 8, 8, 3]));
+
+  </script>
+
+</body>
+
+</html>
