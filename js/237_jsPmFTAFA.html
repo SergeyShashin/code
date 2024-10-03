@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>anonymous-functions-array</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/functions/types/anonymous-functions-array/">
+    Массив с анонимными функциями в JavaScript
+  </a>
+
+  <script>
+    console.log(`1. Сделайте массив arr с тремя функциями. Пусть первая возвращает через return число 1, вторая - число 2, третья - число 3.`);
+
+    let arr1 = [
+      function () { return 1 },
+      function () { return 2 },
+      function () { return 3 },
+    ]
+
+    console.log(arr1[2]());
+    console.log(arr1[0]()+arr1[1]()+arr1[2]());
+    arr1.map(el=>console.log(el()));
+    </script>
+</body>
+
+</html>
