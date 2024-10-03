@@ -79,6 +79,84 @@
 
   </script>
 
+  <script>
+    console.log(`7. Сделайте функцию, заполняющую массив целыми числами от 1 до заданного.`);
+
+    function getArrNatNumOneToN(n) {
+      let ArrNatNumOneToN = [];
+      for (let i = 1; i < n; i++) {
+        ArrNatNumOneToN.push(i);
+      }
+      return ArrNatNumOneToN;
+    }
+
+    console.log(getArrNatNumOneToN(12 + 1));
+  </script>
+
+  <script>
+    console.log(`8. Сделайте функцию, которая параметром будет принимать число и возвращать сумму его цифр.`);
+
+    function getSumNum(num) {
+      return String(num).split('').reduce((acc, el) => acc + Number(el), 0)
+
+    }
+
+    console.log(getSumNum(888));
+  </script>
+
+  <script>
+    console.log(`9. Сделайте функцию, которая параметром будет год и проверять, високосный он или нет.`)
+
+    function isLeapYear(year) {
+      let numFromYear = Number(year);
+
+      if (numFromYear % 100 === 0 && numFromYear % 400 !== 0) {
+        return false
+      }
+
+      return numFromYear % 4 === 0
+    }
+
+    console.log(isLeapYear(prompt('Enter year.')));
+  </script>
+
+  <script>
+    console.log(`10. Сделайте функцию, которая параметром будет принимать секунды, а возвращать количество суток, соответствующих этим секундам.`);
+
+    function getDayFromSeconds(num) {
+      return Number((Number(num) / 86400).toFixed(2));
+    }
+
+    console.log(getDayFromSeconds(prompt('Enter seconds')));
+
+  </script>
+
+  <script>
+    console.log(`11. Сделайте функцию, которая будет возвращать случайный элемент из массива.`);
+
+    function getRandomElFromArr(arr) {
+      return arr[Math.floor(Math.random() * arr.length)]
+    }
+
+    console.log(getRandomElFromArr([1, 2, 3]));
+  </script>
+
+  <script>
+    console.log(`Сделайте функцию, которая параметром будет принимать число и проверять, простое оно или нет.`);
+
+    function isSimpleNum(num) {
+      for (let i = 2; i < num; i++) {
+        if (num % i === 0) {
+          return false
+        }
+      }
+
+      return true
+    }
+
+    console.log(isSimpleNum(Number(prompt('Enter a number greater than 2.'))));
+  </script>
+
 </body>
 
 </html>
