@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>returning-function-parameters</title>
+</head>
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/functions/nested/returning-function-parameters/">
+    Параметры возвращаемой функции в JavaScript
+  </a>
+
+  <script>
+    console.log(`1. Сделайте функцию func, которая будучи вызвана вот так: func(2)(3)(4), вернет сумму переданных в параметры чисел.`);
+
+    let func = (n1)=>(n2)=>(n3)=>n1+n2+n3;
+
+    console.log(func(2)(3)(4));
+  </script>
+
+  <script>
+    console.log(`2. Сделайте функцию func, которая будучи вызвана вот так: func2(2)(3)(4)(5)(), вернет массив переданных в параметры чисел.`);
+
+    let func2 = (n1)=>(n2)=>(n3)=>(n4)=>()=>[n1, n2, n3, n4];
+
+    console.log(func2(2)(3)(4)(5)());
+  </script>
+  
+</body>
+</html>
