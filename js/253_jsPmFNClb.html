@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>callbacks</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/functions/nested/callbacks/">
+    Функции-коллбэки в JavaScript
+  </a>
+
+  <script>
+    console.log(`1. Дан массив с числами. С помощью созданной нами функции each увеличьте каждый элемент в два раза.`);
+
+    let each = (arr, callback) => {
+      let result = [];
+      for (let el of arr) {
+        result.push(callback(el));
+      }
+      return result
+    }
+
+    console.log(each([1, 2, 3, 4], el => el * 2));
+
+  </script>
+
+  <script>
+    console.log(`2. Дан массив со строками. 
+  С помощью созданной нами функции each переверните символы каждой строки в обратном порядке.`)
+
+    let each2 = (arr, callback) => {
+      let result = [];
+      for (let el of arr) {
+        result.push(callback(el));
+      }
+      return result
+    }
+
+    console.log(each2(['1234', '1234', '1234'], el => el.split('').reverse().join('')));
+
+  </script>
+
+  <script>
+    console.log(`3. Дан массив со строками.
+   С помощью созданной нами функции each сделайте заглавным первый символ каждой строки.`);
+
+   let each3 = (arr, callback) => {
+      let result = [];
+      for (let el of arr) {
+        result.push(callback(el));
+      }
+      return result
+    }
+
+    console.log(each3(['f1234', 'f1234', 'f1234'], el => el.toUpperCase()));
+
+  </script>
+
+</body>
+
+</html>
