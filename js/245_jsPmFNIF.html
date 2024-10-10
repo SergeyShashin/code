@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>inner-functions</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/functions/nested/inner-functions/">
+    Вложенные функции в JavaScript
+  </a>
+
+  <script>
+    /*
+    Сделайте функцию func, которая параметрами будет принимать два числа, а возвращать сумму квадрата первого числа с кубом второго числа.
+    Сделайте для этого вспомогательную функцию square, возводящую число в квадрат, и вспомогательную функцию cube, возводящую число в куб.
+    */
+
+    function func(num1, num2) {
+      function cube(num) {
+        return num ** 3
+      }
+
+      function square(num) {
+        return num ** 2
+      }
+
+      return square(num1) + cube(num2)
+    }
+
+    console.log(func(7, 8));
+  </script>
+
+</body>
+
+</html>
