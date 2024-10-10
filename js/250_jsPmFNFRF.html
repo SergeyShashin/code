@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>function-returning-function</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/functions/nested/function-returning-function/">
+    Функция, возвращающая функцию в JavaScript
+  </a>
+
+  <script>
+    /*
+    Сделайте функцию func1, которая будучи вызвана вот так: func1()(), вернет число 1.
+    Сделайте аналогичную функцию func2, возвращающую число 2. Найдите сумму результатов этих функций.
+    */
+
+    function func1() {
+      return () => 1
+    }
+
+    function func2() {
+      return () => 2
+    }
+
+    console.log(func1()() + func2()());
+
+  </script>
+</body>
+
+</html>
