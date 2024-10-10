@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>passing-functions-applying</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/functions/nested/passing-functions-applying/">
+    Применение передачи функции параметром в JavaScript
+  </a>
+
+  <script>
+    console.log(test([1, 2, 3], num => num ** 2));
+    console.log(test([1, 2, 3], num => num ** 3));
+
+    function test(arr, func) {
+      for (let i = 0; i < arr.length; i++) {
+        arr[i] = func(arr[i]);
+      }
+
+      return arr
+    }
+
+  </script>
+</body>
+
+</html>
