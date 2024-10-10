@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>functions-as-parameters</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/functions/nested/functions-as-parameters/">
+    Передача функций параметрами в JavaScript
+  </a>
+  <script>
+    console.log(`Сделайте функцию test, параметрами принимающую 3 функции.
+     Передайте в нее первым параметром функцию, возвращающую 1, вторым - функцию, возвращающую 2, третьим - функцию, возвращающую 
+     3. Выведите в консоль сумму результатов функций.`);
+
+    let func1 = () => 1;
+    let func2 = () => 2;
+    let func3 = () => 3;
+
+    console.log(test(func1, func2, func2));
+
+    function test(f1, f2, f3) {
+      return f1() + f2() + f3()
+    }
+
+
+  </script>
+</body>
+
+</html>
