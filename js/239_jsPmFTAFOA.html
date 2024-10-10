@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>anonymous-functions-object-applying</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/functions/types/anonymous-functions-object-applying/">
+    Применение объекта с функциями в JavaScript
+  </a>
+
+  <script>
+    console.log(`Сделайте объект с тремя функциями, каждая из которых будет принимать параметром массив с числами. 
+    Сделайте так, чтобы первая функция возвращала сумму элементов массива, вторая функция - сумму квадратов, а третья - сумму кубов.`);
+
+    let libraryFucntions = {
+      'sumOfArray': arr => arr.reduce((acc, el) => acc + el, 0),
+      'sumOfSquaresOfArray': arr => arr.reduce((acc, el) => acc + el ** 2, 0),
+      'sumOfСubesOfArray': arr => arr.reduce((acc, el) => acc + el ** 3, 0)
+    }
+
+    console.log(libraryFucntions.sumOfArray([1, 2, 3, 4, 5, 6, 7]));
+    console.log(libraryFucntions.sumOfSquaresOfArray([1, 2, 3, 4, 5, 6, 7]));
+    console.log(libraryFucntions.sumOfСubesOfArray([1, 2, 3, 4, 5, 6, 7]));
+
+  </script>
+</body>
+
+</html>
