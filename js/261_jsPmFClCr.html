@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>closures/counter</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/functions/closures/counter/">
+    Счетчик на замыканиях в JavaScript
+  </a>
+  <script>
+    function test() {
+      let num = 10;
+      return function () {
+        if (num > 0) {
+          console.log(num);
+          num++;
+        }
+
+        if (num > 10) {
+          console.log('Поздравляем. Вы прошли 10.');
+        }
+
+      }
+    }
+
+    let func = test();
+
+    func();
+    func();
+    func();
+    func();
+    func();
+    func();
+    func();
+    func();
+    func();
+    func();
+    func();
+    func();
+
+
+  </script>
+</body>
+
+</html>
