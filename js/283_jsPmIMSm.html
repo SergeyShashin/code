@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>enumeration/some</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/enumeration/some/">
+    Метод some для проверки массива в JavaScript
+  </a>
+
+  <script>
+    console.log(`1. Дан массив с числами.
+    Проверьте то, что в массиве есть хотя бы одно число больше нуля.`);
+
+    let arr1 = [1, 2, 3, 4, 5];
+
+    console.log(arr1.some(el => el > 0));
+
+  </script>
+
+<script>
+  console.log(`2. Дан массив с числами.
+  Проверьте то, что хотя бы для одного элемента произведение его значения на порядковый номер больше 30.`);
+  let arr2 = [-1, 1, 2, 3, 4, 5, 6, 7, 8];
+  console.log(arr2.some((el, idx) => el * idx > 30));    
+</script>
+
+</body>
+
+</html>
