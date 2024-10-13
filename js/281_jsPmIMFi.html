@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>enumeration/filter</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/enumeration/filter/">
+    Метод filter для фильтрации массива в JavaScript
+  </a>
+
+  <script>
+    console.log(`1. Дан массив с числами. Оставьте в нем только положительные числа.`);
+    let arr1 = [-1, 1, 2, 3, 4, 5, 6, 7, 8];
+    arr1 = arr1.filter(el => el > 0);
+    console.log(arr1);    
+  </script>
+
+  <script>
+    console.log(`2. Дан массив с числами. Оставьте в нем только отрицательные числа.`);
+    let arr2 = [1, -1, -2, -3, -4, -5, -6, -7, -8];
+    arr2 = arr2.filter(el => el < 0);
+    console.log(arr2);    
+  </script>
+
+  <script>
+    console.log(`3. Дан массив с числами. Оставьте в нем только числа, которые больше нуля, но меньше 10.`);
+    let arr3 = [-1, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12];
+    arr3 = arr3.filter(el => el > 0 && el < 10);
+    console.log(arr3);    
+  </script>
+
+  <script>
+    console.log(`4. Дан массив со строками. Оставьте в нем только те строки, длина которых больше 5-ти символов.`);
+    let arr4 = ['-1, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12', '-1, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12', '-1, 1'];
+    arr4 = arr4.filter(el => el.length > 5);
+    console.log(arr4);    
+  </script>
+
+  <script>
+    console.log(`5. Дан массив с числами. Оставьте в нем только те числа, произведение которых на их порядковый номер меньше 30.`);
+    let arr5 = [-1, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12];
+    arr5 = arr5.filter((el, idx) => el * idx < 30);
+    console.log(arr5);    
+  </script>
+
+  <script>
+    console.log(`6. Дан массив, в нем могут быть обычные элементы и подмассивы, например [1, 2, [3, 4], 5, [6, 7]].
+     Оставьте в нем только обычные элементы.`);
+    let arr6 = [1, 2, [3, 4], 5, [6, 7]];
+    arr6 = arr6.filter((el) => typeof el !== 'object');
+    console.log(arr6);    
+  </script>
+
+  
+
+
+
+</body>
+
+</html>
