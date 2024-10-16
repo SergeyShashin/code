@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>time/date-formatting</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/time/date-formatting/">
+    Форматирование даты в JavaScript
+  </a>
+
+  <script>
+    console.log(`Выведите на экран текущую дату-время в формате 12:59:59 31.12.2014.
+    Используйте для всех частей даты (кроме года) созданную нами функцию для добавления нуля при необходимости.`);
+
+    let date = new Date();
+
+    console.log(`${addZero(date.getHours())}:${addZero(date.getMinutes())}:${addZero(date.getSeconds())} ${addZero(date.getDay())}.${addZero(date.getMonth())}.${date.getFullYear()}.`);
+
+    function addZero(num) {
+      return num >= 0 && num <= 9 ? '0' + num : num;
+    }
+
+  </script>
+
+</body>
+
+</html>
