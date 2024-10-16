@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>time/leap-year</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/time/leap-year/">
+    Определение високосного года в JavaScript
+  </a>
+
+  <script>
+    console.log(`Сделайте функцию isLeap, которая параметром будет принимать год и 
+    возвращать true, если этого год високосный, и false - если нет.`);
+
+    function isLeap(year) {
+      return new Date(year, 2, 0).getDate() === 29;
+    }
+
+    console.log(isLeap(Number(prompt('Какой год?'))));
+  </script>
+
+</body>
+
+</html>
