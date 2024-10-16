@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>time/date-correctness-checking</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/time/date-correctness-checking/">
+    Проверка корректности даты в JavaScript
+  </a>
+
+  <script>
+    function checkDate(year, monthStart0, date) {
+      let monthStart1 = monthStart0 + 1;
+      let setDate = new Date(year, monthStart1, date);
+      return setDate.getFullYear() === year && setDate.getMonth() === monthStart1 && setDate.getDate() === date;
+    }
+
+    console.log(checkDate(Number(prompt('год?')), Number(prompt('месяц?')), Number(prompt('число?'))));
+  </script>
+
+</body>
+
+</html>
