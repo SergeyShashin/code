@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>time/moments/practucum</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/time/moments/practucum/">
+    Практика на получение моментов времени в JavaScript
+  </a>
+
+  <script>
+    let now = new Date();
+
+    task1();
+    task2();
+    task3();
+    task4();
+
+    function task1() {
+      console.log(`1. Определите, сколько секунд прошло с начала дня до настоящего момента времени.`);
+      let startDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      console.log((now - startDay) / 1000 + 'секунд.');
+    }
+
+    function task2() {
+      console.log('2. Определите, сколько секунд осталось до конца дня.');
+      let endDay = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);
+      console.log((endDay - now) / 1000 + 1 + 'секунд.');
+    }
+
+    function task3() {
+      console.log('3. Определите, сколько дней осталось до нового года.');
+      let nextYear = now.getFullYear() + 1;
+      let newYear = new Date(nextYear, 0);
+      console.log((newYear - now) / 1000 / 60 / 60 / 24);
+    }
+
+    function task4() {
+      console.log('4. Определите, сколько пятниц 13-е в текущем году.');
+
+      let quantityFriday13InCurYear = 0;
+      for (let month = 0; month < 12; month++) {
+        let date = new Date(now.getFullYear(), month, 13);
+        if (date.getDay() === 5) {
+          console.log(date);
+          quantityFriday13InCurYear++;
+        };
+      }
+
+      console.log(`Пятниц в ${now.getFullYear()} году ${quantityFriday13InCurYear} шт.`);
+
+      //Первое решение.
+      // let firstDayCurYear = new Date(now.getFullYear(), 0).getDay();
+      // let quantityDaysNeedAdd = 5 - firstDayCurYear + 1;
+      // let dateFirstFridayCurYear = new Date(now.getFullYear(), 0, quantityDaysNeedAdd);
+      // let dateNexFriday = new Date(now.getFullYear(), 0, quantityDaysNeedAdd + 7);
+      // let quantityFriday13InCurYear = 0;
+
+      // for (let week = 0, counterSeven = 0; week < 51; week++, counterSeven += 7) {
+      //   dateNexFriday = new Date(now.getFullYear(), 0, quantityDaysNeedAdd + counterSeven);
+      //   dateNexFriday.getDate() === 13 ? quantityFriday13InCurYear++ : '';
+      // }
+
+      // console.log(quantityFriday13InCurYear);
+    }
+
+  </script>
+</body>
+
+</html>
