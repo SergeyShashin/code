@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>time/moments/difference-points</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/time/moments/difference-points/">
+    Разность моментов
+  </a>
+
+  <script>
+    console.log('1. Определите, сколько дней между 1 января и 10 сентября текущего года.');
+
+    let date10124 = new Date(2024, 0, 1);
+    let date10824 = new Date(2024, 8, 10);
+
+    console.log((date10824 - date10124) / 1000 / 60 / 60 / 24);
+
+  </script>
+
+  <script>
+    console.log('2. Определите, сколько дней между 20 числом текущего месяца и 10 числом следующего.');
+
+    let now = new Date();
+
+    let date20CurMonth = new Date(now.getFullYear(), now.getMonth(), 20);
+    let date10NextMonth = new Date(now.getFullYear(), now.getMonth()+1, 10);
+
+    console.log((date10NextMonth - date20CurMonth) / 1000 / 60 / 60 / 24);
+
+  </script>
+
+</body>
+
+</html>
