@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>https://code.mu/ru/javascript/book/prime/</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/time/moments/loop-check/">
+    Циклическая проверка моментов времени в JavaScript
+  </a>
+
+  <script>
+    console.log(`Рассмотрите промежуток от 2000 года до текущего года.
+     Определите, сколько раз 1 января в этом промежутке попадало на выходной день, то есть на субботу или на воскресенье.`);
+
+    let now = new Date().getFullYear();
+
+    let result = 0;
+
+    while (now > 1999) {
+      let dayCurYear = new Date(now, 0, 1).getDay();
+
+      console.log(now);
+      console.log(dayCurYear);
+
+      dayCurYear === 0 || dayCurYear === 6 ? result++ : '';
+      now--;
+    }
+
+    console.log(`C 2000 года 1 января было выходным днём ${result} раз.`);
+
+  </script>
+
+</body>
+
+</html>
