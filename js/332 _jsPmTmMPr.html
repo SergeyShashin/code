@@ -14,11 +14,17 @@
 
   <script>
     let now = new Date();
+    let days = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
 
     task1();
     task2();
     task3();
     task4();
+    task5();
+    task6();
+    task7();
+    task8();
+    task9();
 
     function task1() {
       console.log(`1. Определите, сколько секунд прошло с начала дня до настоящего момента времени.`);
@@ -66,6 +72,59 @@
       // }
 
       // console.log(quantityFriday13InCurYear);
+    }
+
+    function task5() {
+      console.log('5. Определите, какой год был 3 месяца назад.');
+      console.log(new Date(now.getFullYear(), now.getMonth() - 3).getFullYear());
+    }
+
+    function task6() {
+      console.log('6. Определите, какой день недели будет в последнем дне текущего месяца.');
+      console.log(days[new Date(now.getFullYear(), now.getMonth() + 1, 0).getDay()]);
+    }
+
+    function task7() {
+      console.log('7. Напишите код, который будет определять, високосный ли текущий год.');
+      console.log(new Date(now.getFullYear(), 2, 0).getDate() === 29 ? true : false);
+    }
+
+    function task8() {
+      console.log('8. Напишите код, который будет находить предыдущий високосный год.');
+      let result;
+      let counter = 0;
+      let years = 0;
+      let year;
+
+      while (counter < 2) {
+        let date = new Date(now.getFullYear() - years, 2, 0);
+        if (date.getDate() === 29) {
+          counter++;
+          year = date.getFullYear();
+        }
+          years++;
+      }
+
+      console.log(year);
+    }
+
+    function task9() {
+      console.log('8. Напишите код, который будет находить предыдущий високосный год.');
+      let result;
+      let counter = 0;
+      let years = 0;
+      let year;
+
+      while (counter < 2) {
+        let date = new Date(now.getFullYear() + years, 2, 0);
+        if (date.getDate() === 29) {
+          counter++;
+          year = date.getFullYear();
+        }
+          years++;
+      }
+
+      console.log(year);
     }
 
   </script>
