@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dom/basis/events-handlers-binding</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/basis/events-handlers-binding/">
+    Привязывание обработчиков к элементам в JavaScript
+  </a>
+  <br>
+  <br>
+
+  <input id="button1" type="submit">
+  <input id="button2" type="submit">
+  <input id="button3" type="submit">
+
+  <script>
+    console.log(`Сделайте так, чтобы по клику на первую кнопку на экран выводилось число 1,
+     по клику на вторую - число 2, а по клику на третью - число 3.`);
+
+    for (let i = 1; i < 4; i++) {
+      document.getElementById('button' + i).addEventListener('click', () => console.log(i));
+    }
+
+  </script>
+</body>
+
+</html>
