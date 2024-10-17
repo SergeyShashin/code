@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dom/basis/element-html</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/basis/element-html/">
+    Работа с HTML кодом элементов на JavaScript
+  </a>
+
+  <p id="elem"><span>text</span></p>
+  <button id="btn">Кнопка</button>
+
+  <script>
+    let elem = document.getElementById('elem');
+    let btn = document.getElementById('btn');
+
+    console.log('1. Дан абзац и кнопка. По клику на кнопку прочитайте HTML код абзаца и выведите его в консоль.');
+    console.log('2. Дан абзац и кнопка. По клику на кнопку запишите в абзац новый текст так, чтобы он был жирным.');
+    
+    btn.addEventListener('click', () => {
+      console.log(elem.innerHTML);
+      elem.innerHTML = '<b>новый текст</b>';
+    });
+
+  </script>
+</body>
+
+</html>
