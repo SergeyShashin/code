@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dom/basis/different-events-handlers</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/basis/different-events-handlers/">
+    Обработчики разных событий в JavaScript
+  </a>
+
+  <br>
+
+  <button id="btn">Кнопка</button>
+
+  <script>
+    let btn = document.getElementById('btn');
+    console.log('1. Дана кнопка. По двойному клику по ней выведите какое-нибудь сообщение.');
+    btn.addEventListener('dblclick', () => console.log('Двойной клик.'));
+    console.log('2. Дана кнопка. По наведению на нее выведите какое-нибудь сообщение.');
+    btn.addEventListener('mouseover', () => console.log('Навели мышку на кошку.'));
+    console.log('3. Дана кнопка. По уходу курсора с нее выведите какое-нибудь сообщение.');
+    btn.addEventListener('mouseout', () => console.log('Мышка больше не смотрит на кнопку.'));
+  </script>
+
+</body>
+
+</html>
