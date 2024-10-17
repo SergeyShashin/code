@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dom/basis/element-getting-advanced-selectors</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/basis/element-getting-advanced-selectors/">
+    Получение DOM элемента в JavaScript
+  </a>
+  <div id="block" class="block">
+    <p>1</p>
+    <p>2</p>
+  </div>
+
+  <p class="www">text</p>
+  <p class="www">text</p>
+
+  <script>
+
+    console.log('1. Получите ссылку на первый абзац из дива с id, равным block.');
+    let block1 = document.querySelector('#block p');
+    console.log(block1);
+
+    console.log('2. Получите ссылку на первый абзац из дива с классом block.');
+    let block2 = document.querySelector('.block p');
+    console.log(block2);
+
+    console.log('3. Получите ссылку на первый абзац с классом www.');
+    let www1 = document.querySelector('.www');
+    console.log(www1);
+
+  </script>
+
+</body>
+
+</html>
