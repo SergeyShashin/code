@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dom/basis/text-fields</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/basis/text-fields/">
+    Работа с текстовыми полями в JavaScript
+  </a>
+
+  <br>
+
+  <input id="elem" value=3>
+  <input id="elem2" value=3>
+  <p>&nbsp;</p>
+
+  <div id="average">
+    <input value=1>
+    <input value=2>
+    <input value=3>
+    <input value=4>
+    <input value=5>
+  </div>
+
+  <div id="result">&nbsp;</div>
+
+  <button>Кнопка</button>
+
+
+  <script>
+    let elem = document.getElementById('elem');
+    let elem2 = document.getElementById('elem2');
+
+    console.log(`1. Дан инпут и кнопка. По нажатию на кнопку запишите в инпут какой-нибудь текст.`);
+
+    elem.addEventListener('click', () => elem.value = 3);
+
+    console.log(`2. Дан инпут, абзац и кнопка. По нажатию на кнопку запишите в абзац текст из инпута.`);
+    console.log(`3. Даны два инпута и кнопка.
+    В первый инпут пользователем вводится число. По нажатию на кнопку запишите во второй инпут квадрат введенного числа.`);
+    console.log(`4. Даны два инпута и кнопка. По нажатию на кнопку запишите в первый инпут значение второго инпута, а во второй инпут - значение первого. 
+    Ваш код должен работать универсально, для любых значений инпутов.`);
+    console.log(`5. Даны 5 инпутов, абзац и кнопка. В инпут вводятся числа. 
+    По нажатию на кнопку запишите среднее арифметическое введенных чисел в абзац.`)
+    document.querySelector('button').addEventListener('click', () => {
+      document.querySelector('p').textContent = elem.value;
+      elem2.value = elem.value ** 2;
+      let val1 = elem.value;
+      let val2 = elem2.value;
+      elem.value = val2;
+      elem2.value = val1;
+
+      console.dir(document.getElementById('average').children);
+
+      let avrg = 0;
+      let counter = 0;
+
+      for (let el of document.getElementById('average').children) {
+        avrg += Number(el.value);
+        counter++;
+      }
+
+      document.getElementById('result').textContent = avrg/counter;
+
+    });
+
+
+
+  </script>
+</body>
+
+</html>
