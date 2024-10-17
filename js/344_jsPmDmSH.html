@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dom/basis/several-handlers</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/basis/several-handlers/">
+    Несколько обработчиков одного события в JavaScript
+  </a>
+
+  <p id="elem">text</p>
+
+  <script>
+    console.log('Привяжите все эти функции к нашему абзацу.');
+
+    let elem = document.getElementById('elem');
+
+    elem.addEventListener('click', func1);
+    elem.addEventListener('click', func2);
+    elem.addEventListener('click', func3);
+
+    function func1() {
+      console.log('1');
+    }
+
+    function func2() {
+      console.log('2');
+    }
+
+    function func3() {
+      console.log('3');
+    }
+  </script>
+
+</body>
+
+</html>
