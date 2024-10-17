@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Дана кнопка. По уходу курсора с нее выведите какое-нибудь сообщение.</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/basis/element-text/">
+    Работа с текстом элементов на JavaScript
+  </a>
+
+  <p id="elem">text</p>
+
+  <p id="number1">8</p>
+  <p id="number2">7</p>
+  <p id="number3">8</p>
+  <div id="monitor">&nbsp;</div>
+  <button id="btn">Кнопка</button>
+
+  <script>
+    let elem = document.getElementById('elem');
+    let btn = document.getElementById('btn');
+    let number1 = document.getElementById('number1');
+    let number2 = document.getElementById('number2');
+    let number3 = document.getElementById('number2');
+    let monitor = document.getElementById('monitor');
+
+    console.log(`1. Дан абзац и кнопка. По клику на кнопку прочитайте текст абзаца и выведите его в консоль.`);
+    console.log(`2. Дан абзац и кнопка. По клику на кнопку запишите в абзац новый текст.`);
+    console.log(`3. Даны два абзаца, содержащие своим текстом какие-то числа, и кнопка. 
+    По нажатию на кнопку выведите на экран сумму хранящихся чисел`);
+    console.log(`4. Даны три абзаца с числами, див, и кнопка. По нажатию на кнопку запишите в текст дива сумму чисел.`);
+    console.log(`5. Дан абзац с числом и кнопка. По нажатию на кнопку прибавьте к значению абзаца единицу и запишите полученное число обратно.`);
+    console.log(`6. Дан абзац с текстом и кнопка. По нажатию на кнопку запишите в конец текста абзаца восклицательный знак.`);
+
+    btn.addEventListener('click', () => {
+      console.log(elem.textContent);
+      elem.textContent = 'новый текст';
+      alert(Number(number1.textContent) + Number(number2.textContent));
+      number2.textContent = Number(number2.textContent) + 1;
+      elem.textContent += '!';
+    });
+
+  </script>
+</body>
+
+</html>
