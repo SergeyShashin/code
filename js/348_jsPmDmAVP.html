@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dom/basis/attributes-via-properties</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/basis/attributes-via-properties/">
+    Атрибуты тегов как свойства в JavaScript
+  </a>
+
+  <br>
+  <input id="elem" type="email">
+  <p>&nbsp;</p>
+  <img src="img/3.jpg">
+  <img src="img/1.jpg" id="img2">
+
+  <script>
+    let elem = document.getElementById('elem');
+    let link = document.querySelector('a');
+    let text = document.querySelector('p');
+    let imgEl = document.querySelector('img');
+    let img2 = document.getElementById('img2');
+
+    console.log(`1. Дана также кнопка. По нажатию на кнопку выведите на экран содержимое атрибута type указанного выше инпута.`);
+    console.log(elem.type);
+    console.log(`2. Дана также кнопка. По нажатию на кнопку запишите в атрибут type значение submit.`);
+    console.log(`3. Пусть у вас есть ссылка в виде тега a, кнопка и абзац.
+    По нажатию на кнопку выведите в абзац содержимое атрибута href ссылки.`);
+    console.log(`4. Пусть у вас есть ссылка и кнопка. 
+    По нажатию на кнопку добавьте в конец текста ссылки содержимое ее атрибута href в круглых скобках.`);
+
+    elem.addEventListener('click', () => {
+      elem.type = 'submit';
+      text.textContent = link.href;
+      link.href += `(${text.textContent})`;
+    });
+
+    console.log(`5. Пусть у вас есть картинка. Разместите ее на странице с помощью тега img.
+    Пусть даны также кнопка и абзац. Сделайте так, чтобы по клику на кнопку в абзац записался путь к картинки из ее атрибута src.`);
+
+    console.log(`6. Дана картинка в теге img и кнопка. По нажатию на кнопку в атрибут width запишите значение 300.`);
+    imgEl.addEventListener('click', () => {
+      text.textContent = imgEl.src
+      imgEl.width = '300';
+    });
+
+    console.log(`7. Дана картинка в теге img и кнопка. 
+    Пусть в атрибуте width задана некоторая ширина. 
+    Сделайте кнопку, по нажатию на которую ширина картинки будет увеличиваться в 2 раза.`);
+    imgEl.addEventListener('click', () => {
+      text.textContent = imgEl.src
+      imgEl.width = 300;
+      imgEl.width *= 2;
+    });
+
+    console.log(`8. Пусть у вас есть две картинки. Сделайте на странице тег img и две кнопки. 
+    По нажатию на первую кнопку запишите в атрибут src путь к первой картинке, а по нажатию на вторую - путь ко второй картинке.`);
+    img2.addEventListener('click', () => {
+      let pathFirstImg = imgEl.src;
+      let pathSecondImg = img2.src;
+      img2.src = pathFirstImg;
+      imgEl.src = pathSecondImg;
+    });
+
+
+  </script>
+</body>
+
+</html>
