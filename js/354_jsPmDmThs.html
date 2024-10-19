@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>prime/dom/basis/this</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/basis/this/">
+    Объект this в JavaScript
+  </a>
+
+  <input id="elem" value="text">
+
+  <button>1</button>
+
+  <script>
+    console.log(`1. Дан инпут. По получению фокуса этим инпутом запишите в него число 1, а по потери фокуса - число 2.
+    Для обращения у инпуту внутри функции-обработчика используйте объект this.`);
+
+    let inputEl = document.getElementById('elem');
+
+    inputEl.addEventListener('focus', function () {
+      this.value = 1;
+    });
+
+    inputEl.addEventListener('blur', function () {
+      this.value = 2;
+    });
+  </script>
+
+  <script>
+    console.log(`Дана кнопка, значением которой служит число 1. 
+    Сделайте так, чтобы по клику на эту кнопку ее значение каждый раз увеличивалось на единицу.`);
+    document.querySelector('button').onclick = function () {
+      this.textContent = Number(this.textContent) + 1;
+    }
+  </script>
+
+
+</body>
+
+</html>
