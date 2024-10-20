@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>/dom/basis/handlers-unbinding</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/basis/handlers-unbinding/">
+    Отвязывание событий в JavaScript
+  </a>
+
+  <button>1</button>
+
+  <script>
+    console.log(`2. Дана кнопка, значением которой служит число 1. Сделайте так, чтобы по клику на эту кнопку ее значение каждый раз увеличивалось на единицу. 
+    После того, как значение кнопки достигнет 10 - отвяжите обработчик события, чтобы кнопка больше не реагировала на нажатие.`);
+
+    document.querySelector('button').addEventListener('click', func);
+
+    function func() {
+      this.textContent = Number(this.textContent) + 1;
+      Number(this.textContent) === 10 ? this.removeEventListener('click', func) : '';
+    }
+
+  </script>
+</body>
+
+</html>
