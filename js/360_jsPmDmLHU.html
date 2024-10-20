@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>dom/basis/loop-handlers-unbinding</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/basis/loop-handlers-unbinding/">
+    Отвязывание обработчиков событий в цикле в JavaScript
+  </a>
+
+  <p>text1</p>
+  <p>text2</p>
+  <p>text3</p>
+
+  <script>
+    console.log(`Даны абзацы. По нажатию на любой из абзацев добавьте ему в конец восклицательный знак.
+   Сделайте так, чтобы это добавление происходило лишь по первому нажатию.`);
+
+    let elements = document.querySelectorAll('p');
+    for (let el of elements) {
+      el.addEventListener('click', func);
+    }
+
+    function func() {
+      this.textContent += '!'
+      this.removeEventListener('click', func);
+    }
+  </script>
+
+</body>
+
+</html>
