@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dom/basis/anonymous-handlers-unbinding</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/basis/anonymous-handlers-unbinding/">
+    Отвязывание анонимных функций в JavaScript
+  </a>
+
+  <ul>
+    <li>10</li>
+    <li>2</li>
+    <li>3</li>
+  </ul>
+
+  <script>
+    /*
+    console.log(`1. Дан список ul, в каждом пункте которого записано число.
+     Сделайте так, чтобы по клику на любую li ее число увеличивалось на единицу.`);
+    document.querySelector('ul').addEventListener('click', e => e.target.textContent = Number(e.target.textContent) + 1);
+    */
+
+    console.log(`2. Модифицируйте предыдущую задачу так, чтобы каждая li увеличивала свое значение только по первому нажатию на нее.`);
+
+    let elements = document.querySelector('ul').children;
+
+    for (let el of elements) {
+      el.addEventListener('click', incrementOnce);
+    }
+
+
+    console.log(`3. Модифицируйте предыдущую задачу так, чтобы каждая li увеличивала свое значение только если ее значение меньше 10.`);
+
+    function incrementOnce() {
+      let content = Number(this.textContent);
+      content < 10 ? this.textContent = content + 1 : '';
+      this.removeEventListener('click', incrementOnce);
+    }
+
+  </script>
+</body>
+
+</html>
