@@ -15,9 +15,9 @@
   <br>
   <br>
 
-  <input>
-  <input>
-  <input>
+  <input id="inp1">
+  <input id="inp2">
+  <input id="inp3">
 
   <button id="btn">click</button>
 
@@ -33,7 +33,9 @@
     // printSumInput3();
     // printSumInP();
     // compareDataTextWithValue();
-    compareInputValWithArrEl();
+    // compareInputValWithArrEl();
+    // printSum4();
+    printSumInput3Var2();
 
     /*
     1. Добавляет текст в конец каждого абзаца
@@ -222,6 +224,39 @@
         }
       });
 
+    }
+
+    /*
+    13. В инпуты вводятся числа. По клику на кнопку в консоль должна вывестись сумма введенных чисел
+    */
+    function printSum4() {
+      let inputs = document.querySelectorAll('input');
+      let btn = document.querySelector('#btn');
+
+      btn.addEventListener('click', function () {
+        let sum = 0;
+        for (let input of inputs) {
+          sum += Number(input.value);
+        }
+
+        console.log(sum);
+      });
+    }
+
+    /*14. В первые два инпута вводятся числа.
+    По клику на кнопку в третий инпут должна вывестись сумма этих чисел:*/
+
+    function printSumInput3Var2() {
+      let btn = document.querySelector('#btn');
+      let inp1 = document.querySelector('#inp1');
+      let inp2 = document.querySelector('#inp2');
+      let inp3 = document.querySelector('#inp3');
+
+      
+      btn.addEventListener('click', function () {
+        let sum = Number(inp1.value) + Number(inp2.value);
+        inp3.value = sum;
+      });
     }
 
   </script>
