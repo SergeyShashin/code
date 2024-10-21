@@ -15,11 +15,8 @@
   <br>
   <br>
 
-  <input id="inp1">
-  <input id="inp2">
-  <input id="inp3">
+  <input id="inp">
 
-  <button id="btn">click</button>
 
   <script>
     // addExclamationMark();
@@ -35,7 +32,8 @@
     // compareDataTextWithValue();
     // compareInputValWithArrEl();
     // printSum4();
-    printSumInput3Var2();
+    // printSumInput3Var2();
+    printSumNumberFromInput();
 
     /*
     1. Добавляет текст в конец каждого абзаца
@@ -252,10 +250,30 @@
       let inp2 = document.querySelector('#inp2');
       let inp3 = document.querySelector('#inp3');
 
-      
+
       btn.addEventListener('click', function () {
         let sum = Number(inp1.value) + Number(inp2.value);
         inp3.value = sum;
+      });
+    }
+
+    /*
+    В инпут вводится число. По потери фокуса в консоль должна вывестись сумма цифр этого числа
+    */
+    function printSumNumberFromInput() {
+      
+      inp.addEventListener('blur', function () {
+
+        let inp = document.querySelector('#inp').value;
+        
+        let digits = inp.split('');
+        let sum = 0;
+
+        for (let digit of digits) {
+          sum += Number(digit);
+        }
+
+        console.log(sum);
       });
     }
 
