@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dom/basis/coding/</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/basis/coding/">
+    Советы по написанию кода на примере DOM в JavaScript.
+  </a>
+
+  <ul>
+    <li>2000</li>
+    <li>2004</li>
+    <li>2021</li>
+    <li>2022</li>
+    <li>2025</li>
+    <li>2031</li>
+  </ul>
+
+  <script>
+    console.log('Получите года, сумма цифр которых равна 6. Найдите сумму полученных годов.');
+
+    let elementsLi = document.querySelectorAll('li');
+
+    let sum = 0;
+
+    for (let elLi of elementsLi) {
+      let sumLi = elLi.textContent.split('').reduce((acc, el) => acc + Number(el), acc = 0);
+      console.log(sumLi);
+      sumLi === 6 ? sum += Number(elLi.textContent) : '';
+    }
+
+    console.log(sum);
+  </script>
+
+</body>
+
+</html>
