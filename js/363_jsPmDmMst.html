@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dom/basis/mistakes</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/basis/mistakes/">
+    Поиск ошибок в коде с DOM в JavaScript
+  </a>
+
+  <br>
+  <br>
+
+  <input>
+  <input>
+  <input>
+
+  <button id="btn">click</button>
+
+  <script>
+    // addExclamationMark();
+    // incrementContentOnClick();
+    // makeStrong();
+    // printSum();
+    // addText();
+    // makeStrongText2();
+    // printSum2();
+    // printSumFromInput();
+    // printSumInput3();
+    // printSumInP();
+    // compareDataTextWithValue();
+    compareInputValWithArrEl();
+
+    /*
+    1. Добавляет текст в конец каждого абзаца
+    */
+    function addExclamationMark() {
+      let elems = document.querySelectorAll('p');
+      for (let el of elems) {
+        el.addEventListener('click', () => el.textContent += '!');
+      }
+    }
+
+    /*
+    2. По клику на абзац увеличивает значение на 1
+    */
+    function incrementContentOnClick() {
+      let elems = document.querySelectorAll('p');
+
+      for (let elem of elems) {
+        elem.addEventListener('click', function () {
+          this.textContent = Number(this.textContent) + 1;
+        });
+      }
+    }
+
+    /*
+    3. По клику на кнопку текст абзаца должен стать жирным
+    */
+    function makeStrong() {
+      let button = document.querySelector('button');
+      let elem = document.querySelector('p');
+
+      button.addEventListener('click', function () {
+        elem.innerHTML = `<b>${elem.innerHTML}</b>`;
+      });
+    }
+
+    /*
+    4. По клику на кнопку должна вывестись сумма чисел из абзацев
+    */
+    function printSum() {
+      let button = document.querySelector('button');
+      let elems = document.querySelectorAll('p');
+
+      button.addEventListener('click', function () {
+        let sum = 0;
+
+        for (let elem of elems) {
+          sum += Number(elem.textContent);
+        }
+
+        console.log(sum);
+      });
+
+    }
+
+    /*
+    5. По клику на абзац ему в конец должен добавиться заданный текст
+    */
+    function addText() {
+
+      let elems = document.querySelectorAll('p');
+
+      for (let elem of elems) {
+        elem.addEventListener('click', e => {
+          e.target.textContent += '!';
+        });
+      }
+    }
+
+    /*
+    6. По клику на кнопку текст каждого абзаца должен стать жирным
+    */
+    function makeStrongText2() {
+      let button = document.querySelector('button');
+      let elems = document.querySelectorAll('p');
+
+      button.addEventListener('click', function () {
+        for (let elem of elems) {
+          elem.innerHTML = `<b>${elem.textContent}</b>`;
+        }
+      });
+    }
+
+    /*
+    7. По клику на кнопку в консоль должна вывестись сумма чисел из абзацев:
+    */
+
+    function printSum2() {
+      let button = document.querySelector('button');
+      let elems = document.querySelectorAll('p');
+      let sum = 0;
+
+      for (let elem of elems) {
+        sum += Number(elem.textContent);
+
+      }
+
+      button.addEventListener('click', function () {
+        console.log(sum);
+      });
+    }
+
+    /*
+    8. В инпуты вводятся числа. По клику на кнопку в консоль должна вывестись сумма чисел из инпутов
+    */
+    function printSumFromInput() {
+      let button = document.querySelector('button');
+      let elems = document.querySelectorAll('input');
+      let sum = 0;
+
+      button.addEventListener('click', function () {
+        for (let elem of elems) {
+          sum += Number(elem.value);
+        }
+        console.log(sum);
+      });
+    }
+
+    /*
+    9. В первые два инпута вводятся числа. По клику на кнопку в третий инпут должна вывестись сумма этих чисел
+    */
+    function printSumInput3() {
+      let btn = document.querySelector('#btn');
+      let inp1 = document.querySelector('#inp1');
+      let inp2 = document.querySelector('#inp2');
+      let inp3 = document.querySelector('#inp3');
+
+      btn.addEventListener('click', function () {
+        inp3.value = Number(inp1.value) + Number(inp2.value);
+      });
+    }
+
+    /*
+    10. В первые два инпута вводятся числа. По клику на кнопку в абзац должна вывестись сумма этих чисел:
+    */
+    function printSumInP() {
+      let btn = document.querySelector('#btn');
+      let res = document.querySelector('#res');
+      let inp1 = document.querySelector('#inp1');
+      let inp2 = document.querySelector('#inp2');
+
+      btn.addEventListener('click', function () {
+        res.textContent = Number(inp1.value) + Number(inp2.value);
+      });
+    }
+
+    /*
+    11. По клику на кнопку нужно проверить, что текст в каждом инпуте совпадает с текстом его data атрибута: 
+    */
+    function compareDataTextWithValue() {
+      let inputs = document.querySelectorAll('input');
+      let button = document.querySelector('#btn');
+
+      button.addEventListener('click', function () {
+        for (let input of inputs) {
+          if (input.value === input.dataset.text) {
+            input.className = 'right';
+          } else {
+            input.className = 'wrong';
+          }
+        }
+      });
+
+    }
+
+    /*
+    12. По клику на кнопку нужно проверить, что текст в каждом инпуте совпадает с текстом соответствующего элемента массива
+    */
+    function compareInputValWithArrEl() {
+      let inputs = document.querySelectorAll('input')
+      let button = document.querySelector('#button')
+
+      let texts = [
+        'text1',
+        'text2',
+        'text3',
+      ];
+
+      btn.addEventListener('click', function () {
+        for (let key in inputs) {
+          if (inputs[key].value === texts[key]) {
+            inputs[key].className = 'right';
+          } else {
+            inputs[key].className = 'wrong';
+          }
+        }
+      });
+
+    }
+
+  </script>
+
+</body>
+
+</html>
