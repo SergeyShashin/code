@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dom/basis/practicum</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/basis/practicum/">
+    Отработка изученного материала на работу с DOM
+  </a>
+
+  <br>
+  <br>
+
+  <section>
+    <input type="text" id='inputTask1'>
+    <p id='monitorTask1'>&nbsp;</p>
+  </section>
+
+  <section id="task2">
+    <input type="text" class="inputTask2">
+    <input type="text" class="inputTask2">
+    <input type="text" class="inputTask2">
+    <p id='monitorTask2'>&nbsp;</p>
+    <button id="btn2">Кнопка2</button>
+  </section>
+
+  <br>
+
+  <section>
+    <input type="text" id='inputTask3'>
+    <p id='monitorTask3'>&nbsp;</p>
+  </section>
+
+  <script>
+    console.log(`1. Дан инпут и абзац. По потери фокуса в инпуте запишите значение инпута в конец текста абзаца.`);
+    let inputTask1 = document.getElementById('inputTask1');
+    let monitorTask1 = document.getElementById('monitorTask1');
+    inputTask1.addEventListener('blur', () => monitorTask1.textContent += ' ' + inputTask1.value);
+  </script>
+
+  <script>
+    console.log(`2. Дано несколько инпутов, абзац и кнопка. 
+    По нажатию на кнопку получите числа, стоящие в этих инпутах и запишите их сумму в абзац.`);
+    let inputsTask2 = document.querySelectorAll('.inputTask2');
+    let monitorTask2 = document.getElementById('monitorTask2');
+    let sum = 0;
+
+    document.getElementById('btn2').addEventListener('click', () => {
+      for (let input of inputsTask2) {
+        sum += Number(input.value);
+      }
+      monitorTask2.textContent = sum;
+    });
+  </script>
+
+  <br>
+
+  <script>
+    console.log(`3. Дан инпут. В него вводится число. По потери фокуса найдите сумму цифр этого числа.`);
+    let inputTask3 = document.getElementById('inputTask3');
+    let monitorTask3 = document.getElementById('monitorTask3');
+
+    inputTask3.addEventListener('blur', () => {
+      monitorTask3.textContent = inputTask3.value.split('').reduce((acc, el) => acc + Number(el), acc = 0);
+    });
+
+  </script>
+
+</body>
+
+</html>
