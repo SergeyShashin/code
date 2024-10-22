@@ -41,10 +41,15 @@
   </section>
 
   <section>
-    <input type="text" id='inputTask5'>
+    <input type="text" id='inputTask5' value="фамилия имя отчество">
     <input type="text" id='inputTask5F'>
     <input type="text" id='inputTask5N'>
     <input type="text" id='inputTask5S'>
+  </section>
+
+  <br>
+  <section>
+    <input type="text" id='inputTask6' value="фамилия имя отчество">
   </section>
 
   <script>
@@ -110,6 +115,25 @@
       inputTask5S.value = fNS[2];
     })
   </script>
+
+  <script>
+    console.log(`6. Дан инпут. В него вводится ФИО через пробел. ФИО вводится с маленькой буквы. 
+    Сделайте так, чтобы по потери фокуса инпутом, введенные фамилия, имя и отчество автоматически
+    стали записанными с большой буквы (в этом же инпуте).`);
+
+    let inputTask6 = document.getElementById('inputTask6');
+
+    inputTask6.addEventListener('blur', () => {
+      let fNS = inputTask6.value.split(' ');
+      let result = [];
+      console.log(fNS);
+      fNS.map(el => result.push(el[0].toUpperCase() + el.slice(1)));
+      inputTask6.value = result.join(' ');
+    })
+    
+  </script>
+
+
 
 </body>
 
