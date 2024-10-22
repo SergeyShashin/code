@@ -68,7 +68,12 @@
     <input id='inputTask8' value='31.12.2016'>
   </section>
 
-  <h4></h4>
+  <h4>9. Дан инпут. В него вводится слово.
+    По нажатию на кнопку проверьте то, что это слово читается с начала и с конца одинаково (например, мадам).</h4>
+  <section>
+    <input id='inputTask9' value='мадам'>
+    <button id="btn9">Проверка</button>
+  </section>
 
   <script>
     console.log(`1. Дан инпут и абзац. По потери фокуса в инпуте запишите значение инпута в конец текста абзаца.`);
@@ -168,6 +173,19 @@
     inputTask8.addEventListener('blur', () => {
       let arr8 = inputTask8.value.split('.');
       inputTask8.value = `${arr8[2]}-${arr8[1]}-${arr8[0]}`;
+    });
+
+  </script>
+
+  <script>
+    console.log(`9. Дан инпут. В него вводится слово. 
+    По нажатию на кнопку проверьте то, что это слово читается с начала и с конца одинаково (например, мадам).`)
+
+    let inputTask9 = document.getElementById('inputTask9');
+    let btn9 = document.getElementById('btn9');
+
+    btn9.addEventListener('click', () => {
+      btn9.textContent = inputTask9.value === inputTask9.value.split('').reverse().join('');
     });
 
   </script>
