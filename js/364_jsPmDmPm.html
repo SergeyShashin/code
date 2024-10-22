@@ -35,6 +35,18 @@
     <p id='monitorTask3'>&nbsp;</p>
   </section>
 
+  <section>
+    <input type="text" id='inputTask4'>
+    <p id='monitorTask4'>&nbsp;</p>
+  </section>
+
+  <section>
+    <input type="text" id='inputTask5'>
+    <input type="text" id='inputTask5F'>
+    <input type="text" id='inputTask5N'>
+    <input type="text" id='inputTask5S'>
+  </section>
+
   <script>
     console.log(`1. Дан инпут и абзац. По потери фокуса в инпуте запишите значение инпута в конец текста абзаца.`);
     let inputTask1 = document.getElementById('inputTask1');
@@ -67,7 +79,36 @@
     inputTask3.addEventListener('blur', () => {
       monitorTask3.textContent = inputTask3.value.split('').reduce((acc, el) => acc + Number(el), acc = 0);
     });
+  </script>
 
+  <script>
+    console.log(`4. Дан инпут. В него вводятся числа через запятую. 
+    По потери фокуса найдите среднее арифметическое этих чисел (сумма делить на количество).`);
+
+    let inputTask4 = document.getElementById('inputTask4');
+    let monitorTask4 = document.getElementById('monitorTask4');
+
+    inputTask4.addEventListener('blur', () => {
+      let numbersArr = inputTask4.value.split(', ');
+      monitorTask4.textContent = numbersArr.reduce((acc, el) => acc + Number(el), acc = 0) / numbersArr.length;
+    });
+  </script>
+
+  <script>
+    console.log(`5. Даны 4 инпута. В первый инпут вводится ФИО через пробел. 
+  По потери фокуса запишите фамилию, имя и отчество в остальные 3 инпута.`);
+
+    let inputTask5 = document.getElementById('inputTask5');
+    let inputTask5F = document.getElementById('inputTask5F');
+    let inputTask5N = document.getElementById('inputTask5N');
+    let inputTask5S = document.getElementById('inputTask5S');
+
+    inputTask5.addEventListener('blur', () => {
+      let fNS = inputTask5.value.split(' ');
+      inputTask5F.value = fNS[0];
+      inputTask5N.value = fNS[1];
+      inputTask5S.value = fNS[2];
+    })
   </script>
 
 </body>
