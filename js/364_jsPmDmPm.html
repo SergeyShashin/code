@@ -171,8 +171,8 @@
     let inputTask8 = document.getElementById('inputTask8');
 
     inputTask8.addEventListener('blur', () => {
-      let arr8 = inputTask8.value.split('.');
-      inputTask8.value = `${arr8[2]}-${arr8[1]}-${arr8[0]}`;
+      inputTask8.value = inputTask8.value.split('.').reverse().join('-');
+      // inputTask8.value = `${arr8[2]}-${arr8[1]}-${arr8[0]}`;
     });
 
   </script>
