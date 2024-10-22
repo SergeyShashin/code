@@ -12,34 +12,37 @@
     Отработка изученного материала на работу с DOM
   </a>
 
-  <br>
-  <br>
-
+  <h4>1. Дан инпут и абзац. По потери фокуса в инпуте запишите значение инпута в конец текста абзаца.</h4>
   <section>
-    <input type="text" id='inputTask1'>
-    <p id='monitorTask1'>&nbsp;</p>
+    <input type="text" id='inputTask1' value="текст.">
+    <p id='monitorTask1'>Какой-то </p>
   </section>
 
+  <h4>2. Дано несколько инпутов, абзац и кнопка.
+    По нажатию на кнопку получите числа, стоящие в этих инпутах и запишите их сумму в абзац.</h4>
   <section id="task2">
-    <input type="text" class="inputTask2">
-    <input type="text" class="inputTask2">
-    <input type="text" class="inputTask2">
+    <input type="text" class="inputTask2" value="8">
+    <input type="text" class="inputTask2" value="8">
+    <input type="text" class="inputTask2" value="8">
     <p id='monitorTask2'>&nbsp;</p>
     <button id="btn2">Кнопка2</button>
   </section>
 
-  <br>
-
+  <h4>3. Дан инпут. В него вводится число. По потери фокуса найдите сумму цифр этого числа.</h4>
   <section>
-    <input type="text" id='inputTask3'>
+    <input type="text" id='inputTask3' value="0123456789">
     <p id='monitorTask3'>&nbsp;</p>
   </section>
 
+  <h4>4. Дан инпут. В него вводятся числа через запятую.
+    По потери фокуса найдите среднее арифметическое этих чисел (сумма делить на количество).</h4>
   <section>
-    <input type="text" id='inputTask4'>
+    <input type="text" id='inputTask4' value="1, 2, 3, 4, 5">
     <p id='monitorTask4'>&nbsp;</p>
   </section>
 
+  <h4>5. Даны 4 инпута. В первый инпут вводится ФИО через пробел.
+    По потери фокуса запишите фамилию, имя и отчество в остальные 3 инпута.</h4>
   <section>
     <input type="text" id='inputTask5' value="фамилия имя отчество">
     <input type="text" id='inputTask5F'>
@@ -47,10 +50,25 @@
     <input type="text" id='inputTask5S'>
   </section>
 
-  <br>
+  <h4>6. Дан инпут. В него вводится ФИО через пробел. ФИО вводится с маленькой буквы.
+    Сделайте так, чтобы по потери фокуса инпутом, введенные фамилия, имя и отчество автоматически
+    стали записанными с большой буквы (в этом же инпуте).</h4>
   <section>
     <input type="text" id='inputTask6' value="фамилия имя отчество">
   </section>
+
+  <h4>7. Дан инпут. В него вводится текст. По потери фокуса узнайте количество слов в этом тексте.</h4>
+  <section>
+    <input type="text" id='inputTask7' value="фамилия имя отчество">
+  </section>
+
+  <h4>8. Дан инпут. В него вводится дата в формате 31.12.2016. По потери фокуса в этом же инпуте поставьте эту дату в
+    формате 2016-12-31.</h4>
+  <section>
+    <input id='inputTask8' value='31.12.2016'>
+  </section>
+
+  <h4></h4>
 
   <script>
     console.log(`1. Дан инпут и абзац. По потери фокуса в инпуте запишите значение инпута в конец текста абзаца.`);
@@ -73,8 +91,6 @@
       monitorTask2.textContent = sum;
     });
   </script>
-
-  <br>
 
   <script>
     console.log(`3. Дан инпут. В него вводится число. По потери фокуса найдите сумму цифр этого числа.`);
@@ -109,11 +125,11 @@
     let inputTask5S = document.getElementById('inputTask5S');
 
     inputTask5.addEventListener('blur', () => {
-      let fNS = inputTask5.value.split(' ');
-      inputTask5F.value = fNS[0];
-      inputTask5N.value = fNS[1];
-      inputTask5S.value = fNS[2];
-    })
+      let fNS5 = inputTask5.value.split(' ');
+      inputTask5F.value = fNS5[0];
+      inputTask5N.value = fNS5[1];
+      inputTask5S.value = fNS5[2];
+    });
   </script>
 
   <script>
@@ -124,14 +140,39 @@
     let inputTask6 = document.getElementById('inputTask6');
 
     inputTask6.addEventListener('blur', () => {
-      let fNS = inputTask6.value.split(' ');
+      let fNS6 = inputTask6.value.split(' ');
       let result = [];
-      console.log(fNS);
-      fNS.map(el => result.push(el[0].toUpperCase() + el.slice(1)));
+      fNS6.map(el => result.push(el[0].toUpperCase() + el.slice(1)));
       inputTask6.value = result.join(' ');
-    })
-    
+    });
   </script>
+
+  <script>
+    console.log(`7. Дан инпут. В него вводится текст. По потери фокуса узнайте количество слов в этом тексте.`);
+
+    let inputTask7 = document.getElementById('inputTask7');
+
+    inputTask7.addEventListener('blur', () => {
+      let fNS7 = inputTask7.value.split(' ');
+
+      inputTask7.value = `Количество слов ${fNS7.length}.`;
+    });
+  </script>
+
+  <script>
+    console.log(`8. Дан инпут. В него вводится дата в формате 31.12.2016. 
+    По потери фокуса в этом же инпуте поставьте эту дату в формате 2016-12-31.`);
+
+    let inputTask8 = document.getElementById('inputTask8');
+
+    inputTask8.addEventListener('blur', () => {
+      let arr8 = inputTask8.value.split('.');
+      inputTask8.value = `${arr8[2]}-${arr8[1]}-${arr8[0]}`;
+    });
+
+  </script>
+
+
 
 
 
