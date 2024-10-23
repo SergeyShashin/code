@@ -16,12 +16,81 @@
     <div data-num="5">text</div>
   </section>
 
+  <br>
+
+  <section>
+    <button id="btn31" data-counter="0">0</button>
+    <button id="btn32">Показать сколько накликали</button>
+  </section>
+
+  <br>
+
+  <section>
+    <input id="input4" data-length="5">
+  </section>
+
+  <br>
+
+  <section>
+    <input id="input5" data-min="5" data-max="10">
+  </section>
+
+
   <script>
+    console.log(`2. Сделайте так, чтобы по клику на любой из дивов ему в конец записывался его порядковый номер.`);
     document.getElementById('section2').addEventListener('click', e => {
       e.target.textContent += e.target.dataset.num;
     });
+  </script>
+
+  <script>
+    console.log(`3. Дана кнопка. Сделайте так, чтобы эта кнопка считала количество кликов по ней,
+    записывая их в какой-нибудь пользовательский атрибут. 
+    Пусть по клику на другую кнопку на экран выводится, сколько кликов было сделано по первой кнопке.`);
+
+    let btn31 = document.getElementById('btn31');
+    let btn32 = document.getElementById('btn32');
+
+    btn31.addEventListener('click', () => {
+      btn31.dataset.counter = Number(btn31.dataset.counter) + 1;
+      btn31.textContent = btn31.dataset.counter;
+    });
+
+    btn32.addEventListener('click', () => {
+      btn32.textContent = btn31.dataset.counter;
+    })
 
   </script>
+
+  <script>
+    console.log(`4. В этом инпуте в атрибуте data-length содержится количество символов, которое нужно ввести в инпут.
+    Сделайте так, чтобы по потери фокуса, если количество введенных символов не совпадает с заданным, выводилось сообщение об этом.`);
+
+    let input4 = document.getElementById('input4');
+    let length = Number(input4.dataset.length);
+
+    input4.addEventListener('blur', () => {
+      input4.value.length === length ? '' : console.log('Длина не совпадает.');
+    });
+
+  </script>
+
+  <script>
+    console.log(`5. В этом инпуте атрибуты data-min и data-max содержат диапазон.
+    Сделайте так, чтобы по потери фокуса, если количество введенных символов не попадает в этот диапазон, выводилось сообщение об этом.`);
+
+    let input5 = document.getElementById('input5');
+    let max = Number(input5.dataset.max);
+    let min = Number(input5.dataset.min);
+
+    input5.addEventListener('blur', () => {
+      input5.value.length > min && input5.value.length < max ? '' : console.log(`Количество символов за пределами [${min} - ${max}].`);
+    });
+
+  </script>
+
+
+
 </body>
 
 </html>
