@@ -1,25 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    .colored{
-      color: green;
+    .colored {
+      color: red;
     }
-    .strong{
+
+    .strong {
       font-weight: bolder;
     }
-    .
+
+    .lineThrought {
+      text-decoration: line-through;
+    }
   </style>
   <title>dom/stylization/classes</title>
 </head>
+
 <body>
-  <a href="https://code.mu/ru/javascript/book/prime/dom/stylization/classes/">Стилизация с помощью CSS классов на JavaScript</a>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/stylization/classes/">Стилизация с помощью CSS классов на
+    JavaScript</a>
 
   <section>
-
+    <p>Текст.</p>
+    <p>Текст.</p>
+    <p>Текст.</p>
+    <button id="colored">Cделать красным</button>
+    <button id="strong">Cделать жирным</button>
+    <button id="lineThrought">Перечеркнуть</button>
   </section>
-  
+
+  <script>
+    let elementsP = document.querySelectorAll('p');
+
+    document.getElementById('colored').onclick = () => {
+      for (let el of elementsP) {
+        el.className = 'colored';
+      }
+    }
+
+    document.getElementById('strong').onclick = () => {
+      for (let el of elementsP) {
+        el.className = 'strong';
+      }
+    }
+
+    document.getElementById('lineThrought').onclick = () => {
+      for (let el of elementsP) {
+        el.className = 'lineThrought';
+      }
+    }
+  </script>
+
 </body>
+
 </html>
