@@ -117,6 +117,14 @@
     <input type="date" id="inputTask15">
   </section>
 
+  <h4>16. Дан инпут. Реализуйте кнопочки +1, -1, которые будут увеличивать или уменьшать на 1 значение инпута.
+    Сделайте так, чтобы это значение не могло стать меньше нуля.</h4>
+  <section id="section16">
+    <button id="minus16" data-value="-1">-1</button>
+    <span id="monitor16">0</span>
+    <button id="plus16" data-value="+1">+1</button>
+  </section>
+
   <script>
     console.log(`1. Дан инпут и абзац. По потери фокуса в инпуте запишите значение инпута в конец текста абзаца.`);
     let inputTask1 = document.getElementById('inputTask1');
@@ -290,10 +298,19 @@
     inputTask15.addEventListener('blur', () => {
       let days = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
       let [year, month, day] = inputTask15.value.split('-');
-      console.dir(inputTask15);
       console.log(days[new Date(Number(year), Number(month - 1), Number(day)).getDay()]);
     });
 
+  </script>
+
+  <script>
+    let monitor16 = document.getElementById('monitor16');
+
+    document.getElementById('section16').addEventListener('click', (e) => {
+      let value = Number(e.target.dataset.value);
+      let resultOperation = Number(monitor16.textContent) + value;
+      resultOperation >= 0 ? monitor16.textContent = resultOperation : '';
+    });
   </script>
 
 </body>
