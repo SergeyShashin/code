@@ -157,6 +157,39 @@
     <button id='btn20'>Пермешать текст</button>
   </section>
 
+  <h4>
+    21. Дан инпут, кнопка и абзац.
+    В инпут вводится температура в градусах Фаренгейта.
+    По клику на кнопку выведите в абзац температуру в градусах Цельсия.
+  </h4>
+  <section>
+    <input value='100' id='input21'>
+    <p id='monitor21'>&nbsp;</p>
+    <button id="btn21">Старт</button>
+  </section>
+
+  <h4>
+    22. Дан инпут, кнопка и абзац. В инпут вводится число. По нажатию на кнопку выведите в абзац факториал этого числа.
+  </h4>
+  <section>
+    <input value='5' id='input22'>
+    <p id='monitor22'>&nbsp;</p>
+    <button id="btn22">Показать факториал</button>
+  </section>
+
+  <h4>
+    23. Даны 3 инпута, кнопка и абзац. В инпуты вводятся коэффициенты квадратного уравнения.
+    По нажатию на кнопку найдите корни этого уравнения и выведите их в абзац.
+  </h4>
+  <section>
+    <input value='1' id='input23a'>
+    <input value='4' id='input23b'>
+    <input value='2' id='input23c'>
+    <p id='monitor23'>&nbsp;</p>
+    <button id="btn23">Найти корни квадратного уравнения</button>
+  </section>
+
+
   <script>
     console.log(`1. Дан инпут и абзац. По потери фокуса в инпуте запишите значение инпута в конец текста абзаца.`);
     let inputTask1 = document.getElementById('inputTask1');
@@ -397,7 +430,63 @@
 
       monitor20.value = part2 + part1;
     });
-    
+
+  </script>
+
+  <script>
+    console.log(`21. Дан инпут, кнопка и абзац.
+    В инпут вводится температура в градусах Фаренгейта.
+    По клику на кнопку выведите в абзац температуру в градусах Цельсия.`);
+
+    document.getElementById('btn21').addEventListener('click', () => {
+      let tempF = Number(document.getElementById('input21').value);
+      document.getElementById('monitor21').textContent = ((tempF - 32) * 5 / 9).toFixed(4);
+    });
+  </script>
+
+  <script>
+    console.log(`22. Дан инпут, кнопка и абзац. В инпут вводится число. По нажатию на кнопку выведите в абзац факториал этого числа.`);
+
+    document.getElementById('btn22').addEventListener('click', () => {
+      let number = Number(document.getElementById('input22').value);
+      document.getElementById('monitor22').textContent = getFactorial(number);
+
+      function getFactorial(num) {
+        return num === 1 ? num : getFactorial(num - 1) * num;
+      }
+    });
+  </script>
+
+  <script>
+    console.log(`23. Даны 3 инпута, кнопка и абзац. В инпуты вводятся коэффициенты квадратного уравнения.
+    По нажатию на кнопку найдите корни этого уравнения и выведите их в абзац.`);
+
+    document.getElementById('btn23').addEventListener('click', () => {
+      let a = Number(document.getElementById('input23a').value);
+      let b = Number(document.getElementById('input23b').value);
+      let c = Number(document.getElementById('input23c').value);
+      let x1, x2;
+      let monitor23 = document.getElementById('monitor23');
+      let discriminant = Math.sqrt(b ** 2 - 4 * a * c);
+
+      console.log(a);
+      console.log(b);
+      console.log(c);
+      console.log(discriminant);
+
+      if (discriminant > 0) {
+        x1 = (-b + discriminant) / (2 * a);
+        x2 = (-b - discriminant) / (2 * a);
+        monitor23.textContent = `x1=${x1}, x2=${x2}`;
+      } else if (discriminant === 0) {
+        x1 = (-b + discriminant) / (2 * a);
+        monitor23.textContent = `x1=${x1}`;
+      } else {
+        monitor23.textContent = `Корней нет.`;
+      }
+
+
+    });
   </script>
 
 </body>
