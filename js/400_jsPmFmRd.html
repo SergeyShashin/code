@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dom/form/radio</title>
+  <style>
+    * {
+      margin: auto;
+      text-align: center;
+    }
+
+    #monitor1 {
+      width: 500px;
+      height: 300px;
+      border: 1px solid lightseagreen;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/form/radio/">
+    Работа с радиокнопками в JavaScript
+  </a>
+
+  <br>
+  <br>
+
+  <section>
+    <div id='monitor1'>&nbsp;</div>
+    <br>
+    <input type='radio' name='radioGroup1' value='a' checked>
+    <input type='radio' name='radioGroup1' value='b'>
+    <input type='radio' name='radioGroup1' value='c'>
+    <input type='submit' id='btn1'></button>
+  </section>
+
+  <script>
+    console.log(`1. Даны 3 радиокнопки, абзац и кнопка. По клику на кнопку выведите в абзац value отмеченной радиокнопки.`);
+    document.getElementById('btn1').onclick = () => {
+      let raioGroup1 = document.querySelectorAll('[name="radioGroup1"]');
+      console.log(raioGroup1);
+
+      for (let radio of raioGroup1) {
+        radio.checked ? document.getElementById('monitor1').textContent = radio.value : '';
+      }
+    }
+  </script>
+
+</body>
+
+</html>
