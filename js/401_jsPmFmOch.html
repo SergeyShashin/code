@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dom/form/onchange</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/form/onchange/">
+    Событие change в JavaScript
+  </a>
+
+  <br>
+  <br>
+
+  <section>
+    <input id="i1">
+    <span id="m1"></span>
+  </section>
+
+  <br>
+  <br>
+
+  <section>
+    <input type="checkbox" id="i2">
+    <span id="m2"></span>
+  </section>
+
+  <script>
+    console.log('1. Дан инпут и абзац. По изменению инпута выведите его текст в абзац.');
+    let i1 = document.getElementById('i1');
+    let m1 = document.getElementById('m1');
+
+    i1.onchange = () => {
+      m1.textContent = i1.value;
+      i1.value.length < 5 ? i1.style.border = '1px solid green' : i1.style.border = '1px solid red';
+    };
+  </script>
+
+  <script>
+    console.log('2. Дан чекбокс. По изменению чебокса выведите на экран его новое состояние.');
+    let i2 = document.getElementById('i2');
+    let m2 = document.getElementById('m2');
+
+    i2.onchange = () => m2.textContent = i2.checked;
+  </script>
+
+</body>
+
+</html>
