@@ -12,18 +12,71 @@
     Работа с чекбоксами в JavaScript
   </a>
 
+  <br>
+  <br>
+
   <section>
     <input type='checkbox' id='input1'>
     <button id='btn1'>Установить</button>
   </section>
 
+  <br>
+  <br>
+
+  <section>
+    <input type='checkbox' id='input2'>
+    <button id='btn2'>Установить</button>
+    <span id="span2">&nbsp;</span>
+  </section>
+
   <script>
-    let btn1 = document.getElementById('btn1')
+    console.log(`1. Дан чекбокс и две кнопки. 
+    По нажатию на первую кнопку установите чекбокс в отмеченное состояние, а по нажатию на вторую - в неотмеченное.`);
+
+    let btn1 = document.getElementById('btn1');
+    let input1 = document.getElementById('input1');
 
     btn1.onclick = () => {
-      let input1 = document.getElementById('input1');
       input1.checked = !input1.checked;
       input1.checked ? btn1.textContent = 'Снять' : btn1.textContent = 'Установить';
+    };
+
+    input1.onclick = () => {
+      input1.checked ? btn1.textContent = 'Снять' : btn1.textContent = 'Установить';
+    };
+
+  </script>
+
+  <script>
+    console.log(`2. Дан чекбокс, кнопка и абзац. 
+    По нажатию на кнопку, если чекбокс отмечен, выведите в абзац слово 'привет', а если чекбокс не отмечен, то слово 'пока'.`);
+
+    let btn2 = document.getElementById('btn2');
+    let span2 = document.getElementById('span2');
+    let input2 = document.getElementById('input2');
+
+    btn2.onclick = () => {
+      input2.checked = !input2.checked;
+
+      if (input2.checked) {
+        span2.textContent = 'Привет)';
+        btn2.textContent = 'Снять';
+      } else {
+        span2.textContent = 'Пока...';
+        btn2.textContent = 'Установить';
+      }
+    };
+
+    input2.onclick = () => {
+
+      if (input2.checked) {
+        span2.textContent = 'Привет)';
+        btn2.textContent = 'Снять';
+      } else {
+        span2.textContent = 'Пока...';
+        btn2.textContent = 'Установить';
+      }
+
     }
 
   </script>
