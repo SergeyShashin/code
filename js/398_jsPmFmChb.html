@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dom/form/checkbox</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/form/checkbox/">
+    Работа с чекбоксами в JavaScript
+  </a>
+
+  <section>
+    <input type='checkbox' id='input1'>
+    <button id='btn1'>Установить</button>
+  </section>
+
+  <script>
+    let btn1 = document.getElementById('btn1')
+
+    btn1.onclick = () => {
+      let input1 = document.getElementById('input1');
+      input1.checked = !input1.checked;
+      input1.checked ? btn1.textContent = 'Снять' : btn1.textContent = 'Установить';
+    }
+
+  </script>
+
+</body>
+
+</html>
