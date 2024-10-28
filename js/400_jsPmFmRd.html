@@ -43,8 +43,6 @@
     console.log(`1. Даны 3 радиокнопки, абзац и кнопка. По клику на кнопку выведите в абзац value отмеченной радиокнопки.`);
     document.getElementById('btn1').onclick = () => {
       let raioGroup1 = document.querySelectorAll('[name="radioGroup1"]');
-      console.log(raioGroup1);
-
       for (let radio of raioGroup1) {
         radio.checked ? document.getElementById('monitor1').textContent = radio.value : '';
       }
