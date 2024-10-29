@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>object-Event/event-coordinates</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/object-Event/event-coordinates/">
+    Координаты события в JavaScript
+  </a>
+
+  <br>
+  <br>
+
+  <span></span>
+
+  <script>
+    console.log('Сделайте так, чтобы при движении мышки по странице, отображались координаты курсора, подобно тому, как это сделано в следующем образце');
+
+    let span = document.querySelector('span');
+    window.document.addEventListener('mousemove', (e) => span.textContent = `${e.clientX}:${e.clientY}`);
+  </script>
+
+</body>
+
+</html>
