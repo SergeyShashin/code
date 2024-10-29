@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dom/form/select/value-attribute</title>
+</head>
+
+<body>
+
+  <section>
+    <select>
+    </select>
+  </section>
+
+  <script>
+    console.log(`Сделайте выпадающий список с названиями дней недели. В качестве атрибутов value пунктов списка добавьте номера дней недели от 1 до 7. 
+    По изменению списка выведите на экран сообщение о том, выбран выходной день или рабочий.`);
+
+    let select = document.querySelector('select');
+    let daysWeek = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
+
+    for (let i = 0; i < daysWeek.length; i++) {
+      let option = document.createElement('option');
+      option.value = i;
+      option.textContent = daysWeek[i];
+      select.appendChild(option);
+    }
+
+    select.onchange = () => {
+      console.log(select.value);
+      alert(Number(select.value) === 5 || Number(select.value) === 6 ? 'Выходной' : 'Рабочий');
+    }
+
+  </script>
+</body>
+
+</html>
