@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>select/options</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/form/select/options/">
+    Работа с пунктами выпадающего списка на JavaScript
+  </a>
+
+  <br>
+  <br>
+
+  <select></select>
+
+  <script>
+    console.log(`Переберите пункты списка циклом и для выбранного пункта в конец текста добавьте восклицательный знак, 
+    а для невыбранных пунктов - вопросительный.`);
+
+    let select = document.querySelector('select');
+
+    for (let i = 0; i < 88; i++) {
+      let option = document.createElement('option');
+      option.textContent = i;
+      option.value = i;
+      i === 21 ? option.selected = true : '';
+      select.appendChild(option);
+    }
+
+    for (let el of select) {
+      el.selected ? el.textContent += ' !' : el.textContent += ' ?';
+    }
+
+  </script>
+
+</body>
+
+</html>
