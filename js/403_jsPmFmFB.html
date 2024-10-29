@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dom/form/focus-blur</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/form/focus-blur/">
+    Методы focus и blur в JavaScript
+  </a>
+
+  <section>
+    <input id='i1_1'>
+    <input id='i1_2'>
+  </section>
+
+  <!-- <section>
+    <input id="elem" value="text">
+    <input type="submit" id="button">
+  </section>
+
+  <script>
+    let elem = document.querySelector('#elem');
+    let button = document.querySelector('#button');
+
+    button.addEventListener('click', function () {
+      elem.focus();
+    });
+  </script> -->
+
+  <script>
+    console.log(`Даны два инпута. 
+    Сделайте так, чтобы после ввода двух символов фокус ввода переходил ко второму инпуту,
+    а после ввода двух символов в этот инпут - фокус из него убирался.`);
+
+    let i1_1 = document.getElementById('i1_1');
+    let i1_2 = document.getElementById('i1_2');
+
+    i1_1.oninput = () => {
+      i1_1.value.length === 2 ? i1_2.focus() : '';
+    };
+
+    i1_2.oninput = () => {
+      i1_2.value.length === 2 ? document.querySelector('a').focus() : '';
+    };
+
+  </script>
+
+</body>
+
+</html>
