@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>select/selected-item-number</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/form/select/selected-item-number/">
+    Номер выбранного пункта выпадающего списка
+  </a>
+
+  <br>
+  <br>
+  <section>
+    <input>
+    <br>
+    <br>
+    <select multiple></select>
+  </section>
+
+  <br>
+  <br>
+
+  <section>
+    <select id="select2">
+    </select>
+  </section>
+
+  <script>
+    console.log(`Дан инпут и селект.
+     В инпут вводится какое-то число. По потери фокуса сделайте выделенным пункт списка, номер которого равен значению из инпута.`);
+
+    let input = document.querySelector('input');
+    let select = document.querySelector('select');
+
+    for (let i = 0; i < 1000; i++) {
+      let option = document.createElement('option');
+      option.textContent = i;
+      select.appendChild(option);
+    }
+
+    input.addEventListener('blur', () => {
+      let num = Number(input.value);
+      select.selectedIndex = num;
+    });
+  </script>
+
+  <script>
+    console.log(`2. Сделайте выпадающий список с названиями дней недели. 
+    Сделайте так, чтобы по JavaScript по умолчанию выбирал в этом списке текущий день.`);
+
+    let select2 = document.getElementById('select2');
+    let daysWeek = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
+
+    for (let i = 0; i < daysWeek.length; i++) {
+      let option = document.createElement('option');
+      option.value = i;
+      option.textContent = daysWeek[i];
+      select2.appendChild(option);
+    }
+
+    select2.selectedIndex = new Date().getDay()
+
+  </script>
+
+</body>
+
+</html>
