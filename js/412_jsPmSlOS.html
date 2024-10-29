@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>select/options-selecting</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/form/select/options-selecting/">
+    Выбор пункта списка в JavaScript
+  </a>
+
+  <br>
+  <br>
+
+  <select></select>
+  <button>Выберать последний элемент списка</button>
+
+  <script>
+
+    console.log(`Дан выпадающий список и кнопка. По клику на кнопку сделайте отмеченным последний пункт списка.`);
+
+    let length = Math.round(Math.random() * 1000);
+
+    let selectEl = document.querySelector('select');
+
+    for (let i = 0; i < length; i++) {
+      let option = document.createElement('option');
+      option.textContent = i;
+      selectEl.appendChild(option);
+    }
+
+    document.querySelector('button').onclick = () => selectEl[length - 1].selected = true;
+
+  </script>
+
+</body>
+
+</html>
