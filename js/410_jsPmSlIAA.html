@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>select/items-as-array</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/form/select/items-as-array/">
+    Массив пунктов выпадающего списка на JavaScript
+  </a>
+
+  <br>
+  <br>
+
+  <select></select>
+
+  <script>
+    console.log(`Переберите все пункты списка циклом и в конец текста каждого пункта добавьте значение его атрибута value.`);
+
+    let select = document.querySelector('select');
+
+    for (let i = 0; i < 22; i++) {
+      let option = document.createElement('option');
+      option.textContent = i;
+      option.value = i;
+      select.appendChild(option);
+    }
+
+    for (let el of select) {
+      el.textContent += el.value;
+    }
+
+  </script>
+</body>
+
+</html>
