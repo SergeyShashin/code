@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dom/form/oninput</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/form/oninput/">
+    Событие input в JavaScript
+  </a>
+
+  <br>
+  <br>
+
+  <section>
+    <input id='i1'>
+  </section>
+
+  <br>
+  <br>
+
+  <section>
+    <p id="m2">&nbsp;</p>
+    <input id='i2'>
+  </section>
+
+  <script>
+    console.log(`1. Дан инпут. Пусть в него вводится текст. Как только длина текста достигнет 5-ти, выведите на экран сообщение об этом.`);
+
+    let i1 = document.getElementById('i1');
+    i1.oninput = () => i1.value.length === 5 ? alert('Длина текста достигла 5.') : '';
+
+  </script>
+
+  <script>
+    console.log(`2. Дан инпут. Пусть в него разрешено ввести 5 символов.
+     Дан также абзац. По мере ввода символов в инпут пишите, сколько еще символов можно ввести.
+     Когда количество символов превысит 5-ти, то в абзац выводите то, на сколько символов превышена длина текста.`);
+
+    let i2 = document.getElementById('i2');
+    let m2 = document.getElementById('m2');
+    i2.oninput = () => m2.textContent = 5 - i2.value.length;
+
+  </script>
+
+
+</body>
+
+</html>
