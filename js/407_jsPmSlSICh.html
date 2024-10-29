@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>select/selected-item-changing</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/form/select/selected-item-changing/">
+    Изменение выбранного пункта списка на JavaScript
+  </a>
+
+  <br>
+  <br>
+  <select></select>
+
+  <script>
+    console.log('Сделайте выпадающий список с названиями месяцев. Сделайте так, чтобы JavaScript по умолчанию выбирал в этом списке текущий месяц.');
+
+    let months = ['январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь'];
+    let currentMonth = new Date().getMonth();
+    let select = document.querySelector('select');
+
+    for (let i = 0; i < months.length; i++) {
+      let option = document.createElement('option');
+      option.textContent = months[i];
+      option.value = i;
+      select.appendChild(option);
+      i === currentMonth ? select.value = i : '';
+    }
+  </script>
+</body>
+
+</html>
