@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dom/form/select/intro</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/form/select/intro/">
+    Работа с выпадающими списками в JavaScript
+  </a>
+
+  <section>
+    <p id="m1"></p>
+    <select id="select1">
+      <option>one</option>
+      <option selected>two</option>
+      <option>three</option>
+    </select>
+    <button id="btn1">Показать выбранный текст</button>
+  </section>
+
+  <br>
+
+  <section>
+    <select id="select2">
+    </select>
+  </section>
+
+  <script>
+    console.log('1. Дан селект, абзац и кнопка. По клику на кнопку выведите текст выбранного пункта списка в абзац.');
+    let m1 = document.getElementById('m1');
+    let select1 = document.getElementById('select1');
+    let btn1 = document.getElementById('btn1');
+
+    btn1.onclick = () => {
+      m1.textContent = select1.value;
+    }
+
+  </script>
+
+  <script>
+    console.log(`Сделайте выпадающий список годов от 2020 до 2030.
+    При выборе какого-нибудь пункта списка выведите сообщение о том, високосный этот год или нет.`);
+
+    let select2 = document.getElementById('select2');
+
+    for (let i = 2020; i < 2031; i++) {
+      let option2 = document.createElement('option');
+      option2.textContent = i;
+      select2.appendChild(option2);
+    }
+
+    select2.onchange = () => {
+      alert(Number(select2.value) % 4 === 0 ? 'Високосный год.' : 'Простой год.');
+    };
+
+
+  </script>
+
+</body>
+
+</html>
