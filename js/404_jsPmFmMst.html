@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dom/form/mistakes</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/form/mistakes/">
+    Поиск ошибок в коде с формами в JavaScript
+  </a>
+
+  <!-- <section>
+    <textarea></textarea>
+    <div></div>
+  </section> -->
+
+  <!-- <section>
+    <input type="checkbox">
+    <div></div>
+    <button>button</button>
+  </section> -->
+
+  <section>
+    <input type="checkbox">
+    <button>button</button>
+  </section>
+
+
+  <!-- <script>
+    console.log('1. По потери фокуса текст из textarea должен записаться в див');
+
+    let textarea = document.querySelector('textarea');
+    let div = document.querySelector('div');
+
+    textarea.addEventListener('blur', function () {
+      div.textContent = textarea.value;
+    });
+
+  </script> -->
+
+  <!-- <script>
+
+    console.log('2. По клику на кнопку в див должно записаться или одно, или другое значение');
+    let checkbox = document.querySelector('input');
+    let btn = document.querySelector('button');
+    let div = document.querySelector('div');
+
+    btn.addEventListener('click', function () {
+      if (checkbox.checked) {
+        div.textContent = '111';
+      } else {
+        div.textContent = '222';
+      }
+    });
+  </script> -->
+
+  <script>
+
+    console.log(`По клику на кнопку, если чекбокс отмечен, то должно вывестись одно значение, а если не отмечен - другое:`);
+
+    let checkbox = document.querySelector('[type="checkbox"]');
+    let button = document.querySelector('button');
+
+    button.addEventListener('click', function () {
+      if (checkbox.checked) {
+        console.log('+++');
+      } else {
+        console.log('---');
+      }
+    });
+    
+  </script>
+
+</body>
+
+</html>
