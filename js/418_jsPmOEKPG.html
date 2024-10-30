@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>object-Event/pressed-keys-getting</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/object-Event/pressed-keys-getting/">
+    Получение нажатых клавиш в JavaScript
+  </a>
+
+  <br>
+  <br>
+
+  <input>
+  <p></p>
+
+  <script>
+    console.log(`Дан абзац и инпут. В него вводится текст и нажимается клавиша Enter.
+     Сделайте так, чтобы в этот момент введенный текст попадал в абзац под инпутом, а содержимое инпута очищалось.`);
+
+    let input = document.querySelector('input');
+    let p = document.querySelector('p');
+
+    window.document.addEventListener('keydown', e => {
+      if (e.keyCode === 13) {
+        p.textContent = input.value;
+        input.value = '';
+      }
+    })
+
+  </script>
+</body>
+
+</html>
