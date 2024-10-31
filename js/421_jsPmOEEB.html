@@ -39,10 +39,9 @@
   </div>
 
   <script>
-    document.getElementById('d1').onclick = e => console.dir(e);
-    document.getElementById('d2').onclick = e => console.dir(e);
-    document.getElementById('d3').onclick = e => console.dir(e);
-    document.onclick=e=>console.dir(this);
+    document.getElementById('d1').onclick = e => alert(e.currentTarget.id);
+    document.getElementById('d2').onclick = e => alert(e.currentTarget.id);
+    document.getElementById('d3').onfocus = e => alert(e.currentTarget.id);
   </script>
 
 </body>
