@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>object-Event/events-bubbling</title>
+  <style>
+    div {
+      border: 1px lightseagreen dotted;
+    }
+
+    #d1 {
+      width: 300px;
+      height: 300px;
+    }
+
+    #d2 {
+      width: 200px;
+      height: 200px;
+    }
+
+    #d3 {
+      width: 100px;
+      height: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/object-Event/events-bubbling/">
+    Всплытие событий в JavaScript
+  </a>
+
+  <div id="d1">
+    <div id="d2">
+      <div id="d3"></div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('d1').onclick = e => console.dir(e);
+    document.getElementById('d2').onclick = e => console.dir(e);
+    document.getElementById('d3').onclick = e => console.dir(e);
+    document.onclick=e=>console.dir(this);
+  </script>
+
+</body>
+
+</html>
