@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>object-Event/bubbling/usage</title>
+  <style>
+    #block:not(.active) {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/object-Event/bubbling/usage/">
+    Применение прекращения всплытия событий в JavaScript
+  </a>
+
+  <div id="parent">
+    <button>click me</button>
+    <div id="block">
+      text
+    </div>
+  </div>
+
+  <script>
+    let parent = document.querySelector('#parent');
+    let button = document.querySelector('button');
+    let block = document.querySelector('#block');
+
+    button.addEventListener('click', function (e) {
+      block.classList.add('active');
+      e.stopPropagation();
+    });
+
+    parent.addEventListener('click', function () {
+      block.classList.remove('active');
+    });
+  </script>
+
+</body>
+
+</html>
