@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>timers/multiple-launch</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/timers/multiple-launch/">
+    Многократное нажатие на кнопку для запуска таймера на JavaScript
+  </a>
+
+  <br>
+  <br>
+
+  <button>100</button>
+  <script>
+
+    let btn = document.querySelector('button');
+    let timer = () => {
+
+    };
+
+    btn.addEventListener('click', function timer() {
+      let interval = setInterval(() => {
+        Number(btn.textContent) === 0 ? clearInterval(interval) : btn.textContent = Number(btn.textContent) - 1;
+      }, 1000);
+      this.removeEventListener('click', timer);
+    }
+    );
+
+  </script>
+</body>
+
+</html>
