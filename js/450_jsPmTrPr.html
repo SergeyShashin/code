@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>timers/practicum</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/timers/practicum/">
+    Практика на таймеры и работу с DOM в JavaScript
+  </a>
+
+  <section>
+    <p id="monitor1">0</p>
+    <button id="btn1">Старт</button>
+  </section>
+
+  <br>
+
+  <section>
+    <input id="i2" value='2'>
+  </section>
+
+  <section>
+    <p id="monitor6">1</p>
+    <button id="btn6Start">Старт</button>
+    <button id="btn6Stop">Стоп</button>
+  </section>
+
+  <section>
+    <p id="clock"></p>
+  </section>
+
+  <script>
+    console.log(`1. Дана кнопка. Дан абзац, текстом которого является число.
+    По нажатию на кнопку запустите таймер, который каждую секунду будет увеличивать текст абзаца на 1.`);
+    let monitor1 = document.getElementById('monitor1');
+    document.getElementById('btn1').onclick = () => { let timer = setInterval(() => monitor1.textContent = Number(monitor1.textContent) + 1, 1000) };
+  </script>
+
+  <script>
+    console.log(`3. Дан инпут с числом. Сделайте так, чтобы каждую секунду в нем появлялся квадрат того числа, которое в нем записано.`);
+
+    let timer = setInterval(() => {
+      let i2 = document.getElementById('i2');
+      Number(i2.value) ** 2 === 'infinity' ? clearInterval(timer) : i2.value = Number(i2.value) ** 2;
+    }, 1000);
+
+  </script>
+
+  <script>
+    console.log(`6. Дан абзац и две кнопки. Сделайте так, чтобы по нажатию на первую кнопку в абзаце начал тикать таймер от 1 до 
+    бесконечности, а по нажатию на вторую таймер останавливался.`);
+
+    let monitor6 = document.getElementById('monitor6');
+    let timer6;
+    document.getElementById('btn6Start').onclick = () => timer6 = setInterval(() => {
+      monitor6.textContent = Number(monitor6.textContent) + 1;
+      monitor6.style.color === 'green' ? monitor6.style.color = 'red' : monitor6.style.color = 'green';
+    }, 1000);
+    document.getElementById('btn6Stop').onclick = () => clearInterval(timer6);
+
+  </script>
+
+  <script>
+    console.log(`Если выводить на экран каждую секунду текущий момент времени, то можно сделать тикающие часы. `);
+    let clock = document.getElementById('clock');
+    let numberIntervalClock = setInterval(() => {
+      let date = new Date();
+      clock.textContent = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+    }, 1000);
+  </script>
+
+</body>
+
+</html>
