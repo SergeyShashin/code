@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>manipulation/loop-binding-handlers</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/manipulation/loop-binding-handlers/">
+    Навешивание обработчиков в цикле на JavaScript
+  </a>
+
+  <div>
+    <p></p>
+  </div>
+
+  <script>
+    console.log(`Дан див. Запустите цикл, который добавит в наш див 5 инпутов. Пусть дан также абзац.
+    Сделайте так, чтобы каждый из новых инпутов по потери фокуса записывал свой текст в абзац.`);
+
+    for (let i = 0; i < 5; i++) {
+      let input = document.createElement('input');
+      input.onblur = () => document.querySelector('p').textContent = input.value;
+      document.querySelector('div').appendChild(input);
+    }
+
+  </script>
+</body>
+
+</html>
