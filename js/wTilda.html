@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    
+  </style>
+  <title>widgetTilda or widgetWix</title>
+</head>
+
+<body>
+
+  <div id='widgetLoader'>
+    <select id='theme'>
+      <option value='dark'>dark</option>
+      <option value='light'>light</option>
+    </select>
+
+    <select id='language'>
+      <option value="et">et</option>
+      <option value="ru">ru</option>
+      <option value="en">en</option>
+    </select>
+
+    <select id='type'>
+      <option value="schedule">schedule</option>
+    </select>
+
+    <input id='widget-id'>
+
+  </div>
+
+  <script>
+    let inputwidgetEl = document.getElementById('widget-id');
+    let themeEl = document.getElementById('theme');
+    let languageEl = document.getElementById('language');
+    let typeEl = document.getElementById('type');
+    let result = document.createElement('div');
+
+    result.dataset.widgetId = 'RY9LQDFE87';
+    result.dataset.theme = 'light';
+    result.dataset.language = 'ru';
+    result.dataset.type = 'schedule';
+
+    document.body.appendChild(result);
+
+    inputwidgetEl.oninput = () => {
+      result.dataset.widgetId = inputwidgetEl.value;
+    };
+
+    themeEl.onchange = () => {
+      result.dataset.theme = themeEl.value;
+    };
+
+    languageEl.onchange = () => {
+      result.dataset.language = languageEl.value;
+    };
+
+    typeEl.onchange = () => {
+      result.dataset.type = typeEl.value;
+    };
+
+
+    let scriptWidgetLoaderEl = document.createElement('script');
+    scriptWidgetLoaderEl.src = 'https://****/widget-loader.js';
+    document.body.appendChild(scriptWidgetLoaderEl);
+  </script>
+</body>
+
+</html>
