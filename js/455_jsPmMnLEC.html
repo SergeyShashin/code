@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>manipulation/loop-elements-creating</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/manipulation/loop-elements-creating/">
+    Создание элементов в цикле на JavaScript
+  </a>
+
+  <ul></ul>
+
+  <script>
+    console.log(`Дан пустой ul. 
+    Запустите цикл, который вставит в него 10 тегов li. Сделайте так, чтобы текстом каждой li был ее порядковый номер.`);
+    let ulEl = document.querySelector('ul');
+
+    for (let i = 0; i < 10; i++) {
+      let li = document.createElement('li');
+      li.textContent = i;
+      ulEl.appendChild(li);
+    }
+
+
+  </script>
+
+
+</body>
+
+</html>
