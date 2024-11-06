@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    td {
+      border: 1px dotted lightseagreen;
+      padding: 10px;
+      color: lightseagreen;
+    }
+
+    td:hover {
+      color: lightsalmon;
+    }
+  </style>
+  <title>practice/tables-creating</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/practice/tables-creating/">
+    Создание HTML таблиц на JavaScript
+  </a>
+
+  <h2>Генератор таблиц</h2>
+
+  <label for="rowsCount"><input id="rowsCount" placeholder="rowsCount"></label>
+  <label for="colsCount"><input id="colsCount" placeholder="colsCount"></label>
+  <button id="btnCreateTable">Создать таблицу</button>
+
+  <br>
+
+  <table id="table"></table>
+
+  <script>
+    console.log('Реализуйте генератор таблиц, ширина и высота таблиц задается в двух инпутах (например, таблица 5 на 10 ячеек).');
+
+    document.getElementById('btnCreateTable').onclick = () => {
+      let tableEl = document.getElementById('table');
+      tableEl.innerHTML = '';
+      let rowsCount = Number(document.getElementById('rowsCount').value);
+      let colsCount = Number(document.getElementById('colsCount').value);
+
+      for (let row = 0; row < rowsCount; row++) {
+        let tr = document.createElement('tr');
+        for (let col = 0; col < colsCount; col++) {
+          let td = document.createElement('td');
+          td.textContent = `x${col}_y${row}`;
+          tr.appendChild(td);
+        }
+        tableEl.appendChild(tr);
+      }
+
+    }
+
+  </script>
+
+
+</body>
+
+</html>
