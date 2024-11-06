@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>practice/lists-creating</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/practice/lists-creating/">
+    Практика на создание списков ul на JavaScript
+  </a>
+
+  <ul id='elem'></ul>
+
+  <script>
+    console.log('1. Дан массив. Вставьте элементы этого массива в конец ul так, чтобы каждый элемент стоял в своем li.');
+    console.log('2. Модифицируйте предыдущую задачу так, чтобы по клику на любой из вставленных элементов на экран выводился текст этого элемента.');
+    console.log('3. Модифицируйте предыдущую задачу так, чтобы по клику на li ей в конец добавлялся "!"".');
+    console.log('4. Модифицируйте предыдущую задачу так, чтобы по повторное нажатие на li не приводило к добавлению второго "!".');
+
+    let arr = [1, 2, 3, 4, 5];
+    let elemEl = document.getElementById('elem');
+
+    for (let el of arr) {
+      let li = document.createElement('li');
+      li.textContent = el;
+      li.addEventListener('click', addExclamationMark);
+      elemEl.appendChild(li);
+    }
+
+    function addExclamationMark() {
+      this.textContent += '!';
+      console.log(this.textContent);
+      this.removeEventListener('click', addExclamationMark);
+    };
+  </script>
+</body>
+
+</html>
