@@ -15,9 +15,6 @@
       <option value='light'>light</option>
     </select>
     <select id='language'>
-      <option value="et">et</option>
-      <option value="ru">ru</option>
-      <option value="en">en</option>
     </select>
     <select id='type'>
       <option value="schedule">schedule</option>
@@ -26,45 +23,82 @@
   </div>
 
   <script>
-    //создание итогового элемента со стартовыми настройками
-    let createEl = () => {
-      let result = document.createElement('div');
-      result.id = 'result';
-      document.body.appendChild(result);
-      result.dataset.widgetId = 'RY9LQDFE87';
-      result.dataset.theme = 'light';
-      result.dataset.language = 'ru';
-      result.dataset.type = 'schedule';
-    }
-    createEl();
-    // добавляет скрипт на страницу в конец html: script src="https://****/widget-loader.js"
-    let addScriptToHTML = () => {
-      let scriptWidgetLoaderEl = document.createElement('script');
-      scriptWidgetLoaderEl.src = 'https://****/widget-loader.js';
-      document.body.appendChild(scriptWidgetLoaderEl);
-    }
-    addScriptToHTML();
-    // устанавливает обработчики событий выбора и ввода
-    let setHandlers = (element) => {
-      let inputwidgetEl = document.getElementById('widget-id');
-      let themeEl = document.getElementById('theme');
-      let languageEl = document.getElementById('language');
-      let typeEl = document.getElementById('type');
 
-      inputwidgetEl.oninput = () => {
-        element.dataset.widgetId = inputwidgetEl.value;
-      };
-      themeEl.onchange = () => {
-        element.dataset.theme = themeEl.value;
-      };
-      languageEl.onchange = () => {
-        element.dataset.language = languageEl.value;
-      };
-      typeEl.onchange = () => {
-        element.dataset.type = typeEl.value;
-      };
-    }
-    setHandlers(document.getElementById('result'));
+    const widjetForTildaOrWix = {
+      languageEl: document.getElementById('language'),
+      themeEl: document.getElementById('theme'),
+      inputwidgetEl: document.getElementById('widget-id'),
+      typeEl: document.getElementById('type'),
+      languages: ['et', 'ru', 'en', 'cn', 'es', 'ar', 'fr', 'pt', 'de', 'hi', 'ja'],
+      themes: ['people', 'animals', 'birds', 'plants', 'standart', 'spring', 'summer', 'winter', 'autumn', 'hot', 'love', 'light', 'dark'],
+
+      run() {
+        this.createOptionLanguagesEls();
+        this.createOptionThemesEls();
+        this.createEl();
+        this.addScriptToHTML();
+        this.setHandlers(document.getElementById('result'));
+      },
+
+      //создание HTML элементов для выбора языков
+      createOptionLanguagesEls() {
+        for (let language of this.languages) {
+          let optionEl = document.createElement('option');
+          optionEl.value = language;
+          optionEl.textContent = language;
+          language === 'ru' ? optionEl.selected = true : '';
+          this.languageEl.appendChild(optionEl);
+        }
+      },
+
+      //создание HTML элементов для выбора тем
+      createOptionThemesEls() {
+        for (let theme of this.themes) {
+          let optionEl = document.createElement('option');
+          optionEl.value = theme;
+          optionEl.textContent = theme;
+          theme === 'people' ? optionEl.selected = true : '';
+          this.themeEl.appendChild(optionEl);
+        }
+      },
+
+      //создание итогового HTML элемента со стартовыми настройками
+      createEl() {
+        let result = document.createElement('div');
+        result.id = 'result';
+        document.body.appendChild(result);
+        result.dataset.widgetId = 'RY9LQDFE87';
+        result.dataset.theme = 'light';
+        result.dataset.language = 'ru';
+        result.dataset.type = 'schedule';
+      },
+
+      // добавляет скрипт на страницу в конец html: script src="https://****/widget-loader.js"
+      addScriptToHTML() {
+        let scriptWidgetLoaderEl = document.createElement('script');
+        scriptWidgetLoaderEl.src = 'https://****/widget-loader.js';
+        document.body.appendChild(scriptWidgetLoaderEl);
+      },
+
+      // устанавливает обработчики событий выбора и ввода
+      setHandlers(element) {
+        this.inputwidgetEl.oninput = () => {
+          element.dataset.widgetId = this.inputwidgetEl.value;
+        };
+        this.themeEl.onchange = () => {
+          element.dataset.theme = this.themeEl.value;
+        };
+        this.languageEl.onchange = () => {
+          element.dataset.language = this.languageEl.value;
+        };
+        this.typeEl.onchange = () => {
+          element.dataset.type = this.typeEl.value;
+        };
+      }
+    };
+
+    widjetForTildaOrWix.run();
+
   </script>
 </body>
 
