@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tables-consistent-filling</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/practice/tables-consistent-filling/">
+    Последовательное заполнение HTML таблиц
+  </a>
+
+  <table id="t1"></table>
+  <table id="t2"></table>
+
+  <script>
+    console.log(`1. Выведите на экран HTML таблицу размером 5 рядов на 5 колонок так, чтобы в ее ячейках последовательно стояли числа от 1 до 25.`);
+
+    let t1El = document.getElementById('t1');
+    let counter = 1;
+
+    for (let row = 0; row < 5; row++) {
+      let tr = document.createElement('tr');
+      for (let col = 0; col < 5; col++) {
+        let td = document.createElement('td');
+        td.textContent = counter;
+        tr.appendChild(td);
+        counter++;
+      }
+      t1El.appendChild(tr);
+    }
+
+  </script>
+  <script>
+    console.log(`2. Модифицируйте предыдущую задачу так, чтобы в ячейках таблицы были записаны четные числа в промежутке от 2 до 50.`);
+
+    let t2El = document.getElementById('t2');
+    let counter2 = 2;
+
+    for (let row = 0; row < 5; row++) {
+      let tr = document.createElement('tr');
+      for (let col = 0; col < 5; col++) {
+        let td = document.createElement('td');
+        td.textContent = counter2;
+        tr.appendChild(td);
+        counter2 += 2;
+      }
+      t2El.appendChild(tr);
+    }
+
+  </script>
+
+</body>
+
+</html>
