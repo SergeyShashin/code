@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>practice/table-creating-via-array</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/practice/table-creating-via-array/">
+    Создание HTML таблицы из массива на JavaScript
+  </a>
+
+  <table id="table"></table>
+  <table id="table2"></table>
+
+  <script>
+    console.log('Не подсматривая в теоретическую часть урока, выведите элементы приведенного массива в виде HTML таблицы table.');
+    let arr1 = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]];
+    let tableEl1 = document.getElementById('table');
+
+    for (let subAr of arr1) {
+      let newRow = tableEl1.insertRow();
+      for (let content of subAr) {
+        let newCell = newRow.insertCell();
+        newCell.textContent = content;
+      }
+    }
+  </script>
+
+  <script>
+    console.log('Не подсматривая в теоретическую часть урока, выведите элементы приведенного массива в виде HTML таблицы table.');
+    let arr2 = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]];
+    let tableEl2 = document.getElementById('table2');
+
+    for (let subAr of arr2) {
+      let newRow = tableEl1.insertRow();
+      for (let content of subAr) {
+        let newCell = newRow.insertCell();
+        newCell.textContent = content ** 2;
+      }
+    }
+  </script>
+
+</body>
+
+</html>
