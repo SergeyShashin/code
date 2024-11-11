@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>practice/table-creating-via-objects-array</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/practice/table-creating-via-objects-array/">
+    Создание HTML таблицы из массива объектов
+  </a>
+
+  <table id="table1"></table>
+
+  <script>
+    console.log('1. Выведите элементы этого массива в виде HTML таблицы.');
+    console.log('2. Модифицируйте предыдущую задачу так, чтобы по клику на любую ячейку с возрастом ее содержимое увеличивалось на 1.');
+    console.log('3. Модифицируйте предыдущую задачу так, чтобы по клику на любую ячейку с зарплатой ее содержимое увеличивалось на 10%.');
+    let employees = [
+      { name: 'employee1', age: 30, salary: 400 },
+      { name: 'employee2', age: 31, salary: 500 },
+      { name: 'employee3', age: 32, salary: 600 },
+    ];
+    let tableEl1 = document.getElementById('table1');
+
+    for (let obj of employees) {
+      let newRow = tableEl1.insertRow();
+      for (let key in obj) {
+        let newCell = newRow.insertCell();
+        newCell.textContent = obj[key];
+        key === 'age' ? newCell.addEventListener('click', () => newCell.textContent = Math.round(Number(newCell.textContent) + 1)) : '';
+        key === 'salary' ? newCell.addEventListener('click', () => newCell.textContent = Math.round(Number(newCell.textContent) * 1.10)) : '';
+      }
+    }
+
+  </script>
+
+
+</body>
+
+</html>
