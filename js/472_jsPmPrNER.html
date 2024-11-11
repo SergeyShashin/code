@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>practice/new-elements-removing</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/practice/new-elements-removing/">
+    Самоудаление новых элементов на JavaScript
+  </a>
+
+  <ul id="parent">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+  </ul>
+
+  <input type="submit" id="button">
+
+  <script>
+    let ulEl = document.getElementById('parent');
+
+    document.getElementById('button').onclick = () => {
+      let liEl = document.createElement('li');
+      liEl.textContent = '0';
+      ulEl.appendChild(liEl);
+    };
+
+    ulEl.addEventListener('click', e => e.target.tagName === 'LI' ? e.target.remove() : '');
+
+  </script>
+</body>
+
+</html>
