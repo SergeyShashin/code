@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>practice/creating-removing-links</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/practice/creating-removing-links/">
+    Создание ссылок для удаление элементов на JavaScript
+  </a>
+
+  <h4>1. Дан тег ul. Добавьте в конец каждого тега li ссылку на удаления этого li из списка.</h4>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+  </ul>
+
+  <h4>2. Дана HTML таблица. Добавьте в нее еще одну колонку, в которой для каждого ряда таблицы будет стоять ссылка на
+    удаление этого ряда.</h4>
+
+  <table>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+  </table>
+
+  <script>
+    console.log(`1. Дан тег ul. Добавьте в конец каждого тега li ссылку на удаления этого li из списка.`);
+    let liEls = document.querySelectorAll('li');
+
+    for (let liEl of liEls) {
+      let removeEl = document.createElement('a');
+      removeEl.href = '#';
+      removeEl.textContent = ' remove';
+      liEl.appendChild(removeEl);
+    }
+
+    document.querySelector('ul').addEventListener('click', (e) => delEl(e));
+
+    function delEl(e) {
+      e.preventDefault();
+      console.log(e.target.tagName);
+      e.target.tagName === 'A' ? e.target.parentElement.remove() : '';
+    }
+
+  </script>
+
+  <script>
+    console.log(`2. Дана HTML таблица. Добавьте в нее еще одну колонку, в которой для каждого ряда таблицы будет стоять ссылка на
+    удаление этого ряда.`);
+
+    let trEls = document.querySelectorAll('tr');
+
+    for (let trEl of trEls) {
+      let removeEl = document.createElement('a');
+      removeEl.href = '#';
+      removeEl.textContent = ' remove';
+      trEl.appendChild(removeEl);
+    }
+
+    document.querySelector('table').addEventListener('click', (e) => delEl(e));
+
+  </script>
+
+</body>
+
+</html>
