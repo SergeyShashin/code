@@ -26,7 +26,6 @@
     function editText() {
       content = pEl.textContent;
       pEl.removeEventListener('click', editText);
-      console.log(content);
       pEl.innerHTML = `<input value='${content}' id='editP'>`;
       let inputEl = document.getElementById('editP');
       inputEl.addEventListener('blur', () => {
