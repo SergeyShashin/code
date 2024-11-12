@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>practice/single-element-editing</title>
+</head>
+
+<body>
+  <a href="#">
+    Редактирование отдельного элемента на JavaScript
+  </a>
+
+  <section>
+    <p>Текст</p>
+  </section>
+
+  <script>
+    let sectionEl = document.querySelector('section');
+    let pEl = sectionEl.querySelector('p');
+    pEl.onclick = () => {
+      let inputEl = document.createElement('input');
+      inputEl.value = pEl.textContent;
+      sectionEl.appendChild(inputEl);
+      inputEl.onblur = () => {
+        pEl.textContent = inputEl.value;
+        inputEl.remove();
+      }
+    }
+  </script>
+
+</body>
+
+</html>
