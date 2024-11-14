@@ -51,7 +51,9 @@
 
       if (targetEl.tagName === 'A') {
         e.preventDefault();
-        targetEl.parentElement.remove();
+        // targetEl.parentElement.remove();
+        targetEl.parentElement.style.textDecoration = 'underline';
+        targetEl.remove();
       };
 
       if (targetEl.tagName === 'SPAN') {
