@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>practice/elements-group-editing</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/practice/elements-group-editing/">
+    Редактирование в группе элементов на JavaScript
+  </a>
+
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+  </ul>
+
+  <table>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+  </table>
+
+  <script>
+    console.log(`1. Дан тег ul. Сделайте так, чтобы по клику на любую li в ней появлялся инпут, 
+    с помощью которого можно будет поредактировать текст этой li.`);
+
+    let ulEl = document.querySelector('ul');
+
+    ulEl.addEventListener('click', e => handlerClick(e));
+
+    function handlerClick(e) {
+      if (e.target.tagName !== 'LI') {
+        return
+      }
+
+      let targetEl = e.target;
+
+      let inputEl = document.createElement('input');
+      inputEl.value = targetEl.textContent;
+
+      targetEl.textContent = ' ';
+      targetEl.appendChild(inputEl);
+
+      ulEl.removeEventListener('click', handlerClick);
+
+      inputEl.addEventListener('blur', () => updateInputEl(inputEl.value));
+
+      function updateInputEl(content) {
+        targetEl.textContent = content;
+      }
+    }
+  </script>
+
+  <script>
+    console.log(`2. Дана HTML таблица. Сделайте так, чтобы по клику на любую ячейку в ней 
+     появлялся инпут для редактирования текста этой ячейки.`);
+
+    let tableEl = document.querySelector('table');
+
+    tableEl.addEventListener('click', e => handlerClick(e));
+
+    function handlerClick(e) {
+      if (e.target.tagName !== 'TD') {
+        return
+      }
+
+      let targetEl = e.target;
+
+      let inputEl2 = document.createElement('input');
+      inputEl2.value = targetEl.textContent;
+
+      targetEl.textContent = ' ';
+      targetEl.appendChild(inputEl2);
+
+      tableEl.removeEventListener('click', handlerClick);
+
+      inputEl2.addEventListener('blur', () => updateInputEl(inputEl2.value));
+
+      function updateInputEl(content) {
+        targetEl.textContent = content;
+      }
+    }
+
+
+  </script>
+
+</body>
+
+</html>
