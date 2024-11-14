@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>practice/removing-and-editing-together</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/practice/removing-and-editing-together/">
+    Одновременное редактирование и удаление элементов
+  </a>
+
+  <!-- <div id="parent">
+    <p><span>text1</span>&nbsp;<a href="#">remove</a></p>
+    <p><span>text2</span>&nbsp;<a href="#">remove</a></p>
+    <p><span>text3</span>&nbsp;<a href="#">remove</a></p>
+  </div> -->
+  <div id="parent">
+    <p>text1</p>
+    <p>text2</p>
+    <p>text3</p>
+  </div>
+
+  <script>
+    let divEl = document.getElementById('parent');
+
+    let pElements = document.querySelectorAll('p');
+
+    for (let pEl of pElements) {
+      let spanEl = document.createElement('span');
+      let aEl = document.createElement('a');
+      spanEl.textContent = pEl.textContent;
+      aEl.textContent = 'remove';
+      aEl.href = '#';
+      pEl.innerHTML = '';
+      pEl.appendChild(spanEl);
+      pEl.appendChild(aEl);
+    }
+
+    divEl.addEventListener('click', e => handlerClick(e));
+
+    function handlerClick(e) {
+      let targetEl = e.target;
+
+
+      if (targetEl.tagName !== 'SPAN' && targetEl.tagName !== 'A') {
+        return
+      }
+
+      if (targetEl.tagName === 'A') {
+        e.preventDefault();
+        targetEl.parentElement.remove();
+      };
+
+      if (targetEl.tagName === 'SPAN') {
+        let inputEl = document.createElement('input');
+        inputEl.value = targetEl.textContent;
+        targetEl.innerHTML = '';
+        targetEl.appendChild(inputEl);
+        divEl.removeEventListener('click', handlerClick);
+        inputEl.addEventListener('blur', () => insertContentTargetEl(inputEl.value));
+      };
+
+      function insertContentTargetEl(content) {
+        targetEl.textContent = content;
+      }
+    }
+
+  </script>
+
+</body>
+
+</html>
