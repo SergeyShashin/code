@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .hide {
+      display: none;
+    }
+  </style>
+  <title>practice/many-elements-with-showing-buttons</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/practice/many-elements-with-showing-buttons/">
+    Много элементов с кнопками показа на JavaScript
+  </a>
+  <br>
+  <br>
+  <p id="1">1</p><button data-el="1">toggle</button>
+  <br>
+  <br>
+  <p id="2">2</p><button data-el="2">toggle</button>
+  <br>
+  <br>
+  <p id="3">3</p><button data-el="3">toggle</button>
+
+  <script>
+    document.addEventListener('click', e => showOrHide(e));
+
+    function showOrHide(e) {
+      if (e.target.tagName === 'BUTTON') {
+        document.getElementById(e.target.dataset.el).classList.toggle('hide');
+      }
+    }
+
+  </script>
+
+
+
+</body>
+
+</html>
