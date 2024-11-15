@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>practice/elements-stylization</title>
 </head>
+
 <body>
   <a href="https://code.mu/ru/javascript/book/prime/dom/practice/elements-stylization/">
     Стилизация элементов на JavaScript
@@ -12,41 +14,78 @@
 
   <table>
     <tr>
-      <td><a href="">remove</a></td>
-      <td><a href="">remove</a></td>
-      <td><a href="">remove</a></td>
-      <td><a href="">remove</a></td>
-      <td><a href="">remove</a></td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td><a href="#">make green</a></td>
     </tr>
     <tr>
-      <td><a href="">remove</a></td>
-      <td><a href="">remove</a></td>
-      <td><a href="">remove</a></td>
-      <td><a href="">remove</a></td>
-      <td><a href="">remove</a></td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td><a href="#">make green</a></td>
     </tr>
     <tr>
-      <td><a href="">remove</a></td>
-      <td><a href="">remove</a></td>
-      <td><a href="">remove</a></td>
-      <td><a href="">remove</a></td>
-      <td><a href="">remove</a></td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td><a href="#">make green</a></td>
     </tr>
     <tr>
-      <td><a href="">remove</a></td>
-      <td><a href="">remove</a></td>
-      <td><a href="">remove</a></td>
-      <td><a href="">remove</a></td>
-      <td><a href="">remove</a></td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td><a href="#">make green</a></td>
     </tr>
     <tr>
-      <td><a href="">remove</a></td>
-      <td><a href="">remove</a></td>
-      <td><a href="">remove</a></td>
-      <td><a href="">remove</a></td>
-      <td><a href="">remove</a></td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td><a href="#">make green</a></td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td><a href="#">make green</a></td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td><a href="#">make green</a></td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td><a href="#">make green</a></td>
     </tr>
   </table>
-  
+
+  <script>
+    console.log(`3. Дана некоторая HTML таблица. 
+    Добавьте в эту таблицу еще одну колонку со ссылкой. По нажатию на эту ссылку ряд с этой ссылкой должен стать зеленого фона.`);
+
+    document.querySelector('table').addEventListener('click', e => makeBackgroundTrGreen(e));
+
+    function makeBackgroundTrGreen(e) {
+      if (e.target.tagName === 'A') {
+        e.preventDefault();
+        e.target.parentElement.parentElement.style.background = 'green';
+      }
+    }
+
+  </script>
+
 </body>
+
 </html>
