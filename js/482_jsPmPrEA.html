@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .red {
+      background: red;
+    }
+  </style>
+  <title>practice/elements-activations</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/practice/elements-activations/">
+    Активация элементов на JavaScript
+  </a>
+
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+  </ul>
+
+  <script>
+    console.log('Дана HTML список ul. Сделайте так, чтобы по нажатию на любой пункт списка он активировался красным фоном.');
+
+    document.querySelector('ul').addEventListener('click', e => makeBackgroundRedOnclick(e));
+
+    function makeBackgroundRedOnclick(e) {
+      if (e.target.tagName === 'LI') {
+        e.target.classList.toggle('red');
+      }
+    }
+
+  </script>
+
+</body>
+
+</html>
