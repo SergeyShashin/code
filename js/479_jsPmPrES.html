@@ -4,6 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .bgGreen {
+      background: green;
+    }
+  </style>
   <title>practice/elements-stylization</title>
 </head>
 
@@ -18,56 +23,56 @@
       <td>2</td>
       <td>3</td>
       <td>4</td>
-      <td><a href="#">make green</a></td>
+      <td><a href="#">turn on green</a></td>
     </tr>
     <tr>
       <td>1</td>
       <td>2</td>
       <td>3</td>
       <td>4</td>
-      <td><a href="#">make green</a></td>
+      <td><a href="#">turn on green</a></td>
     </tr>
     <tr>
       <td>1</td>
       <td>2</td>
       <td>3</td>
       <td>4</td>
-      <td><a href="#">make green</a></td>
+      <td><a href="#">turn on green</a></td>
     </tr>
     <tr>
       <td>1</td>
       <td>2</td>
       <td>3</td>
       <td>4</td>
-      <td><a href="#">make green</a></td>
+      <td><a href="#">turn on green</a></td>
     </tr>
     <tr>
       <td>1</td>
       <td>2</td>
       <td>3</td>
       <td>4</td>
-      <td><a href="#">make green</a></td>
+      <td><a href="#">turn on green</a></td>
     </tr>
     <tr>
       <td>1</td>
       <td>2</td>
       <td>3</td>
       <td>4</td>
-      <td><a href="#">make green</a></td>
+      <td><a href="#">turn on green</a></td>
     </tr>
     <tr>
       <td>1</td>
       <td>2</td>
       <td>3</td>
       <td>4</td>
-      <td><a href="#">make green</a></td>
+      <td><a href="#">turn on green</a></td>
     </tr>
     <tr>
       <td>1</td>
       <td>2</td>
       <td>3</td>
       <td>4</td>
-      <td><a href="#">make green</a></td>
+      <td><a href="#">turn on green</a></td>
     </tr>
   </table>
 
@@ -80,7 +85,8 @@
     function makeBackgroundTrGreen(e) {
       if (e.target.tagName === 'A') {
         e.preventDefault();
-        e.target.parentElement.parentElement.style.background = 'green';
+        e.target.textContent = e.target.textContent === 'turn on green' ? 'turn of green' : 'turn on green';
+        e.target.parentElement.parentElement.classList.toggle('bgGreen');
       }
     }
 
