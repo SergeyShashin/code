@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .hide {
+      display: none;
+    }
+  </style>
+  <title>practice/hide-show-button/</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/practice/hide-show-button/">
+    Кнопки для скрытия и показа элемента на JavaScript
+  </a>
+
+  <br>
+  <br>
+
+  <button>ShowOrHide</button>
+  <p>text</p>
+
+  <script>
+    console.log('Пусть по первому клику на эту кнопку элемент показывается, а по второму - скрывается.');
+
+    document.querySelector('button').addEventListener('click', showOrHideOnClick);
+
+    function showOrHideOnClick() {
+      document.querySelector('p').classList.toggle('hide');
+    }
+
+  </script>
+
+</body>
+
+</html>
