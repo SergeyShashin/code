@@ -26,14 +26,22 @@
       'перечеркнуть', с помощью которой можно будет перечеркнуть текст данного тега li.</h4>
   </section>
 
-  <section id="task6">
+  <section id='task6'>
     <h4>6. Дан массив объектов. Выведите этих работников в HTML таблице.</h4>
     <h4>7. Добавьте ячейкам созданной таблицы возможность редактирования.</h4>
     <h4>8. Добавьте в вашу таблицу новую колонку со ссылкой на удаления ряда из таблицы.</h4>
-    <h4>9.Сделайте под таблицей 3 инпута и кнопку для добавление нового работника.
+    <h4>9. Сделайте под таблицей 3 инпута и кнопку для добавление нового работника.
       Пусть в инпуты вводятся имя, возраст и зарплата, и по нажатию на кнопку новый работник добавляется в таблицу.
       Реализуйте редактирование ячеек для вновь добавленных работников.
     </h4>
+  </section>
+
+  <section id='task10'>
+    <h4>10. Дан массив с работниками. Вывеcти на экран каждого работника в своем теге li тега ul.</h4>
+    <h4>11. Сделайть так, чтобы по клику на имя, возраст или зарплату работника появлялся инпут для редактирования этого
+      поля.</h4>
+    <h4>12. Добавьте в конец каждого тега li ссылку на удаление этого li из списка.</h4>
+    <h4>13. Под списком сделайте форму для добавления нового работника.</h4>
   </section>
 
   <script>
@@ -243,6 +251,96 @@
       linkDeleteEl.addEventListener('click', e => e.target.parentElement.parentElement.remove());
 
     }
+  </script>
+
+  <script>
+    console.log(`
+    10. Дан массив с работниками. Вывеcти на экран каждого работника в своем теге li тега ul.
+    11. Сделайть так, чтобы по клику на имя, возраст или зарплату работника появлялся инпут для редактирования этого поля.
+    12. Добавьте в конец каждого тега li ссылку на удаление этого li из списка.
+    13. Под списком сделайте форму для добавления нового работника.
+    `);
+
+    let employees10 = [
+      { name: 'employee1', age: 30, salary: 400 },
+      { name: 'employee2', age: 31, salary: 500 },
+      { name: 'employee3', age: 32, salary: 600 },
+    ];
+
+    let sectionTask10 = document.getElementById('task10');
+    let ulElEmployees = document.createElement('ul');
+
+    for (let employee of employees10) {
+      let liElEmployee = document.createElement('li');
+      let br1El = document.createElement('br');
+      let br2El = document.createElement('br');
+      let br3El = document.createElement('br');
+      let textEl = document.createElement('div');
+      let nameEl = document.createElement('span');
+      nameEl.textContent = employee.name;
+      let ageEl = document.createElement('span');
+      ageEl.textContent = employee.age;
+      let salaryEl = document.createElement('span');
+      salaryEl.textContent = employee.salary;
+      let linkForDeleteEl = document.createElement('a');
+      linkForDeleteEl.href = '#';
+      linkForDeleteEl.textContent = 'delete';
+      textEl.appendChild(nameEl);
+      textEl.appendChild(br1El);
+      textEl.appendChild(ageEl);
+      textEl.appendChild(br2El);
+      textEl.appendChild(salaryEl);
+      textEl.appendChild(br3El);
+      textEl.appendChild(linkForDeleteEl);
+      liElEmployee.appendChild(textEl);
+      ulElEmployees.appendChild(liElEmployee);
+    }
+
+    sectionTask10.appendChild(ulElEmployees);
+
+    (function setHandlers() {
+      sectionTask10.addEventListener('click', e => handlerClicksectionTask10(e));
+
+      function handlerClicksectionTask10(e) {
+        let target = e.target;
+
+        switch (target.tagName) {
+          case 'SPAN':
+            editor(target, target.textContent);
+            break;
+        }
+
+        function editor(element, content) {
+          let inputEl = document.createElement('input');
+          inputEl.value = content;
+          element.innerHTML = '';
+          element.appendChild(inputEl);
+          inputEl.addEventListener('blur', () => {
+            element.textContent = inputEl.value;
+          })
+
+        }
+
+      }
+
+    })();
+
+    (function createFormForAddNewEmployee() {
+      let formEl = document.createElement('form');
+      let inputNameEl = document.createElement('input');
+      inputNameEl.placeholder = 'name';
+      let inputAgeEl = document.createElement('input');
+      inputAgeEl.placeholder = 'age';
+      let inputSalaryEl = document.createElement('input');
+      inputSalaryEl.placeholder = 'salary';
+      let inputSubmitEl = document.createElement('input');
+      inputSubmitEl.type = 'submit';
+      formEl.appendChild(inputNameEl);
+      formEl.appendChild(inputAgeEl);
+      formEl.appendChild(inputSalaryEl);
+      formEl.appendChild(inputSubmitEl);
+      sectionTask10.appendChild(formEl);
+    })();
   </script>
 
 
