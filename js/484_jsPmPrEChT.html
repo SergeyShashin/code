@@ -14,7 +14,26 @@
   </a>
 
   <section id='task1'>
-    <h2>Дан массив. Выведите его элементы в виде списка ul.</h2>
+    <h4>Дан массив. Выведите его элементы в виде списка ul.</h4>
+    <h4>2. Модифицируйте предыдущую задачу так, чтобы по клику на любую li в ней появлялся инпут,
+      с помощью которого ее можно будет поредактировать.</h4>
+    <h4>3. Модифицируйте предыдущую задачу так, чтобы под списком был инпут,
+      с помощью которого можно будет добавить новый элемент в конец списка ul.
+      Сделайте так, чтобы новые li также можно было редактировать.</h4>
+    <h4>4. Модифицируйте предыдущую задачу так, чтобы в конце каждой li стояла ссылка 'удалить',
+      с помощью которой можно будет удалить эту li из ul.</h4>
+    <h4>5. Модифицируйте предыдущую задачу так, чтобы в конце каждой li также стояла ссылка
+      'перечеркнуть', с помощью которой можно будет перечеркнуть текст данного тега li.</h4>
+  </section>
+
+  <section id="task6">
+    <h4>6. Дан массив объектов. Выведите этих работников в HTML таблице.</h4>
+    <h4>7. Добавьте ячейкам созданной таблицы возможность редактирования.</h4>
+    <h4>8. Добавьте в вашу таблицу новую колонку со ссылкой на удаления ряда из таблицы.</h4>
+    <h4>9.Сделайте под таблицей 3 инпута и кнопку для добавление нового работника.
+      Пусть в инпуты вводятся имя, возраст и зарплата, и по нажатию на кнопку новый работник добавляется в таблицу.
+      Реализуйте редактирование ячеек для вновь добавленных работников.
+    </h4>
   </section>
 
   <script>
@@ -111,7 +130,119 @@
       }
     }
 
+  </script>
 
+  <script>
+    console.log(`6. Дан следующий массив с работниками:
+    let employees = [
+	  {name: 'employee1', age: 30, salary: 400},
+	  {name: 'employee2', age: 31, salary: 500},
+	  {name: 'employee3', age: 32, salary: 600},
+    ];
+    Выведите этих работников в HTML таблице.`);
+
+    console.log(`7. Добавьте ячейкам созданной таблицы возможность редактирования.`);
+    console.log(`8. Добавьте в вашу таблицу новую колонку со ссылкой на удаления ряда из таблицы.`);
+    console.log(`9.Сделайте под таблицей 3 инпута и кнопку для добавление нового работника.
+    Пусть в инпуты вводятся имя, возраст и зарплата, и по нажатию на кнопку новый работник добавляется в таблицу.
+    Реализуйте редактирование ячеек для вновь добавленных работников.`);
+
+    let section6 = document.getElementById('task6');
+    section6.addEventListener('click', e => handlerClickSection6(e));
+    let tableEl6 = document.createElement('table');
+    section6.appendChild(tableEl6);
+
+    let employees = [
+      { name: 'employee1', age: 30, salary: 400 },
+      { name: 'employee2', age: 31, salary: 500 },
+      { name: 'employee3', age: 32, salary: 600 },
+    ];
+
+    for (let el of employees) {
+      let trEl = document.createElement('tr');
+      let tdNameEl = document.createElement('td');
+      let tdAgeEl = document.createElement('td');
+      let tdSalaryEl = document.createElement('td');
+      let tdLinkDeleteEl = document.createElement('td');
+
+      tdNameEl.textContent = el.name;
+      tdAgeEl.textContent = el.age;
+      tdSalaryEl.textContent = el.salary;
+      let linkDeleteEl = document.createElement('a');
+      linkDeleteEl.textContent = 'deleteTd';
+      linkDeleteEl.href = '#';
+      tdLinkDeleteEl.appendChild(linkDeleteEl);
+      trEl.appendChild(tdNameEl);
+      trEl.appendChild(tdAgeEl);
+      trEl.appendChild(tdSalaryEl);
+      trEl.appendChild(tdLinkDeleteEl);
+      tableEl6.appendChild(trEl);
+
+      linkDeleteEl.addEventListener('click', e => e.target.parentElement.parentElement.remove());
+    }
+
+    function handlerClickSection6(e) {
+      let target = e.target;
+      if (target.tagName === 'TD') {
+        let content = target.textContent;
+        let tableInputEl = document.createElement('input');
+        target.textContent = '';
+        target.appendChild(tableInputEl);
+        tableInputEl.value = content;
+        tableInputEl.addEventListener('blur', eInInput => insertInputValueInTd(eInInput));
+      }
+
+      function insertInputValueInTd(eInInput) {
+        content = eInInput.target.value;
+        eInInput.target.remove();
+        target.textContent = content;
+      }
+
+    }
+
+
+    let enterEl = document.createElement('div');
+    let inputNameEl = document.createElement('input');
+    inputNameEl.id = 'enterName';
+    let inputAgeEl = document.createElement('input');
+    inputAgeEl.id = 'enterAge';
+    let inputSalaryEl = document.createElement('input');
+    inputSalaryEl.id = 'enterSalary';
+    let btnInsertEl = document.createElement('button');
+    btnInsertEl.id = 'btnInsert';
+    btnInsertEl.textContent = 'insert employee';
+
+    enterEl.appendChild(inputNameEl);
+    enterEl.appendChild(inputAgeEl);
+    enterEl.appendChild(inputSalaryEl);
+    enterEl.appendChild(btnInsertEl);
+
+    section6.appendChild(enterEl);
+    btnInsertEl.addEventListener('click', insertNewEmployee);
+
+    function insertNewEmployee() {
+      let trEl = document.createElement('tr');
+      let tdNameEl = document.createElement('td');
+      let tdAgeEl = document.createElement('td');
+      let tdSalaryEl = document.createElement('td');
+      let tdLinkDeleteEl = document.createElement('td');
+
+      tdNameEl.textContent = inputNameEl.value;
+      tdAgeEl.textContent = inputAgeEl.value;
+      tdSalaryEl.textContent = inputSalaryEl.value;
+      let linkDeleteEl = document.createElement('a');
+      linkDeleteEl.textContent = 'deleteTd';
+      linkDeleteEl.href = '#';
+      tdLinkDeleteEl.appendChild(linkDeleteEl);
+      trEl.appendChild(tdNameEl);
+      trEl.appendChild(tdAgeEl);
+      trEl.appendChild(tdSalaryEl);
+      trEl.appendChild(tdLinkDeleteEl);
+      tableEl6.appendChild(trEl);
+
+      linkDeleteEl.addEventListener('click', e => e.target.parentElement.parentElement.remove());
+
+    }
   </script>
 
 
