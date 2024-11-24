@@ -20,25 +20,49 @@
   <script>
     console.log(`1. Дан массив. Выведите его элементы в виде списка ul.`);
     console.log(`2. Модифицируйте предыдущую задачу так, чтобы по клику на любую li в ней появлялся инпут,
-     с помощью которого ее можно будет поредактировать.`);
+    с помощью которого ее можно будет поредактировать.`);
+    console.log(`3. Модифицируйте предыдущую задачу так, чтобы под списком был инпут, 
+    с помощью которого можно будет добавить новый элемент в конец списка ul. 
+    Сделайте так, чтобы новые li также можно было редактировать.`);
+    console.log(`4. Модифицируйте предыдущую задачу так, чтобы в конце каждой li стояла ссылка 'удалить', 
+    с помощью которой можно будет удалить эту li из ul.`);
+    console.log(`5. Модифицируйте предыдущую задачу так, чтобы в конце каждой li также стояла ссылка
+    'перечеркнуть', с помощью которой можно будет перечеркнуть текст данного тега li.`);
 
     let arr1 = [1, 2, 3];
     let ulEl1 = document.createElement('ul');
+    let addNewLiEl1 = document.createElement('input');
+    addNewLiEl1.id = 'addNewLiEl';
 
-    document.getElementById('task1').appendChild(ulEl1);
+    let sectionTask1 = document.getElementById('task1');
+    sectionTask1.appendChild(ulEl1);
+    sectionTask1.appendChild(addNewLiEl1);
 
     for (let el of arr1) {
       let liEl = document.createElement('li');
-      liEl.textContent = el;
+      let textLiEl = document.createElement('span');
+      textLiEl.className = 'textLi';
+      liEl.appendChild(textLiEl);
+      textLiEl.textContent = el;
       ulEl1.appendChild(liEl);
     }
 
     ulEl1.addEventListener('click', e => createInputOnClickLiEl(e));
+    sectionTask1.addEventListener('onchange', addLinksForDeleteAndSetNewStyleLi());
+    addNewLiEl1.addEventListener('blur', e => createLiElInUlEl(e));
 
     function createInputOnClickLiEl(e) {
       let target = e.target;
 
-      if (target.tagName !== 'LI') {
+      if (target.tagName === 'A' && target.className === 'deleteLiEl') {
+        target.parentElement.remove();
+      }
+
+      if (target.tagName === 'A' && target.className === 'newStyleLiEl') {
+        target.parentElement.querySelector('.textLi').style.textDecoration = 'line-through';
+      }
+
+      if (target.tagName !== 'SPAN') {
         return
       }
 
@@ -55,6 +79,38 @@
         target.textContent = content;
       }
     }
+
+    function createLiElInUlEl(e) {
+      let newLiEl = document.createElement('li');
+      let textLiEl = document.createElement('span');
+      textLiEl.className = 'textLi';
+      textLiEl.textContent = e.target.value;
+      newLiEl.appendChild(textLiEl);
+      ulEl1.appendChild(newLiEl);
+      addLinksForDeleteAndSetNewStyleLi();
+    }
+
+    function addLinksForDeleteAndSetNewStyleLi() {
+      let liEls = ulEl1.querySelectorAll('li');
+
+      for (let el of liEls) {
+        if (el.querySelector('.deleteLiEl')) {
+          continue
+        };
+
+        let linkForDeliteLi = document.createElement('a');
+        let linkForNewStyleLi = document.createElement('a');
+        linkForDeliteLi.href = '#';
+        linkForNewStyleLi.href = '#';
+        linkForDeliteLi.textContent = ' delete';
+        linkForNewStyleLi.textContent = ' newStyle'
+        linkForDeliteLi.className = 'deleteLiEl';
+        linkForNewStyleLi.className = 'newStyleLiEl';
+        el.appendChild(linkForDeliteLi);
+        el.appendChild(linkForNewStyleLi);
+      }
+    }
+
 
   </script>
 
