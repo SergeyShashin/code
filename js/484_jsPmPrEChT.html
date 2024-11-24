@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>practice/elements-changing-training</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/practice/elements-changing-training/">
+    Практика на изменение элементов на JavaScript
+  </a>
+
+  <section id='task1'>
+    <h2>Дан массив. Выведите его элементы в виде списка ul.</h2>
+  </section>
+
+  <script>
+    console.log(`1. Дан массив. Выведите его элементы в виде списка ul.`);
+    console.log(`2. Модифицируйте предыдущую задачу так, чтобы по клику на любую li в ней появлялся инпут,
+     с помощью которого ее можно будет поредактировать.`);
+
+    let arr1 = [1, 2, 3];
+    let ulEl1 = document.createElement('ul');
+
+    document.getElementById('task1').appendChild(ulEl1);
+
+    for (let el of arr1) {
+      let liEl = document.createElement('li');
+      liEl.textContent = el;
+      ulEl1.appendChild(liEl);
+    }
+
+    ulEl1.addEventListener('click', e => createInputOnClickLiEl(e));
+
+    function createInputOnClickLiEl(e) {
+      let target = e.target;
+
+      if (target.tagName !== 'LI') {
+        return
+      }
+
+      let content = target.textContent;
+
+      let inputEl = document.createElement('input');
+
+      target.appendChild(inputEl);
+
+      inputEl.addEventListener('blur', insertEnterToLi);
+
+      function insertEnterToLi() {
+        content = inputEl.value;
+        target.textContent = content;
+      }
+    }
+
+  </script>
+
+
+
+</body>
+
+</html>
