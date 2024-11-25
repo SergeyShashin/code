@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dom/functions/dom-element-functions</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/functions/dom-element-functions/">
+    Функции для работы с DOM элементом на JavaScript
+  </a>
+
+  <section></section>
+  <p></p>
+  <div></div>
+  <span></span>
+  <ul></ul>
+
+  <script>
+    console.log(`Функцию, которая первым параметром будет принимать id элемента,
+     а вторым - текст элемента, и будет устанавливать этому элементу новый текст.
+     Модифицируйте созданную мною функцию так, чтобы параметром она принимала не id элемента, а произвольный CSS селектор.`);
+
+    function setText(selector, text) {
+      document.querySelector(selector).textContent = text;
+    }
+
+    setText('section', 'Текст, добавься в section.');
+    setText('p', 'Текст, добавься в p.');
+    setText('div', 'Текст, добавься в div.');
+    setText('span', 'Текст, добавься в span.');
+    setText('ul', 'Текст, добавься в ul.');
+  </script>
+
+  <script>
+    console.log(`Сделайте функцию setAttr, которая будет менять атрибут DOM элементу.
+    Пусть первым параметром функция принимает селектор элемента, вторым - имя атрибута, а третьим - его новое значение.`);
+
+    function setAttr(selector, nameAttr, valueAttr) {
+      document.querySelector(selector).dataset[nameAttr] = valueAttr;
+    }
+
+    setAttr('p', 'id', 'valueAttr');
+
+  </script>
+
+</body>
+
+</html>
