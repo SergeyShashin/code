@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dom/functions/tables-creating-function-array</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/functions/tables-creating-function-array/">
+    Функция для создания таблицы из массива
+  </a>
+
+  <div id='elem'></div>
+
+  <script>
+    console.log(`Cделать функцию createTableByArr, которая параметром будет принимать двухмерный массив и строить на его основе таблицую`);
+    let div = document.querySelector('#elem');
+
+    let arr = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+    let table = createTableByArr(arr);
+
+    div.appendChild(table);
+
+    function createTableByArr(arr) {
+      let table = document.createElement('table');
+
+      for (let rowArr of arr) {
+        let trEl = document.createElement('tr');
+        for (let col of rowArr) {
+          let tdEl = document.createElement('td');
+          tdEl.textContent = col;
+          trEl.appendChild(tdEl)
+        }
+        table.appendChild(trEl);
+      }
+
+      return table
+    }
+
+  </script>
+
+</body>
+
+</html>
