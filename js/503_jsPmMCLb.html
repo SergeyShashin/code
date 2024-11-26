@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>modules/libraries</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/modules/libraries/">
+    Библиотеки через замыкания в JavaScript
+  </a>
+
+  <script>
+
+    console.log(`Эспортируйте наружу все функции, кроме вспомогательной`);
+
+    ; (() => {
+      function avg1(arr) {
+        return sum(arr, 1) / arr.length;
+      }
+
+      function avg2(arr) {
+        return sum(arr, 2) / arr.length;
+      }
+
+      function avg3(arr) {
+        return sum(arr, 3) / arr.length;
+      }
+
+      // вспомогательная функция
+      function sum(arr, pow) {
+        let res = 0;
+
+        for (let elem of arr) {
+          res += elem ** pow;
+        }
+
+        return res;
+      }
+
+      window.functions = { avg1, avg2, avg3 };
+    })();
+
+    console.log(functions.avg1([7.1, 7, 7]));
+    console.log(functions.avg1([8, 8, 8]));
+  </script>
+</body>
+
+</html>
