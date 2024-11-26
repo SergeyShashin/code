@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>modules/passing-parameters</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/modules/passing-parameters/">
+    Передача параметров в модуль через замыкания в JavaScript
+  </a>
+
+  <br>
+  <br>
+
+  <section>
+    <input type="text" placeholder="nuber1">
+    <input type="text" placeholder="nuber2">
+    <input type="text" placeholder="nuber3">
+    <button>SUM</button>
+    <p id="monitor"></p>
+  </section>
+
+  <script>
+
+    (function (selector) {
+      let tag = document.querySelector(selector);
+
+      tag.addEventListener('click', e => sumValueInputs(e));
+
+      function sumValueInputs(e) {
+        if (e.target.tagName === 'BUTTON') {
+          let inputElements = e.target.parentElement.querySelectorAll('input');
+          console.log(e.target.parentElement);
+          let sum = 0;
+
+          for (let el of inputElements) {
+            sum += Number(el.value);
+          }
+
+          e.target.parentElement.querySelector('#monitor').textContent = sum;
+        }
+      }
+
+    })('section');
+
+  </script>
+
+</body>
+
+</html>
