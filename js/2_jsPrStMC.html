@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>practice/math-calculators</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/practice/math-calculators/">
+    Математические калькуляторы на JavaScript
+  </a>
+
+  <br>
+  <br>
+
+  <div id="monitor"></div>
+
+  <br>
+  <br>
+
+  <section id='rootsOfQuadraticEquation'>
+    <h4>Найти корни квадратного уравнения.</h4>
+    <input placeholder="a">
+    <input placeholder="b">
+    <input placeholder="c">
+    <button>найти корни квадратного уравнения</button>
+  </section>
+
+  <script>
+    console.log(`Cкрипт, который будет находить корни квадратного уравнения.
+     Для этого сделайте 3 инпута, в которые будут вводиться коэффициенты уравнения.`);
+
+    (function () {
+      let rootsOfQuadraticEquationEl = document.getElementById('rootsOfQuadraticEquation');
+      rootsOfQuadraticEquationEl.addEventListener('click', e => handlerClickRootsOfQuadraticEquationEl(e));
+
+      function handlerClickRootsOfQuadraticEquationEl(e) {
+        if (e.target.tagName === 'BUTTON') {
+          let monitorEl = document.getElementById('monitor');
+
+          let inputElements = e.target.parentElement.querySelectorAll('input');
+          let abcArr = [];
+
+          for (let inputEl of inputElements) {
+            typeof Number(inputEl.value) === 'number' ? abcArr.push(Number(inputEl.value)) : '';
+          }
+
+          if (abcArr.length === 3) {
+
+            let result;
+
+            let [a, b, c] = abcArr;
+
+            let d = b ** 2 - 4 * a * c;
+
+            if (d < 0) {
+              result = 'Действительных корней нет.';
+            } else if (d == 0) {
+              result = `x=${-b / (2 * a)}`;
+            } else {
+              let sqrtD = Math.sqrt(d);
+              let x1 = (-b + sqrtD) / (2 * a);
+              let x2 = (-b - sqrtD) / (2 * a);
+              result = `x1=${x1}, x2=${x2}`;
+            }
+            monitorEl.textContent = result;
+          }
+        }
+      };
+    })();
+  </script>
+
+</body>
+
+</html>
