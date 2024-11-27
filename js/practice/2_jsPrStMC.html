@@ -288,7 +288,16 @@
           let maxNumber = Math.max(...numbersArr);
           let minNumber = Math.min(...numbersArr);
 
-          monitorEl.textContent = (maxNumber * 2) % minNumber === 0 || (minNumber * 3) % maxNumber === 0 ? maxNumber * 2 : maxNumber * minNumber;
+          if (minNumber < 2) {
+            monitorEl.textContent = maxNumber;
+          }
+
+          for (let counter = 2; counter <= minNumber; counter++) {
+            if (maxNumber * counter % minNumber === 0) {
+              return monitorEl.textContent = maxNumber * counter;
+            }
+          }
+
         }
       }
     })('minNumWhereN1AndN2Divider')
