@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>practice/math-calculators</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/practice/math-calculators/">
+    Математические калькуляторы на JavaScript
+  </a>
+
+  <br>
+  <br>
+
+  <div id="monitor"></div>
+
+  <br>
+  <br>
+
+  <section id='rootsOfQuadraticEquation'>
+    <h4>Найти корни квадратного уравнения.</h4>
+    <input placeholder="a">
+    <input placeholder="b">
+    <input placeholder="c">
+    <button>найти корни квадратного уравнения</button>
+  </section>
+
+  <section id='3Piphagora'>
+    <h4>Определить являются ли числа тройкой Пифагора.</h4>
+    <input placeholder="a">
+    <input placeholder="b">
+    <input placeholder="c">
+    <button>определить</button>
+  </section>
+
+  <section id='dividers'>
+    <h4>Список делителей числа.</h4>
+    <input placeholder="number">
+    <button>определить</button>
+  </section>
+
+  <section id='collectiveDividers'>
+    <h4>Список общих делителей чисел.</h4>
+    <input placeholder="number1">
+    <input placeholder="number2">
+    <button>определить</button>
+  </section>
+
+  <section id='mcd'>
+    <h4>Наибольший общий делитель.</h4>
+    <input placeholder="number1">
+    <input placeholder="number2">
+    <button>определить</button>
+  </section>
+
+  <section id='minNumWhereN1AndN2Divider'>
+    <h4>Наименьшее число, которое делится и на одно, и на второе из введенных чисел.</h4>
+    <input placeholder="number1">
+    <input placeholder="number2">
+    <button>определить</button>
+  </section>
+
+  <script>
+    console.log(`1. Cкрипт, который будет находить корни квадратного уравнения.
+     Для этого сделайте 3 инпута, в которые будут вводиться коэффициенты уравнения.`);
+
+    (function () {
+      let rootsOfQuadraticEquationEl = document.getElementById('rootsOfQuadraticEquation');
+      rootsOfQuadraticEquationEl.addEventListener('click', e => handlerClickRootsOfQuadraticEquationEl(e));
+
+      function handlerClickRootsOfQuadraticEquationEl(e) {
+        if (e.target.tagName === 'BUTTON') {
+          let monitorEl = document.getElementById('monitor');
+
+          let inputElements = e.target.parentElement.querySelectorAll('input');
+          let abcArr = [];
+
+          for (let inputEl of inputElements) {
+            typeof Number(inputEl.value) === 'number' ? abcArr.push(Number(inputEl.value)) : '';
+          }
+
+          if (abcArr.length === 3) {
+
+            let result;
+
+            let [a, b, c] = abcArr;
+
+            let d = b ** 2 - 4 * a * c;
+
+            if (d < 0) {
+              result = 'Действительных корней нет.';
+            } else if (d == 0) {
+              result = `x=${-b / (2 * a)}`;
+            } else {
+              let sqrtD = Math.sqrt(d);
+              let x1 = (-b + sqrtD) / (2 * a);
+              let x2 = (-b - sqrtD) / (2 * a);
+              result = `x1=${x1}, x2=${x2}`;
+            }
+            monitorEl.textContent = result;
+          }
+        }
+      };
+    })();
+  </script>
+
+  <script>
+    console.log(`2. Даны 3 инпута. В них вводятся числа. Проверьте, что эти числа являются тройкой Пифагора:
+    квадрат самого большого числа должен быть равен сумме квадратов двух остальных..`);
+
+    (function () {
+      let piphagorEl = document.getElementById('3Piphagora');
+      piphagorEl.addEventListener('click', e => handlerClickpiphagorEl(e));
+
+      function handlerClickpiphagorEl(e) {
+        if (e.target.tagName === 'BUTTON') {
+          let monitorEl = document.getElementById('monitor');
+
+          let inputElements = e.target.parentElement.querySelectorAll('input');
+          let abcArr = [];
+
+          for (let inputEl of inputElements) {
+            typeof Number(inputEl.value) === 'number' ? abcArr.push(Number(inputEl.value)) : '';
+          }
+
+          if (abcArr.length === 3) {
+
+            let maxNumber = Math.max(...abcArr);
+
+            let [a, b] = abcArr.filter(el => el !== maxNumber);
+
+            monitorEl.textContent = maxNumber ** 2 === a ** 2 + b ** 2 ? `${abcArr} - тройка Пифагора.` : `${abcArr} - не тройка Пифагора.`;
+
+          }
+        }
+      };
+    })();
+  </script>
+
+  <script>
+    console.log(`3. Дан инпут и кнопка. В инпут вводится число. По нажатию на кнопку выведите список делителей этого числа.`);
+
+    (function () {
+      document.getElementById('dividers').addEventListener('click', e => handlerClickDividers(e));
+
+      function handlerClickDividers(e) {
+        if (e.target.tagName === 'BUTTON') {
+          let monitorEl = document.getElementById('monitor');
+          let number = Number(e.target.parentElement.querySelector('input').value);
+          let dividers = [0, 1];
+
+          if (Number.isInteger(number)) {
+
+            for (let counter = number - 1; counter > 1; counter--) {
+              number % counter === 0 ? dividers.push(counter) : '';
+            }
+
+            dividers.push(number);
+            monitorEl.textContent = dividers;
+          }
+        }
+      }
+    })()
+  </script>
+
+  <script>
+    console.log(`4. Даны 2 инпута и кнопка. В инпуты вводятся числа. По нажатию на кнопку выведите список общих делителей этих двух чисел.`);
+
+    (function () {
+      document.getElementById('collectiveDividers').addEventListener('click', e => handlerClickDividers(e));
+
+      function handlerClickDividers(e) {
+        if (e.target.tagName === 'BUTTON') {
+          let monitorEl = document.getElementById('monitor');
+          let inputsElements = e.target.parentElement.querySelectorAll('input');
+          let numbersArr = [];
+          let number1Dividers = [];
+          let number2Dividers = [];
+          let collectiveDividers = [0, 1];
+
+          for (let el of inputsElements) {
+            let number = Number(el.value);
+            typeof number === 'number' ? numbersArr.push(number) : '';
+          }
+
+          let [n1, n2] = numbersArr;
+
+          for (let counter = n1 - 1; counter > 1; counter--) {
+            n1 % counter === 0 ? number1Dividers.push(counter) : '';
+          }
+          number1Dividers.push(n1);
+
+          for (let counter = n2 - 1; counter > 1; counter--) {
+            n2 % counter === 0 ? number2Dividers.push(counter) : '';
+          }
+
+          number2Dividers.push(n2);
+
+          if (number1Dividers.length > number2Dividers.length) {
+            for (let num of number2Dividers) {
+              number1Dividers.includes(num) ? collectiveDividers.push(num) : '';
+            }
+          } else {
+            for (let num of number2Dividers) {
+              number1Dividers.includes(num) ? collectiveDividers.push(num) : '';
+            }
+          }
+
+          monitorEl.textContent = collectiveDividers.sort((a, b) => a - b);
+        }
+      }
+    })()
+  </script>
+
+  <script>
+    console.log(`5. Даны 2 инпута и кнопка. В инпуты вводятся числа. По нажатию на кнопку выведите наибольший общий делитель этих двух чисел.`);
+
+    (function (selector) {
+      document.getElementById(selector).addEventListener('click', e => handlerClickDividers(e));
+
+      function handlerClickDividers(e) {
+        if (e.target.tagName === 'BUTTON') {
+          let monitorEl = document.getElementById('monitor');
+          let inputsElements = e.target.parentElement.querySelectorAll('input');
+          let numbersArr = [];
+          let number1Dividers = [];
+          let number2Dividers = [];
+          let collectiveDividers = [0, 1];
+
+          for (let el of inputsElements) {
+            let number = Number(el.value);
+            typeof number === 'number' ? numbersArr.push(number) : '';
+          }
+
+          let [n1, n2] = numbersArr;
+
+          for (let counter = n1 - 1; counter > 1; counter--) {
+            n1 % counter === 0 ? number1Dividers.push(counter) : '';
+          }
+          number1Dividers.push(n1);
+
+          for (let counter = n2 - 1; counter > 1; counter--) {
+            n2 % counter === 0 ? number2Dividers.push(counter) : '';
+          }
+
+          number2Dividers.push(n2);
+
+          if (number1Dividers.length > number2Dividers.length) {
+            for (let num of number2Dividers) {
+              number1Dividers.includes(num) ? collectiveDividers.push(num) : '';
+            }
+          } else {
+            for (let num of number2Dividers) {
+              number1Dividers.includes(num) ? collectiveDividers.push(num) : '';
+            }
+          }
+
+          monitorEl.textContent = Math.max(...collectiveDividers);
+        }
+      }
+    })('mcd')
+  </script>
+
+  <script>
+    console.log(`6. Даны 2 инпута и кнопка. В инпуты вводятся числа.
+    По нажатию на кнопку выведите наименьшее число, которое делится и на одно, и на второе из введенных чисел.`);
+
+    (function (selector) {
+      document.getElementById(selector).addEventListener('click', e => handlerClickMinNumWhereN1AndN2Divider(e));
+
+      function handlerClickMinNumWhereN1AndN2Divider(e) {
+        if (e.target.tagName === 'BUTTON') {
+          let monitorEl = document.getElementById('monitor');
+          let inputsElements = e.target.parentElement.querySelectorAll('input');
+
+          let numbersArr = [];
+
+          for (let el of inputsElements) {
+            let number = Number(el.value);
+            typeof number === 'number' ? numbersArr.push(number) : '';
+          }
+
+          let [n1, n2] = numbersArr;
+
+          let maxNumber = Math.max(...numbersArr);
+          let minNumber = Math.min(...numbersArr);
+
+          monitorEl.textContent = (maxNumber * 2) % minNumber === 0 || (minNumber * 3) % maxNumber === 0 ? maxNumber * 2 : maxNumber * minNumber;
+        }
+      }
+    })('minNumWhereN1AndN2Divider')
+  </script>
+
+</body>
+
+</html>
