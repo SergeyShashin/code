@@ -10,7 +10,7 @@
 
 <body>
   <script>
-    console.log(`Сделайте калькулятор, который будет находить площадь и периметр квадрата.`);
+    console.log(`1. Сделайте калькулятор, который будет находить площадь и периметр квадрата.`);
     console.log(areaAndPerimetrOfTheSquare(1));
     function areaAndPerimetrOfTheSquare(a) {
       return `Площадь квадрата = ${a ** a}. Периметр квадрата = ${4 * a}.`
@@ -18,12 +18,32 @@
   </script>
 
   <script>
-    console.log(`Сделайте калькулятор, который будет находить площадь и периметр прямоугольника.`);
-    console.log(areaAndPerimetrOfThetriangle(1, 1, 1, 1));
-    function areaAndPerimetrOfThetriangle(a, b, c, h) {
-      return `Площадь треугольника = ${(a * h) / 2}. Периметр треугольника = ${a + b + c}`
+    console.log(`2. Сделайте калькулятор, который будет находить площадь и периметр прямоугольника.`);
+    console.log(areaAndPerimetrOfTheRectangle(1, 1));
+    function areaAndPerimetrOfTheRectangle(a, b) {
+      return `Площадь прямоугольника = ${(a * b)}. Периметр прямоугольника = ${2 * (a + b)}`
     }
   </script>
+
+  <script>
+    console.log(`3. Сделайте калькулятор, который будет находить площадь круга и длину окружности.`);
+    console.log(areaAndLengthOfTheCircle(1));
+    function areaAndLengthOfTheCircle(r) {
+      return `Площадь круга = ${Math.PI * r}. Длина окружности = ${2 * Math.PI * r}.`
+    }
+  </script>
+
+  <script>
+    console.log(`4. Сделайте калькулятор, который будет находить площадь треугольника по трем сторонам.`);
+    console.log(areaAndPerimetrOfTheTriangle(1, 1, 1));
+    function areaAndPerimetrOfTheTriangle(a, b, c) {
+      let p = a + b + c;
+      let halfMeter = p / 2;
+      return `Площадь треугольника = ${Math.sqrt(halfMeter * (halfMeter - a) * (halfMeter - b) * (halfMeter - c))}. Периметр треугольника = ${p}`
+    }
+  </script>
+
+
 </body>
 
 </html>
