@@ -28,8 +28,16 @@
     <button>найти корни квадратного уравнения</button>
   </section>
 
+  <section id='3Piphagora'>
+    <h4>Определить являются ли числа тройкой Пифагора.</h4>
+    <input placeholder="a">
+    <input placeholder="b">
+    <input placeholder="c">
+    <button>определить</button>
+  </section>
+
   <script>
-    console.log(`Cкрипт, который будет находить корни квадратного уравнения.
+    console.log(`1. Cкрипт, который будет находить корни квадратного уравнения.
      Для этого сделайте 3 инпута, в которые будут вводиться коэффициенты уравнения.`);
 
     (function () {
@@ -66,6 +74,39 @@
               result = `x1=${x1}, x2=${x2}`;
             }
             monitorEl.textContent = result;
+          }
+        }
+      };
+    })();
+  </script>
+
+  <script>
+    console.log(`2. Даны 3 инпута. В них вводятся числа. Проверьте, что эти числа являются тройкой Пифагора:
+    квадрат самого большого числа должен быть равен сумме квадратов двух остальных..`);
+
+    (function () {
+      let piphagorEl = document.getElementById('3Piphagora');
+      piphagorEl.addEventListener('click', e => handlerClickpiphagorEl(e));
+
+      function handlerClickpiphagorEl(e) {
+        if (e.target.tagName === 'BUTTON') {
+          let monitorEl = document.getElementById('monitor');
+
+          let inputElements = e.target.parentElement.querySelectorAll('input');
+          let abcArr = [];
+
+          for (let inputEl of inputElements) {
+            typeof Number(inputEl.value) === 'number' ? abcArr.push(Number(inputEl.value)) : '';
+          }
+
+          if (abcArr.length === 3) {
+
+            let maxNumber = Math.max(...abcArr);
+
+            let [a, b] = abcArr.filter(el => el !== maxNumber);
+
+            monitorEl.textContent = maxNumber ** 2 === a ** 2 + b ** 2 ? `${abcArr} - тройка Пифагора.` : `${abcArr} - не тройка Пифагора.`;
+
           }
         }
       };
