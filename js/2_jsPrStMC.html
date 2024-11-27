@@ -49,6 +49,13 @@
     <button>определить</button>
   </section>
 
+  <section id='mcd'>
+    <h4>Наибольший общий делитель.</h4>
+    <input placeholder="number1">
+    <input placeholder="number2">
+    <button>определить</button>
+  </section>
+
   <script>
     console.log(`1. Cкрипт, который будет находить корни квадратного уравнения.
      Для этого сделайте 3 инпута, в которые будут вводиться коэффициенты уравнения.`);
@@ -199,6 +206,55 @@
         }
       }
     })()
+  </script>
+
+  <script>
+    console.log(`5. Даны 2 инпута и кнопка. В инпуты вводятся числа. По нажатию на кнопку выведите наибольший общий делитель этих двух чисел.`);
+
+    (function (selector) {
+      document.getElementById(selector).addEventListener('click', e => handlerClickDividers(e));
+
+      function handlerClickDividers(e) {
+        if (e.target.tagName === 'BUTTON') {
+          let monitorEl = document.getElementById('monitor');
+          let inputsElements = e.target.parentElement.querySelectorAll('input');
+          let numbersArr = [];
+          let number1Dividers = [];
+          let number2Dividers = [];
+          let collectiveDividers = [0, 1];
+
+          for (let el of inputsElements) {
+            let number = Number(el.value);
+            typeof number === 'number' ? numbersArr.push(number) : '';
+          }
+
+          let [n1, n2] = numbersArr;
+
+          for (let counter = n1 - 1; counter > 1; counter--) {
+            n1 % counter === 0 ? number1Dividers.push(counter) : '';
+          }
+          number1Dividers.push(n1);
+
+          for (let counter = n2 - 1; counter > 1; counter--) {
+            n2 % counter === 0 ? number2Dividers.push(counter) : '';
+          }
+
+          number2Dividers.push(n2);
+
+          if (number1Dividers.length > number2Dividers.length) {
+            for (let num of number2Dividers) {
+              number1Dividers.includes(num) ? collectiveDividers.push(num) : '';
+            }
+          } else {
+            for (let num of number2Dividers) {
+              number1Dividers.includes(num) ? collectiveDividers.push(num) : '';
+            }
+          }
+
+          monitorEl.textContent = Math.max(...collectiveDividers);
+        }
+      }
+    })('mcd')
   </script>
 
 </body>
