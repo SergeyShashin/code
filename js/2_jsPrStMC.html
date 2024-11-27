@@ -36,6 +36,12 @@
     <button>определить</button>
   </section>
 
+  <section id='dividers'>
+    <h4>Список делителей числа.</h4>
+    <input placeholder="number">
+    <button>определить</button>
+  </section>
+
   <script>
     console.log(`1. Cкрипт, который будет находить корни квадратного уравнения.
      Для этого сделайте 3 инпута, в которые будут вводиться коэффициенты уравнения.`);
@@ -111,6 +117,32 @@
         }
       };
     })();
+  </script>
+
+  <script>
+    console.log(`3. Дан инпут и кнопка. В инпут вводится число. По нажатию на кнопку выведите список делителей этого числа.`);
+
+    (function () {
+      document.getElementById('dividers').addEventListener('click', e => handlerClickDividers(e));
+
+      function handlerClickDividers(e) {
+        if (e.target.tagName === 'BUTTON') {
+          let monitorEl = document.getElementById('monitor');
+          let number = Number(e.target.parentElement.querySelector('input').value);
+          let dividers = [0, 1];
+
+          if (Number.isInteger(number)) {
+
+            for (let counter = number - 1; counter > 1; counter--) {
+              number % counter === 0 ? dividers.push(counter) : '';
+            }
+
+            dividers.push(number);
+            monitorEl.textContent = dividers;
+          }
+        }
+      }
+    })()
   </script>
 
 </body>
