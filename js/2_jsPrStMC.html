@@ -56,6 +56,13 @@
     <button>определить</button>
   </section>
 
+  <section id='minNumWhereN1AndN2Divider'>
+    <h4>Наименьшее число, которое делится и на одно, и на второе из введенных чисел.</h4>
+    <input placeholder="number1">
+    <input placeholder="number2">
+    <button>определить</button>
+  </section>
+
   <script>
     console.log(`1. Cкрипт, который будет находить корни квадратного уравнения.
      Для этого сделайте 3 инпута, в которые будут вводиться коэффициенты уравнения.`);
@@ -255,6 +262,36 @@
         }
       }
     })('mcd')
+  </script>
+
+  <script>
+    console.log(`6. Даны 2 инпута и кнопка. В инпуты вводятся числа.
+    По нажатию на кнопку выведите наименьшее число, которое делится и на одно, и на второе из введенных чисел.`);
+
+    (function (selector) {
+      document.getElementById(selector).addEventListener('click', e => handlerClickMinNumWhereN1AndN2Divider(e));
+
+      function handlerClickMinNumWhereN1AndN2Divider(e) {
+        if (e.target.tagName === 'BUTTON') {
+          let monitorEl = document.getElementById('monitor');
+          let inputsElements = e.target.parentElement.querySelectorAll('input');
+
+          let numbersArr = [];
+
+          for (let el of inputsElements) {
+            let number = Number(el.value);
+            typeof number === 'number' ? numbersArr.push(number) : '';
+          }
+
+          let [n1, n2] = numbersArr;
+
+          let maxNumber = Math.max(...numbersArr);
+          let minNumber = Math.min(...numbersArr);
+
+          monitorEl.textContent = (maxNumber * 2) % minNumber === 0 || (minNumber * 3) % maxNumber === 0 ? maxNumber * 2 : maxNumber * minNumber;
+        }
+      }
+    })('minNumWhereN1AndN2Divider')
   </script>
 
 </body>
