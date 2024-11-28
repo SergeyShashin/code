@@ -24,14 +24,21 @@
     }
 
     .guessed {
-      background: green;
+      background: url(2.jpg) no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .clicked {
+      background: lightseagreen;
     }
 
     #guessCell {
       text-align: center;
     }
 
-    #newGame {
+    #newGame,
+    #timer {
       margin-top: 20px;
       background: burlywood;
       cursor: pointer;
@@ -40,7 +47,15 @@
       color: white;
     }
 
-    #newGame:hover {
+    #timer {
+      margin-top: 0;
+      margin-bottom: 20px;
+      background: none;
+    }
+
+
+    #newGame:hover,
+    #timer:hover {
       color: lightseagreen;
     }
   </style>
@@ -48,6 +63,7 @@
 
 <body>
   <section id='guessCell'>
+    <div id="timer">&nbsp;</div>
     <table id='playingField'></table>
     <button id='newGame'>New Game</button>
   </section>
