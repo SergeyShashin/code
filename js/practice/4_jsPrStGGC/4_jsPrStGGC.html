@@ -26,12 +26,30 @@
     .guessed {
       background: green;
     }
+
+    #guessCell {
+      text-align: center;
+    }
+
+    #newGame {
+      margin-top: 20px;
+      background: burlywood;
+      cursor: pointer;
+      font-size: 18px;
+      border: none;
+      color: white;
+    }
+
+    #newGame:hover {
+      color: lightseagreen;
+    }
   </style>
 </head>
 
 <body>
   <section id='guessCell'>
     <table id='playingField'></table>
+    <button id='newGame'>New Game</button>
   </section>
 
   <script src='4_jsPrStGGC.js'></script>

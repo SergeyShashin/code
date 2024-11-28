@@ -16,6 +16,7 @@ const guesCell = {
   settings,
   guessCellEl: null,
   playingFieldEl: null,
+  newGame: null,
   attempts: null,
   randomNumbers: null,
   quantityNumbers: null,
@@ -25,21 +26,22 @@ const guesCell = {
   init() {
     this.guessCellEl = document.getElementById('guessCell');
     this.playingFieldEl = document.getElementById('playingField');
+    this.newGameEl = document.getElementById('newGame');
+    this.setEventHandlers();
     this.run();
   },
 
   run() {
     this.reset();
-
   },
 
   reset() {
+    this.playingFieldEl.innerHTML = '';
     this.attempts = 0;
     this.quantityGuessed = 0;
     this.quantityNumbers = this.settings.rowsCount * this.settings.colsCount;
     this.randomNumbers = this.createRandomNumbers();
     this.createPlayingField();
-    this.setEventHandlers();
     this.statusPlaying = 'play';
   },
 
@@ -55,7 +57,6 @@ const guesCell = {
   },
 
   createPlayingField() {
-    console.log(this.randomNumbers);
     for (let row = 0, counter = 0; row < this.settings.rowsCount; row++) {
       let trEl = document.createElement('tr');
       for (let col = 0; col < this.settings.colsCount; col++, counter++) {
@@ -63,7 +64,6 @@ const guesCell = {
         tdEl.dataset.number = counter;
         if (this.randomNumbers.includes(counter)) {
           tdEl.dataset.guess = true;
-          tdEl.textContent = '?';
         }
         trEl.appendChild(tdEl);
       }
@@ -73,6 +73,7 @@ const guesCell = {
 
   setEventHandlers() {
     this.playingFieldEl.addEventListener('click', e => this.guesCellHandler(e));
+    this.newGameEl.addEventListener('click', () => this.reset());
   },
 
   guesCellHandler(e) {
