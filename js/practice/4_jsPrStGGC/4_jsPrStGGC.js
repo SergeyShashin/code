@@ -19,6 +19,8 @@ const guesCell = {
   attempts: null,
   randomNumbers: null,
   quantityNumbers: null,
+  quantityGuessed: null,
+  statusPlaying: null,
 
   init() {
     this.guessCellEl = document.getElementById('guessCell');
@@ -33,10 +35,12 @@ const guesCell = {
 
   reset() {
     this.attempts = 0;
+    this.quantityGuessed = 0;
     this.quantityNumbers = this.settings.rowsCount * this.settings.colsCount;
     this.randomNumbers = this.createRandomNumbers();
     this.createPlayingField();
     this.setEventHandlers();
+    this.statusPlaying = 'play';
   },
 
   createRandomNumbers() {
@@ -59,6 +63,7 @@ const guesCell = {
         tdEl.dataset.number = counter;
         if (this.randomNumbers.includes(counter)) {
           tdEl.dataset.guess = true;
+          tdEl.textContent = '?';
         }
         trEl.appendChild(tdEl);
       }
@@ -71,7 +76,7 @@ const guesCell = {
   },
 
   guesCellHandler(e) {
-    if (e.target.tagName !== 'TD') {
+    if (e.target.tagName !== 'TD' || this.statusPlaying === 'finish') {
       return
     }
 
@@ -81,6 +86,12 @@ const guesCell = {
 
     if (tdEl.dataset.guess) {
       tdEl.classList.add('guessed');
+      this.quantityGuessed++;
+      this.quantityGuessed === this.settings.quantityRandomNumbers ? this.statusPlaying = 'finish' : '';
+    }
+
+    if (this.statusPlaying === 'finish') {
+      alert(`Все загаданные ячейки угаданы за ${this.attempts} попыток)`);
     }
 
   }
