@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>practice/game-guess-number</title>
+  <style>
+    body,
+    input,
+    input::placeholder {
+      color: lightseagreen;
+    }
+
+    input {
+      border: none;
+      border-bottom: 1px solid lightseagreen;
+    }
+  </style>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/practice/game-guess-number/">
+    Игра угадай число на JavaScript
+  </a>
+
+  <section id='guessNumber'>
+    <h4>Угадай число</h4>
+    <div id='monitor'>&nbsp;</div>
+    <br>
+    <input type='number' id='inputNumber' placeholder='число от 1 до 100'>
+  </section>
+
+  <script>
+
+    let guessNumber = {
+      guessNumberEl: null,
+      monitroEl: null,
+      inputNumberEl: null,
+      attempt: null,
+      randomNumber: null,
+
+      init() {
+        this.guessNumberEl = document.getElementById('guessNumber');
+        this.monitorEl = document.getElementById('monitor');
+        this.inputNumberEl = document.getElementById('inputNumber');
+        this.run();
+      },
+
+      run() {
+        this.reset();
+        this.setEventHandlers();
+      },
+
+      reset() {
+        this.attempt = 0;
+        this.randomNumber = Math.floor(Math.random() * 101);
+      },
+
+      setEventHandlers() {
+        this.inputNumberEl.addEventListener('blur', e => this.tryGuesNumber(e));
+      },
+
+      tryGuesNumber(e) {
+        let numberUser = Number(e.target.value);
+
+        if (!this.checkUserNumber(numberUser)) {
+          this.showMsg('Отгадываем число от 1 до 100.');
+          return
+        }
+
+        this.attempt++;
+
+        this.guess(numberUser);
+      },
+
+      checkUserNumber(numberUser) {
+        return numberUser > 0 && numberUser < 101
+      },
+
+      guess(numberUser) {
+        if (numberUser === this.randomNumber) {
+          this.showMsg(`Число отгадано с ${this.attempt} попытки.`);
+        } else if (numberUser > this.randomNumber) {
+          this.showMsg(`Можно поробовать число меньше.`);
+        } else {
+          this.showMsg(`Можно поробовать число больше.`);
+        }
+      },
+
+      showMsg(msg) {
+        this.monitorEl.textContent = msg;
+      }
+
+    };
+
+    window.onload = () => guessNumber.init();
+
+  </script>
+
+
+
+</body>
+
+</html>
