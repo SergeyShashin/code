@@ -10,6 +10,7 @@ const screenKeyboard = {
   screenKeyboardEl: null,
   keyboard: null,
   monitorEl: null,
+  keysElements: null,
 
   init() {
     this.screenKeyboardEl = document.getElementById('screenKeyboard');
@@ -116,7 +117,7 @@ const screenKeyboard = {
         { key: 'Fn', code: '' },
         { key: 'Meta', code: 'MetaLeft' },
         { key: 'Alt', code: 'AltLeft' },
-        { key: ' ', code: 'Space' },
+        { key: 'Space', code: 'Space' },
         { key: 'Alt', code: 'AltRight' },
         { key: 'ContextMenu', code: 'ContextMenu' },
         { key: 'Control', code: 'ControlRight' },
@@ -129,20 +130,39 @@ const screenKeyboard = {
         { key: 'Enter', code: 'NumpadEnter' }
       ],
     };
+    this.keysElements = {};
     this.setEventHandlers();
+    this.createKeyboard();
   },
 
   setEventHandlers() {
-    document.addEventListener('keydown', e => this.handlerKeydown(e));
+    // document.addEventListener('keydown', e => this.handlerKeydown(e));
     this.screenKeyboardEl.addEventListener('click', e => this.handlerClick(e));
   },
 
-  handlerKeydown(e) {
-    console.log(e);
-  },
+  // handlerKeydown(e) {
+  //   console.log(e);
+  // },
 
   handlerClick(e) {
   },
+
+  createKeyboard() {
+    let rowsKeyboard = Object.values(this.keyboard);
+
+    for (let rowArr of rowsKeyboard) {
+      let trEl = document.createElement('tr');
+      for (let keyObj of rowArr) {
+        let tdEl = document.createElement('td');
+        tdEl.textContent = keyObj.key;
+        tdEl.dataset.code = keyObj.code;
+        tdEl.dataset.key = keyObj.key;
+        this.keysElements[keyObj.key] = tdEl;
+        trEl.appendChild(tdEl);
+      }
+      this.screenKeyboardEl.appendChild(trEl)
+    }
+  }
 }
 
 window.onload = () => screenKeyboard.init();
