@@ -133,52 +133,30 @@ const screenKeyboard = {
       ],
     };
     this.functionKeys = ['Esc', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9',
-      'F10', 'F11', 'PrtSc', '', 'Pause','Ins', 'Del', 'Home', 'PageUp', 'PageDown', 'End',
-        ,'Backspace','NumLock', 'Tab', 'CapsLock', 'Enter', 'Shift',
-        { key: '1', code: 'Numpad1' },
-        { key: '2', code: 'Numpad2' },
-        { key: '3', code: 'Numpad3' },
-        { key: '', code: '' },
-      ],
-      5: [
-        { key: 'Control', code: 'ControlLeft' },
-        { key: 'Fn', code: '' },
-        { key: 'Meta', code: 'MetaLeft' },
-        { key: 'Alt', code: 'AltLeft' },
-        { key: 'Space', code: 'Space' },
-        { key: 'Alt', code: 'AltRight' },
-        { key: 'ContextMenu', code: 'ContextMenu' },
-        { key: 'Control', code: 'ControlRight' },
-        { key: 'ArrowLeft', code: 'ArrowLeft' },
-        { key: 'ArrowDown', code: 'ArrowDown' },
-        { key: 'ArrowRight', code: 'ArrowRight' },
-        { key: 'ArrowUp', code: 'ArrowUp' },
-        { key: '0', code: 'Numpad0' },
-        { key: '.', code: 'NumpadDecimal' },
-        { key: 'Enter', code: 'NumpadEnter' }
-      ],
-    };
+      'F10', 'F11', 'PrtSc', '', 'Pause', 'Ins', 'Del', 'Home', 'PageUp', 'PageDown', 'End',
+      'Backspace', 'NumLock', 'Tab', 'CapsLock', 'Enter', 'Shift',
+      'Control', 'Fn', 'Meta', 'Alt', 'Space', 'ContextMenu',];
     this.keysElements = {};
     this.setEventHandlers();
     this.createKeyboard();
   },
 
   setEventHandlers() {
-    // document.addEventListener('keydown', e => this.handlerKeydown(e));
     this.screenKeyboardEl.addEventListener('click', e => this.handlerClick(e));
   },
 
-  // handlerKeydown(e) {
-  //   console.log(e);
-  // },
-
   handlerClick(e) {
-    if (e.target.tagName !== 'TD') {
+    let contentKey = e.target.textContent;
+    let tagName = e.target.tagName;
+    if (contentKey === 'Backspace') {
+      this.deleteLastChar();
+    }
+
+    if (tagName !== 'TD' || this.functionKeys.includes(contentKey)) {
       return
     }
 
-    this.monitorEl.textContent += e.target.textContent;
-    // console.log(e.target)
+    this.monitorEl.value += contentKey;
   },
 
   createKeyboard() {
@@ -196,6 +174,10 @@ const screenKeyboard = {
       }
       this.screenKeyboardEl.appendChild(trEl)
     }
+  },
+
+  deleteLastChar() {
+    this.monitorEl.value = this.monitorEl.value.replace(/[\w\sа-яё`]$/i, '');
   }
 }
 
