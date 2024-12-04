@@ -4,16 +4,18 @@
  * Давайте реализуем экранную клавиатуру. 
  * На ней должны быть кнопочки со всеми буквами и цифрами клавиатуры компьютера. 
  * Кликая мышкой по этим кнопочкам мы сможем вводить данные, например, при неработающей клавиатуре.
- */
+*/
 
 const screenKeyboard = {
   screenKeyboardEl: null,
   keyboard: null,
   monitorEl: null,
   keysElements: null,
+  functionKeys: null,
 
   init() {
     this.screenKeyboardEl = document.getElementById('screenKeyboard');
+    this.monitorEl = document.getElementById('monitor');
     this.keyboard = {
       0: [
         { key: 'Esc', code: 'Escape' },
@@ -130,6 +132,32 @@ const screenKeyboard = {
         { key: 'Enter', code: 'NumpadEnter' }
       ],
     };
+    this.functionKeys = ['Esc', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9',
+      'F10', 'F11', 'PrtSc', '', 'Pause','Ins', 'Del', 'Home', 'PageUp', 'PageDown', 'End',
+        ,'Backspace','NumLock', 'Tab', 'CapsLock', 'Enter', 'Shift',
+        { key: '1', code: 'Numpad1' },
+        { key: '2', code: 'Numpad2' },
+        { key: '3', code: 'Numpad3' },
+        { key: '', code: '' },
+      ],
+      5: [
+        { key: 'Control', code: 'ControlLeft' },
+        { key: 'Fn', code: '' },
+        { key: 'Meta', code: 'MetaLeft' },
+        { key: 'Alt', code: 'AltLeft' },
+        { key: 'Space', code: 'Space' },
+        { key: 'Alt', code: 'AltRight' },
+        { key: 'ContextMenu', code: 'ContextMenu' },
+        { key: 'Control', code: 'ControlRight' },
+        { key: 'ArrowLeft', code: 'ArrowLeft' },
+        { key: 'ArrowDown', code: 'ArrowDown' },
+        { key: 'ArrowRight', code: 'ArrowRight' },
+        { key: 'ArrowUp', code: 'ArrowUp' },
+        { key: '0', code: 'Numpad0' },
+        { key: '.', code: 'NumpadDecimal' },
+        { key: 'Enter', code: 'NumpadEnter' }
+      ],
+    };
     this.keysElements = {};
     this.setEventHandlers();
     this.createKeyboard();
@@ -145,6 +173,12 @@ const screenKeyboard = {
   // },
 
   handlerClick(e) {
+    if (e.target.tagName !== 'TD') {
+      return
+    }
+
+    this.monitorEl.textContent += e.target.textContent;
+    // console.log(e.target)
   },
 
   createKeyboard() {
