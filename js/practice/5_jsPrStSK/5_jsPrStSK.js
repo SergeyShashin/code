@@ -58,6 +58,11 @@ const screenKeyboard = {
         { keyEngMax: '/', key: '/', code: 'NumpadDivide' },
         { keyEngMax: '*', key: '*', code: 'NumpadMultiply' },
         { keyEngMax: '-', key: '-', code: 'NumpadSubtract' },
+        { keyEngMax: '', key: '', code: '' },
+        { keyEngMax: '', key: '', code: '' },
+        { keyEngMax: '', key: '', code: '' },
+        { keyEngMax: '', key: '', code: '' },
+
       ],
       2: [
         { keyEngMax: 'Tab', key: 'Tab', code: 'Tab' },
@@ -78,6 +83,8 @@ const screenKeyboard = {
         { keyEngMax: '8', key: '8', code: 'Numpad8' },
         { keyEngMax: '9', key: '9', code: 'Numpad9' },
         { keyEngMax: '+', key: '+', code: 'NumpadAdd' },
+        { keyEngMax: '', key: '', code: '' },
+        { keyEngMax: '', key: '', code: '' },
       ],
       3: [
         { keyEngMax: 'CapsLock', key: 'CapsLock', code: 'CapsLock' },
@@ -97,6 +104,9 @@ const screenKeyboard = {
         { keyEngMax: '5', key: '5', code: 'Numpad5' },
         { keyEngMax: '6', key: '6', code: 'Numpad6' },
         { keyEngMax: '', key: '', code: '' },
+        { keyEngMax: '', key: '', code: '' },
+        { keyEngMax: '', key: '', code: '' },
+        { keyEngMax: '', key: '', code: '' },
       ],
       4: [
         { keyEngMax: 'Shift', key: 'Shift', code: 'ShiftLeft' },
@@ -115,6 +125,10 @@ const screenKeyboard = {
         { keyEngMax: '2', key: '2', code: 'Numpad2' },
         { keyEngMax: '3', key: '3', code: 'Numpad3' },
         { keyEngMax: '', key: '', code: '' },
+        { keyEngMax: '', key: '', code: '' },
+        { keyEngMax: '', key: '', code: '' },
+        { keyEngMax: '', key: '', code: '' },
+        { keyEngMax: '', key: '', code: '' },
       ],
       5: [
         { keyEngMax: 'Control', key: 'Control', code: 'ControlLeft' },
@@ -131,7 +145,13 @@ const screenKeyboard = {
         { keyEngMax: 'ArrowUp', key: 'ArrowUp', code: 'ArrowUp' },
         { keyEngMax: '0', key: '0', code: 'Numpad0' },
         { keyEngMax: '.', key: '.', code: 'NumpadDecimal' },
-        { keyEngMax: 'Enter', key: 'Enter', code: 'NumpadEnter' }
+        { keyEngMax: 'Enter', key: 'Enter', code: 'NumpadEnter' },
+        { keyEngMax: '', key: '', code: '' },
+        { keyEngMax: '', key: '', code: '' },
+        { keyEngMax: '', key: '', code: '' },
+        { keyEngMax: '', key: '', code: '' },
+        { keyEngMax: '', key: '', code: '' },
+
       ],
     };
     this.functionKeys = ['Esc', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9',
