@@ -12,10 +12,12 @@ const screenKeyboard = {
   monitorEl: null,
   keysElements: null,
   functionKeys: null,
+  capsLock: null,
 
   init() {
     this.screenKeyboardEl = document.getElementById('screenKeyboard');
     this.monitorEl = document.getElementById('monitor');
+    this.capsLock = false;
     this.keyboard = {
       0: [
         { key: 'Esc', code: 'Escape' },
@@ -135,7 +137,7 @@ const screenKeyboard = {
     this.functionKeys = ['Esc', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9',
       'F10', 'F11', 'PrtSc', '', 'Pause', 'Ins', 'Del', 'Home', 'PageUp', 'PageDown', 'End',
       'Backspace', 'NumLock', 'Tab', 'CapsLock', 'Enter', 'Shift',
-      'Control', 'Fn', 'Meta', 'Alt', 'Space', 'ContextMenu',];
+      'Control', 'Fn', 'Meta', 'Alt', 'Space', 'ContextMenu', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'ArrowUp'];
     this.keysElements = {};
     this.setEventHandlers();
     this.createKeyboard();
@@ -148,15 +150,20 @@ const screenKeyboard = {
   handlerClick(e) {
     let contentKey = e.target.textContent;
     let tagName = e.target.tagName;
+
     if (contentKey === 'Backspace') {
       this.deleteLastChar();
+    }
+
+    if (contentKey === 'CapsLock') {
+      this.capsLock = !this.capsLock;
     }
 
     if (tagName !== 'TD' || this.functionKeys.includes(contentKey)) {
       return
     }
 
-    this.monitorEl.value += contentKey;
+    this.monitorEl.value += this.capsLock ? contentKey.toUpperCase() : contentKey;
   },
 
   createKeyboard() {
