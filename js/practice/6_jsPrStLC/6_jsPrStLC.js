@@ -113,7 +113,6 @@ const lineCalendar = {
         numberPrevMonth = this.currentNumberMonth - 1;
         this.date = new Date(this.currentYear, numberPrevMonth);
       }
-
     }
 
     if (e.target.id === 'nextMonth') {
@@ -128,12 +127,10 @@ const lineCalendar = {
     }
 
     this.render();
-
   },
 
   render() {
     this.lineCalendarEl.innerHTML = '';
-
     this.currentYear = this.date.getFullYear();
     this.currentNumberMonth = this.date.getMonth();
     this.nameCurrentMonth = this.namesMonths[this.currentNumberMonth];
