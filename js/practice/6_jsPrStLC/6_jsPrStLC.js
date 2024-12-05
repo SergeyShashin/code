@@ -64,13 +64,15 @@ const lineCalendar = {
   getCurrentMonth() {
     let currentMonth = [];
 
-    let quantityDaysInMonth = this.currentMonth === this.namesMonths[1] && this.leapYear
+    let quantityDaysInMonth = this.currentNumberMonth === 1 && this.leapYear
       ? this.quantityDaysInFebruaryOfLeapYear
       : this.quantityDaysInMonth[this.currentNumberMonth];
 
     for (let day = 1; day <= quantityDaysInMonth; day++) {
       currentMonth.push(day);
     }
+
+    console.log(currentMonth);
 
     return currentMonth;
   },
@@ -107,26 +109,51 @@ const lineCalendar = {
   },
 
   hanleClick(e) {
+    let numberPrevMonth = null;
+    let numberPrevYear = null;
+
     if (e.target.id === 'prevMonth') {
-      let numberPrevMonth = null;
-      let numberPrevYear = null;
 
       if (this.currentNumberMonth - 1 < 0) {
+        numberPrevYear = Number(this.currentYear) - 1;
         numberPrevMonth = 11;
-        numberPrevYear = this.currentYear - 1;
-        this.date = new Date(numberPrevYear, numberPrevYear);
+        this.date = new Date(numberPrevYear, numberPrevMonth);
       } else {
         numberPrevMonth = this.currentNumberMonth - 1;
         this.date = new Date(this.currentYear, numberPrevMonth);
       }
 
-      console.log(this.date);
-
     }
+
     if (e.target.id === 'nextMonth') {
-      console.log('вывести следующий месяц');
+      if (this.currentNumberMonth + 1 > 11) {
+        numberPrevYear = Number(this.currentYear) + 1;
+        numberPrevMonth = 0;
+        this.date = new Date(numberPrevYear, numberPrevMonth);
+      } else {
+        numberPrevMonth = this.currentNumberMonth + 1;
+        this.date = new Date(this.currentYear, numberPrevMonth);
+      }
     }
 
+    this.render();
+
+  },
+
+  render() {
+    this.lineCalendarEl.innerHTML = '';
+
+    this.currentYear = this.date.getFullYear();
+    this.currentNumberMonth = this.date.getMonth();
+    this.nameCurrentMonth = this.namesMonths[this.currentNumberMonth];
+    this.nameCurrentDayWeek = this.namesDays[this.date.getDay()];
+    this.leapYear = this.defineLeapYear();
+    console.log(this.leapYear);
+    this.currentMonth = this.getCurrentMonth();
+    this.numberCurrentDayMonth = this.date.getDate();
+
+    this.setYearAndMonthTohtml();
+    this.addCurrentMonthToHTML();
   }
 
 };
