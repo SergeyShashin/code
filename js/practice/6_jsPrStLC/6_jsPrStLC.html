@@ -5,10 +5,52 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Линейный календарь на JavaScript</title>
+  <style>
+    h4 {
+      /* text-align: center; */
+    }
+
+    ul {
+      width: 80%;
+      padding: 0;
+      text-align: center;
+      list-style-type: none;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .pastDaysCurrentMonth {
+      color: lightseagreen;
+    }
+
+    .currentDayMonth,
+    #year,
+    #month,
+    #dayWeek {
+      color: crimson;
+    }
+
+    #year,
+    #month,
+    #dayWeek {
+      text-align: center;
+    }
+
+    .futureDaysCurrentMonth {
+      color: seagreen;
+    }
+  </style>
 </head>
 
 <body>
   <section>
+    <h4>
+      <span id='month'></span>
+      <span id='year'></span>
+      <br>
+      <span id='dayWeek'></span>
+    </h4>
+
     <ul id='lineCalendar'></ul>
     <script src='6_jsPrStLC.js'></script>
   </section>
