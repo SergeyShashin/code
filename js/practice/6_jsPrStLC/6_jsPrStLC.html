@@ -6,8 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Линейный календарь на JavaScript</title>
   <style>
-    h4 {
-      /* text-align: center; */
+    #header {
+      width: 80%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0;
     }
 
     ul {
@@ -19,7 +22,7 @@
       justify-content: space-between;
     }
 
-    .pastDaysCurrentMonth {
+    .pastDaysCurrentMonth, button {
       color: lightseagreen;
     }
 
@@ -39,17 +42,27 @@
     .futureDaysCurrentMonth {
       color: seagreen;
     }
+
+    button{
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    input{
+      border: none;
+    }
+
   </style>
 </head>
 
 <body>
   <section>
-    <h4>
-      <span id='month'></span>
-      <span id='year'></span>
-      <br>
-      <span id='dayWeek'></span>
-    </h4>
+    <div id="header">
+      <input id='year'></input>
+      <button id='prevMonth'><</button><input id='month'></input><button id='nextMonth'>></button>
+      <input id='dayWeek'></input>
+    </div>
 
     <ul id='lineCalendar'></ul>
     <script src='6_jsPrStLC.js'></script>

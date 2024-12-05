@@ -94,9 +94,9 @@ const lineCalendar = {
   },
 
   setYearAndMonthTohtml() {
-    this.yearEl.textContent = this.currentYear;
-    this.monthEl.textContent = this.nameCurrentMonth;
-    this.dayWeekEl.textContent = this.nameCurrentDayWeek;
+    this.yearEl.value = this.currentYear;
+    this.monthEl.value = this.nameCurrentMonth;
+    this.dayWeekEl.value = this.nameCurrentDayWeek;
   }
 
 };
