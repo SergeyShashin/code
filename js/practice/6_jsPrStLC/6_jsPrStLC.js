@@ -13,6 +13,7 @@ const lineCalendar = {
   yearEl: null,
   monthEl: null,
   dayWeekEl: null,
+  headerEl: null,
   date: null,
   currentYear: null,
   nameCurrentMonth: null,
@@ -30,6 +31,7 @@ const lineCalendar = {
     this.yearEl = document.getElementById('year');
     this.monthEl = document.getElementById('month');
     this.dayWeekEl = document.getElementById('dayWeek');
+    this.headerEl = document.getElementById('header');
     this.namesMonths = ['январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь'];
     this.namesDays = ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'];
     this.quantityDaysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
@@ -52,6 +54,7 @@ const lineCalendar = {
 
     this.setYearAndMonthTohtml();
     this.addCurrentMonthToHTML();
+    this.setEventHandlers();
   },
 
   defineLeapYear() {
@@ -97,6 +100,33 @@ const lineCalendar = {
     this.yearEl.value = this.currentYear;
     this.monthEl.value = this.nameCurrentMonth;
     this.dayWeekEl.value = this.nameCurrentDayWeek;
+  },
+
+  setEventHandlers() {
+    this.headerEl.addEventListener('click', e => this.hanleClick(e));
+  },
+
+  hanleClick(e) {
+    if (e.target.id === 'prevMonth') {
+      let numberPrevMonth = null;
+      let numberPrevYear = null;
+
+      if (this.currentNumberMonth - 1 < 0) {
+        numberPrevMonth = 11;
+        numberPrevYear = this.currentYear - 1;
+        this.date = new Date(numberPrevYear, numberPrevYear);
+      } else {
+        numberPrevMonth = this.currentNumberMonth - 1;
+        this.date = new Date(this.currentYear, numberPrevMonth);
+      }
+
+      console.log(this.date);
+
+    }
+    if (e.target.id === 'nextMonth') {
+      console.log('вывести следующий месяц');
+    }
+
   }
 
 };
