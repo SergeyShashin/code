@@ -45,13 +45,6 @@ const lineCalendar = {
     this.currentMonth = this.getCurrentMonth();
     this.numberCurrentDayMonth = this.date.getDate();
 
-    console.log(this.currentYear);
-    console.log(this.nameCurrentMonth);
-    console.log(this.nameCurrentDayWeek);
-    console.log(this.leapYear);
-    console.log(this.currentMonth);
-    console.log('текущий день месяца ' + this.numberCurrentDayMonth);
-
     this.setYearAndMonthTohtml();
     this.addCurrentMonthToHTML();
     this.setEventHandlers();
@@ -71,8 +64,6 @@ const lineCalendar = {
     for (let day = 1; day <= quantityDaysInMonth; day++) {
       currentMonth.push(day);
     }
-
-    console.log(currentMonth);
 
     return currentMonth;
   },
@@ -148,7 +139,6 @@ const lineCalendar = {
     this.nameCurrentMonth = this.namesMonths[this.currentNumberMonth];
     this.nameCurrentDayWeek = this.namesDays[this.date.getDay()];
     this.leapYear = this.defineLeapYear();
-    console.log(this.leapYear);
     this.currentMonth = this.getCurrentMonth();
     this.numberCurrentDayMonth = this.date.getDate();
 
