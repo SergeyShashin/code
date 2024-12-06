@@ -10,12 +10,15 @@ const tagsSearching = {
   findEl: null,
   btnFindEl: null,
   monitorEl: null,
+  datalistEl: null,
   tags: null,
+
   init() {
     this.tagsSearchingEl = document.getElementById('tags-searching');
     this.findEl = document.getElementById('find');
     this.btnFindEl = document.getElementById('btnFind');
-    this.monitorEl = document.getElementById('monitorEl');
+    this.monitorEl = document.getElementById('monitor');
+    this.datalistEl = document.getElementById('tags');
     this.tags = {
       h1: {
         name: 'h1',
@@ -128,12 +131,36 @@ const tagsSearching = {
         https://doka.guide/html/datalist/
         `
       },
-
-
-
     };
+    this.appendDatalistToHTML();
+    this.setEventHandlers();
+  },
 
+  appendDatalistToHTML() {
+    for (let tag of Object.keys(this.tags)) {
+      console.log(this.tags[tag].description);
+      let optionEl = document.createElement('option');
+      optionEl.value = tag;
+      this.datalistEl.appendChild(optionEl);
+    }
+  },
+
+  setEventHandlers() {
+    this.tagsSearchingEl.addEventListener('click', e => this.handlerClickOntagsSearchingEl(e));
+  },
+
+  handlerClickOntagsSearchingEl(e) {
+    let targetClick = e.target;
+    if (targetClick.tagName === 'BUTTON') {
+      this.outputInfoTag();
+    }
+  },
+
+  outputInfoTag() {
+    let tagName = this.findEl.value;
+    this.monitorEl.textContent = this.tags[tagName].description;
   }
+
 };
 
 window.onload = () => tagsSearching.init();
