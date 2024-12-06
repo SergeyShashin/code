@@ -12,6 +12,7 @@ const tagsSearching = {
   monitorEl: null,
   datalistEl: null,
   tags: null,
+  messages: null,
 
   init() {
     this.tagsSearchingEl = document.getElementById('tags-searching');
@@ -132,13 +133,15 @@ const tagsSearching = {
         `
       },
     };
+    this.messages = {
+      notInformationTag: 'Информации об этом теге на данный момент нет.'
+    }
     this.appendDatalistToHTML();
     this.setEventHandlers();
   },
 
   appendDatalistToHTML() {
     for (let tag of Object.keys(this.tags)) {
-      console.log(this.tags[tag].description);
       let optionEl = document.createElement('option');
       optionEl.value = tag;
       this.datalistEl.appendChild(optionEl);
@@ -147,6 +150,7 @@ const tagsSearching = {
 
   setEventHandlers() {
     this.tagsSearchingEl.addEventListener('click', e => this.handlerClickOntagsSearchingEl(e));
+    document.addEventListener('keydown', e => this.handlerKeydown(e));
   },
 
   handlerClickOntagsSearchingEl(e) {
@@ -158,7 +162,17 @@ const tagsSearching = {
 
   outputInfoTag() {
     let tagName = this.findEl.value;
-    this.monitorEl.textContent = this.tags[tagName].description;
+    if (tagName && this.tags[tagName]) {
+      this.monitorEl.textContent = this.tags[tagName].description;
+    } else {
+      this.monitorEl.textContent = this.messages['notInformationTag']
+    }
+  },
+
+  handlerKeydown(e) {
+    if (e.code === 'Enter') {
+      this.outputInfoTag();
+    }
   }
 
 };

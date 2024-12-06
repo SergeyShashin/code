@@ -5,18 +5,45 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Поиск тегов на JavaScript</title>
+  <style>
+    .search {
+      display: flex;
+      border: 1px solid rgb(255, 204, 0);
+      border-radius: 10px;
+      width: 20%;
+    }
+
+    input {
+      padding: 8px;
+      background: #0000;
+      border: none;
+      box-sizing: border-box;
+      display: block;
+      height: 100%;
+      outline: none;
+      width: 100%;
+    }
+
+    button {
+      background: rgb(255, 204, 0);
+      border: none;
+      padding: 10px;
+      border-radius: .5rem;
+      cursor: pointer;
+      font-size: .9rem;
+      font-weight: 500;
+    }
+  </style>
 </head>
 
 <body>
-  <a href='https://code.mu/ru/javascript/book/practice/tags-searching/'>
-    Поиск тегов на JavaScript
-  </a>
-
-  <br>
-  <br>
 
   <section id='tags-searching'>
-    <input type='search' id='find' list="tags" autofocus><button id='btnFind'>Найти</button>
+    <h3>Информация о тегах</h3>
+ 
+    <div class='search'>
+      <input type='search' id='find' list="tags" autofocus><button id='btnFind'>Найти</button>
+    </div>
     <datalist id="tags">
     </datalist>
     <br>
