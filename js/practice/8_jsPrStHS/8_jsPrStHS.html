@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>practice/history-searching</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      color: crimson;
+    }
+
+    #searchHistoricalEventsByYear {
+      margin: 0 auto;
+      width: 600px;
+    }
+
+    #input {
+      margin-bottom: 10px;
+      outline: none;
+    }
+
+    #input,
+    #monitor {
+      width: 100%;
+    }
+
+    #monitor td {
+      text-align: center;
+    }
+
+    #input,
+    #monitor td {
+      padding: 10px;
+      border: 1px solid lightseagreen;
+    }
+  </style>
+</head>
+
+<body>
+  <section id='searchHistoricalEventsByYear'>
+    <input id='input' type='number' list='historicalEvents' autofocus>
+    <table type='output'></table>
+    <datalist id='historicalEvents'>
+      <option value="0"></option>
+      <option value="1"></option>
+    </datalist>
+  </section>
+
+  <script src='8_jsPrStHS.js'></script>
+</body>
+
+</html>
