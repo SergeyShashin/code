@@ -21,19 +21,6 @@
 Весы (24 сентября – 23 октября)
 Скорпион (24 октября – 22 ноября)
 Стрелец (23 ноября – 22 декабря)
-
-1  20 21
-2  19 20
-3  20 21
-4  20 21
-5  20 21
-6  21 22
-7  22 23
-8  23 24
-9  23 24
-10 23 24
-11 22 23
-12 22 21
 */
 
 let horoscope = {
@@ -42,7 +29,6 @@ let horoscope = {
   btnFindEl: null,
   monitor: null,
   infoSignsZodiac: null,
-  signZodiac: null,
 
   init() {
     this.horoscopeEl = document.getElementById('horoscope');
@@ -116,13 +102,71 @@ let horoscope = {
         tomorrow: 'Завтра стрельцов ждёт еще больше приятных событий, чем вчера.',
         afterDayTomorrow: 'Послезавтра стрельцов ждут события, которые обязательно произойдут послезавтра.'
       },
-    }
+    };
+    this.setEventHandlers();
   },
 
   setCurrentDateInInputEl() {
     let today = new Date();
     this.inputEl.value = `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`;
   },
+
+  setEventHandlers() {
+    this.btnFindEl.addEventListener('click', () => this.showInfoZodiac());
+  },
+
+  showInfoZodiac() {
+    this.defineSignZodiac(this.inputEl.value);
+  },
+
+  defineSignZodiac(date) {
+    /**
+Козерог (21 декабря - 20 января)
+Водолей (21 января - 19 февраля)
+Рыбы (20 февраля - 20 марта)
+Овен (21 марта – 20 апреля)
+Телец (21 апреля – 20 мая)
+Близнецы (21 мая – 21 июня)
+Рак (22 июня – 22 июля)
+Лев (23 июля – 23 августа)
+Дева (24 августа – 23 сентября)
+Весы (24 сентября – 23 октября)
+Скорпион (24 октября – 22 ноября)
+Стрелец (23 ноября – 22 декабря)
+*/
+
+    let [year, month, day] = date.split('-');
+    console.log(day);
+    console.log(month);
+    switch (month) {
+      case 0:
+        return day < 21 ? 'сapricorn' : 'aquarius';
+      case 1:
+        return day < 20 ? 'aquarius' : 'pisces';
+      case 2:
+        return day < 21 ? 'pisces' : 'aries';
+      case 3:
+        return day < 21 ? 'aries' : 'taurus';
+      case 4:
+        return day < 21 ? 'taurus' : 'gemini';
+      case 5:
+        return day < 21 ? 'gemini' : 'сancer';
+      case 6:
+        return day < 21 ? 'сancer' : 'leo';
+      case 7:
+        return day < 23 ? 'leo' : 'virgo';
+      case 8:
+        return day < 24 ? 'virgo' : 'libra';
+      case 9:
+        return day < 24 ? 'libra' : 'scorpio';
+      case 10:
+        return day < 23 ? 'scorpio' : 'sagittarius';
+      case 11:
+        return day < 21 ? 'sagittarius' : 'сapricorn';
+    }
+
+  }
+
 };
 
 window.onload = horoscope.init();
