@@ -7,7 +7,63 @@
   <title>practice/horoscope</title>
 </head>
 
+<style>
+  #horoscope {
+    margin: 0 auto;
+    width: 500px;
+    text-align: center;
+  }
+
+  h3 {
+    text-transform: uppercase;
+  }
+
+  #input {
+    width: 80%;
+    outline: none;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+
+  button {
+    border-radius: 10px;
+    background: none;
+    cursor: pointer;
+  }
+
+  #horoscope,
+  button {
+    color: crimson;
+  }
+
+  #input,
+  button {
+    border: 1px solid lightseagreen;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  button:hover {
+    background: lightseagreen;
+  }
+</style>
+
 <body>
+  <section id="horoscope">
+    <h3>Гороскоп на JavaScript</h3>
+    <input type="date" id='input' autofocus>
+    <button id='find'>НАЙТИ</button>
+    <p>
+      <label for='today'>cегодня</label>
+      <input type="radio" name='days' id="today" checked>
+      <label for='tomorow'>завтра</label>
+      <input type="radio" name='days' id="tomorow">
+      <label for='dayAfterTomorrow'>послезавтра</label>
+      <input type="radio" name='days' id="dayAfterTomorrow">
+    </p>
+
+    <p id="monitor"></p>
+  </section>
 
   <script src='9_jsPrStHrs.js'></script>
 </body>
