@@ -23,7 +23,7 @@
 
     #input,
     #monitor {
-      width: 100%;
+      width: 80%;
     }
 
     #monitor td {
@@ -35,12 +35,24 @@
       padding: 10px;
       border: 1px solid lightseagreen;
     }
+
+    #btnFind {
+      background: none;
+      color: lightseagreen;
+      border: none;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    #btnFind:hover {
+      color: crimson;
+      font-size: 15px;
+    }
   </style>
 </head>
 
 <body>
   <section id='searchHistoricalEventsByYear'>
-    <input id='input' type='number' list='historicalEvents' autofocus>
+    <input id='input' type='search' list='historicalEvents' autofocus>
     <button id='btnFind'>Найти</button>
     <table id='monitor'></table>
     <datalist id='historicalEvents'>
