@@ -88,7 +88,7 @@ const searchHistoricalEventsByYear = {
 
   handlerKeydown(e) {
     if (e.code === 'Enter') {
-      this.outputInfoTag();
+      this.outputInfoEvent();
     }
   }
 
