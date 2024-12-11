@@ -27,7 +27,7 @@ let horoscope = {
   horoscopeEl: null,
   inputEl: null,
   btnFindEl: null,
-  monitor: null,
+  monitorEl: null,
   infoSignsZodiac: null,
 
   init() {
@@ -108,7 +108,7 @@ let horoscope = {
 
   setCurrentDateInInputEl() {
     let today = new Date();
-    this.inputEl.value = `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`;
+    this.inputEl.value = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
   },
 
   setEventHandlers() {
@@ -118,8 +118,9 @@ let horoscope = {
   showInfoZodiac() {
     let signZodiac = this.defineSignZodiac(this.inputEl.value);
     let todayOrTomorowOrAfterTomorow = this.defineTodayOrTomorowOrAfterTomorow();
-    console.log(signZodiac);
-    console.log(todayOrTomorowOrAfterTomorow);
+    this.infoSignsZodiac[signZodiac][todayOrTomorowOrAfterTomorow];
+
+    this.monitorEl.textContent = this.infoSignsZodiac[signZodiac][todayOrTomorowOrAfterTomorow];
   },
 
   defineSignZodiac(date) {
