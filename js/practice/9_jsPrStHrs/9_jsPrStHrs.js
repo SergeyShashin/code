@@ -116,53 +116,41 @@ let horoscope = {
   },
 
   showInfoZodiac() {
-    this.defineSignZodiac(this.inputEl.value);
+    let signZodiac = this.defineSignZodiac(this.inputEl.value);
+    console.log(signZodiac);
   },
 
   defineSignZodiac(date) {
-    /**
-Козерог (21 декабря - 20 января)
-Водолей (21 января - 19 февраля)
-Рыбы (20 февраля - 20 марта)
-Овен (21 марта – 20 апреля)
-Телец (21 апреля – 20 мая)
-Близнецы (21 мая – 21 июня)
-Рак (22 июня – 22 июля)
-Лев (23 июля – 23 августа)
-Дева (24 августа – 23 сентября)
-Весы (24 сентября – 23 октября)
-Скорпион (24 октября – 22 ноября)
-Стрелец (23 ноября – 22 декабря)
-*/
 
     let [year, month, day] = date.split('-');
-    console.log(day);
-    console.log(month);
+    month = Number(month);
+    day = Number(day);
+
     switch (month) {
-      case 0:
-        return day < 21 ? 'сapricorn' : 'aquarius';
       case 1:
-        return day < 20 ? 'aquarius' : 'pisces';
+        return day < 21 ? 'сapricorn' : 'aquarius';
       case 2:
-        return day < 21 ? 'pisces' : 'aries';
+        return day < 20 ? 'aquarius' : 'pisces';
       case 3:
-        return day < 21 ? 'aries' : 'taurus';
+        return day < 21 ? 'pisces' : 'aries';
       case 4:
-        return day < 21 ? 'taurus' : 'gemini';
+        return day < 21 ? 'aries' : 'taurus';
       case 5:
-        return day < 21 ? 'gemini' : 'сancer';
+        return day < 21 ? 'taurus' : 'gemini';
       case 6:
-        return day < 21 ? 'сancer' : 'leo';
+        return day < 22 ? 'gemini' : 'сancer';
       case 7:
-        return day < 23 ? 'leo' : 'virgo';
+        return day < 23 ? 'сancer' : 'leo';
       case 8:
-        return day < 24 ? 'virgo' : 'libra';
+        return day < 24 ? 'leo' : 'virgo';
       case 9:
-        return day < 24 ? 'libra' : 'scorpio';
+        return day < 24 ? 'virgo' : 'libra';
       case 10:
-        return day < 23 ? 'scorpio' : 'sagittarius';
+        return day < 24 ? 'libra' : 'scorpio';
       case 11:
-        return day < 21 ? 'sagittarius' : 'сapricorn';
+        return day < 23 ? 'scorpio' : 'sagittarius';
+      case 12:
+        return day < 22 ? 'sagittarius' : 'сapricorn';
     }
 
   }
