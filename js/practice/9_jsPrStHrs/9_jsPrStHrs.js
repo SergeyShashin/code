@@ -117,7 +117,9 @@ let horoscope = {
 
   showInfoZodiac() {
     let signZodiac = this.defineSignZodiac(this.inputEl.value);
+    let todayOrTomorowOrAfterTomorow = this.defineTodayOrTomorowOrAfterTomorow();
     console.log(signZodiac);
+    console.log(todayOrTomorowOrAfterTomorow);
   },
 
   defineSignZodiac(date) {
@@ -152,7 +154,16 @@ let horoscope = {
       case 12:
         return day < 22 ? 'sagittarius' : 'сapricorn';
     }
+  },
 
+  defineTodayOrTomorowOrAfterTomorow() {
+    if (document.getElementById('today').checked) {
+      return 'today'
+    } else if (document.getElementById('tomorrow').checked) {
+      return 'tomorrow'
+    } else if (document.getElementById('afterDayTomorrow').checked) {
+      return 'afterDayTomorrow'
+    }
   }
 
 };
