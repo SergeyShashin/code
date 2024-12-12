@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prediction</title>
+  <style>
+    #prediction {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    #prediction,
+    #prediction button {
+      color: crimson;
+    }
+
+    .dn {
+      display: none;
+    }
+
+    #prediction button {
+      background: none;
+      border: 1px solid lightseagreen;
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    #prediction button:hover {
+      cursor: pointer;
+      background: lightseagreen;
+    }
+  </style>
+</head>
+
+<body>
+  <section id='prediction'>
+    <p id='monitor'>:)</p>
+    <button id='btnStartTimer'>Старт</button>
+    <br>
+    <br>
+    <button id='btnGetPrediction'>Получить предсказание</button>
+  </section>
+
+  <script src='10_jsPrStPrd.js'></script>
+</body>
+
+</html>
