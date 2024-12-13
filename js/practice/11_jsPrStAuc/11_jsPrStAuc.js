@@ -14,12 +14,14 @@ let autocompletion = {
   countriesEl: null,
   monitorEl: null,
   countries: null,
+  headerTableCounties: null,
 
   init() {
     this.autocompletionEl = document.getElementById('autocompletion');
     this.searchCountriesEl = document.getElementById('searchCountries');
     this.monitorEl = document.getElementById('monitor');
     this.countriesEl = document.getElementById('countries');
+    this.headerTableCounties = ['наименование', 'полное наименование', 'на английком', 'alpha2', 'alpha3', 'iso', 'часть света', 'расположение'];
     this.countries = [
       {
         name: 'Абхазия',
@@ -2554,12 +2556,37 @@ let autocompletion = {
 
   handlerInputChange(e) {
     this.monitorEl.innerHTML = '';
+    let countryName = e.target.value;
+    let dataAboutCountry = this.getDataCountry(countryName);
+    console.log(dataAboutCountry);
+
+    let thEl = document.createElement('tr');
     let trEl = document.createElement('tr');
-    let tdElName = document.createElement('td');
-    tdElName.textContent = e.target.value;
-    trEl.appendChild(tdElName);
+
+    for (let el of this.headerTableCounties) {
+      let tdEl = document.createElement('td');
+      tdEl.textContent = el;
+      thEl.appendChild(tdEl);
+    }
+
+
+    for (let key in dataAboutCountry) {
+      let tdEl = document.createElement('td');
+      tdEl.textContent = dataAboutCountry[key];
+      trEl.appendChild(tdEl);
+    }
+
+    this.monitorEl.appendChild(thEl);
     this.monitorEl.appendChild(trEl);
   },
+
+  getDataCountry(countryName) {
+    for (let country of this.countries) {
+      if (country.name === countryName) {
+        return country;
+      }
+    }
+  }
 
   //*сделано по заданию без использования возможностей datalist
   // handlerInputChangeOnTask(e) {
