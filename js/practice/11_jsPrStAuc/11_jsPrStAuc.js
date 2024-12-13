@@ -10,13 +10,15 @@
 
 let autocompletion = {
   autocompletionEl: null,
-  searchCountries: null,
+  searchCountriesEl: null,
   countriesEl: null,
+  monitorEl: null,
   countries: null,
 
   init() {
     this.autocompletionEl = document.getElementById('autocompletion');
-    this.searchCountries = document.getElementById('searchCountries');
+    this.searchCountriesEl = document.getElementById('searchCountries');
+    this.monitorEl = document.getElementById('monitor');
     this.countriesEl = document.getElementById('countries');
     this.countries = [
       {
@@ -2531,8 +2533,30 @@ let autocompletion = {
       },
 
 
-    ]
+    ];
+    this.addOptionElToHTML();
+    this.setEventHandles();
+  },
 
+  addOptionElToHTML() {
+    for (let countrie of this.countries) {
+      let optionEl = document.createElement('option');
+      optionEl.value = countrie.name;
+      this.countriesEl.appendChild(optionEl);
+    }
+  },
+
+  setEventHandles() {
+    this.searchCountriesEl.addEventListener('input', (e) => this.handlerInputChange(e));
+  },
+
+  handlerInputChange(e) {
+    this.monitorEl.innerHTML = '';
+    let trEl = document.createElement('tr');
+    let tdEl = document.createElement('td');
+    tdEl.textContent = e.target.value;
+    trEl.appendChild(tdEl);
+    this.monitorEl.appendChild(trEl);
   }
 
 }
