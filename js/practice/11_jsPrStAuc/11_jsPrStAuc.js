@@ -2539,25 +2539,52 @@ let autocompletion = {
   },
 
   addOptionElToHTML() {
-    for (let countrie of this.countries) {
+    this.countries.map((country, idx) => {
       let optionEl = document.createElement('option');
-      optionEl.value = countrie.name;
+      optionEl.value = country.name;
+      optionEl.dataset.idxInArrCountries = idx;
       this.countriesEl.appendChild(optionEl);
-    }
+    });
   },
 
   setEventHandles() {
     this.searchCountriesEl.addEventListener('input', (e) => this.handlerInputChange(e));
+    // this.searchCountriesEl.addEventListener('input', (e) => this.handlerInputChangeOnTask(e));
   },
 
   handlerInputChange(e) {
     this.monitorEl.innerHTML = '';
     let trEl = document.createElement('tr');
-    let tdEl = document.createElement('td');
-    tdEl.textContent = e.target.value;
-    trEl.appendChild(tdEl);
+    let tdElName = document.createElement('td');
+    tdElName.textContent = e.target.value;
+    trEl.appendChild(tdElName);
     this.monitorEl.appendChild(trEl);
-  }
+  },
+
+  //*сделано по заданию без использования возможностей datalist
+  // handlerInputChangeOnTask(e) {
+  //   let resultSearchingEl = document.getElementById('resultSearching');
+  //   resultSearchingEl.innerHTML = '';
+  //   this.monitorEl.innerHTML = '';
+  //   let content = e.target.value.toLowerCase();
+  //   let filteredCountries = this.countries.filter(el => el.name.toLowerCase().startsWith(content));
+
+  //   for (let el of filteredCountries) {
+  //     let pEl = document.createElement('p');
+  //     pEl.textContent = el.name;
+  //     resultSearchingEl.style.display = 'block';
+  //     resultSearchingEl.appendChild(pEl);
+  //   }
+
+  //   resultSearchingEl.addEventListener('click', e => {
+  //     let trEl = document.createElement('tr');
+  //     let tdEl = document.createElement('td');
+  //     tdEl.textContent = e.target.textContent;
+  //     trEl.appendChild(tdEl);
+  //     this.monitorEl.appendChild(trEl);
+  //     resultSearchingEl.style.display = 'none';
+  //   })
+  // }
 
 }
 

@@ -7,6 +7,7 @@
   <title>Autocompletion</title>
   <style>
     #autocompletion {
+      position: relative;
       margin: 0 auto;
       text-align: center;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -30,6 +31,12 @@
       border: 1px solid lightseagreen;
       border-radius: 10px;
     }
+
+    #resultSearching {
+      display: none;
+      position: absolute;
+      cursor: pointer;
+    }
   </style>
 </head>
 
@@ -38,6 +45,7 @@
     <h3> Поиск стран</h3>
     <input type='search' list='countries' id="searchCountries">
     <datalist id='countries'></datalist>
+    <div id="resultSearching"></div>
     <table id='monitor'></table>
 
   </section>
