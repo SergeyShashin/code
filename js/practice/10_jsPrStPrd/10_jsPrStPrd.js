@@ -20,6 +20,7 @@ const prediction = {
   predictions: null,
   monitorEl: null,
   randomNumber: null,
+  colors: null,
 
   init() {
     this.predictionEl = document.getElementById('prediction');
@@ -38,7 +39,19 @@ const prediction = {
       'Через несколько секунд Вы подумаете о чём-нибудь.',
       'Через какое-то время Вы проснётесь.',
     ];
-    this.setEventHandlers();
+    this.colors = [
+      'red',
+      'orange',
+      'yellowgreen',
+      'green',
+      'lightskyblue',
+      'blue',
+      'violet',
+      'crimson',
+      'lightseagreen',
+      'lightsalmon'
+    ],
+      this.setEventHandlers();
   },
 
   setEventHandlers() {
@@ -59,6 +72,7 @@ const prediction = {
 
   showPrediction() {
     this.stopTimer();
+    this.monitorEl.style.color = this.colors[this.randomNumber];
     this.monitorEl.textContent += '\n\n' + this.predictions[this.randomNumber];
     this.btnGetPrediction.classList.add('dn');
   },
