@@ -2558,17 +2558,21 @@ let autocompletion = {
     this.monitorEl.innerHTML = '';
     let countryName = e.target.value;
     let dataAboutCountry = this.getDataCountry(countryName);
-    console.log(dataAboutCountry);
 
-    let thEl = document.createElement('tr');
     let trEl = document.createElement('tr');
 
-    for (let el of this.headerTableCounties) {
-      let tdEl = document.createElement('td');
-      tdEl.textContent = el;
-      thEl.appendChild(tdEl);
+    if (!countryName) {
+      return
     }
 
+    for (let el of this.headerTableCounties) {
+      let thEl = document.createElement('th');
+      thEl.textContent = el;
+      trEl.appendChild(thEl);
+    }
+    this.monitorEl.appendChild(trEl);
+
+    trEl = document.createElement('tr');
 
     for (let key in dataAboutCountry) {
       let tdEl = document.createElement('td');
@@ -2576,7 +2580,6 @@ let autocompletion = {
       trEl.appendChild(tdEl);
     }
 
-    this.monitorEl.appendChild(thEl);
     this.monitorEl.appendChild(trEl);
   },
 
