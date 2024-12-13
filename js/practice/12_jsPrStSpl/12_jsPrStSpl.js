@@ -36,11 +36,11 @@
 
 let spoiler = {
   spoilerEl: null,
-  spoilersEl: null,
+  spoilersEls: null,
 
   init() {
     this.spoilerEl = document.getElementById('spoiler');
-    this.spoilersEl = document.querySelectorAll('.spoiler');
+    this.spoilersEls = document.querySelectorAll('.spoiler');
     this.setEventHandlers();
   },
 
@@ -51,9 +51,16 @@ let spoiler = {
   handlerClickSploilerEl(e) {
     if (e.target.classList.contains('toggle')) {
       let text = e.target.textContent.split(' ');
-      console.log(text);
 
-      console.log(this.spoilersEl);
+      for (let el of this.spoilersEls) {
+        console.log(el);
+        if (el.textContent.split(' ')[2] == text[2]) {
+          console.log(el.textContent);
+          el.classList.add('show');
+          console.log(el.className);
+          return
+        }
+      }
     }
   }
 };
