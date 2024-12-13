@@ -38,16 +38,33 @@ const prediction = {
       'Через несколько секунд Вы подумаете о чём-нибудь.',
       'Через какое-то время Вы проснётесь.',
     ];
-    this.setTimer();
+    this.setEventHandlers();
+  },
+
+  setEventHandlers() {
+    this.btnStartEl.addEventListener('click', () => this.setTimer());
+    this.btnGetPrediction.addEventListener('click', () => this.showPrediction());
   },
 
   setTimer() {
     this.numberInterval = setInterval(() => this.outputRandomNumber(), 1000 / 10);
+    this.btnStartEl.classList.add('dn');
+    this.btnGetPrediction.classList.remove('dn');
   },
 
   outputRandomNumber() {
     this.randomNumber = Math.floor(Math.random() * this.predictions.length);
     this.monitorEl.textContent = this.randomNumber;
+  },
+
+  showPrediction() {
+    this.stopTimer();
+    this.monitorEl.textContent += '\n\n' + this.predictions[this.randomNumber];
+    this.btnGetPrediction.classList.add('dn');
+  },
+
+  stopTimer() {
+    clearInterval(this.numberInterval);
   }
 
 }
