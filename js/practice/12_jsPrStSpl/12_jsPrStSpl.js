@@ -50,17 +50,9 @@ let spoiler = {
 
   handlerClickSploilerEl(e) {
     if (e.target.classList.contains('toggle')) {
-      let text = e.target.textContent.split(' ');
+      let spoilerNumber = e.target.textContent.split(' ')[2]-1;
+      this.spoilersEls[spoilerNumber].classList.toggle('spoiler');
 
-      for (let el of this.spoilersEls) {
-        console.log(el);
-        if (el.textContent.split(' ')[2] == text[2]) {
-          console.log(el.textContent);
-          el.classList.add('show');
-          console.log(el.className);
-          return
-        }
-      }
     }
   }
 };
