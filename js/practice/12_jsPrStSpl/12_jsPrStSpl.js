@@ -52,7 +52,6 @@ let spoiler = {
     if (e.target.classList.contains('toggle')) {
       let spoilerNumber = e.target.textContent.split(' ')[2]-1;
       this.spoilersEls[spoilerNumber].classList.toggle('spoiler');
-
     }
   }
 };
