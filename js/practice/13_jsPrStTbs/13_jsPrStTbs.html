@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabs</title>
+  <style>
+    #tabs {
+      margin: 0 auto;
+      width: 480px;
+    }
+
+    menu {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    menu a {
+      display: block;
+      text-decoration: none;
+      color: lightskyblue;
+      text-transform: uppercase;
+    }
+
+    .activeTab,
+    menu a:hover {
+      color: crimson;
+    }
+
+    .dActiveText {
+      display: block;
+    }
+
+    .dNoneText {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <section id='tabs'>
+    <menu>
+      <a href='#' class='activeTab'>Вкладка 1</a>
+      <a href='#'>Вкладка 2</a>
+      <a href='#'>Вкладка 3</a>
+    </menu>
+    <div class='text'>
+      <p>Текст 1.</p>
+      <p class='dNoneText'>Текст 2.</p>
+      <p class='dNoneText'>Текст 3.</p>
+    </div>
+
+  </section>
+
+  <script src='13_jsPrStTbs.js'></script>
+</body>
+
+</html>
