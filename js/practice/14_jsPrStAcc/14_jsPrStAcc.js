@@ -21,12 +21,20 @@ let accordion = {
       return
     }
 
-    let numberClickTab = Number(target.parentElement.dataset.number);
+    let numberClickTab = Number(e.target.parentElement.dataset.number);
 
-    if (this.numberActiveTab === numberClickTab) {
-
+    if (numberClickTab === this.numberActiveTab) {
+      this.tabsEls[numberClickTab].querySelector('.text').classList.toggle('activeText');
+    } else if (this.numberActiveTab !== null) {
+      this.tabsEls[this.numberActiveTab].querySelector('.text').classList.remove('activeText');
+      this.setActiveText(numberClickTab);
+    } else {
+      this.setActiveText(numberClickTab);
     }
+  },
 
+  setActiveText(number) {
+    this.numberActiveTab = number;
     this.tabsEls[this.numberActiveTab].querySelector('.text').classList.add('activeText');
   }
 
