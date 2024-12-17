@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accordion</title>
+  <style>
+    #accordion {
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 90vh;
+    }
+
+    #accordion,
+    .link {
+      color: crimson;
+    }
+
+    .tab {
+      width: 320px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .link,
+    .text {
+      padding: 10px;
+    }
+
+    .link {
+      text-decoration: none;
+      display: block;
+      background: lightseagreen;
+    }
+
+    .text {
+      height: 320px;
+      display: none;
+    }
+
+    .activeText {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+
+  <section id='accordion'>
+    <div class="tab" data-number="1">
+      <a href="#" class='link'>1</a>
+      <div class="text">текст 1</div>
+    </div>
+    <div class="tab" data-number="2">
+      <a href="#" class='link'>2</a>
+      <div class="text">текст 2</div>
+    </div>
+    <div class="tab" data-number="3">
+      <a href="#" class='link'>3</a>
+      <div class="text">текст 3</div>
+    </div>
+
+  </section>
+
+  <script src="14_jsPrStAcc.js"></script>
+</body>
+
+</html>
