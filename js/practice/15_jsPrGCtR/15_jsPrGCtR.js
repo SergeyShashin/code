@@ -1440,6 +1440,7 @@ let gameTowns = {
       notTown: 'Такого города нет в базе данных.',
       enteredTown: 'Такой город уже называли.',
     }
+    this.showMsg(this.messages.turnPlayer);
     this.setEventHandlers();
   },
 
@@ -1449,7 +1450,6 @@ let gameTowns = {
 
   handlerEnter(e) {
     let content = e.target.value;
-    this.showMsg(this.messages.turnPlayer);
 
     /**
      * Проверяем наличие города в списке городов
@@ -1469,7 +1469,11 @@ let gameTowns = {
 
     this.addTown(content);
 
-    this.showMsg(this.turnСomp);
+    this.setDisabledInputTownEl();
+
+    this.showMsg(this.messages.turnСomp);
+
+    this.turnComp();
   },
 
   showMsg(msg) {
@@ -1485,6 +1489,23 @@ let gameTowns = {
     let liEl = document.createElement('li');
     liEl.textContent = town;
     this.enteredTownsEl.appendChild(liEl);
+  },
+
+  setDisabledInputTownEl() {
+    this.inputTownEl.disabled = true;
+  },
+
+  turnComp() {
+    while (true) {
+      let randomNum = Math.floor(Math.random() * this.towns.length);
+      console.log(randomNum);
+      let town = this.towns[randomNum];
+      if (!this.towns.includes(town)) {
+        this.addTown(town);
+        
+
+      }
+    }
   }
 };
 
