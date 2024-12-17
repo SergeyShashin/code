@@ -4,15 +4,18 @@ let gameTowns = {
   gameTownsEl: null,
   inputTownEl: null,
   monitorEl: null,
-  enterTownsEl: null,
+  enteredTownsEl: null,
+  enteredTowns: null,
   towns: null,
+  messages: null,
 
   init() {
     this.gameTownsEl = document.getElementById('gameTowns');
     this.monitorEl = document.getElementById('monitor');
     this.inputTownEl = document.getElementById('inputTown');
-    this.enterTownsEl = document.querySelector('#enterTowns ul');
-    this.town = [
+    this.enteredTownsEl = document.querySelector('#enterTowns ul');
+    this.enteredTowns = [];
+    this.towns = [
       "Абдулино",
       "Абердин",
       "Абинск",
@@ -1431,7 +1434,57 @@ let gameTowns = {
       "Харьков",
       "Хельсинки"
     ];
-    
+    this.messages = {
+      turnPlayer: 'Ход человека.',
+      turnСomp: 'Ход компьютера.',
+      notTown: 'Такого города нет в базе данных.',
+      enteredTown: 'Такой город уже называли.',
+    }
+    this.setEventHandlers();
+  },
+
+  setEventHandlers() {
+    this.inputTownEl.addEventListener('change', e => this.handlerEnter(e));
+  },
+
+  handlerEnter(e) {
+    let content = e.target.value;
+    this.showMsg(this.messages.turnPlayer);
+
+    /**
+     * Проверяем наличие города в списке городов
+     */
+    if (!this.towns.includes(content)) {
+      this.showMsg(this.messages.notTown);
+      return
+    }
+
+    /**
+     * Проверяем наличие города в списке названных городов
+     */
+    if (this.didEnterTown(content)) {
+      this.showMsg(this.messages.enteredTown);
+      return
+    }
+
+    this.addTown(content);
+
+    this.showMsg(this.turnСomp);
+  },
+
+  showMsg(msg) {
+    this.monitorEl.textContent = msg;
+  },
+
+  didEnterTown(town) {
+    return this.enteredTowns.includes(town);
+  },
+
+  addTown(town) {
+    this.enteredTowns.push(town);
+    let liEl = document.createElement('li');
+    liEl.textContent = town;
+    this.enteredTownsEl.appendChild(liEl);
   }
 };
 
