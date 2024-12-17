@@ -13,7 +13,7 @@ let gameTowns = {
     this.gameTownsEl = document.getElementById('gameTowns');
     this.monitorEl = document.getElementById('monitor');
     this.inputTownEl = document.getElementById('inputTown');
-    this.enteredTownsEl = document.querySelector('#enterTowns ul');
+    this.enteredTownsEl = document.querySelector('#enterTowns ol');
     this.enteredTowns = [];
     this.towns = [
       "Абдулино",
@@ -1439,6 +1439,7 @@ let gameTowns = {
       turnСomp: 'Ход компьютера.',
       notTown: 'Такого города нет в базе данных.',
       enteredTown: 'Такой город уже называли.',
+      finalPhrase: 'Хорошо размялись. Все города назвали. Нажмите Ctrl+F5 для новой игры.',
     }
     this.showMsg(this.messages.turnPlayer);
     this.setEventHandlers();
@@ -1467,13 +1468,22 @@ let gameTowns = {
       return
     }
 
+
+
     this.addTown(content);
 
-    this.setDisabledInputTownEl();
+    this.setDisableInputTownEl();
 
     this.showMsg(this.messages.turnСomp);
 
+    if (this.enteredTowns.length > 1433) {
+      this.showMsg(this.messages.finalPhrase);
+      return
+    }
+
     this.turnComp();
+
+
   },
 
   showMsg(msg) {
@@ -1489,21 +1499,26 @@ let gameTowns = {
     let liEl = document.createElement('li');
     liEl.textContent = town;
     this.enteredTownsEl.appendChild(liEl);
+
   },
 
-  setDisabledInputTownEl() {
+  setDisableInputTownEl() {
     this.inputTownEl.disabled = true;
+  },
+
+  setEnableInputTownEl() {
+    this.inputTownEl.disabled = false;
   },
 
   turnComp() {
     while (true) {
       let randomNum = Math.floor(Math.random() * this.towns.length);
-      console.log(randomNum);
       let town = this.towns[randomNum];
-      if (!this.towns.includes(town)) {
+      if (!this.enteredTowns.includes(town)) {
         this.addTown(town);
-        
-
+        this.setEnableInputTownEl();
+        this.showMsg(`Компьютер назвал ${town}. ${this.messages.turnPlayer}`);
+        return
       }
     }
   }

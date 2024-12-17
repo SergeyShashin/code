@@ -19,7 +19,7 @@
       width: 320px;
     }
 
-    #gameTowns h4 {
+    #gameTowns h3, h4 {
       margin: 10px 0;
     }
 
@@ -33,7 +33,6 @@
       border-radius: 10px;
       outline: none;
       border: 1px solid lightseagreen;
-      color: crimson;
     }
 
     #inputTown,
@@ -43,7 +42,7 @@
     }
 
     #enterTowns li {
-      list-style-type: none;
+      /* list-style-type: none; */
       text-align: left;
     }
   </style>
@@ -52,14 +51,14 @@
 
 <body>
   <section id='gameTowns'>
-    <h4>Игра в города с компьютером</h4>
-    <p id='monitor'></p>
+    <h3>Игра в города с компьютером</h3>
     <input id='inputTown'>
     <div id='enterTowns'>
-      <h5>Названные города:</h5>
-      <ul>
+      <pre id='monitor'></pre>
+      <h4>Названные города:</h4>
+      <ol>
         <!-- <li>Рязань</li> -->
-      </ul>
+      </ol>
     </div>
   </section>
   <script src='15_jsPrGCtR.js'></script>
