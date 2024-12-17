@@ -6,7 +6,7 @@ let tabs = {
   textEl: null,
   tabsArr: null,
   textArr: null,
-  numTabclasActive: null,
+  numberTabWithClassActive: null,
 
   init() {
     this.tabsEl = document.getElementById('tabs');
@@ -14,6 +14,7 @@ let tabs = {
     this.textEl = document.getElementById('text');
     this.tabsArr = this.tabsMenuEl.querySelectorAll('a');
     this.textArr = this.textEl.querySelectorAll('p');
+    this.numberTabWithClassActive = 0;
 
     this.setEventHandlers();
   },
@@ -29,7 +30,23 @@ let tabs = {
       return
     }
 
-    console.log(target);
+    this.clearActive();
+    this.setNewNumberTabWithClassActive(Number(target.dataset.num));
+    this.setActive();
+  },
+
+  clearActive() {
+    this.tabsArr[this.numberTabWithClassActive].classList.remove('activeTab');
+    this.textArr[this.numberTabWithClassActive].classList.add('dNoneText');
+  },
+
+  setNewNumberTabWithClassActive(number) {
+    this.numberTabWithClassActive = number;
+  },
+
+  setActive() {
+    this.tabsArr[this.numberTabWithClassActive].classList.add('activeTab');
+    this.textArr[this.numberTabWithClassActive].classList.remove('dNoneText');
   }
 };
 
