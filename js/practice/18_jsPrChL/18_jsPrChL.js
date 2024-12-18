@@ -15,7 +15,7 @@ let checklist = {
   enterEl: null,
   monitorEl: null,
   todoListEls: null,
-  complitedListEls: null,
+  complitedTasksEls: null,
   deletedTasksEls: null,
   counterforIdTasks: null,
 
@@ -24,7 +24,7 @@ let checklist = {
     this.enterEl = document.getElementById('enter');
     this.monitorEl = document.getElementById('monitor');
     this.todoListEls = [];
-    this.complitedListElsTasksEls = [];
+    this.complitedTasksEls = [];
     this.deletedTasksEls = [];
     this.counterForIdTasks = 0;
     this.setEventHandlers();
@@ -32,10 +32,12 @@ let checklist = {
 
   setEventHandlers() {
     this.enterEl.addEventListener('change', e => this.addTaskInHTML(e));
+    this.monitorEl.addEventListener('click', e => this.handleClickMonitorEl(e));
   },
 
   addTaskInHTML(e) {
     let taskText = e.target.value;
+    this.counterforIdTasks++;
     let taskEl = this.createLiEl(taskText);
     this.monitorEl.appendChild(taskEl);
     this.todoListEls.push(taskEl);
@@ -43,18 +45,20 @@ let checklist = {
   },
 
   createLiEl(taskText) {
-    this.counterforIdTasks++;
     let liEl = document.createElement('li');
-    liEl.dataset.numberTask = this.counterforIdTasks;
+    liEl.dataset.numberTask = this.counterforIdTasks - 1;
     let textInputEl = document.createElement('input');
     textInputEl.type = 'text';
     textInputEl.value = taskText;
+    textInputEl.classList.add('text');
     let checkInputEl = document.createElement('input');
     checkInputEl.type = 'button';
     checkInputEl.value = '  ';
+    checkInputEl.classList.add('check');
     let deleteInputEl = document.createElement('input');
     deleteInputEl.type = 'button';
     deleteInputEl.value = 'x';
+    deleteInputEl.classList.add('delete');
     liEl.appendChild(textInputEl);
     liEl.appendChild(checkInputEl);
     liEl.appendChild(deleteInputEl);
@@ -63,6 +67,21 @@ let checklist = {
 
   clearInputValue(input) {
     input.value = '';
+  },
+
+  handleClickMonitorEl(e) {
+    let target = e.target;
+    if (target.classList.contains('check')) {
+      this.setTaskCompleted(Number(target.parentElement.dataset.numberTask));
+    }
+  },
+
+  setTaskCompleted(numberTask) {
+    let taskEl = this.todoListEls[numberTask];
+    this.complitedTasksEls.push(taskEl);
+    taskEl.querySelector('.check').value = 'V';
+    taskEl.querySelector('.check').style.color = 'lightseagreen';
+    taskEl.querySelector('.text').style.color = 'lightseagreen';
   }
 
 };
