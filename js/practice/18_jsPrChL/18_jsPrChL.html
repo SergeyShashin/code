@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checklist</title>
+
+  <style>
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .container {
+      justify-content: center;
+    }
+    
+    .container, #checkList, #monitor li{
+      display: flex;
+    }
+
+    .container, #enter,  #monitor {
+      width: 100%;
+    }
+
+    #checkList {
+      width: 320px;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #checkList,
+    #checkList input {
+      color: crimson;
+    }
+
+    #checkList h3 {
+      margin: 10px 0;
+    }
+
+    #checkList input {
+      outline: none;
+    }
+
+    #enter {
+      margin-bottom: 10px;
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid lightseagreen;
+    }
+
+    #monitor li {
+      list-style-type: none;
+      justify-content: space-around;
+      margin: 5px 0;
+    }
+
+    #monitor input[type='text'] {
+      width: 80%;
+      border: none;
+    }
+
+    #monitor input[type='button'] {
+      border: 1px solid lightseagreen;
+      background: none;
+      padding: 0 5px;
+      border-radius: 5px;
+    }
+
+    #monitor input:hover {
+      cursor: pointer;
+    }
+
+  </style>
+
+</head>
+
+<body>
+  <div class="container">
+    <section id='checkList'>
+      <h3>Чеклист на JavaScript</h3>
+      <input id='enter'>
+      <ul id='monitor'>
+        <li data-numbe-task='1'>
+          <input type='text' value='Какое-то дело.'>
+          <input type='button' value='  '>
+          <input type='button' value='x'>
+        </li>
+        <li data-numbe-task='2'>
+          <input type='text' value='Какое-то дело.'>
+          <input type='button' value='  '>
+          <input type='button' value='x'>
+        </li>
+      </ul>
+    </section>
+  </div>
+
+  <script src="18_jsPrChL.js"></script>
+</body>
+
+</html>
