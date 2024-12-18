@@ -71,8 +71,13 @@ let checklist = {
 
   handleClickMonitorEl(e) {
     let target = e.target;
+
     if (target.classList.contains('check')) {
       this.setTaskCompleted(Number(target.parentElement.dataset.numberTask));
+    }
+
+    if (target.classList.contains('delete')) {
+      this.deleteTask(Number(target.parentElement.dataset.numberTask));
     }
   },
 
@@ -82,6 +87,13 @@ let checklist = {
     taskEl.querySelector('.check').value = 'V';
     taskEl.querySelector('.check').style.color = 'lightseagreen';
     taskEl.querySelector('.text').style.color = 'lightseagreen';
+    taskEl.querySelector('.text').disabled = true;
+  },
+
+  deleteTask(numberTask) {
+    let taskEl = this.todoListEls[numberTask];
+    this.deletedTasksEls.push(taskEl);
+    taskEl.remove();
   }
 
 };
