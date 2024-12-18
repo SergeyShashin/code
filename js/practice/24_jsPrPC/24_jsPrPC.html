@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Poduct Calculator</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      color: crimson;
+    }
+
+    #productCalculator {
+      margin: 0 auto;
+      width: 500px;
+    }
+
+    #productCalculator form {
+      display: flex;
+      margin-bottom: 15px;
+    }
+
+    #productCalculator form input {
+      padding: 8px;
+      width: 24%;
+      margin: 0 0.5% 10px 0.5%;
+    }
+
+    #productCalculator form input,
+    #monitor td,
+    #monitor th {
+      border: 1px solid lightseagreen;
+      border-radius: 5px;
+      outline: none;
+    }
+
+    h2 {
+      margin-top: 0;
+      margin-bottom: 7px;
+    }
+
+    #monitor {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    #monitor td,
+    #monitor th {
+      padding: 8px;
+      text-align: center;
+    }
+
+    #monitor td.remove {
+      cursor: pointer;
+    }
+
+    #result {
+      text-align: right;
+      margin-right: 10px;
+    }
+
+    #add {
+      background: none;
+    }
+
+    #add:hover,
+    #monitor td.remove:hover {
+      cursor: pointer;
+      font-weight: bolder;
+    }
+  </style>
+</head>
+
+<body>
+  <section id='productCalculator'>
+    <form class='enter'>
+      <input type='text' id='name' placeholder='наименование' required>
+      <input type='number' id='price' placeholder='цена' required>
+      <input type='number' id='quantity' placeholder='количество' required>
+      <input type='button' id='add' value='добавить'>
+    </form>
+    <table id='monitor'>
+      <tr>
+        <th>наименование</th>
+        <th>цена</th>
+        <th>количество</th>
+        <th>сумма</th>
+        <th>удалить</th>
+      </tr>
+    </table>
+    <div id='result'></div>
+  </section>
+
+  <script src='24_jsPrPC.js'></script>
+</body>
+
+</html>
