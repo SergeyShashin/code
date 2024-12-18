@@ -8,3 +8,63 @@
  * Вот образец того, что у нас должно получится (для ввода нового дела введите текст в инпут и нажмите Enter, 
  * для редактирования выполните двойной клик по тексту дела):
  */
+
+
+let checklist = {
+  checkListEl: null,
+  enterEl: null,
+  monitorEl: null,
+  todoListEls: null,
+  complitedListEls: null,
+  deletedTasksEls: null,
+  counterforIdTasks: null,
+
+  init() {
+    this.checkListEl = document.getElementById('checkList');
+    this.enterEl = document.getElementById('enter');
+    this.monitorEl = document.getElementById('monitor');
+    this.todoListEls = [];
+    this.complitedListElsTasksEls = [];
+    this.deletedTasksEls = [];
+    this.counterForIdTasks = 0;
+    this.setEventHandlers();
+  },
+
+  setEventHandlers() {
+    this.enterEl.addEventListener('change', e => this.addTaskInHTML(e));
+  },
+
+  addTaskInHTML(e) {
+    let taskText = e.target.value;
+    let taskEl = this.createLiEl(taskText);
+    this.monitorEl.appendChild(taskEl);
+    this.todoListEls.push(taskEl);
+    this.clearInputValue(e.target);
+  },
+
+  createLiEl(taskText) {
+    this.counterforIdTasks++;
+    let liEl = document.createElement('li');
+    liEl.dataset.numberTask = this.counterforIdTasks;
+    let textInputEl = document.createElement('input');
+    textInputEl.type = 'text';
+    textInputEl.value = taskText;
+    let checkInputEl = document.createElement('input');
+    checkInputEl.type = 'button';
+    checkInputEl.value = '  ';
+    let deleteInputEl = document.createElement('input');
+    deleteInputEl.type = 'button';
+    deleteInputEl.value = 'x';
+    liEl.appendChild(textInputEl);
+    liEl.appendChild(checkInputEl);
+    liEl.appendChild(deleteInputEl);
+    return liEl;
+  },
+
+  clearInputValue(input) {
+    input.value = '';
+  }
+
+};
+
+window.onload = checklist.init();
