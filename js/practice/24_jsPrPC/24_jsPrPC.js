@@ -28,6 +28,7 @@ let productCalculator = {
 
   setEventHandlers() {
     this.addBtnEl.addEventListener('click', e => this.addTrElToMonitorEl(e));
+    this.monitorEl.addEventListener('change', e => this.handleChangeMonitorEl(e));
   },
 
   addTrElToMonitorEl(e) {
@@ -72,6 +73,8 @@ let productCalculator = {
     if (idInput !== 'sum' && idInput !== 'remove') {
       let inputEl = document.createElement('input');
       inputEl.value = contentInput;
+      inputEl.name = idInput;
+      idInput === 'price' || idInput == 'quantity' ? inputEl.type = 'number' : '';
       tdEl.appendChild(inputEl);
     } else {
       tdEl.textContent = contentInput;
@@ -97,6 +100,18 @@ let productCalculator = {
 
   renderResult(sum) {
     this.resultEl.textContent = `Итого: ${sum}`;
+  },
+
+  handleChangeMonitorEl(e) {
+    let target = e.target;
+    let nameInput = target.name;
+
+    if (nameInput === 'price' || nameInput === 'quantity') {
+      let numberTr = target.parentElement.parentElement.dataset.code;
+      this.tdEls[`${numberTr}_sum`].textContent = Number(this.tdEls[`${numberTr}_price`].firstChild.value) * Number(this.tdEls[`${numberTr}_quantity`].firstChild.value);
+      this.renderResult(this.getResultSum());
+    }
+
   }
 };
 
