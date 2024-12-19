@@ -17,14 +17,14 @@ let test = {
         resultAnswer: null
       },
       1: {
-        numberQuestion: 1,
+        questionNumber: 1,
         question: 'Какой номер вопроса?',
         answerUser: null,
         correctAnswer: 1,
         resultAnswer: null
       },
       2: {
-        numberQuestion: 2,
+        questionNumber: 2,
         question: 'Какой номер вопроса?',
         answerUser: null,
         correctAnswer: 2,
@@ -41,7 +41,7 @@ let test = {
   },
 
   addQuestionsHTML() {
-    
+
     for (let key in this.questions) {
       let questionEl = document.createElement('article');
       let headerEl = document.createElement('header');
@@ -52,7 +52,7 @@ let test = {
 
       questionEl.id = key;
 
-      h4El.textContent = this.questions[key].questionNumber;
+      h4El.textContent = `№ ${this.questions[key].questionNumber}`;
       pEl.textContent = this.questions[key].questionText;
       preEl.textContent = this.msgs.notAnswer;
 
@@ -61,14 +61,16 @@ let test = {
       inputEl.classList.add('answerUser');
       preEl.classList.add('resultAnswer');
 
-      this.addElHTML(this.testEl, headerEl);
+      this.addElHTML(this.testEl, questionEl);
+      this.addElHTML(questionEl, headerEl);
       this.addElHTML(headerEl, h4El);
-      this.addElHTML(this.testEl, pEl);
-      this.addElHTML(this.testEl, inputEl);
-      this.addElHTML(this.testEl, preEl);
+      this.addElHTML(questionEl, pEl);
+      this.addElHTML(questionEl, inputEl);
+      this.addElHTML(questionEl, preEl);
 
     }
   },
+  
   addElHTML(parent, el) {
     parent.appendChild(el);
   }
