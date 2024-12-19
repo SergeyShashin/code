@@ -5,21 +5,26 @@ let productCalculator = {
   enterEl: null,
   inputsElsInEnterEl: null,
   trEls: null,
+  deletedTrEls: null,
   tdEls: null,
+  deletedTdEls: null,
   addBtnEl: null,
   monitorEl: null,
+  nameColsInMonitorEl: null,
   resultEl: null,
   counterForTrElId: null,
 
   init() {
-
     this.productCalculatorEl = document.getElementById('productCalculator');
     this.enterEl = document.getElementById('enter');
     this.addBtnEl = document.getElementById('add');
     this.monitorEl = document.getElementById('monitor');
     this.resultEl = document.getElementById('result');
+    this.nameColsInMonitorEl = ['name', 'price', 'quantity', 'sum', 'remove']
     this.trEls = {};
     this.tdEls = {};
+    this.deletedTrEls = {};
+    this.deletedTdEls = {};
     this.counterForTrElId = 0;
 
     this.setEventHandlers();
@@ -29,6 +34,7 @@ let productCalculator = {
   setEventHandlers() {
     this.addBtnEl.addEventListener('click', e => this.addTrElToMonitorEl(e));
     this.monitorEl.addEventListener('change', e => this.handleChangeMonitorEl(e));
+    this.monitorEl.addEventListener('click', e => this.handleClickMonitorEl(e));
   },
 
   addTrElToMonitorEl(e) {
@@ -111,7 +117,25 @@ let productCalculator = {
       this.tdEls[`${numberTr}_sum`].textContent = Number(this.tdEls[`${numberTr}_price`].firstChild.value) * Number(this.tdEls[`${numberTr}_quantity`].firstChild.value);
       this.renderResult(this.getResultSum());
     }
+  },
 
+  handleClickMonitorEl(e) {
+    let target = e.target;
+
+    if (target.classList.contains('remove')) {
+      let numberTr = target.parentElement.dataset.code;
+      this.deletedTrEls[numberTr] = this.trEls[numberTr];
+      delete this.trEls[numberTr];
+
+      for (let tdName of this.nameColsInMonitorEl) {
+        this.deletedTdEls[`${numberTr}_${tdName}`] = this.tdEls[`${numberTr}_${tdName}`];
+        delete this.tdEls[`${numberTr}_${tdName}`];
+      }
+
+      target.parentElement.remove();
+
+      this.renderResult(this.getResultSum());
+    }
   }
 };
 
