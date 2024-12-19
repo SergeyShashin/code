@@ -13,6 +13,7 @@ let test = {
   questions: null,
   quantityCorrectAnswerUser: null,
   msgs: null,
+  btnCheckEl: null,
 
   init() {
     this.testEl = document.getElementById('test');
@@ -44,6 +45,7 @@ let test = {
       correctAnswer: 'Ответ совпадает с верным:)',
       answerUser: 'Дан индивидуальный ответ:)'
     };
+    this.btnCheckEl = document.getElementById('btnCheck');
     this.quantityCorrectAnswerUser = 0;
     this.addQuestionsHTML();
     this.setEventHandlers();
@@ -87,6 +89,7 @@ let test = {
 
   setEventHandlers() {
     this.testEl.addEventListener('change', e => this.handleChangeTestEl(e));
+    this.btnCheckEl.addEventListener('click', () => this.handleClickBtnChek());
   },
 
   handleChangeTestEl(e) {
@@ -104,9 +107,16 @@ let test = {
 
   setResultHtml(numberQuestion, resultAnswer) {
     let resultEl = document.getElementById(`${numberQuestion}_resultAnswer`);
-    console.log(resultEl);
-
     resultEl.textContent = resultAnswer ? this.msgs.correctAnswer : this.msgs.answerUser;
+  },
+
+  handleClickBtnChek() {
+    let answersUser = this.testEl.querySelectorAll('.answerUser');
+    console.log(answersUser);
+    
+    for(let question in this.questions){
+
+    }
   }
 
 };
