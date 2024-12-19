@@ -21,7 +21,8 @@
       margin-bottom: 15px;
     }
 
-    #productCalculator form input {
+    #productCalculator form input,
+    button {
       padding: 8px;
       width: 24%;
       margin: 0 0.5% 10px 0.5%;
@@ -29,7 +30,8 @@
 
     #productCalculator form input,
     #monitor td,
-    #monitor th {
+    #monitor th,
+    #add {
       border: 1px solid lightseagreen;
       border-radius: 5px;
       outline: none;
@@ -74,11 +76,11 @@
 
 <body>
   <section id='productCalculator'>
-    <form class='enter'>
+    <form id='enter'>
       <input type='text' id='name' placeholder='наименование' required>
       <input type='number' id='price' placeholder='цена' required>
       <input type='number' id='quantity' placeholder='количество' required>
-      <input type='button' id='add' value='добавить'>
+      <button id='add'>добавить</button>
     </form>
     <table id='monitor'>
       <tr>
