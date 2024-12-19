@@ -15,9 +15,6 @@ let productCalculator = {
 
     this.productCalculatorEl = document.getElementById('productCalculator');
     this.enterEl = document.getElementById('enter');
-    // this.nameInputEl = document.getElementById('name');
-    // this.priceInputEl = document.getElementById('price');
-    // this.quantityInputEl = document.getElementById('quantity');
     this.addBtnEl = document.getElementById('add');
     this.monitorEl = document.getElementById('monitor');
     this.resultEl = document.getElementById('result');
@@ -53,8 +50,10 @@ let productCalculator = {
     }
 
     sum = price * quantity;
+
     trEl.appendChild(this.createTdEl('sum', sum));
     trEl.appendChild(this.createTdEl('remove', 'удалить'));
+    
     this.monitorEl.appendChild(trEl);
   },
 
