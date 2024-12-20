@@ -61,6 +61,7 @@ let test = {
     };
     this.btnCheckEl = document.getElementById('btnCheck');
     this.quantityCorrectAnswerUser = 0;
+    
     this.addQuestionsHTML();
     this.setEventHandlers();
   },
@@ -93,7 +94,7 @@ let test = {
       preEl.id = `${key}_resultAnswer`;
 
       this.addOptionElsInDatalistEl(datalistEl, this.questions[key].variants);
-      
+
       this.addElHTML(this.testEl, questionEl);
       this.addElHTML(questionEl, headerEl);
       this.addElHTML(headerEl, h4El);
