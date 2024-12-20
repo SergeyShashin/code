@@ -73,13 +73,11 @@ let slider = {
   },
 
   prevSlide() {
-    console.log('left');
     this.counter === 0 ? this.counter = this.sliderContent.length - 1 : this.counter--;
     this.render();
   },
 
   nextSlide() {
-    console.log('right');
     this.counter === this.sliderContent.length - 1 ? this.counter = 0 : this.counter++;
     this.render();
   }
