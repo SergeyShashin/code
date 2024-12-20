@@ -89,7 +89,7 @@ let test = {
 
   setEventHandlers() {
     this.testEl.addEventListener('change', e => this.handleChangeTestEl(e));
-    this.btnCheckEl.addEventListener('click', () => this.handleClickBtnCheck());
+    this.btnCheckEl.addEventListener('click', () => this.handleClickBtnChek());
   },
 
   handleChangeTestEl(e) {
@@ -97,6 +97,7 @@ let test = {
     let numberQuestion = target.parentElement.id;
     let answerUser = target.value;
     let resultAnswer = this.checkAnswerUser(numberQuestion, answerUser);
+    console.log(resultAnswer);
     this.setResultHtml(numberQuestion, resultAnswer);
   },
 
@@ -109,11 +110,12 @@ let test = {
     resultEl.textContent = resultAnswer ? this.msgs.correctAnswer : this.msgs.answerUser;
   },
 
-  handleClickBtnCheck() {
+  handleClickBtnChek() {
     let answersUser = this.testEl.querySelectorAll('.answerUser');
+    console.log(answersUser);
+    
+    for(let question in this.questions){
 
-    for (let key in this.questions) {
-      this.setResultHtml(key, this.questions[key].correctAnswer === answersUser[key].value);
     }
   }
 
