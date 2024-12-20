@@ -11,6 +11,9 @@
 
 let slider = {
   sliderEL: null,
+  sliderButtonsEl: null,
+  sliderBtnLeftEl: null,
+  sliderBtnRightEl: null,
   sliderText: null,
   sliderContent: null,
   numberInterval: null,
@@ -19,11 +22,19 @@ let slider = {
 
   init() {
     this.sliderEL = document.getElementById('slider');
-    this.sliderText = document.getElementById('sliderText');
+    this.sliderButtonsEl = document.getElementById('sliderButtons'),
+      this.sliderBtnLeftEl = document.getElementById('sliderBtnLeft'),
+      this.sliderBtnRightEl = document.getElementById('sliderBtnRight'),
+      this.sliderText = document.getElementById('sliderText');
     this.sliderContent = ['первый слайдер', 'второй слайдер', 'третий слайдер'];
-    this.timeForShowSlider = 2000;
+    this.timeForShowSlider = 4000;
     this.counter = 0;
     this.sliderStartShow();
+    this.setEventHandlers();
+  },
+
+  setEventHandlers() {
+    this.sliderButtonsEl.addEventListener('click', e => this.handlerClickButtonsEl(e));
   },
 
   sliderStartShow() {
@@ -31,7 +42,11 @@ let slider = {
   },
 
   show() {
-    this.counter = this.counter === this.sliderContent.length-1 ? 0 : this.counter + 1;
+    this.counter = this.counter === this.sliderContent.length - 1 ? 0 : this.counter + 1;
+    this.render();
+  },
+
+  render() {
     let content = this.getContent();
     this.insertContentInSliderEl(content);
   },
@@ -42,6 +57,31 @@ let slider = {
 
   insertContentInSliderEl(content) {
     this.sliderText.textContent = content;
+  },
+
+  handlerClickButtonsEl(e) {
+    let target = e.target;
+
+    switch (target.id) {
+      case 'sliderBtnLeft':
+        this.prevSlide();
+        break;
+      case 'sliderBtnRight':
+        this.nextSlide();
+        break;
+    }
+  },
+
+  prevSlide() {
+    console.log('left');
+    this.counter === 0 ? this.counter = this.sliderContent.length - 1 : this.counter--;
+    this.render();
+  },
+
+  nextSlide() {
+    console.log('right');
+    this.counter === this.sliderContent.length - 1 ? this.counter = 0 : this.counter++;
+    this.render();
   }
 
 };
