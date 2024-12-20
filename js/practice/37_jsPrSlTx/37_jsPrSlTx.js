@@ -29,13 +29,17 @@ let slider = {
   },
 
   show() {
-    this.counter = this.counter === this.sliderContent.length ? this.counter++ : 0;
+    this.counter = this.counter === this.sliderContent.length-1 ? 0 : this.counter + 1;
     let content = this.getContent();
     this.insertContentInSliderEl(content);
   },
 
   getContent() {
     return this.sliderContent[this.counter];
+  },
+
+  insertContentInSliderEl(content) {
+    this.sliderText.textContent = content;
   }
 
 };
