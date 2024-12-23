@@ -97,7 +97,17 @@ const map = {
 };
 
 const statusGame = {
+  statusGame: null,
+  play() {
+    this.statusGame = 'play';
+  },
 
+  finish() {
+    this.statusGame = 'finish';
+  },
+  isPlay() {
+    return this.statusGame === 'play'
+  }
 }
 
 const gameChangeColor = {
@@ -105,20 +115,32 @@ const gameChangeColor = {
   map,
   statusGame,
   quantityOneColorForWin: null,
+  counter: null,
+  counterEl: null,
 
   init(userSettings = {}) {
     this.config.init(userSettings);
     this.map.init(this.config.getRows(), this.config.getCols(), this.config.getColors());
     this.quantityOneColorForWin = this.config.getRows() * this.config.getCols();
+    this.counterEl = document.getElementById('clicks');
+    this.counter = 0;
+    this.statusGame.play();
     this.setEventHandlers();
   },
 
   setEventHandlers() {
+    this.map.getGameChangeColorEl().addEventListener('click', (e) => this.changeColorEl(e));
+  },
+
+  changeColorEl(e) {
     if (this.isFinish()) {
+      this.statusGame.finish();
       this.sayWin();
+      this.map.getGameChangeColorEl().removeEventListener('click', this.changeColorEl);
       return
     } else {
-      this.map.getGameChangeColorEl().addEventListener('click', (e) => this.map.changeColorEl(e));
+      this.incrementCounter();
+      this.map.changeColorEl(e);
     }
   },
 
@@ -132,13 +154,17 @@ const gameChangeColor = {
       result[`${color}`] ? result[`${color}`]++ : result[`${color}`] = 1
     }
 
-    console.log(Object.values(result));
 
     return Object.values(result).filter(el => el === this.quantityOneColorForWin).length
   },
 
   sayWin() {
     alert('У Вас получилось собрать ячейки одного цвета)');
+  },
+
+  incrementCounter() {
+    this.counter++;
+    this.counterEl.textContent = this.counter;
   }
 
 };
