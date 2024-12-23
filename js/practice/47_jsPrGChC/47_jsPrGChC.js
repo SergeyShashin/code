@@ -40,11 +40,13 @@ const map = {
   colsQuantityQuantity: null,
   colors: null,
   gameEls: null,
+  colorsLength: null,
 
   init(rowsQuantity, colsQuantity, colors) {
     this.rowsQuantity = rowsQuantity;
     this.colsQuantityQuantity = colsQuantity;
     this.colors = [...colors];
+    this.colorsLength = this.colors.length;
     this.gameChangeColorEl = document.getElementById('gameChangeColor');
     this.gameEls = {};
 
@@ -52,6 +54,7 @@ const map = {
       let trEl = document.createElement('tr');
       for (let col = 0; col < colsQuantity; col++) {
         let tdEl = document.createElement('td');
+        tdEl.classList.add(this.getRandomColor());
         trEl.appendChild(tdEl);
         this.gameEls[`${row}_${col}`] = tdEl;
       }
@@ -60,13 +63,33 @@ const map = {
 
   },
 
-  getgameChangeColorEl() {
+  getGameChangeColorEl() {
     return this.gameChangeColorEl
   },
 
   getGameEls() {
     return this.gameEls
   },
+
+  getRandomColor() {
+    return this.colors[Math.floor(Math.random() * this.colorsLength)];
+  },
+
+  changeColorEl(e) {
+    let target = e.target;
+
+    if (target.tagName !== 'TD') {
+      return
+    }
+
+    target.className = this.getNextColor(target.className);
+  },
+
+  getNextColor(currentColor) {
+    let idxCurrentColor = this.colors.indexOf(currentColor);
+    idxCurrentColor = idxCurrentColor + 1 === this.colorsLength ? 0 : idxCurrentColor + 1;
+    return this.colors[idxCurrentColor];
+  }
 
 };
 
@@ -82,7 +105,14 @@ const gameChangeColor = {
   init(userSettings = {}) {
     this.config.init(userSettings);
     this.map.init(this.config.getRows(), this.config.getCols(), this.config.getColors());
+    this.setEventHandlers();
+  },
+
+  setEventHandlers() {
+    this.map.getGameChangeColorEl().addEventListener('click', (e) => this.map.changeColorEl(e));
   }
+
+
 
 };
 
