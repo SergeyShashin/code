@@ -56,6 +56,8 @@ const map = {
         let tdEl = document.createElement('td');
         tdEl.classList.add(this.getRandomColor());
         trEl.appendChild(tdEl);
+        tdEl.dataset.row = row;
+        tdEl.dataset.col = col;
         this.gameEls[`${row}_${col}`] = tdEl;
       }
       this.gameChangeColorEl.appendChild(trEl);
@@ -82,7 +84,8 @@ const map = {
       return
     }
 
-    target.className = this.getNextColor(target.className);
+    let nextColor = this.getNextColor(target.className);
+    target.className = nextColor;
   },
 
   getNextColor(currentColor) {
@@ -101,18 +104,42 @@ const gameChangeColor = {
   config,
   map,
   statusGame,
+  quantityOneColorForWin: null,
 
   init(userSettings = {}) {
     this.config.init(userSettings);
     this.map.init(this.config.getRows(), this.config.getCols(), this.config.getColors());
+    this.quantityOneColorForWin = this.config.getRows() * this.config.getCols();
     this.setEventHandlers();
   },
 
   setEventHandlers() {
-    this.map.getGameChangeColorEl().addEventListener('click', (e) => this.map.changeColorEl(e));
+    if (this.isFinish()) {
+      this.sayWin();
+      return
+    } else {
+      this.map.getGameChangeColorEl().addEventListener('click', (e) => this.map.changeColorEl(e));
+    }
+  },
+
+  isFinish() {
+    let gameEls = this.map.getGameEls();
+
+    const result = {};
+
+    for (let el in gameEls) {
+      let color = gameEls[el].className
+      result[`${color}`] ? result[`${color}`]++ : result[`${color}`] = 1
+    }
+
+    console.log(Object.values(result));
+
+    return Object.values(result).filter(el => el === this.quantityOneColorForWin).length
+  },
+
+  sayWin() {
+    alert('У Вас получилось собрать ячейки одного цвета)');
   }
-
-
 
 };
 
