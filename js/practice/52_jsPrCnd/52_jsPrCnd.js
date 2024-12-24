@@ -46,10 +46,13 @@ const calendar = {
   currentNumberMonth: null,
   currentMonthEl: null,
   currentDayWeek: null,
+  currentNumber: null,
+  numberfirstDayCurrentMonth: null,
   namefirstDayCurrentMonth: null,
   numberNextMonth: null,
   numberPrevMonth: null,
   quantitytDaysInCurrentMonth: null,
+  currentMonthEls: null,
 
   init(userSettings = {}) {
     this.config.init(userSettings);
@@ -60,14 +63,18 @@ const calendar = {
     this.currentNumberYear = this.currentDate.getFullYear();
     this.currentNumberMonth = this.currentDate.getMonth();
     this.currentNumberDayWeek = this.currentDate.getDay();
+    this.currentNumber = this.currentDate.getDate();
     this.currentYearEl.textContent = this.currentNumberYear;
     this.currentMonthEl.textContent = this.config.getNamesMonth()[this.currentNumberMonth];
+    this.numberfirstDayCurrentMonth = new Date(this.currentNumberYear, this.currentNumberMonth, 1).getDay();
     this.namefirstDayCurrentMonth = this.config.getNamesDaysWeek()[new Date(this.currentNumberYear, this.currentNumberMonth, 1).getDay()];
-    console.log(new Date(this.currentNumberYear, this.currentNumberMonth, 1).getDay());
     this.nextNumberMonth = this.currentNumberMonth === 11 ? 0 : this.currentNumberMonth + 1;
     this.prevNumberMonth = this.currentNumberMonth === 0 ? 11 : this.currentNumberMonth - 1;
     this.quantitytDaysInCurrentMonth = new Date(this.currentNumberYear, this.nextNumberMonth, 0).getDate();
+    this.currentMonthEls = {};
     this.calendarEl.appendChild(this.addTableEl());
+
+    console.log(this.currentMonthEls);
   },
 
   addTableEl() {
@@ -96,14 +103,30 @@ const calendar = {
   addTbody() {
     let tBody = document.createElement('tbody');
     let namesDaysWeek = this.config.getNamesDaysWeek();
+    let number = 1;
 
     for (let row = 0; row < this.config.getQuantityRows(); row++) {
       let trEl = document.createElement('tr');
+
       for (let col = 0; col < this.config.getQuantityCols(); col++) {
         let tdEl = document.createElement('td');
-        tdEl.dataset.nameDay = namesDaysWeek[col];
+
+        if (col >= this.numberfirstDayCurrentMonth && number <= this.quantitytDaysInCurrentMonth) {
+          tdEl.dataset.nameDay = namesDaysWeek[col];
+          tdEl.dataset.number = number;
+          tdEl.textContent = number;
+          this.currentMonthEls[`${number}_${namesDaysWeek[col]}`] = tdEl;
+          number++;
+        }
+
+        if (number === this.currentNumber) {
+          tdEl.classList.add('currentNumber');
+        }
+
         trEl.appendChild(tdEl);
+
       }
+
       tBody.appendChild(trEl);
     }
 
