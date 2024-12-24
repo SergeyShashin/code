@@ -41,8 +41,10 @@ const calendar = {
   calendarEl: null,
   tableEl: null,
   currentDate: null,
-  currentNumberYear: null,
   currentYearEl: null,
+  currentNumberYear: null,
+  nextNumberYear: null,
+  prevNumberYearnull: null,
   currentNumberMonth: null,
   currentMonthEl: null,
   currentDayWeek: null,
@@ -61,6 +63,8 @@ const calendar = {
     this.currentMonthEl = document.getElementById('currentMonth');
     this.currentDate = new Date();
     this.currentNumberYear = this.currentDate.getFullYear();
+    this.nextNumberYear = this.currentNumberYear + 1;
+    this.prevNumberYear = this.currentNumberYear - 1;
     this.currentNumberMonth = this.currentDate.getMonth();
     this.currentNumberDayWeek = this.currentDate.getDay();
     this.currentNumber = this.currentDate.getDate();
@@ -68,11 +72,18 @@ const calendar = {
     this.currentMonthEl.textContent = this.config.getNamesMonth()[this.currentNumberMonth];
     this.numberfirstDayCurrentMonth = new Date(this.currentNumberYear, this.currentNumberMonth, 1).getDay();
     this.namefirstDayCurrentMonth = this.config.getNamesDaysWeek()[new Date(this.currentNumberYear, this.currentNumberMonth, 1).getDay()];
-    this.nextNumberMonth = this.currentNumberMonth === 11 ? 0 : this.currentNumberMonth + 1;
+
+    if (this.currentNumberMonth === 11) {
+      this.nextNumberMonth = 0;
+      this.quantitytDaysInCurrentMonth = new Date(this.nextNumberYear, this.nextNumberMonth, 0).getDate();
+    } else {
+      this.nextNumberMonth = this.currentNumberMonth + 1;
+      this.quantitytDaysInCurrentMonth = new Date(this.currentNumberYear, this.nextNumberMonth, 0).getDate();
+    }
+
     this.prevNumberMonth = this.currentNumberMonth === 0 ? 11 : this.currentNumberMonth - 1;
-    this.quantitytDaysInCurrentMonth = new Date(this.currentNumberYear, this.nextNumberMonth, 0).getDate();
     this.currentMonthEls = {};
-    
+
     this.calendarEl.appendChild(this.addTableEl());
   },
 
@@ -120,6 +131,10 @@ const calendar = {
 
         if (number === this.currentNumber) {
           tdEl.classList.add('currentNumber');
+        }
+
+        if (tdEl.textContent === '') {
+          tdEl.classList.add('emptyTd');
         }
 
         trEl.appendChild(tdEl);
