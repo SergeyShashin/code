@@ -72,19 +72,18 @@ const calendar = {
     this.currentMonthEl.textContent = this.config.getNamesMonth()[this.currentNumberMonth];
     this.numberfirstDayCurrentMonth = new Date(this.currentNumberYear, this.currentNumberMonth, 1).getDay();
     this.namefirstDayCurrentMonth = this.config.getNamesDaysWeek()[new Date(this.currentNumberYear, this.currentNumberMonth, 1).getDay()];
+    this.quantitytDaysInCurrentMonth = this.getQuantitytDaysInCurrentMonth();
+    this.currentMonthEls = {};
+    this.calendarEl.appendChild(this.addTableEl());
+  },
 
+  getQuantitytDaysInCurrentMonth() {
     if (this.currentNumberMonth === 11) {
       this.nextNumberMonth = 0;
-      this.quantitytDaysInCurrentMonth = new Date(this.nextNumberYear, this.nextNumberMonth, 0).getDate();
-    } else {
-      this.nextNumberMonth = this.currentNumberMonth + 1;
-      this.quantitytDaysInCurrentMonth = new Date(this.currentNumberYear, this.nextNumberMonth, 0).getDate();
+      return new Date(this.nextNumberYear, this.nextNumberMonth, 0).getDate();
     }
-
-    this.prevNumberMonth = this.currentNumberMonth === 0 ? 11 : this.currentNumberMonth - 1;
-    this.currentMonthEls = {};
-
-    this.calendarEl.appendChild(this.addTableEl());
+    this.nextNumberMonth = this.currentNumberMonth + 1;
+    return new Date(this.currentNumberYear, this.nextNumberMonth, 0).getDate();
   },
 
   addTableEl() {
