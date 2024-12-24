@@ -72,9 +72,8 @@ const calendar = {
     this.prevNumberMonth = this.currentNumberMonth === 0 ? 11 : this.currentNumberMonth - 1;
     this.quantitytDaysInCurrentMonth = new Date(this.currentNumberYear, this.nextNumberMonth, 0).getDate();
     this.currentMonthEls = {};
+    
     this.calendarEl.appendChild(this.addTableEl());
-
-    console.log(this.currentMonthEls);
   },
 
   addTableEl() {
