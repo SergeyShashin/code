@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>IIFE/closures</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/functions/IIFE/closures/">
+    Замыкания и вызов функции на месте в JavaScript
+  </a>
+
+  <script>
+    let func = (function () {
+      let num = 1;
+      return function () {
+        console.log(num);
+        num === 5 ? num = 1 : num++;
+      }
+    })();
+
+    func();
+    func();
+    func();
+    func();
+    func();
+    func();
+    func();
+  </script>
+</body>
+
+</html>

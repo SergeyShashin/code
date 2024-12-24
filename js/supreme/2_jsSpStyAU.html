@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>styles/attribute-units</title>
+  <style>
+    #task1 div {
+      border: 1px solid lightseagreen;
+    }
+  </style>
+
+</head>
+
+<body>
+  <a href='https://code.mu/ru/javascript/book/supreme/styles/attribute-units/'>
+    Единицы измерения в атрибуте style в JavaScript
+  </a>
+  <br>
+  <br>
+
+  <section id='task1'>
+    <div></div>
+    <button>Сделать высоту 300px и ширину400px</button>
+  </section>
+
+  <script>
+    console.log(`1. Дан див и кнопка. По нажатию на кнопку задайте диву ширину в 400px, а высоту в 300px.`);
+    let btnEl = document.querySelector('#task1 button');
+    let divEl = document.querySelector('#task1 div');
+    console.log(divEl);
+
+    btnEl.onclick = () => {
+      divEl.style.width = '400px';
+      divEl.style.height = '300px';
+    }
+
+  </script>
+
+</body>
+
+</html>

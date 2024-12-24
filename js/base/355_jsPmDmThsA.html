@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>dom/basis/this-advantage</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/prime/dom/basis/this-advantage/">
+    Преимущество this в JavaScript
+  </a>
+  <section id='someText'>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum et, neque eius commodi necessitatibus consectetur
+      voluptatum eaque quos suscipit nesciunt rerum impedit voluptate consequatur ut, minus placeat quibusdam atque
+      corporis.</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum et, neque eius commodi necessitatibus consectetur
+      voluptatum eaque quos suscipit nesciunt rerum impedit voluptate consequatur ut, minus placeat quibusdam atque
+      corporis.</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum et, neque eius commodi necessitatibus consectetur
+      voluptatum eaque quos suscipit nesciunt rerum impedit voluptate consequatur ut, minus placeat quibusdam atque
+      corporis.</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum et, neque eius commodi necessitatibus consectetur
+      voluptatum eaque quos suscipit nesciunt rerum impedit voluptate consequatur ut, minus placeat quibusdam atque
+      corporis.</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum et, neque eius commodi necessitatibus consectetur
+      voluptatum eaque quos suscipit nesciunt rerum impedit voluptate consequatur ut, minus placeat quibusdam atque
+      corporis.</p>
+  </section>
+
+  <section id='inputs'>
+    <input type="text" value='8'>
+    <input type="text" value='8'>
+    <input type="text" value='8'>
+  </section>
+
+  <script>
+    console.log('1. Даны 5 абзацев с какими-то текстами. По клику на любой абзац запишите в конец его текста восклицательный знак.');
+    document.getElementById('someText').addEventListener('click', (e) => {
+      e.target.tagName === 'P' ? e.target.textContent += '!' : '';
+    });
+
+    console.log(`2. Даны 3 инпута, в которых записаны какие-то числа. 
+    По потери фокуса в любом из инпутов возведите стоящее в нем число в квадрат.`);
+    let children = document.getElementById('inputs').children
+    for (let el of children) {
+      el.addEventListener('blur', function () {
+        this.value = this.value ** 2;
+      });
+    }
+  </script>
+</body>
+
+</html>
