@@ -58,10 +58,10 @@ const calendar = {
 
   init(userSettings = {}) {
     this.config.init(userSettings);
+    this.currentDate = new Date();
     this.calendarEl = document.getElementById('calendar');
     this.currentYearEl = document.getElementById('currentYear');
     this.currentMonthEl = document.getElementById('currentMonth');
-    this.currentDate = new Date();
     this.currentNumberYear = this.currentDate.getFullYear();
     this.nextNumberYear = this.currentNumberYear + 1;
     this.prevNumberYear = this.currentNumberYear - 1;
@@ -74,6 +74,27 @@ const calendar = {
     this.namefirstDayCurrentMonth = this.config.getNamesDaysWeek()[new Date(this.currentNumberYear, this.currentNumberMonth, 1).getDay()];
     this.quantitytDaysInCurrentMonth = this.getQuantitytDaysInCurrentMonth();
     this.currentMonthEls = {};
+    this.calendarEl.appendChild(this.addTableEl());
+    this.setEventHandlers();
+  },
+
+  render() {
+    this.currentYearEl.innerHTML = '';
+    this.currentMonthEl.innerHTML = '';
+    this.currentNumberYear = this.currentDate.getFullYear();
+    this.nextNumberYear = this.currentNumberYear + 1;
+    this.prevNumberYear = this.currentNumberYear - 1;
+    this.currentNumberMonth = this.currentDate.getMonth();
+    this.currentNumberDayWeek = this.currentDate.getDay();
+    this.currentNumber = this.currentDate.getDate();
+    this.currentYearEl.textContent = this.currentNumberYear;
+    this.currentMonthEl.textContent = this.config.getNamesMonth()[this.currentNumberMonth];
+    this.numberfirstDayCurrentMonth = new Date(this.currentNumberYear, this.currentNumberMonth, 1).getDay();
+    this.namefirstDayCurrentMonth = this.config.getNamesDaysWeek()[new Date(this.currentNumberYear, this.currentNumberMonth, 1).getDay()];
+    this.quantitytDaysInCurrentMonth = this.getQuantitytDaysInCurrentMonth();
+    this.currentMonthEls = {};
+
+    this.calendarEl.querySelector('table').remove();
     this.calendarEl.appendChild(this.addTableEl());
   },
 
@@ -154,7 +175,73 @@ const calendar = {
     }
 
     return tBody
-  }
+  },
+
+  setEventHandlers() {
+    this.calendarEl.addEventListener('click', e => this.handleClickCalendarEl(e));
+  },
+
+  handleClickCalendarEl(e) {
+    let target = e.target;
+    switch (target.id) {
+      case 'btnPrevYear':
+        this.setPrevYear();
+        break;
+      case 'btnNextYear':
+        this.setNextYear();
+        break;
+      case 'btnPrevMonth':
+        this.setPrevMonth();
+        break;
+      case 'btnNextMonth':
+        this.setNextMonth();
+        break;
+    }
+  },
+
+  setPrevYear() {
+    this.currentDate = new Date(this.prevNumberYear, 0);
+    this.render();
+  },
+
+  setNextYear() {
+    this.currentDate = new Date(this.nextNumberYear, 0);
+    this.render();
+  },
+
+  setPrevMonth() {
+    let month;
+    let year = this.currentNumberYear;
+
+    if (this.currentNumberMonth === 0) {
+      month = 11;
+      year = year - 1;
+    } else {
+      month = this.currentNumberMonth - 1
+    }
+
+    this.currentDate = new Date(year, month);
+
+    this.render();
+
+  },
+
+  setNextMonth() {
+    let month;
+    let year = this.currentNumberYear;
+
+    if (this.currentNumberMonth === 11) {
+      month = 0;
+      year = year + 1;
+    } else {
+      month = this.currentNumberMonth + 1
+    }
+
+    this.currentDate = new Date(year, month);
+
+    this.render();
+
+  },
 
 };
 
