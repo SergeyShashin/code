@@ -120,16 +120,26 @@ const calendar = {
       for (let col = 0; col < this.config.getQuantityCols(); col++) {
         let tdEl = document.createElement('td');
 
-        if (col >= this.numberfirstDayCurrentMonth && number <= this.quantitytDaysInCurrentMonth) {
+        if (row === 0 && col >= this.numberfirstDayCurrentMonth) {
           tdEl.dataset.nameDay = namesDaysWeek[col];
           tdEl.dataset.number = number;
           tdEl.textContent = number;
           this.currentMonthEls[`${number}_${namesDaysWeek[col]}`] = tdEl;
+          if (number === this.currentNumber) {
+            tdEl.classList.add('currentNumber');
+          }
           number++;
         }
 
-        if (number === this.currentNumber) {
-          tdEl.classList.add('currentNumber');
+        if (row > 0 && number <= this.quantitytDaysInCurrentMonth) {
+          tdEl.dataset.nameDay = namesDaysWeek[col];
+          tdEl.dataset.number = number;
+          tdEl.textContent = number;
+          this.currentMonthEls[`${number}_${namesDaysWeek[col]}`] = tdEl;
+          if (number === this.currentNumber) {
+            tdEl.classList.add('currentNumber');
+          }
+          number++;
         }
 
         if (tdEl.textContent === '') {
