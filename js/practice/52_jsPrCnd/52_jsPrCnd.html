@@ -10,6 +10,19 @@
       margin: 0 auto;
       text-align: center;
       color: crimson;
+      box-sizing: border-box;
+    }
+
+    #calendar h3 {
+      margin-bottom: 10px;
+    }
+
+    #calendar th,
+    td {
+      width: 30px;
+      height: 30px;
+      margin: 5px;
+      border: 1px solid lightseagreen;
     }
   </style>
 </head>
@@ -17,6 +30,8 @@
 <body>
   <section id='calendar'>
     <h3>Календарь</h3>
+    <h3 id='currentYear'></h3>
+    <h3 id='currentMonth'></h3>
   </section>
 
   <script src='52_jsPrCnd.js'></script>
