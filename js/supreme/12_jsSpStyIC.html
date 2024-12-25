@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>styles/classes-inconvenience</title>
+  <style>
+    section {
+      margin: 20px;
+    }
+
+    input {
+      outline: none;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid lightskyblue;
+      color: crimson;
+    }
+
+    .crimson {
+      border: 1px solid crimson;
+    }
+
+    .lightseagreen {
+      border: 1px solid lightseagreen;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <a href='https://code.mu/ru/javascript/book/supreme/styles/classes-inconvenience/'>
+    Неудобство классов в JavaScript
+  </a>
+
+  <section id='task1'>
+    <input>
+  </section>
+
+  <script>
+    console.log(`1. Дан инпут. По потери фокуса проверьте, что в него введено не более 9-ти символов.
+     Если это так, покрасьте границу инпута в зеленый цвет, а если не так - в красный.`);
+
+    document.querySelector('input').onblur = (e) => {
+
+      e.target.className = e.target.value.length > 9 ? 'crimson' : 'lightseagreen';
+    }
+  </script>
+
+</body>
+
+</html>
