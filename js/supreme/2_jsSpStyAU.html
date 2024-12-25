@@ -2,11 +2,18 @@
 <html lang="en">
 
 <head>
+  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>styles/attribute-units</title>
   <style>
-    #task1 div {
+    section,
+    div,
+    button {
+      margin: 10px;
+    }
+
+    .border {
       border: 1px solid lightseagreen;
     }
   </style>
@@ -14,28 +21,69 @@
 </head>
 
 <body>
+
   <a href='https://code.mu/ru/javascript/book/supreme/styles/attribute-units/'>
     Единицы измерения в атрибуте style в JavaScript
   </a>
-  <br>
-  <br>
 
   <section id='task1'>
     <div></div>
     <button>Сделать высоту 300px и ширину400px</button>
   </section>
 
+  <section id='task2'>
+    <div id="elem" style="width: 300px; height: 200px;">
+      text
+    </div>
+    <button>Вывести ширину и высоту блока с text</button>
+  </section>
+
+  <section id='task3'>
+    <div id="elem" style="font-size: 1.5em;">
+      text
+    </div>
+    <button>Вывести размер шрифта у text</button>
+  </section>
+
   <script>
     console.log(`1. Дан див и кнопка. По нажатию на кнопку задайте диву ширину в 400px, а высоту в 300px.`);
-    let btnEl = document.querySelector('#task1 button');
-    let divEl = document.querySelector('#task1 div');
-    console.log(divEl);
 
-    btnEl.onclick = () => {
-      divEl.style.width = '400px';
-      divEl.style.height = '300px';
-    }
+    (() => {
+      let btnEl = document.querySelector('#task1 button');
+      let divEl = document.querySelector('#task1 div');
 
+      btnEl.onclick = () => {
+        divEl.style.width = '400px';
+        divEl.style.height = '300px';
+        divEl.classList.add('border');
+      }
+    })();
+
+  </script>
+
+  <script>
+    console.log(`2. Дана также кнопка. По клику на кнопку выведите ширину и высоту дива без единиц измерения.`);
+    (() => {
+      let btnEl = document.querySelector('#task2 button');
+      let divEl = document.querySelector('#task2 div');
+
+      btnEl.onclick = () => {
+        divEl.classList.add('border');
+        alert(`Ширина ${parseInt(divEl.style.width)}. Высота ${parseInt(divEl.style.height)}`);
+      }
+    })()
+  </script>
+
+  <script>
+    console.log(`3. Дана также кнопка. По клику на кнопку выведите размер шрифта дива без единиц измерения.`);
+    (() => {
+      let btnEl = document.querySelector('#task3 button');
+      let divEl = document.querySelector('#task3 div');
+
+      btnEl.onclick = () => {
+        alert(`Размер шрифта ${parseFloat(divEl.style.fontSize)}.`);
+      }
+    })()
   </script>
 
 </body>
