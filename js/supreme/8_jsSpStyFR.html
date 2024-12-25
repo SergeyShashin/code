@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>styles/files-reading</title>
+  <style>
+    #elem {
+      width: 200px;
+      height: 200px;
+      border: 1px solid lightseagreen;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <a href='https://code.mu/ru/javascript/book/supreme/styles/files-reading/'>
+    Чтение свойств из CSS файлов в JavaScript
+  </a>
+
+  <section id='task1'>
+    <div id="elem">
+      text
+    </div>
+    <button id="btnShowWidthAndHeight">Покажи ширину и высоту</button>
+    <button id="btnIncrementWidthAndHeight">Увеличь ширину и высоту в два раза.</button>
+  </section>
+
+  <script>
+    console.log('1. По клику на кнопку выведите ширину и высоту элемента.');
+    document.getElementById('btnShowWidthAndHeight').onclick = () => {
+      let styles = getComputedStyle(document.getElementById('elem'));
+      console.log(`Ширина ${styles.width}. Высота ${styles.height}.`)
+    }
+  </script>
+
+  <script>
+    console.log('2. По клику на кнопку увеличьте ширину и высоту элемента в два раза.');
+
+    document.getElementById('btnIncrementWidthAndHeight').onclick = () => {
+      let elem = document.getElementById('elem');
+      let styles = getComputedStyle(elem);
+      elem.style.cssText = `width: ${parseInt(styles.width) * 2}px; height: ${parseInt(styles.height) * 2}px`;
+    }
+  </script>
+
+
+</body>
+
+</html>
