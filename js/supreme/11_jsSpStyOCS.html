@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>styles/one-class-styling</title>
+  <style>
+    .active {
+      color: crimson;
+    }
+    
+    p:not(active) {
+      cursor: pointer;
+      color: lightseagreen;
+    }
+
+
+  </style>
+
+</head>
+
+<body>
+
+  <a href='https://code.mu/ru/javascript/book/supreme/styles/one-class-styling/'>
+    Один класс для стилизации в JavaScript
+  </a>
+
+  <section id='task1'>
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <p>4</p>
+    <p>5</p>
+    <p>6</p>
+    <p>7</p>
+    <p>8</p>
+    <p>9</p>
+    <p>10</p>
+    <p>11</p>
+    <p>12</p>
+  </section>
+
+  <script>
+    console.log(`1. Даны абзацы. Сделайте так, чтобы каждый абзац по первому клику на него красился в один цвет,
+     а по второму клику - красился обратно.`);
+   
+     document.getElementById('task1').onclick = (e) => {
+      if (e.target.tagName !== 'P') {
+        return
+      }
+
+      e.target.classList.toggle('active');
+    }
+  </script>
+
+</body>
+
+</html>
