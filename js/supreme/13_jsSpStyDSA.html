@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>styles/classes-inconvenience</title>
+  <style>
+    section {
+      margin: 20px;
+    }
+
+    input {
+      outline: none;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid lightskyblue;
+      color: crimson;
+    }
+
+    [data-type='l'] {
+      border: 1px solid lightseagreen;
+    }
+
+    [data-type='o'] {
+      border: 1px solid orange;
+    }
+
+    [data-type='c'] {
+      border: 1px solid crimson;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <a href='https://code.mu/ru/javascript/book/supreme/styles/classes-inconvenience/'>
+    Неудобство классов в JavaScript
+  </a>
+
+  <section id='task1'>
+    <input>
+  </section>
+
+  <script>
+    console.log(`1. Дан инпут. По потери фокуса проверьте введенное в него число.
+     Если это число до десяти, то покрасьте инпут в зеленый цвет, если от десяти до двадцати - в оранжевый, а если более двадцати - в красный.`);
+
+    document.querySelector('input').onblur = (e) => {
+      if (e.target.value.length < 10) {
+        e.target.dataset.type = 'l'
+      } else if (e.target.value.length < 20) {
+        e.target.dataset.type = 'o'
+      } else if (e.target.value.length > 20) {
+        e.target.dataset.type = 'c'
+      }
+    }
+  </script>
+
+</body>
+
+</html>
