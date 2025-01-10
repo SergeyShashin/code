@@ -78,12 +78,15 @@
       делали.
     </div>
 
-    <button id='btnShowSizeEl'>Отобрази ширину и высоту элемента</button>
+    <button id='btnShowSizeEl'>Действуй</button>
   </section>
 
   <script>
 
     console.log('1. Дан элемент и кнопка. По нажатию на кнопку узнайте на сколько прокручен элемент по вертикали.');
+    console.log('2. Дан элемент и кнопка. По нажатию на кнопку прокрутите элемент на 50px вниз от текущего положения прокрутки.');
+    console.log('3. Дан элемент и кнопка. По нажатию на кнопку прокрутите элемент в самый верх.');
+    console.log('4. Дан элемент и кнопка. По нажатию на кнопку прокрутите элемент в самый низ.');
 
 
     let elem = document.getElementById('elem');
@@ -93,8 +96,13 @@
       console.log(`Клиентский размеры. Ширина ${elem.clientWidth}. Высота ${elem.clientHeight}`);
       console.log(`Полные размеры. Ширина ${elem.offsetWidth}. Высота ${elem.offsetHeight}`);
       console.log(`размеры элемента с учетом спрятанной под прокруткой части. Ширина ${elem.scrollWidth}. Высота ${elem.scrollHeight}`);
+      console.log(`Элемент прокручен по вертикали ${elem.scrollTop}.`);
+      elem.scrollTop += 50;
+      console.log(`Элемент прокручен по вертикали ${elem.scrollTop}.`);
+      elem.scrollTop = 0;
+      console.log(`Элемент прокручен по вертикали ${elem.scrollTop}.`);
       elem.scrollTop = elem.scrollHeight;
-      console.log(`ScrolTop ${elem.scrollTop}. ScrolLeft ${elem.scrollLeft}.`);
+      console.log(`Элемент прокручен по вертикали ${elem.scrollTop}.`);
     });
 
   </script>
