@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>supreme/metrics/elem/scrollbar-width</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/supreme/metrics/elem/scrollbar-width/">
+    Ширина полосы прокрутки в JavaScript
+  </a>
+
+  <br>
+  <br>
+  <section>
+    <button>Покажи ширину полосы прокрутки браузера</button>
+  </section>
+
+  <script>
+    console.log('Дана кнопка. По нажатию на кнопку получите ширину полосы прокрутки в вашем браузере.');
+
+    document.querySelector('button').addEventListener('click', () => handleClickBtn());
+
+    function handleClickBtn() {
+      let sectionEl = document.querySelector('section');
+      sectionEl.style.width = '100%';
+      sectionEl.style.height = '99vh';
+      sectionEl.style.overflowY = 'scroll';
+      sectionEl.style.overflowX = 'scroll';
+      let scrollWidth = sectionEl.offsetWidth - sectionEl.clientWidth;
+      let scrollHeight = sectionEl.offsetHeight - sectionEl.clientHeight;
+      console.log(`Ширина полосы прокрутки ${scrollWidth}.`);
+      console.log(`Высота полосы прокрутки ${scrollHeight}.`);
+    };
+
+  </script>
+</body>
+
+</html>
