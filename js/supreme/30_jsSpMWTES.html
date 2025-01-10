@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>metrics/window/to-element-scrolling</title>
+  <style>
+    * {
+      color: crimson;
+    }
+
+    #p1200 {
+      margin-top: 1200px;
+    }
+  </style>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/supreme/metrics/window/to-element-scrolling/">
+    Метод для прокрутки окна к элементу в JavaScript
+  </a>
+
+  <div id="p100">100px</div>
+  <div id="p1200">1200px</div>
+
+  <script>
+    window.addEventListener('click', () => {
+      document.getElementById('p1200').scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'end',
+      });
+    });
+  </script>
+
+</body>
+
+</html>
