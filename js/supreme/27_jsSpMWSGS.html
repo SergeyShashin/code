@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>supreme/metrics/window/scrolling-getting-changing</title>
+  <style>
+    body {
+      overflow: scroll;
+      height: 1200px;
+    }
+
+    section {
+      position: fixed;
+    }
+
+  </style>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/supreme/metrics/window/scrolling-getting-changing/">
+    Получение и изменение прокрутки окна в JavaScript
+  </a>
+
+  <br>
+  <br>
+
+  <section>
+    <button id="scrollTop300">300 сверху</button>
+    <button id="scrollBottom100">100 cнизу</button>
+    <button id="scrollTop0">в самый верх</button>
+    <button id="scrollBottom0">в самый низ</button>
+  </section>
+
+  <script>
+    console.log(`1. По нажатию на кнопку прокрутите окно на позицию 300px сверху.`);
+    console.log(`2. По нажатию на кнопку прокрутите окно на позицию 100px снизу.`);
+    console.log(`3. По нажатию на кнопку прокрутите окно на самый верх.`);
+    console.log(`4. По нажатию на кнопку прокрутите окно на самый низ.`);
+
+    document.getElementById('scrollTop300').addEventListener('click', () => scrollTop(300));
+    document.getElementById('scrollBottom100').addEventListener('click', () => scrollBottom(100));
+    document.getElementById('scrollTop0').addEventListener('click', () => scrollTop(0));
+    document.getElementById('scrollBottom0').addEventListener('click', () => scrollBottom0());
+
+    function scrollTop(number) {
+      document.documentElement.scrollTop = number;
+      console.log(document.documentElement.scrollTop);
+    }
+
+    function scrollBottom(number) {
+      document.documentElement.scrollTop = document.documentElement.scrollTop - number;
+    }
+
+    function scrollBottom0() {
+      document.documentElement.scrollTop = document.documentElement.offsetHeight;
+    }
+
+
+  </script>
+
+</body>
+
+</html>
