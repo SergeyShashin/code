@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>collections/set/getting-without-duplicates</title>
+  <style>
+    p {
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/supreme/collections/set/getting-without-duplicates/">
+    Получение DOM элементов без дублей
+  </a>
+
+  <section>
+    <p>aaa</p>
+    <p>bbb</p>
+    <p>ccc</p>
+    <p>ddd</p>
+    <p>eee</p>
+
+    <button>Добавь '!' абзацам по которым был клик.</button>
+  </section>
+
+  <script>
+    console.log(`Даны абзацы и кнопка. 
+    Пользователь кликает на эти абзацы в произвольном порядке.
+    Сделайте так, чтобы по нажатию на кнопку в конец каждого абзаца, на который был совершен клик, был добавлен восклицательный знак.`);
+
+    let btnEl = document.querySelector('section button');
+    let sectionEl = document.querySelector('section');
+    let clicked = new Set();
+
+    sectionEl.addEventListener('click', e => {
+      if (e.target.tagName === 'P') {
+        clicked.add(e.target);
+      }
+    });
+
+    btnEl.addEventListener('click', () => {
+      for (let el of clicked) {
+        el.textContent += '!';
+      }
+      clicked.clear();
+    });
+
+  </script>
+
+</body>
+
+</html>
