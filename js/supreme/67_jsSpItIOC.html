@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iterators/iterable-object-creation</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/supreme/iterators/iterable-object-creation/">
+    Создание итерируемого объекта в JavaScript
+  </a>
+
+  <script>
+    let obj = { a: 1, b: 2, c: 3 };
+
+    obj[Symbol.iterator] = function* iter() {
+      for (let key in this) {
+        console.log({ key: key, val: this[key] })
+      }
+    }
+
+    for (let val of obj) {
+      console.log(val);
+    }
+  </script>
+</body>
+
+</html>
