@@ -17,7 +17,7 @@
 
     obj[Symbol.iterator] = function* iter() {
       for (let key in this) {
-        console.log({ key: key, val: this[key] })
+        yield { key: key, val: this[key] }
       }
     }
 
