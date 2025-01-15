@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>json/to-structure</title>
+  <style>
+    table {
+      margin: 20px 0;
+    }
+
+    td,
+    th {
+      color: crimson;
+      border: 1px solid lightseagreen;
+      padding: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/supreme/json/to-structure">Преобразование JSON в структуру данных
+    JavaScript</a>
+
+  <script>
+    /*
+    Дана строка в формате JSON, содержащая массив с данными работников:
+    Выведите этих работников на экран в виде HTML таблицы.
+    */
+
+    let json = `[
+      {
+        "name": "user1",
+        "age": 25,
+        "salary": 1000
+      },
+      {
+        "name": "user2",
+        "age": 26,
+        "salary": 2000
+      },
+      {
+        "name": "user3",
+        "age": 27,
+        "salary": 3000
+      }
+    ]`;
+
+    outputUsersInTable(JSON.parse(json));
+
+    /*
+    Выводит работников на экран в виде HTML таблицы.
+    @param users {object} Объект с сотрудниками
+    */
+    function outputUsersInTable(users) {
+
+      let tableEl = addAndReturnElInHTML(document.body, 'table');
+
+      addElSInHTML(addAndReturnElInHTML(tableEl, 'tr'), 'th', Object.keys(users[0]));
+
+      addUsersData(tableEl, users);
+
+    }
+
+    /*
+    Добавляет и возвращает HTML элемент
+    @param parentEl {HTMLElement} Родительский элемент
+    @param typeElement {string} Тип HTML элемента
+    @return {HTMLElement}
+    */
+    function addAndReturnElInHTML(parentEl, typeElement) {
+      let elHTML = document.createElement(typeElement);
+      parentEl.appendChild(elHTML);
+      return elHTML
+    }
+
+    /*
+    Добавляет HTML элементы
+    @param parentEl {HTMLElement} Родительский элемент
+    @param typeElement {string} Тип HTML элемента
+    @param elements {array} Массив с данными
+    */
+    function addElSInHTML(parentEl, typeElement, elements) {
+      for (let key of elements) {
+        let elHTML = document.createElement(typeElement);
+        elHTML.textContent = key;
+        parentEl.appendChild(elHTML);
+      }
+    }
+
+    /*
+    Добавляет HTML элементы
+    @param parentEl {HTMLElement} Родительский элемент
+    @param elements {array} Массив с данными
+    */
+    function addUsersData(parentEl, users) {
+      for (let user of users) {
+        let trEl = document.createElement('tr');
+        parentEl.appendChild(trEl);
+
+        addElSInHTML(trEl, 'td', Object.values(user));
+      }
+    }
+
+  </script>
+</body>
+
+</html>
