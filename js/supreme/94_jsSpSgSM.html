@@ -5,12 +5,83 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>storage/structures-modification</title>
+  <style>
+    * {
+      margin: auto;
+      text-align: center;
+      width: 300px;
+    }
+
+    section {
+      margin: 20px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    input,
+    button {
+      margin: 10px 0;
+      color: crimson;
+      border: 1px solid lightseagreen;
+      background: none;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  </style>
 </head>
 
 <body>
   <a href="https://code.mu/ru/javascript/book/supreme/storage/structures-modification/">
     Модификация хранимых структур в localStorage в JavaScript
   </a>
+
+  <section>
+    <input id='surn' placeholder='Имя'>
+    <input id='name' placeholder="Фамилия">
+    <input id='age' type="number" placeholder='Возраст'>
+    <button id='btnAddNewUser'>Добавь нового пользователя</button>
+  </section>
+
+  <script>
+    console.log(`Дан следующий массив с юзерами. Сохраните его в локальное хранилище.
+    Затем сделайте 3 инпута и кнопку.
+    Пусть в инпуты вводятся фамилия, имя и возраст.
+    По нажатию на кнопку запишите нового юзера в конец сохраненного в хранилище массива.`);
+
+    let users = [
+      {
+        surn: 'surn1',
+        name: 'name1',
+        age: 31,
+      },
+      {
+        surn: 'surn2',
+        name: 'name2',
+        age: 32,
+      },
+      {
+        surn: 'surn',
+        name: 'name3',
+        age: 33,
+      },
+    ];
+
+    localStorage.setItem('users', JSON.stringify(users));
+
+    document.getElementById('btnAddNewUser').addEventListener('click', () => addNewUserToLS());
+
+    function addNewUserToLS() {
+      let [surn, name, age] = [...document.querySelectorAll('input')];
+
+      let users = JSON.parse(localStorage.getItem('users'));
+
+      users.push({ surn: surn.value, name: name.value, age: age.value });
+
+      localStorage.setItem('users', JSON.stringify(users));
+    }
+
+  </script>
 
 </body>
 
