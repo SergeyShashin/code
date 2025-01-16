@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>storage/save-once</title>
+  <style>
+    section {
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    #saveAndLoadLocalStorage {
+      color: crimson;
+      border: 1px solid lightseagreen;
+      width: 300px;
+      outline: none;
+      padding: 10px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/supreme/storage/save-once/">
+    Однократное сохранение в localStorage в JavaScript
+  </a>
+
+  <section>
+    <input id='saveAndLoadLocalStorage'>
+  </section>
+
+  <script>
+    console.log(`Дан инпут. По потери фокуса в этом инпуте сохраните его значение в локальное хранилище.
+     При следующем заходе пользователя на страницу установите в инпуте сохраненный ранее текст.`);
+
+    let inputEl = document.getElementById('saveAndLoadLocalStorage');
+
+    inputEl.addEventListener('blur', e => saveInputValueLocalStorage(e));
+
+    function saveInputValueLocalStorage(e) {
+      localStorage.setItem('inputValue', e.target.value);
+      e.target.value = '';
+    }
+
+    window.addEventListener('load', () => insertLastInputValue());
+
+    function insertLastInputValue() {
+      inputEl.value = localStorage.getItem('inputValue');
+    };
+
+  </script>
+</body>
+
+</html>
