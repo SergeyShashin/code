@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>storage/index-loop</title>
+
+  <style>
+    section {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    #btnShowNotesAmount {
+      color: crimson;
+      padding: 10px;
+      border-radius: 5px;
+      background: none;
+      border: 1px solid lightseagreen;
+    }
+  </style>
+
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/supreme/storage/index-loop">
+    Перебор хранилища по индексам в JavaScript
+  </a>
+
+  <section>
+    <button id='btnShowNotesLS'>Покажи записи из локального хранилища</button>
+    <pre id='monitor'></pre>
+  </section>
+
+  <script>
+    console.log(`По нажатию на кнопку выведите циклом все записи из локального хранилища.`);
+
+    document.getElementById('btnShowNotesLS').addEventListener('click', () => showNotesLS());
+
+    function showNotesLS(e) {
+      let monitorEl = document.getElementById('monitor');
+      monitorEl.textContent = '';
+
+      for (let key = 0; key < localStorage.length; key++) {
+        monitorEl.textContent += `${localStorage.getItem(localStorage.key(key))}\n`;
+      }
+    }
+
+  </script>
+
+</body>
+
+</html>
