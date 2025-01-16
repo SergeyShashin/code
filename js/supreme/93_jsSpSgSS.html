@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>structures-storing</title>
+  <style>
+    section {
+      display: flex;
+      flex-direction: column;
+    }
+
+    input,
+    button {
+      margin: 10px 0;
+      color: crimson;
+      border: 1px solid lightseagreen;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/supreme/storage/structures-storing">
+    Хранение структур в localStorage в JavaScript
+  </a>
+
+  <section>
+    <input>
+    <input>
+    <input>
+    <button id='btnSaveDataLS'>Сохрани данные из инпутов в localStorage</button>
+  </section>
+
+  <script>
+    console.log(`Даны инпуты и кнопка.
+    По нажатию на кнопку получите тексты всех инпутов в виде массива и сохраните этот массив в локальное хранилище.
+    Сделайте так, чтобы при следующем заходе на страницу в инпутах стояли сохраненные в локальном хранилище значения.
+    `);
+
+    document.getElementById('btnSaveDataLS').addEventListener('click', () => saveInputsValueLS());
+
+    function saveInputsValueLS() {
+      let arr = [];
+
+      for (let [key, input] of document.querySelectorAll('input').entries()) {
+        console.log(input.value);
+        arr.push(input.value);
+      }
+
+      localStorage.setItem('inputsValue', JSON.stringify(arr));
+    }
+
+    window.addEventListener('load', () => insertInputValueFromLS());
+
+    function insertInputValueFromLS() {
+      let inputsValue = JSON.parse(localStorage.getItem('inputsValue'));
+      console.log(inputsValue);
+      let inputsEls = document.querySelectorAll('input');
+      inputsValue.map((el, idx) => inputsEls[idx].value = el);
+    }
+
+  </script>
+</body>
+
+</html>
