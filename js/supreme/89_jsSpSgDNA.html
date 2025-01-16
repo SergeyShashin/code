@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>storage/notes-amount</title>
+
+  <style>
+    section {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    #btnShowNotesAmount {
+      color: crimson;
+      padding: 10px;
+      border-radius: 5px;
+      background: none;
+      border: 1px solid lightseagreen;
+    }
+  </style>
+
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/supreme/storage/notes-amount">
+    Количество записей в localStorage в JavaScript
+  </a>
+
+  <section>
+    <button id='btnShowNotesAmount'>Покажи количество записей в локальном хранилище</button>
+  </section>
+
+  <script>
+    console.log(`Пользователь заходит на сайт, затем обновляет страницу, затем еще раз обновляет и так далее.
+    Сделайте счетчик обновления страницы. Каждый раз при обновлении выводите значение счетчика на экран.
+    Пусть счетчик обнуляется после того, как дойдет до 10.
+    По нажатию на кнопку выведите количество записей в локальном хранилище.
+    `);
+
+    window.addEventListener('load', () => quantityRenderPagesOfUser());
+
+    function quantityRenderPagesOfUser() {
+      let dataLS = localStorage.getItem('quantityRenderPagesOfUser');
+
+      if (dataLS) {
+        localStorage.setItem('quantityRenderPagesOfUser', Number(dataLS) + 1);
+        dataLS = localStorage.getItem('quantityRenderPagesOfUser');
+      } else {
+        localStorage.setItem('quantityRenderPagesOfUser', 1);
+        dataLS = 1;
+      }
+
+      if (dataLS === '10') {
+        localStorage.removeItem('quantityRenderPagesOfUser')
+      }
+    }
+
+    document.getElementById('btnShowNotesAmount').addEventListener('click', (e) => showNotesAmount(e));
+
+    function showNotesAmount(e) {
+      e.target.textContent = localStorage.getItem('quantityRenderPagesOfUser') !== null ? localStorage.getItem('quantityRenderPagesOfUser') : 1;
+    }
+
+  </script>
+
+</body>
+
+</html>
