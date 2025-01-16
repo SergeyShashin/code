@@ -12,7 +12,8 @@
       margin: 20px 0;
     }
 
-    #btnShowNotesAmount {
+    #btnShowKeysLS,
+    #btnShowNotesLS {
       color: crimson;
       padding: 10px;
       border-radius: 5px;
@@ -29,21 +30,33 @@
   </a>
 
   <section>
+    <button id='btnShowKeysLS'>Покажи ключи из локального хранилища</button>
     <button id='btnShowNotesLS'>Покажи записи из локального хранилища</button>
     <pre id='monitor'></pre>
   </section>
 
   <script>
-    console.log(`По нажатию на кнопку выведите циклом все записи из локального хранилища.`);
+    console.log(`По нажатию на кнопку выведите циклом ключи всех записей из локального хранилища.
+    По нажатию на кнопку выведите циклом значения всех записей из локального хранилища.`);
 
+    document.getElementById('btnShowKeysLS').addEventListener('click', () => showKeysLS());
     document.getElementById('btnShowNotesLS').addEventListener('click', () => showNotesLS());
+
+    function showKeysLS() {
+      let monitorEl = document.getElementById('monitor');
+      monitorEl.textContent = 'Ключи:\n';
+
+      for (let key of Object.keys(localStorage)) {
+        monitorEl.textContent += `${key} \n`;
+      }
+    }
 
     function showNotesLS() {
       let monitorEl = document.getElementById('monitor');
-      monitorEl.textContent = '';
+      monitorEl.textContent = 'Значения:\n';
 
-      for (let key = 0; key < localStorage.length; key++) {
-        monitorEl.textContent += `${localStorage.getItem(localStorage.key(key))}\n`;
+      for (let value of Object.values(localStorage)) {
+        monitorEl.textContent += `${value} \n`;
       }
     }
 
