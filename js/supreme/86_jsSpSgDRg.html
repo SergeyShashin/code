@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>storage/data-rewriting</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/supreme/storage/data-rewriting">
+    Перезапись данных в localStorage в JavaScript
+  </a>
+
+  <script>
+    console.log(`Пользователь заходит на сайт, затем обновляет страницу, затем еще раз обновляет и так далее.
+    Сделайте счетчик обновления страницы. Каждый раз при обновлении выводите значение счетчика на экран.`);
+
+    window.addEventListener('load', () => quantityRenderPagesOfUser());
+
+    function quantityRenderPagesOfUser() {
+      let dataLS = localStorage.getItem('quantityRenderPagesOfUser');
+
+      if (dataLS) {
+        localStorage.setItem('quantityRenderPagesOfUser', Number(dataLS) + 1);
+        dataLS = localStorage.getItem('quantityRenderPagesOfUser');
+      } else {
+        localStorage.setItem('quantityRenderPagesOfUser', 1);
+        dataLS = 1;
+      }
+
+      console.log(`Количество перезагрузок страницы пользователем ${dataLS}`);
+    }
+
+  </script>
+
+</body>
+
+</html>
