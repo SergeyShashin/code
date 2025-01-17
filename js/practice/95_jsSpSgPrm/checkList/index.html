@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CheckList</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    td {
+      padding: 5px;
+    }
+
+    input,
+    button {
+      color: crimson;
+    }
+
+    input {
+      outline: none;
+      border: none;
+    }
+
+    button {
+      padding: 5px;
+      background: none;
+      width: 25px;
+      height: 25px;
+      border: 1px solid lightseagreen;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <script src="checkList.js"></script>
+  <script>
+    let checkList = new CheckList('checkList');
+    document.body.appendChild(checkList.render());
+
+    checkList.addNewCase('Сделать чеклист.')
+  </script>
+</body>
+
+</html>
