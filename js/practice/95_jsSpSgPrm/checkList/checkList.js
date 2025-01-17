@@ -11,6 +11,19 @@ function CheckList(nameId) {
 CheckList.prototype.render = function () {
   this.tableEl = document.createElement('table');
   this.tableEl.id = this.nameId;
+  let trEl = document.createElement('tr');
+  let tdForBtnAddNewCase = document.createElement('td');
+  let tdEl = document.createElement('td');
+  let btnAddNewCase = document.createElement('button');
+  btnAddNewCase.textContent = '+';
+  btnAddNewCase.id = 'btnAddNewCase';
+  let inputElForEnterNewCase = document.createElement('input');
+  inputElForEnterNewCase.id = 'inputElForEnterNewCase';
+  tdForBtnAddNewCase.appendChild(btnAddNewCase);
+  trEl.appendChild(tdForBtnAddNewCase);
+  trEl.appendChild(tdEl);
+  trEl.appendChild(inputElForEnterNewCase);
+  this.tableEl.appendChild(trEl);
   return this.tableEl
 }
 
@@ -24,7 +37,9 @@ CheckList.prototype.addNewCase = function (text) {
   let tdElForBtnStartOrDoneEl = document.createElement('td');
   let tdElForBtnDelCaseEl = document.createElement('td');
   let btnStartOrDoneEl = document.createElement('button');
+  btnStartOrDoneEl.classList.add('btnStartOrDone');
   let btnDelCaseEl = document.createElement('button');
+  btnDelCaseEl.classList.add('btnDelCaseEl');
   btnDelCaseEl.textContent = 'X';
 
 

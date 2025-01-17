@@ -11,8 +11,11 @@
       box-sizing: border-box;
     }
 
+    tr{
+      line-height: 30px;
+    }
+
     td {
-      padding: 5px;
     }
 
     input,
@@ -23,13 +26,14 @@
     input {
       outline: none;
       border: none;
+      border-bottom: 1px solid lightseagreen;
     }
 
     button {
       padding: 5px;
       background: none;
       width: 25px;
-      height: 25px;
+      height: 24px;
       border: 1px solid lightseagreen;
       border-radius: 5px;
     }
@@ -46,7 +50,31 @@
     let checkList = new CheckList('checkList');
     document.body.appendChild(checkList.render());
 
-    checkList.addNewCase('Сделать чеклист.')
+    setEventHandlers();
+
+    function setEventHandlers() {
+      document.getElementById('checkList').addEventListener('click', e => handlerClickOnChecklist(e));
+    }
+
+    function handlerClickOnChecklist(e) {
+      console.log(e.target);
+      let target = e.target;
+
+      if (target.id === 'btnAddNewCase') {
+        let inputElForEnterNewCase = document.getElementById('inputElForEnterNewCase');
+        checkList.addNewCase(inputElForEnterNewCase.value);
+      }
+
+      if (target.className === 'btnDelCaseEl') {
+        target.parentElement.parentElement.remove();
+      }
+
+      if (target.className === 'btnStartOrDone') {
+        target.textContent = 'V';
+        target.dataset.state = 'done';
+      }
+
+    }
   </script>
 </body>
 
