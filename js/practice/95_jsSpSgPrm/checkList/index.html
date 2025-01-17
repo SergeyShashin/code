@@ -71,7 +71,7 @@
 
       if (target.className === 'btnStartOrDone') {
         target.textContent = 'V';
-        target.dataset.state = 'done';
+        target.parentElement.parentElement.dataset.state = 'done';
       }
 
     }
