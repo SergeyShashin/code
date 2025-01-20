@@ -11,12 +11,11 @@
       box-sizing: border-box;
     }
 
-    tr{
+    tr {
       line-height: 30px;
     }
 
-    td {
-    }
+    td {}
 
     input,
     button {
@@ -27,6 +26,7 @@
       outline: none;
       border: none;
       border-bottom: 1px solid lightseagreen;
+      width: 300px;
     }
 
     button {
@@ -47,34 +47,49 @@
 <body>
   <script src="checkList.js"></script>
   <script>
+    window.onload = console.log(JSON.parse(localStorage.getItem('checkList')));
+
     let checkList = new CheckList('checkList');
     document.body.appendChild(checkList.render());
+    let checkListEl = document.getElementById('checkList');
 
-    setEventHandlers();
+    setEventHandlers(checkListEl);
 
-    function setEventHandlers() {
-      document.getElementById('checkList').addEventListener('click', e => handlerClickOnChecklist(e));
+    function setEventHandlers(checkListEl) {
+      checkListEl.addEventListener('click', (e, checkListEl) => handlerClickOnCheckList(e, checkListEl));
+      checkListEl.addEventListener('change', handlerCheckListChange(checkListEl));
     }
 
-    function handlerClickOnChecklist(e) {
-      console.log(e.target);
+    function handlerClickOnCheckList(e, checkListEl) {
       let target = e.target;
 
       if (target.id === 'btnAddNewCase') {
         let inputElForEnterNewCase = document.getElementById('inputElForEnterNewCase');
         checkList.addNewCase(inputElForEnterNewCase.value);
+        saveLocalStorage(checkListEl);
       }
 
       if (target.className === 'btnDelCaseEl') {
         target.parentElement.parentElement.remove();
+        saveLocalStorage(checkListEl);
       }
 
       if (target.className === 'btnStartOrDone') {
         target.textContent = 'V';
         target.parentElement.parentElement.dataset.state = 'done';
+        saveLocalStorage(checkListEl);
       }
 
     }
+
+    function handlerCheckListChange(e) {
+      saveLocalStorage(checkListEl);
+    }
+
+    function saveLocalStorage(checkListEl) {
+      localStorage.setItem('checkList', JSON.stringify(checkList));
+    }
+
   </script>
 </body>
 

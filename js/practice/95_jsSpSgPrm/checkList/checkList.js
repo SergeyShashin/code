@@ -1,5 +1,7 @@
 /**
+ * Практика на localStorage в JavaScript
  * №1
+ * источник задачи https://code.mu/ru/javascript/book/supreme/storage/practicum/
  * Сделайте чеклист, представляющий собой список дел. Дела можно добавлять, изменять, удалять и помечать сделанными.
  */
 
