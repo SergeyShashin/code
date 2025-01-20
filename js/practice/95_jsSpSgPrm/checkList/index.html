@@ -47,58 +47,66 @@
 <body>
   <script src="checkList.js"></script>
   <script>
-    window.onload = console.log(JSON.parse(localStorage.getItem('checkList')));
+    window.onload = run();
 
-    let checkList = new CheckList('checkList');
-    document.body.appendChild(checkList.render());
-    let checkListEl = document.getElementById('checkList');
+    function run() {
+      let checkList = new CheckList('checkList');
+      document.body.appendChild(checkList.render());
+      let checkListEl = document.getElementById('checkList');
 
-    setEventHandlers(checkListEl);
+      let tasksFromJson = JSON.parse(localStorage.getItem('checkList'));
 
-    function setEventHandlers(checkListEl) {
-      checkListEl.addEventListener('click', (e, checkListEl) => handlerClickOnCheckList(e, checkListEl));
-      checkListEl.addEventListener('change', handlerCheckListChange(checkListEl));
-    }
+      for (let task of tasksFromJson) {
+        checkList.addNewCase(task.state, task.content);
+      }
 
-    function handlerClickOnCheckList(e, checkListEl) {
-      let target = e.target;
+      setEventHandlers(checkList, checkListEl);
 
-      if (target.id === 'btnAddNewCase') {
-        let inputElForEnterNewCase = document.getElementById('inputElForEnterNewCase');
-        checkList.addNewCase(inputElForEnterNewCase.value);
+      function setEventHandlers(checkList, checkListEl) {
+        checkListEl.addEventListener('click', e => handlerClickOnCheckList(e));
+        checkListEl.addEventListener('change', handlerCheckListChange(checkListEl));
+      }
+
+      function handlerClickOnCheckList(e) {
+        let target = e.target;
+
+        if (target.id === 'btnAddNewCase') {
+          let inputElForEnterNewCase = document.getElementById('inputElForEnterNewCase');
+          checkList.addNewCase('start', inputElForEnterNewCase.value);
+          saveLocalStorage(checkListEl);
+        }
+
+        if (target.className === 'btnDelCaseEl') {
+          target.parentElement.parentElement.remove();
+          saveLocalStorage(checkListEl);
+        }
+
+        if (target.className === 'btnStartOrDone') {
+          target.textContent = 'V';
+          target.parentElement.parentElement.dataset.state = 'done';
+          saveLocalStorage(checkListEl);
+        }
+
+      }
+
+      function handlerCheckListChange(checkListEl) {
         saveLocalStorage(checkListEl);
       }
 
-      if (target.className === 'btnDelCaseEl') {
-        target.parentElement.parentElement.remove();
-        saveLocalStorage(checkListEl);
+      function saveLocalStorage(checkListEl) {
+        let trEls = document.querySelectorAll('tr');
+        let tasks = [];
+
+        for (let trEl of trEls) {
+          let state = trEl.dataset.state;
+          let content = trEl.querySelector('input').value;
+          tasks.push({ state: state, content: content });
+        }
+
+        tasks = tasks.slice(1);
+
+        localStorage.setItem('checkList', JSON.stringify(tasks));
       }
-
-      if (target.className === 'btnStartOrDone') {
-        target.textContent = 'V';
-        target.parentElement.parentElement.dataset.state = 'done';
-        saveLocalStorage(checkListEl);
-      }
-
-    }
-
-    function handlerCheckListChange(e) {
-      saveLocalStorage(checkListEl);
-    }
-
-    function saveLocalStorage(checkListEl) {
-      let trEls = document.querySelectorAll('tr');
-      let tasks = [];
-
-      for (let trEl of trEls) {
-        let state = trEl.dataset.state;
-        let content = trEl.querySelector('input').value;
-        tasks.push({ state: state, content: content });
-      }
-
-      console.log(tasks);
-
-      localStorage.setItem('checkList', JSON.stringify(tasks));
     }
 
   </script>

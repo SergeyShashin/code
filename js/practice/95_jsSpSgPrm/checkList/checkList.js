@@ -29,11 +29,11 @@ CheckList.prototype.render = function () {
   return this.tableEl
 }
 
-CheckList.prototype.addNewCase = function (text) {
+CheckList.prototype.addNewCase = function (state, text) {
   this.counterCase++;
 
   let caseEl = document.createElement('tr');
-  caseEl.dataset.state = 'start';
+  caseEl.dataset.state = state;
   caseEl.id = this.counterCase;
 
   let tdElForBtnStartOrDoneEl = document.createElement('td');
@@ -43,7 +43,7 @@ CheckList.prototype.addNewCase = function (text) {
   let btnDelCaseEl = document.createElement('button');
   btnDelCaseEl.classList.add('btnDelCaseEl');
   btnDelCaseEl.textContent = 'X';
-
+  btnStartOrDoneEl.textContent = state === 'done' ? 'V' : '';
 
   let tdElForInputTextEl = document.createElement('td');
   let inputTextEl = document.createElement('input');
