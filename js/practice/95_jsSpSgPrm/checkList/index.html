@@ -87,7 +87,18 @@
     }
 
     function saveLocalStorage(checkListEl) {
-      localStorage.setItem('checkList', JSON.stringify(checkList));
+      let trEls = document.querySelectorAll('tr');
+      let tasks = [];
+
+      for (let trEl of trEls) {
+        let state = trEl.dataset.state;
+        let content = trEl.querySelector('input').value;
+        tasks.push({ state: state, content: content });
+      }
+
+      console.log(tasks);
+
+      localStorage.setItem('checkList', JSON.stringify(tasks));
     }
 
   </script>
