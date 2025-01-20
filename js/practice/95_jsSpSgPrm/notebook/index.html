@@ -8,7 +8,23 @@
 </head>
 
 <body>
-
+  <section id='notebookEl'>
+    <h2>Блокнот</h2>
+    <button>Добавить запись</button>
+    <div id='wrapLinksAndEnter'>
+      <div>
+        <h3>Записи</h3>
+        <ul>
+          <a href="#">Запись1</a>
+          <a href="#">Запись2</a>
+        </ul>
+      </div>
+      <div>
+        <input placeholder='наименование'>
+        <textarea placeholder='текст'></textarea>
+      </div>
+    </div>
+  </section>
   <script src="notebook.js"></script>
   <script>
     window.onload = notebook.run();
