@@ -24,19 +24,29 @@ const notebook = {
     this.noteTextEl = document.getElementById('noteText');
     this.noteLinksEl = document.getElementById('noteLinks');
 
+    this.loadNotes();
+
     this.setEventHandlers();
   },
 
   setEventHandlers() {
     this.btnAddNoteEl.addEventListener('click', () => this.handlerClickBtnAddNoteEl());
+    this.noteLinksEl.addEventListener('click', (e) => this.handlerClickNoteLinks(e));
   },
 
   handlerClickBtnAddNoteEl() {
     let noteLinkEl = this.createHTMLEl('li', 'a', this.noteNameEl.value);
 
+    this.notes = JSON.parse(localStorage.getItem('notes'));
+    console.log(this.notes);
+    
     this.notes[this.noteNameEl] = { noteName: this.noteNameEl.value, noteText: this.noteTextEl.value };
+    
+    console.log(this.notes);
 
     localStorage.setItem(this.noteNameEl.value, this.noteTextEl.value);
+
+    localStorage.setItem('notes', JSON.stringify(this.notes));
 
     this.noteLinksEl.appendChild(noteLinkEl);
   },
@@ -48,5 +58,21 @@ const notebook = {
     typeSubElement === 'a' ? newSubEl.href = '#' : '';
     newEl.appendChild(newSubEl);
     return newEl;
+  },
+
+  handlerClickNoteLinks(e) {
+    let target = e.target;
+
+    if (target.tagName !== 'A') {
+      return
+    }
+
+    let note = localStorage.getItem(target.textContent);
+
+  },
+
+  loadNotes() {
+    this.notes = JSON.parse(localStorage.getItem('notes'));
+    console.dir(this.notes);
   }
 }
