@@ -16,11 +16,16 @@ ul a {
   color: lightseagreen;
 }
 
-h2 {
-  margin: 20px 0;
+h3,
+h4 {
+  text-transform: uppercase;
 }
 
 h3 {
+  margin: 20px 0;
+}
+
+h4 {
   margin: 10px 0;
 }
 
@@ -45,7 +50,7 @@ button {
   background: none;
 }
 
-button:hover{
+button:hover {
   background: lightseagreen;
 }
 
@@ -53,13 +58,14 @@ button:hover{
   width: 50%;
 }
 
-#noteName{
+#noteName {
   border: none;
   border-bottom: 1px solid lightseagreen;
   color: crimson;
 }
 
-#noteName, #noteText{
+#noteName,
+#noteText {
   outline: none;
   width: 100%;
 }
