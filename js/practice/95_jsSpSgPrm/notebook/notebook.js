@@ -43,15 +43,17 @@ const notebook = {
   },
 
   handlerClickBtnAddNoteEl() {
-    let noteLinkEl = this.createHTMLEl('li', 'a', this.noteNameEl.value);
 
-    this.notes[this.noteNameEl.value] = { noteName: this.noteNameEl.value, noteText: this.noteTextEl.value };
-
-    // localStorage.setItem(this.noteNameEl.value, this.noteTextEl.value);
+    if (this.notes[this.noteNameEl.value]) {
+      this.notes[this.noteNameEl.value] = { noteName: this.noteNameEl.value, noteText: this.noteTextEl.value };
+    } else {
+      this.notes[this.noteNameEl.value] = { noteName: this.noteNameEl.value, noteText: this.noteTextEl.value };
+      let noteLinkEl = this.createHTMLEl('li', 'a', this.noteNameEl.value);
+      this.noteLinksEl.appendChild(noteLinkEl);
+    }
 
     localStorage.setItem('notes', JSON.stringify(this.notes));
 
-    this.noteLinksEl.appendChild(noteLinkEl);
   },
 
   createHTMLEl(typeElement, typeSubElement, contentSubElement) {
@@ -70,8 +72,10 @@ const notebook = {
       return
     }
 
-    let note = localStorage.getItem(target.textContent);
+    let note = this.notes[target.textContent];
 
+    this.noteNameEl.value = note.noteName;
+    this.noteTextEl.value = note.noteText;
   },
 
   getNotesFromLocalStorage() {
