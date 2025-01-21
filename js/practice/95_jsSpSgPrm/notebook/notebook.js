@@ -19,12 +19,20 @@ const notebook = {
 
   init() {
     this.btnAddNoteEl = document.getElementById('btnAddNote');
-    this.notes = {};
     this.noteNameEl = document.getElementById('noteName');
     this.noteTextEl = document.getElementById('noteText');
     this.noteLinksEl = document.getElementById('noteLinks');
 
-    this.loadNotes();
+    let letNotesFromLocalStorage = this.getNotesFromLocalStorage();
+
+    if (letNotesFromLocalStorage) {
+      this.notes = letNotesFromLocalStorage;
+      for (let note of Object.values(this.notes)) {
+        this.noteLinksEl.appendChild(this.createHTMLEl('li', 'a', note.noteName));
+      }
+    } else {
+      this.notes = {};
+    }
 
     this.setEventHandlers();
   },
@@ -37,14 +45,9 @@ const notebook = {
   handlerClickBtnAddNoteEl() {
     let noteLinkEl = this.createHTMLEl('li', 'a', this.noteNameEl.value);
 
-    this.notes = JSON.parse(localStorage.getItem('notes'));
-    console.log(this.notes);
-    
-    this.notes[this.noteNameEl] = { noteName: this.noteNameEl.value, noteText: this.noteTextEl.value };
-    
-    console.log(this.notes);
+    this.notes[this.noteNameEl.value] = { noteName: this.noteNameEl.value, noteText: this.noteTextEl.value };
 
-    localStorage.setItem(this.noteNameEl.value, this.noteTextEl.value);
+    // localStorage.setItem(this.noteNameEl.value, this.noteTextEl.value);
 
     localStorage.setItem('notes', JSON.stringify(this.notes));
 
@@ -71,8 +74,7 @@ const notebook = {
 
   },
 
-  loadNotes() {
-    this.notes = JSON.parse(localStorage.getItem('notes'));
-    console.dir(this.notes);
+  getNotesFromLocalStorage() {
+    return JSON.parse(localStorage.getItem('notes'));
   }
 }
