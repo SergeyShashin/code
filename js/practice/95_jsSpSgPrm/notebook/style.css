@@ -8,6 +8,14 @@
 
 section {
   padding: 10px;
+}
+
+section,
+button,
+#noteName,
+#noteText,
+#noteName::placeholder,
+#noteText::placeholder {
   color: crimson;
 }
 
@@ -17,7 +25,7 @@ ul a {
 }
 
 h3,
-h4 {
+h4, button {
   text-transform: uppercase;
 }
 
@@ -60,8 +68,8 @@ button:hover {
 
 #noteName {
   border: none;
-  border-bottom: 1px solid lightseagreen;
-  color: crimson;
+  /* border-bottom: 1px solid lightseagreen; */
+  font-size: 16px;
 }
 
 #noteName,
@@ -71,5 +79,5 @@ button:hover {
 }
 
 #noteText {
-  margin: 10px 0;
+  margin-bottom: 10px;
 }
