@@ -21,7 +21,9 @@ const stickers = {
     if (quantityStickersDB) {
       let keys = Object.keys(this.stickersDB);
       let lastKey = Number(keys[keys.length - 1]);
+
       this.insertStickersInHTML();
+
       this.counterStickers = lastKey + 1;
     } else {
       this.stickersDB = {};
@@ -49,17 +51,20 @@ const stickers = {
     if (target.classList.contains('addSticker')) {
       let textDefault = 'Напишите что-нибудь...';
       let stiker = new StickerEl(this.counterStickers, textDefault);
-
       this.stickersDB[this.counterStickers] = { id: this.counterStickers, text: textDefault };
+
       localStorage.setItem(this.nameStickersDBInLocalstorage, JSON.stringify(this.stickersDB));
       this.stickersEl.appendChild(stiker);
+      
       this.counterStickers++;
     }
 
     if (target.classList.contains('removeSticker')) {
       let stiker = target.parentElement.parentElement;
       let idStiker = Number(stiker.id);
+
       delete this.stickersDB[idStiker];
+
       localStorage.setItem(this.nameStickersDBInLocalstorage, JSON.stringify(this.stickersDB));
       stiker.remove();
     }
@@ -69,6 +74,7 @@ const stickers = {
     let target = e.target;
     let targetId = Number(target.parentElement.id);
     this.stickersDB[targetId] = { id: targetId, text: target.value };
+
     localStorage.setItem(this.nameStickersDBInLocalstorage, JSON.stringify(this.stickersDB));
   }
 }
