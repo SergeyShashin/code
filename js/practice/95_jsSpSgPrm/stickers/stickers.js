@@ -15,21 +15,32 @@ const stickers = {
   run() {
     this.stickersEl = document.getElementById('stickers');
     this.nameStickersDBInLocalstorage = 'stickers';
-    this.counterStickers = 0;
     this.stickersDB = JSON.parse(localStorage.getItem(this.nameStickersDBInLocalstorage));
-    this.stickersDB ? this.insertStickersInHTML() : this.stickersDB = [];
+    let quantityStickersDB = this.stickersDB ? Object.keys(this.stickersDB).length : null;
+
+    if (quantityStickersDB) {
+      let keys = Object.keys(this.stickersDB);
+      let lastKey = Number(keys[keys.length - 1]);
+      this.insertStickersInHTML();
+      this.counterStickers = lastKey + 1;
+    } else {
+      this.stickersDB = {};
+      this.counterStickers = 0;
+    }
+
     this.setEventHandlers();
   },
 
   insertStickersInHTML() {
-    for (let sticker of this.stickersDB) {
+    for (let sticker of Object.values(this.stickersDB)) {
       let stikerEl = new StickerEl(sticker.id, sticker.text);
       this.stickersEl.appendChild(stikerEl);
     }
   },
 
   setEventHandlers() {
-    this.stickersEl.addEventListener('click', e => this.handlerClickStikersEl(e))
+    this.stickersEl.addEventListener('click', e => this.handlerClickStikersEl(e));
+    this.stickersEl.addEventListener('change', e => this.handlerChangeStikersEl(e));
   },
 
   handlerClickStikersEl(e) {
@@ -38,7 +49,8 @@ const stickers = {
     if (target.classList.contains('addSticker')) {
       let textDefault = 'Напишите что-нибудь...';
       let stiker = new StickerEl(this.counterStickers, textDefault);
-      this.stickersDB.push({ id: this.counterStickers, text: textDefault });
+
+      this.stickersDB[this.counterStickers] = { id: this.counterStickers, text: textDefault };
       localStorage.setItem(this.nameStickersDBInLocalstorage, JSON.stringify(this.stickersDB));
       this.stickersEl.appendChild(stiker);
       this.counterStickers++;
@@ -47,10 +59,17 @@ const stickers = {
     if (target.classList.contains('removeSticker')) {
       let stiker = target.parentElement.parentElement;
       let idStiker = Number(stiker.id);
-      this.stickersDB = this.stickersDB.slice(idStiker);
+      delete this.stickersDB[idStiker];
       localStorage.setItem(this.nameStickersDBInLocalstorage, JSON.stringify(this.stickersDB));
       stiker.remove();
     }
+  },
+
+  handlerChangeStikersEl(e) {
+    let target = e.target;
+    let targetId = Number(target.parentElement.id);
+    this.stickersDB[targetId] = { id: targetId, text: target.value };
+    localStorage.setItem(this.nameStickersDBInLocalstorage, JSON.stringify(this.stickersDB));
   }
 }
 
