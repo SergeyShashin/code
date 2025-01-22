@@ -10,18 +10,46 @@ const stickers = {
   stickersEl: null,
   stickersDB: null,
   counterStickers: null,
+  nameStickersDBInLocalstorage: null,
 
   run() {
     this.stickersEl = document.getElementById('stickers');
-    this.stickersDB = JSON.parse(localStorage.getItem('stickers'));
+    this.nameStickersDBInLocalstorage = 'stickers';
     this.counterStickers = 0;
-    this.insertStickersInHTML();
+    this.stickersDB = JSON.parse(localStorage.getItem(this.nameStickersDBInLocalstorage));
+    this.stickersDB ? this.insertStickersInHTML() : this.stickersDB = [];
+    this.setEventHandlers();
   },
 
   insertStickersInHTML() {
     for (let sticker of this.stickersDB) {
       let stikerEl = new StickerEl(sticker.id, sticker.text);
       this.stickersEl.appendChild(stikerEl);
+    }
+  },
+
+  setEventHandlers() {
+    this.stickersEl.addEventListener('click', e => this.handlerClickStikersEl(e))
+  },
+
+  handlerClickStikersEl(e) {
+    let target = e.target;
+
+    if (target.classList.contains('addSticker')) {
+      let textDefault = 'Напишите что-нибудь...';
+      let stiker = new StickerEl(this.counterStickers, textDefault);
+      this.stickersDB.push({ id: this.counterStickers, text: textDefault });
+      localStorage.setItem(this.nameStickersDBInLocalstorage, JSON.stringify(this.stickersDB));
+      this.stickersEl.appendChild(stiker);
+      this.counterStickers++;
+    }
+
+    if (target.classList.contains('removeSticker')) {
+      let stiker = target.parentElement.parentElement;
+      let idStiker = Number(stiker.id);
+      this.stickersDB = this.stickersDB.slice(idStiker);
+      localStorage.setItem(this.nameStickersDBInLocalstorage, JSON.stringify(this.stickersDB));
+      stiker.remove();
     }
   }
 }
