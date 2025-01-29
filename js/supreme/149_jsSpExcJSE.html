@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>supreme/exceptions/json-structure-example</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/supreme/exceptions/json-structure-example/">Пример исключения с JSON в
+    JavaScript</a>
+  <script>
+    // Пусть к вам приходит json:
+    // Проверьте этот JSON на общую корректность при разборе, а после разбора проверьте,
+    // что в результате получается массив, а не что-то другое.
+    // Если в результате получается не массив - выбросите исключение.
+
+    let json = `[
+                  {
+                    "name": "user1",
+                    "age": 25,
+                    "salary": 1000
+                  },
+                  {
+                    "name": "user2",
+                    "age": 26,
+                    "salary": 2000
+                  },
+                  {
+                    "name": "user3",
+                    "age": 27,
+                    "salary": 3000
+                  }
+                ]`;
+
+    let jsonParse;
+
+    try {
+      jsonParse = JSON.parse(json);
+      console.log(jsonParse);
+    } catch (e) {
+      console.log(e);
+    }
+
+    if (!Array.isArray(jsonParse)) {
+      throw { name: 'NotArray', message: 'Не массив.' }
+    }else{
+      console.log('JSON в общем корректен. В итоге получился массив.');
+    }
+
+  </script>
+</body>
+
+</html>
