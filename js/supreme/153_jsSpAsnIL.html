@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>supreme/asynchrony/images-loading</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/supreme/asynchrony/images-loading/">Асинхронность загрузки картинок в
+    JavaScript</a>
+
+  <section>
+    <button>Загрузи картинку</button>
+  </section>
+
+  <script>
+    document.querySelector('button').onclick = () => {
+      let imgEl = new Image();
+      imgEl.src = 'C://Users/tdgbi/Desktop/S/Всего по чуть-чуть/с днём космонавтики.jpg';
+      imgEl.onload = () => { document.body.appendChild(imgEl); alert('Картинка загрузилась.') };
+      imgEl.onerror = () => { alert('Что-то пошло непредсказуемо.') };
+    }
+  </script>
+</body>
+
+</html>
