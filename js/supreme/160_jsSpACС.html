@@ -22,19 +22,29 @@
     // });
     let pathsImgs = [
       'C://Users/tdgbi/Desktop/S/Всего по чуть-чуть/с днём космонавтики.jpg',
+      'C://Users/tdgbi/Desktop/S/Всего по чуть-чуть/bigstock-Happy-group-of-diverse-people-78243929_crop.jpg',
+      'C://Users/tdgbi/Desktop/S/Всего по чуть-чуть/EwMMF_aDZNo.jpg',
+      'C://Users/tdgbi/Desktop/S/Всего по чуть-чуть/с днём космонавтики.jpg',
+      'C://Users/tdgbi/Desktop/S/Всего по чуть-чуть/с днём космонавтики.jpg',
+      'C://Users/tdgbi/Desktop/S/Всего по чуть-чуть/с днём космонавтики.jpg',
+      'C://Users/tdgbi/Desktop/S/Всего по чуть-чуть/с днём космонавтики.jpg',
+      'C://Users/tdgbi/Desktop/S/Всего по чуть-чуть/с днём космонавтики.jpg',
       'C://Users/tdgbi/Desktop/S/Всего по чуть-чуть/с днём космонавтики.jpg',
       'C://Users/tdgbi/Desktop/S/Всего по чуть-чуть/с днём космонавтики.jpg',
     ];
     loadManyImgs(pathsImgs);
 
     function loadManyImgs(paths) {
+      let counter = 0;
       for (let path of paths) {
         loadImage(path, function (image, err) {
           if (!err) {
             document.body.append(image);
+            console.log(`Картинка с номером ${counter} загружена.`);
           } else {
             console.log('произошла ошибка: ' + err);
           }
+          counter++;
         });
       }
     }
