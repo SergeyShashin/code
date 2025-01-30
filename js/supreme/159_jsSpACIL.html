@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>supreme/async-callbacks/images-loading</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/supreme/async-callbacks/images-loading/">Загрузка картинок через
+    асинхронные коллбэки в JavaScript</a>
+
+  <script>
+    loadImage('C://Users/tdgbi/Desktop/S/Всего по чуть-чуть/ю.png', function (image, err) {
+      if (!err) {
+        document.body.append(image);
+      } else {
+        console.log('произошла ошибка: ' + err);
+      }
+    });
+
+    function loadImage(pathToImg, callback) {
+      let imgEl = new Image();
+      imgEl.src = pathToImg;
+      imgEl.onload = () => callback(imgEl, null);
+      imgEl.onerror = () => callback(imgEl, 'Что-то пошло непредсказуемо.');
+    }
+    
+  </script>
+</body>
+
+</html>
