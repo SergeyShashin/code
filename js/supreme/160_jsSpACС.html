@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>supreme/async-callbacks</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/supreme/async-callbacks">Проблема callback в JavaScript</a>
+  <br>
+  <br>
+
+  <script>
+    // loadImage('C://Users/tdgbi/Desktop/S/Всего по чуть-чуть/ю.png', function (image, err) {
+    //   if (!err) {
+    //     document.body.append(image);
+    //   } else {
+    //     console.log('произошла ошибка: ' + err);
+    //   }
+    // });
+    let pathsImgs = [
+      'C://Users/tdgbi/Desktop/S/Всего по чуть-чуть/с днём космонавтики.jpg',
+      'C://Users/tdgbi/Desktop/S/Всего по чуть-чуть/с днём космонавтики.jpg',
+      'C://Users/tdgbi/Desktop/S/Всего по чуть-чуть/с днём космонавтики.jpg',
+    ];
+    loadManyImgs(pathsImgs);
+
+    function loadManyImgs(paths) {
+      for (let path of paths) {
+        loadImage(path, function (image, err) {
+          if (!err) {
+            document.body.append(image);
+          } else {
+            console.log('произошла ошибка: ' + err);
+          }
+        });
+      }
+    }
+
+    function loadImage(pathToImg, callback) {
+      let imgEl = new Image();
+      imgEl.src = pathToImg;
+      imgEl.onload = () => callback(imgEl, null);
+      imgEl.onerror = () => callback(imgEl, 'Что-то пошло непредсказуемо.');
+    }
+
+  </script>
+</body>
+
+</html>
