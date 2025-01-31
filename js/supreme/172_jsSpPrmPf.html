@@ -24,35 +24,43 @@
       Пусть пути к картинкам хранятся в массиве:
       let paths = ['img1.png', 'img2.png', 'img3.png'];
       Напишите код, который дождется окончания загрузки всех картинок, а затем добавит их в цикле в конец body.
+
     */
 
-    function loadImg(pathToImg) {
-      return new Promise((resolve, reject) => {
-        let imgEl = new Image();
-        imgEl.src = pathToImg;
-        imgEl.onload = () => resolve(imgEl);
-        imgEl.error = () => reject(new Error(`Картинка с путём ${pathToImg} не загрузилась.`));
-      });
-    }
+    (() => {
+      function loadImg(pathToImg) {
+        return new Promise((resolve, reject) => {
+          let imgEl = new Image();
+          imgEl.src = pathToImg;
+          imgEl.onload = () => resolve(imgEl);
+          imgEl.error = () => reject(new Error(`Картинка с путём ${pathToImg} не загрузилась.`));
+        });
+      }
 
-    // loadImg('C:/Users/tdgbi/Desktop/S/Всего по чуть-чуть/с днём космонавтики.jpg').then(result => document.body.appendChild(result)).catch(error => console.log(error));
+      loadImg('C:/Users/tdgbi/Desktop/S/Всего по чуть-чуть/с днём космонавтики.jpg').then(result => document.body.appendChild(result)).catch(error => console.log(error));
 
-    let paths = [
-      'C:/Users/tdgbi/Desktop/S/Всего по чуть-чуть/с днём космонавтики.jpg',
-      'C:/Users/tdgbi/Desktop/S/Всего по чуть-чуть/с днём космонавтики.jpg',
-      'C:/Users/tdgbi/Desktop/S/Всего по чуть-чуть/с днём космонавтики.jpg',
-      'C:/Users/tdgbi/Desktop/S/Всего по чуть-чуть/с днём космонавтики.jpg'
-    ];
+      let paths = [
+        'C:/Users/tdgbi/Desktop/S/Всего по чуть-чуть/с днём космонавтики.jpg',
+        'C:/Users/tdgbi/Desktop/S/Всего по чуть-чуть/с днём космонавтики.jpg',
+        'C:/Users/tdgbi/Desktop/S/Всего по чуть-чуть/с днём космонавтики.jpg',
+        'C:/Users/tdgbi/Desktop/S/Всего по чуть-чуть/с днём космонавтики.jpg'
+      ];
 
-    let promises = [];
+      let promises = [];
 
-    for (let path of paths) {
-      promises.push(loadImg(path));
-    }
+      for (let path of paths) {
+        promises.push(loadImg(path));
+      }
 
-    Promise.all(promises).then(result => result.map(el => document.body.appendChild(el)));
+      Promise.all(promises).then(result => result.map(el => document.body.appendChild(el)));
+    })()
 
   </script>
+
+  <script>
+
+  </script>
+
 </body>
 
 </html>
