@@ -1,11 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>supreme/promises/exceptions</title>
 </head>
+
 <body>
-  <a href="https://code.mu/ru/javascript/book/supreme/promises/exceptions/"></a>
+  <a href="https://code.mu/ru/javascript/book/supreme/promises/exceptions/">
+    Исключительные ситуации в промисах в JavaScript
+  </a>
+
+  <script>
+
+    /*
+    Сделайте асинхронный код, который будет генерировать случайные числа от 0 до 5.
+    Оберните все это в промис. Пусть промис своим результатом возвращает результат деления единицы на сгенерированное число.
+    Пусть промис выполнится с ошибкой, если произошло деление на ноль, и с успехом во всех остальных случаях.
+    */
+
+    function getRandomNum(min, max) {
+      return Math.round(Math.random() * (max - min) + min)
+    }
+
+    function div(num1, num2) {
+      return num1 / num2
+    }
+
+    let promise = new Promise((resolve, reject) => {
+      let randomNum = getRandomNum(0, 5);
+      let result = div(1, randomNum);
+      randomNum === 0 ? reject('В делении на 0 нет смыла') : resolve(result);
+    });
+
+    promise.then(result => console.log(result), error => console.log(error));
+
+
+
+  </script>
 </body>
+
 </html>
