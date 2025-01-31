@@ -43,8 +43,6 @@
 
       Promise.race(tenPromisesArr).then(res => console.log(res));
       Promise.all(tenPromisesArr).then(res => console.log(res.reduce((acc, el) => acc + el)));
-
-
     })();
 
   </script>
