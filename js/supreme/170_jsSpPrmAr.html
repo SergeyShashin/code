@@ -14,16 +14,23 @@
 
   <script>
     /*
+    1.
     Сделайте функцию, возвращающую промис, внутри которого установлена случайная задержка от 1 до 10 секунд.
     Пусть своим результатом промис возвращает эту задержку.
     С помощью цикла и вашей функции заполните массив 10-ю промисами.
+
+    2.
+    Используя массив промисов из предыдущей задачи сделайте так, чтобы в консоль вывелся результат первого сработавшего промиса.
+    
+    3.
+    Используя массив промисов из предыдущей задачи сделайте так, чтобы в консоль вывелась сумма результатов всех промисов.
     */
 
     (() => {
       function getPromise() {
-        let promise = new Promise(() => {
+        let promise = new Promise(resolve => {
           let delay = 1000;
-          setTimeout(() => delay, delay);
+          setTimeout(() => resolve(delay), delay);
         });
         return promise
       }
@@ -31,10 +38,12 @@
       let tenPromisesArr = [];
 
       for (let i = 0; i < 10; i++) {
-        setTimeout(() => tenPromisesArr.concat(getPromise()), 2000);
+        tenPromisesArr.push(getPromise());
       }
 
-      Promise.all(tenPromisesArr).then(res => console.log(res));
+      Promise.race(tenPromisesArr).then(res => console.log(res));
+      Promise.all(tenPromisesArr).then(res => console.log(res.reduce((acc, el) => acc + el)));
+
 
     })();
 
