@@ -53,11 +53,24 @@
       }
 
       Promise.all(promises).then(result => result.map(el => document.body.appendChild(el)));
-    })()
+    })();
 
   </script>
 
   <script>
+    /*
+    Дан следующий код:
+    window.addEventListener('DOMContentLoaded', function() {
+      console.log('dom загружен');
+    });
+    Выполните его промисификацию.
+    */
+    (() => {
+      let promise = new Promise(resolve => window.addEventListener('DOMContentLoaded', function () {
+        resolve('dom загружен');
+      }));
+      promise.then(result => console.log(result));
+    })();
 
   </script>
 
