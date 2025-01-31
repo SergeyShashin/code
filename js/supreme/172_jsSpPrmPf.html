@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>supreme/promises/promisification</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/supreme/promises/promisification/">
+    Промисификация асинхронного кода в JavaScript
+  </a>
+
+  <script>
+    /*
+     Выполните промисификацию загрузки картинок. Потестируйте полученный код.
+    */
+
+    function loadImg(pathToImg) {
+      return new Promise((resolve, reject) => {
+        let imgEl = new Image();
+        imgEl.src = pathToImg;
+        imgEl.onload = () => resolve(imgEl);
+        imgEl.error = () => reject(new Error(`Картинка с путём ${pathToImg} не загрузилась.`));
+      });
+
+    }
+
+    loadImg('C:/Users/tdgbi/Desktop/S/Всего по чуть-чуть/с днём космонавтики.jpg').then(result => document.body.appendChild(result)).catch(console.log('Не загрузилась.'));
+  </script>
+</body>
+
+</html>
