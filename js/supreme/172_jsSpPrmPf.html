@@ -12,9 +12,13 @@
     Промисификация асинхронного кода в JavaScript
   </a>
 
+  <br>
+  <br>
+
   <script>
     /*
-     Выполните промисификацию загрузки картинок. Потестируйте полученный код.
+      1.
+      Выполните промисификацию загрузки картинок. Потестируйте полученный код.
     */
 
     function loadImg(pathToImg) {
@@ -24,10 +28,9 @@
         imgEl.onload = () => resolve(imgEl);
         imgEl.error = () => reject(new Error(`Картинка с путём ${pathToImg} не загрузилась.`));
       });
-
     }
 
-    loadImg('C:/Users/tdgbi/Desktop/S/Всего по чуть-чуть/с днём космонавтики.jpg').then(result => document.body.appendChild(result)).catch(console.log('Не загрузилась.'));
+    loadImg('C:/Users/tdgbi/Desktop/S/Всего по чуть-чуть/с днём космонавтики.jpg').then(result => document.body.appendChild(result)).catch(error => console.log(error));
   </script>
 </body>
 
