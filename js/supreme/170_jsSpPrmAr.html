@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>supreme/promises/arrays</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/supreme/promises/arrays">
+    Работа с массивами промисов в JavaScript
+  </a>
+
+  <script>
+    /*
+    Сделайте функцию, возвращающую промис, внутри которого установлена случайная задержка от 1 до 10 секунд.
+    Пусть своим результатом промис возвращает эту задержку.
+    С помощью цикла и вашей функции заполните массив 10-ю промисами.
+    */
+
+    (() => {
+      function getPromise() {
+        let promise = new Promise(() => {
+          let delay = 1000;
+          setTimeout(() => delay, delay);
+        });
+        return promise
+      }
+
+      let tenPromisesArr = [];
+
+      for (let i = 0; i < 10; i++) {
+        setTimeout(() => tenPromisesArr.concat(getPromise()), 2000);
+      }
+
+      Promise.all(tenPromisesArr).then(res => console.log(res));
+
+    })();
+
+  </script>
+
+</body>
+
+</html>
