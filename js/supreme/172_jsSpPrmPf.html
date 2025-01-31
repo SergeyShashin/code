@@ -19,6 +19,11 @@
     /*
       1.
       Выполните промисификацию загрузки картинок. Потестируйте полученный код.
+      
+      2.
+      Пусть пути к картинкам хранятся в массиве:
+      let paths = ['img1.png', 'img2.png', 'img3.png'];
+      Напишите код, который дождется окончания загрузки всех картинок, а затем добавит их в цикле в конец body.
     */
 
     function loadImg(pathToImg) {
@@ -30,7 +35,23 @@
       });
     }
 
-    loadImg('C:/Users/tdgbi/Desktop/S/Всего по чуть-чуть/с днём космонавтики.jpg').then(result => document.body.appendChild(result)).catch(error => console.log(error));
+    // loadImg('C:/Users/tdgbi/Desktop/S/Всего по чуть-чуть/с днём космонавтики.jpg').then(result => document.body.appendChild(result)).catch(error => console.log(error));
+
+    let paths = [
+      'C:/Users/tdgbi/Desktop/S/Всего по чуть-чуть/с днём космонавтики.jpg',
+      'C:/Users/tdgbi/Desktop/S/Всего по чуть-чуть/с днём космонавтики.jpg',
+      'C:/Users/tdgbi/Desktop/S/Всего по чуть-чуть/с днём космонавтики.jpg',
+      'C:/Users/tdgbi/Desktop/S/Всего по чуть-чуть/с днём космонавтики.jpg'
+    ];
+
+    let promises = [];
+
+    for (let path of paths) {
+      promises.push(loadImg(path));
+    }
+
+    Promise.all(promises).then(result => result.map(el => document.body.appendChild(el)));
+
   </script>
 </body>
 
