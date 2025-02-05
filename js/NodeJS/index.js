@@ -45,8 +45,8 @@ let sign = '!';
 // setInterval(() => { fs.writeFileSync('fileForSign.txt', sign); sign += '!' }, 5000);
 
 // Даны 3 файла с числами. Напишите скрипт, который прочитает числа из файлов, найдет их сумму и запишет ее в новый файл.
-fs.writeFileSync('sum.txt', `${[...fs.readFileSync('numbers.txt').split(' '),
-...fs.readFileSync('numbers1.txt').split(' '),
-...fs.readFileSync('numbers2.txt').split(' ')
+fs.writeFileSync('sum.txt', `${[...fs.readFileSync('numbers.txt', 'utf8').split(' '),
+...fs.readFileSync('numbers1.txt', 'utf8').split(' '),
+...fs.readFileSync('numbers2.txt', 'utf8').split(' ')
 ].reduce((acc, el) => acc + Number(el), 0)
   }`);
