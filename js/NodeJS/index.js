@@ -2,6 +2,8 @@ import { square, cube } from './math.js';
 // import _ from 'underscore';
 import _ from 'lodash';
 
+import fs from 'fs';
+
 let res = square(2) + cube(3);
 console.log(res);
 
@@ -9,3 +11,5 @@ console.log(res);
 
 console.log(_.chunk([1, 2, 3], 2));
 console.log(_.compact([1, '', 2, '', 3]));
+
+console.log(fs);
