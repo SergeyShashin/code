@@ -12,4 +12,10 @@ console.log(res);
 console.log(_.chunk([1, 2, 3], 2));
 console.log(_.compact([1, '', 2, '', 3]));
 
-console.log(fs);
+let text = fs.readFileSync('readme.txt', 'utf8');
+console.log(text);
+
+let numbers = fs.readFileSync('numbers.txt', 'utf8');
+let numbers1 = fs.readFileSync('numbers1.txt', 'utf8');
+
+console.log(`Сумма numbers и numbers1 = ${[...numbers.split(' '), ...numbers1.split(' ')].reduce((acc, el) => acc + Number(el), 0)}`);
