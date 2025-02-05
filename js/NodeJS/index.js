@@ -43,3 +43,10 @@ for (let key in obj) {
 //3. Дан файл с текстом. Запустите таймер, который каждые 5 секунд в конец этого файла будет записывать восклицательный знак
 let sign = '!';
 // setInterval(() => { fs.writeFileSync('fileForSign.txt', sign); sign += '!' }, 5000);
+
+// Даны 3 файла с числами. Напишите скрипт, который прочитает числа из файлов, найдет их сумму и запишет ее в новый файл.
+fs.writeFileSync('sum.txt', `${[...fs.readFileSync('numbers.txt').split(' '),
+...fs.readFileSync('numbers1.txt').split(' '),
+...fs.readFileSync('numbers2.txt').split(' ')
+].reduce((acc, el) => acc + Number(el), 0)
+  }`);
