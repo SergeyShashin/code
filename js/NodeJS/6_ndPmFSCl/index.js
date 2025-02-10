@@ -83,6 +83,30 @@ import fs from 'fs';
 // )
 
 //8
+let sum = 0;
 
+fs.readFile('f1.txt', 'utf8', (er1, d) => {
+   if (er1) {
+      console.log(er1);
+   } else {
+      sum += Number(d);
+      fs.readFile('f2.txt', 'utf8', (er2, d2) => {
+         if (er2) {
+            console.log(er2);
+         } else {
+            sum += Number(d2);
+            fs.readFile('f3.txt', 'utf8', (er3, d3) => {
+               if (er3) {
+                  console.log(er3);
+               } else {
+                  sum += Number(d3);
+                  fs.writeFile('sum8.txt', String(sum), er4 => console.log(er4 ? er4 : 'Сумма из 3 файлов сохранена в файл sum8.txt'));
+               }
+            });
+         }
+      })
+   }
+
+})
 
 
