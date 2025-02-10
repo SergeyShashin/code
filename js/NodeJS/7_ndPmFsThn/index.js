@@ -41,4 +41,4 @@ for (let nameFile of namesFiles) {
   promisesFiles.push(fs.promises.readFile(nameFile, 'urf8'));
 }
 
-Promise.all(promisesFiles).then(data=>fs.writeFile('res' data);
+Promise.all(promisesFiles).then(data=>fs.writeFile('res.txt', data));
