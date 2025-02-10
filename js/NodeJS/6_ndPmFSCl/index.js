@@ -9,6 +9,7 @@
 6. Даны пять файлов с числами. Выведите в консоль сумму этих чисел.
 7. Дан файл с числом. Запишите в этот файл квадрат этого числа.
 8. Даны три файла с числами. Запишите в новый файл сумму этих чисел.
+9. Перепишите код через стрелочные функции.
 */
 
 import fs from 'fs';
@@ -83,30 +84,51 @@ import fs from 'fs';
 // )
 
 //8
-let sum = 0;
+// let sum = 0;
 
-fs.readFile('f1.txt', 'utf8', (er1, d) => {
-   if (er1) {
-      console.log(er1);
-   } else {
-      sum += Number(d);
-      fs.readFile('f2.txt', 'utf8', (er2, d2) => {
-         if (er2) {
-            console.log(er2);
-         } else {
-            sum += Number(d2);
-            fs.readFile('f3.txt', 'utf8', (er3, d3) => {
-               if (er3) {
-                  console.log(er3);
-               } else {
-                  sum += Number(d3);
-                  fs.writeFile('sum8.txt', String(sum), er4 => console.log(er4 ? er4 : 'Сумма из 3 файлов сохранена в файл sum8.txt'));
+// fs.readFile('f1.txt', 'utf8', (er1, d) => {
+//    if (er1) {
+//       console.log(er1);
+//    } else {
+//       sum += Number(d);
+//       fs.readFile('f2.txt', 'utf8', (er2, d2) => {
+//          if (er2) {
+//             console.log(er2);
+//          } else {
+//             sum += Number(d2);
+//             fs.readFile('f3.txt', 'utf8', (er3, d3) => {
+//                if (er3) {
+//                   console.log(er3);
+//                } else {
+//                   sum += Number(d3);
+//                   fs.writeFile('sum8.txt', String(sum), er4 => console.log(er4 ? er4 : 'Сумма из 3 файлов сохранена в файл sum8.txt'));
+//                }
+//             });
+//          }
+//       })
+//    }
+
+// })
+
+//9
+fs.readFile('readme1.txt', 'utf8', (err, data1) => {
+   if (!err) {
+      fs.readFile('readme2.txt', 'utf8', (err, data2) => {
+         if (!err) {
+            fs.writeFile('readme.txt', data1 + data2, err => {
+               if (err) {
+                  console.log('ошибка записи файла');
                }
             });
+         } else {
+            console.log('ошибка чтения файла readme2');
          }
-      })
+      });
    }
-
-})
+   else {
+      console.log('ошибка чтения файла readme1');
+   }
+}
+);
 
 
