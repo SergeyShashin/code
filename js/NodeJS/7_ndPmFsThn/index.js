@@ -38,7 +38,10 @@ let namesFiles = ['numberFromNumbers0.txt', 'numberFromNumbers1.txt', 'numberFro
 let promisesFiles = [];
 
 for (let nameFile of namesFiles) {
-  promisesFiles.push(fs.promises.readFile(nameFile, 'urf8'));
+  promisesFiles.push(fs.promises.readFile(nameFile, 'utf8'));
 }
 
-Promise.all(promisesFiles).then(data=>fs.writeFile('res.txt', data));
+Promise.all(promisesFiles).then(data => {
+  let sum = data.reduce((acc, el) => acc + Number(el), 0);
+  fs.promises.writeFile('res.txt', String(sum));
+}).catch(er => console.log(er ? er : 'Сумма сохранена.'));
