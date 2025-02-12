@@ -13,8 +13,8 @@ let time = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
 // }).listen(3000);
 
 http.createServer((request, response) => {
-  response.setHeader('Content-Type', 'text/html');
-  response.statusCode = 200;
+  // response.setHeader('Content-Type', 'text/html');
+  // response.statusCode = 200;
   response.writeHead(200, { 'Content-Type': 'text/html', 'Content-Language': 'ru' })
   response.write('<h1>Welcome WORLD)</h1>');
   response.write(`<p>${time} </p>`);
