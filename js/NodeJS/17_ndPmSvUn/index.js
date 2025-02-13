@@ -9,6 +9,6 @@ let i = 0;
 
 http.createServer((request, responce) => {
   responce.writeHead(200, {'Content-Type': 'text/html', 'Content-Language': 'ru'});
-  i===10 ?  responce.write(`<h1>Quantity ${i++}</h1>`):responce.write(`<h1>${i++}</h1>`);
+  i===100 ?  responce.write(`<h1>Quantity ${i++}</h1>`):responce.write(`<h1>${i++}</h1>`);
   responce.end();
 }).listen(3000);
