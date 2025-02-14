@@ -1,29 +1,51 @@
 import http from 'http';
 import fs from 'fs';
 
+/**
+ * 1. Создайте файл styles.css. Отдайте его по соответствующему запросу. Не забудьте правильно указать тип данных.
+ * 2. Создайте файл script.js. Отдайте его по соответствующему запросу. Не забудьте правильно указать тип данных.
+ * 3. Разместите у себя файл с фавиконкой, назвав его favicon.ico.
+ *    Уберите в вашем коде условие для блокировки двойного запроса, а вместо этого отдавайте корректную фавиконку.
+ */
+
 http.createServer(async (request, responce) => {
   let requestUrl = request.url;
   let data;
   let type;
+  switch (requestUrl) {
 
-  if (requestUrl !== '/favicon.ico') {
-    if (requestUrl === '/') {
+    case '/':
       data = await fs.promises.readFile('index.html', 'utf8');
-      type='text/html';
-    }
+      type = 'text/html';
+      break;
 
-    if (requestUrl === '/job.png') {
+    case '/job.png':
       data = await fs.promises.readFile('job.png');
-      type='image/png';
-    }
+      type = 'image/png';
+      break;
 
-    if (requestUrl === '/welcomeWorld.jpg') {
+    case '/welcomeWorld.jpg':
       data = await fs.promises.readFile('welcomeWorld.jpg');
-      type='image/png';
-    }
+      type = 'image/png';
+      break;
 
-    responce.writeHead(200, {'Content-type': type })
-    responce.write(data);
-    responce.end();
+    case '/style.css':
+      data = await fs.promises.readFile(requestUrl.replace(/\//, ''));
+      type = 'text/html';
+      break;
+
+    case '/script.js':
+      data = await fs.promises.readFile(requestUrl.replace(/\//, ''));
+      type = 'text/html';
+      break;
+
+    default:
+      data = 'There is no such page yet.';
+      type = 'text/html';
+      break;
   }
+
+  responce.writeHead(200, { 'Content-type': type });
+  responce.write(data);
+  responce.end();
 }).listen(3000);
