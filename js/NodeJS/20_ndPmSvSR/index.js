@@ -1,20 +1,20 @@
 import http from 'http';
 
-http.createServer((request, responce) => {
+// http.createServer((request, responce) => {
 
-  if (request.url !== '/favicon.ico') {
-    responce.writeHead(200, { 'Content-type': 'text/html' });
+//   if (request.url !== '/favicon.ico') {
+//     responce.writeHead(200, { 'Content-type': 'text/html' });
 
-    if (request.url === '/' || request.url === '/page1' || request.url === '/page2' || request.url === '/page3') {
-      responce.write(`<h1>Welcome World)</h2><p>${request.url}</p>`);
-    } else {
-      responce.write(`<p>${request.url}</p>`);
-    }
+//     if (request.url === '/' || request.url === '/page1' || request.url === '/page2' || request.url === '/page3') {
+//       responce.write(`<h1>Welcome World)</h2><p>${request.url}</p>`);
+//     } else {
+//       responce.write(`<p>${request.url}</p>`);
+//     }
 
-    responce.end();
-  }
+//     responce.end();
+//   }
 
-}).listen(3000);
+// }).listen(3000);
 
 // http.createServer((request, response) => {
 // 	if (request.url != '/favicon.ico') {
@@ -65,3 +65,34 @@ http.createServer((request, responce) => {
 //   }
 // }).listen(3000);
 
+/*
+Дан объект с URL-лами и соответствующими им текстами страниц:
+*/
+let obj = {
+  '/': 'Welcome world)',
+  '/page1': '1',
+  '/page2': '2',
+  '/page3': '3',
+}
+/*
+Сделайте сервер на основе этого объекта.
+При запросе существующего в объекте адреса отдавайте соответствующий текст,
+а при запросе отсутствующего - сообщение об ошибке и статус 404.
+*/
+
+http.createServer((request, responce) => {
+  for (let linkPage in obj) {
+    switch (linkPage) {
+      case request.url:
+        responce.writeHead(200, { 'Content-type': 'text/html' });
+        responce.write(`<h1>${obj[linkPage]}</h1>`);
+        responce.end();
+        break;
+        default:
+          responce.writeHead(404, { 'Content-type': 'text/html' });
+        break;
+    }
+  }
+  responce.end();
+
+}).listen(3000);
