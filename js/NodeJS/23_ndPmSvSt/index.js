@@ -28,7 +28,7 @@ http.createServer(async (request, response) => {
     } catch (e) {
       status = 404;
       // text = await fs.promises.readFile(pathPageError, 'utf8');
-      text = 'page not found';;
+      text = 'page not found';
     }
 
     response.writeHead(status, { 'Content-Type': getMimeType(path) });
