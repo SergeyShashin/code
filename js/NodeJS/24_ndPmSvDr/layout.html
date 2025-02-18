@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% get title %}</title>
+</head>
+
+<body>
+  <div class="wraper">
+    <header>Хедер в шаблоне
+      <nav>
+        <ul>
+          <li><a href="/">главная</a></li>
+          <li><a href="/page1">1 страница</a></li>
+          <li><a href="/page2">2 страница</a></li>
+          <li><a href="/page3">3 страница</a></li>
+          <li><a href="/page4">4 страница</a></li>
+          <li><a href="/page5">5 страница</a></li>
+          <li><a href="/page6">6 страница</a></li>
+          <li><a href="/page7">7 страница</a></li>
+          <li><a href="/page8">8 страница</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>{% get content %}</main>
+    <aside>
+      Боковое меню
+    </aside>
+    <footer>
+      Подвал
+    </footer>
+  </div>
+
+</body>
+
+</html>
