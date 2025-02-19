@@ -28,22 +28,12 @@ http.createServer(
     let title = await fs.promises.readFile(tpath, encoding);
     let content = await fs.promises.readFile(cpath, encoding);
 
-    let rgxpElem = /\{% get elem '(.+?)' %\}/g;
-
     layout = layout.replace(/\{% get title %\}/, title);
     layout = layout.replace(/\{% get content %\}/, content);
 
-    layout = layout.replace(rgxpElem, (match0, match1) => {
-      let contentFromFile = getContentFromFile(match1);
-      return contentFromFile
-    }
-    );
-
-    async function getContentFromFile(fileName) {
-      let result = await fs.promises.readFile(`./elems/${fileName}.html`, encoding);
-      console.log(result);
-      return result;
-    }
+    layout = layout.replace(/\{% get elem '(.+?)' %\}/g, async (match0, match1) => {
+      return await fs.promises.readFile(`./elems/${match1}.html`, encoding);
+    });
 
     response.writeHead(statusResponce, { 'Content-type': typeContent });
     response.write(layout);
