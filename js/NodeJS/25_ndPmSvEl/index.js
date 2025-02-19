@@ -32,7 +32,10 @@ http.createServer(
     layout = layout.replace(/\{% get content %\}/, content);
 
     layout = layout.replace(/\{% get elem '(.+?)' %\}/g, async (match0, match1) => {
-      return await fs.promises.readFile(`./elems/${match1}.html`, encoding);
+      let result = await fs.promises.readFile(`./elems/${match1}.html`, encoding)
+      console.log(typeof result);
+      // console.log(layout);
+      return result;
     });
 
     response.writeHead(statusResponce, { 'Content-type': typeContent });
