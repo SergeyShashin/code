@@ -1,4 +1,4 @@
-import http, { request } from 'http';
+import http from 'http';
 import fs from 'fs';
 
 /**
@@ -15,25 +15,35 @@ http.createServer(
     let typeContent = 'text/html';
     let requestUrl = request.url;
     let lpath = 'layout.html';
-    let tpath;
-    let cpath;
+    let tpath = 'title.html';
+    let cpath = 'content.html';
 
-    if (requestUrl === '/') {
-      cpath = `content.html`;
-      tpath = `title.html`;
-    } else if (/^\/page/.test(requestUrl)) {
+    if (/^\/page/.test(requestUrl)) {
       tpath = `.${requestUrl}/title.html`;
       cpath = `.${requestUrl}/content.html`;
     }
 
-    console.log(lpath);
-
     let layout = await fs.promises.readFile(lpath, encoding);
+
     let title = await fs.promises.readFile(tpath, encoding);
     let content = await fs.promises.readFile(cpath, encoding);
 
+    let rgxpElem = /\{% get elem '(.+?)' %\}/g;
+
     layout = layout.replace(/\{% get title %\}/, title);
     layout = layout.replace(/\{% get content %\}/, content);
+
+    layout = layout.replace(rgxpElem, (match0, match1) => {
+      let contentFromFile = getContentFromFile(match1);
+      return contentFromFile
+    }
+    );
+
+    async function getContentFromFile(fileName) {
+      let result = await fs.promises.readFile(`./elems/${fileName}.html`, encoding);
+      console.log(result);
+      return result;
+    }
 
     response.writeHead(statusResponce, { 'Content-type': typeContent });
     response.write(layout);
