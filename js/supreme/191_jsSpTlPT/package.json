@@ -1,0 +1,9 @@
+{
+	"dependencies": {
+		"jquery": "^3.6.1",
+		"underscore": "^1.13.6"
+	},
+ 					"devDependencies": {
+		"webpack": "^5.74.0"
+	}
+}
