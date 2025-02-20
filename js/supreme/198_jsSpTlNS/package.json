@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "sloc": "^0.3.2"
+  },
+  "dependencies": {
+    "say": "^0.16.0"
+  },
+  "scripts": {
+    "welcome": " say.speak('Hello!')"
+  }  
+}
