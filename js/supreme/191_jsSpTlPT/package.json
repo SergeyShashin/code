@@ -3,7 +3,9 @@
 		"jquery": "^3.6.1",
 		"underscore": "^1.13.6"
 	},
- 					"devDependencies": {
+	"devDependencies": {
+		"cowsay": "^1.6.0",
+		"sloc": "^0.3.2",
 		"webpack": "^5.74.0"
 	}
 }
