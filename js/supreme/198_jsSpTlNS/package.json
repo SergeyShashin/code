@@ -3,9 +3,9 @@
     "sloc": "^0.3.2"
   },
   "dependencies": {
-    "say": "^0.16.0"
+    "cowsay": "^1.6.0"
   },
   "scripts": {
-    "welcome": " say.speak('Hello!')"
-  }  
+    "welcome": "cowsay ':)'"
+  }
 }
