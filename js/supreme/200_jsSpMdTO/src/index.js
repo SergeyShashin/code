@@ -3,6 +3,10 @@ import * as math from "./math.js";
 // import text, { f1, f2 } from "./welcome.js";
 import text, * as mod from "./welcome.js";
 import arr from "./arr.js";
+import * as numbers from "./numbers.js";
+
+import _ from 'underscore';
+import ld from 'lodash';
 
 alert('Welcome, world)');
 alert('it works!');
@@ -21,6 +25,28 @@ console.log(text());
 console.log(mod.f1());
 console.log(mod.f2());
 
-// Сделайте модуль, экспортирующий массив с числами.
-//  Подключите этот модуль к другому файлу и найдите сумму элементов подключенного массива.
-console.log('');
+/* 
+  1. Сделайте модуль, экспортирующий массив с числами.
+     Подключите этот модуль к другому файлу и найдите сумму элементов подключенного массива.
+*/
+console.log(arr.reduce((acc, el) => acc + el, 0));
+
+/*
+  2. Сделайте модуль, экспортирующий три числа.Подключите этот модуль к другому файлу и найдите сумму этих чисел.
+*/
+console.log(Object.values(numbers).reduce((acc, el) => acc + el, 0));
+
+console.log(_.first(arr) + _.last(arr));
+
+console.dir(ld);
+
+/**
+ * Установите библиотеку lodash. Подключите ее себе в проект и используйте несколько методов из этой библиотеки.
+ */
+console.log(ld.castArray(arr));
+console.log(ld.chunk(arr));
+console.log(ld.drop(arr));
+console.log(ld.head(arr));
+console.log(ld.isArray(arr));
+console.log(ld.sortedUniq(arr));
+console.log(ld.sum(arr));
