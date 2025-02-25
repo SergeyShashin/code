@@ -66,8 +66,6 @@ function handlerClickBtnOutputNamesOfDaysWeekAndMonths() {
   Promise.all([import('./namesOfDaysWeek.js'), import('./namesOfMonths.js')]).then(obj => {
     let ulEl = document.createElement('ul');
 
-    console.dir(obj);
-
     for (let day of obj[0].default) {
       let liEl = document.createElement('li');
       liEl.textContent = day;
