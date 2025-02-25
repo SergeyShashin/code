@@ -7,6 +7,7 @@ import * as numbers from "./numbers.js";
 
 import _ from 'underscore';
 import ld from 'lodash';
+import namesOfDaysWeek from "./namesOfDaysWeek.js";
 
 alert('Welcome, world)');
 alert('it works!');
@@ -50,3 +51,25 @@ console.log(ld.head(arr));
 console.log(ld.isArray(arr));
 console.log(ld.sortedUniq(arr));
 console.log(ld.sum(arr));
+
+
+/**
+ * Сделайте модуль, экспортирующий массив названий дней недели.
+ * По нажатию на кнопку импортируйте этот модуль и выведите дни недели в виде списка ul.
+ */
+let btnOutputNamesOfDaysWeekEl = document.getElementById('outputNamesOfDaysWeek');
+
+btnOutputNamesOfDaysWeekEl.addEventListener('click', () => handlerClickBtnOutputNamesOfDaysWeek());
+
+function handlerClickBtnOutputNamesOfDaysWeek() {
+  console.log('есть клик');
+  import('./namesOfDaysWeek.js').then(obj => {
+    let ulEl = document.createElement('ul');
+    for (let day of obj.default) {
+      let liEl = document.createElement('li');
+      liEl.textContent = day;
+      ulEl.appendChild(liEl);
+    }
+    document.body.appendChild(ulEl);
+  })
+}
