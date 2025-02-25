@@ -57,19 +57,29 @@ console.log(ld.sum(arr));
  * Сделайте модуль, экспортирующий массив названий дней недели.
  * По нажатию на кнопку импортируйте этот модуль и выведите дни недели в виде списка ul.
  */
-let btnOutputNamesOfDaysWeekEl = document.getElementById('outputNamesOfDaysWeek');
+// let btnOutputNamesOfDaysWeekEl = document.getElementById('outputNamesOfDaysWeek');
+let btnOutputNamesOfDaysWeekAndMonthsEl = document.getElementById('outputNamesOfDaysWeekAndMonths');
 
-btnOutputNamesOfDaysWeekEl.addEventListener('click', () => handlerClickBtnOutputNamesOfDaysWeek());
+btnOutputNamesOfDaysWeekAndMonthsEl.addEventListener('click', () => handlerClickBtnOutputNamesOfDaysWeekAndMonths());
 
-function handlerClickBtnOutputNamesOfDaysWeek() {
-  console.log('есть клик');
-  import('./namesOfDaysWeek.js').then(obj => {
+function handlerClickBtnOutputNamesOfDaysWeekAndMonths() {
+  Promise.all([import('./namesOfDaysWeek.js'), import('./namesOfMonths.js')]).then(obj => {
     let ulEl = document.createElement('ul');
-    for (let day of obj.default) {
+
+    console.dir(obj);
+
+    for (let day of obj[0].default) {
       let liEl = document.createElement('li');
       liEl.textContent = day;
       ulEl.appendChild(liEl);
     }
+
+    for (let month of obj[1].default) {
+      let liEl = document.createElement('li');
+      liEl.textContent = month;
+      ulEl.appendChild(liEl);
+    }
+
     document.body.appendChild(ulEl);
   })
 }
