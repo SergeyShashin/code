@@ -17,9 +17,16 @@ btnAddPage3El.addEventListener('click', () => loadPage('/page3.html'))
 
 btnAddPageEl.addEventListener('click', loadPages);
 
+fetch('/db.json').then(responce => responce.json()).then(dataJson => dataJson.users.map(user => {
+  let li = document.createElement('li');
+  li.textContent = user;
+  monitorEl.appendChild(li);
+}));
+
 function loadPage(pathPage) {
   fetch(pathPage).then(responce => {
     if (responce.ok) {
+      console.log(responce.headers.get('Content-Type'));
       return responce.text()
     } else {
       throw new Error('Error.');
