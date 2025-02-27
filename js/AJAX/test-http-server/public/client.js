@@ -18,7 +18,14 @@ btnAddPage3El.addEventListener('click', () => loadPage('/page3.html'))
 btnAddPageEl.addEventListener('click', loadPages);
 
 function loadPage(pathPage) {
-  fetch(pathPage).then(responce => responce.text()).then(text => monitorEl.innerHTML += text);
+  fetch(pathPage).then(responce => {
+    if (responce.ok) {
+      return responce.text()
+    } else {
+      throw new Error('Error.');
+    }
+  }).then(text => monitorEl.innerHTML += text).catch(error => console.log(error));
+  // fetch(pathPage).then(responce => responce.ok ? console.log(responce.status) : console.log(responce.status));
 }
 
 function loadPages() {
