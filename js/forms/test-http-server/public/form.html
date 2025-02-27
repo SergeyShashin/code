@@ -13,8 +13,14 @@
        Если данные совпадают, выведите сообщение об успехе, в противном случае - о неудаче. -->
   <!-- <input name="login" placeholder="login">
    <input name="password" type="password" placeholder="password"> -->
-  <input type="submit">
+  <!-- <input type="submit"> -->
+  <input name="i1">
+  <input name="i2">
+  <input name="i3">
+  <button type="submit">send</button>
 </form>
+
+<!-- <button id="sendForm">sendForm</button> -->
 
 <!-- <a href="/handler/?test1=1&test2=2">link</a> -->
 
@@ -25,6 +31,30 @@
 <!-- С помощью GET параметров отправьте на сервер два числа. Найдите сумму переданных чисел и выведите результат в консоль сервера. -->
 <!-- <a href="/handler/?num1=8&&num2=8">Show sum 8+8</a> -->
 
-<a href="/handler/?key=1">1</a>
+<!-- <a href="/handler/?key=1">1</a>
 <a href="/handler/?key=2">2</a>
-<a href="/handler/?key=3">3</a>
+<a href="/handler/?key=3">3</a> -->
+
+<!-- <a href="/handler/?key=0">user1</a>
+<a href="/handler/?key=1">user2</a>
+<a href="/handler/?key=2">user3</a>
+<a href="/handler/?key=3">user4</a> -->
+
+<!-- <script>
+  let buttonEl = document.getElementById('sendForm');
+
+  buttonEl.addEventListener('click', () => {
+    document.querySelector('form').submit()
+    console.log('+');
+    });
+</script> -->
+
+<script>
+  // document.querySelector('form').addEventListener('submit', (e) => e.preventDefault());
+</script>
+
+<form action="/target/" method="POST">
+	<input name="test1" value="123">
+	<input name="test2" value="456">
+	<input type="submit">
+</form>

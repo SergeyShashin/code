@@ -1,4 +1,7 @@
-let obj = { 1: 'a', 2: 'b', 3: 'c' };
+// let obj = { 1: 'a', 2: 'b', 3: 'c' };
+// let arr = [
+// 	'user1', 'user2', 'user3'
+// ];
 
 export default {
   '/handler/': function ({ get, post }) {
@@ -10,6 +13,11 @@ export default {
     // let password = 'admin'
     // return `Login ${post.login === login}. Password ${post.password === password}.`
     // return get.num ** 2
-    return obj[get.key]
+    // return obj[get.key]
+    // return arr[get.key] ? arr[get.key] : 'User not found.'
+  },
+
+  '/target/': function ({ get, post }) {
+    console.log(post);
   }
 }
