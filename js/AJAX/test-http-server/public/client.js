@@ -9,6 +9,8 @@ let btnAddPage3El = document.getElementById('btnAddPage3');
 
 let btnAddPageEl = document.getElementById('btnAddPage');
 let btnHandlerEl = document.getElementById('btnHandler');
+let btnShowSumEl = document.getElementById('btnShowSum');
+let btnbtnShowElArrEl = document.getElementById('btnShowElArr');
 
 btnOutputEl.addEventListener('click', () => loadPage('/ajax.html'));
 
@@ -18,7 +20,13 @@ btnAddPage3El.addEventListener('click', () => loadPage('/page3.html'))
 
 btnAddPageEl.addEventListener('click', loadPages);
 
-btnHandlerEl.addEventListener('click', ()=>fetch('/handler/?num=3').then(response=>response.text()).then(text=>console.log(text)));
+btnHandlerEl.addEventListener('click', () => (fetch('/handler/?num=3').then(response => response.text()).then(text => console.log(text))));
+
+// На клиенте дан див и кнопка. По нажатию на кнопку отправьте на сервер два числа.
+// Пусть сервер найдет сумму переданных чисел. Результат запишите в див.
+btnShowSumEl.addEventListener('click', () => (fetch('/getSum/?n1=8&n2=888').then(response => response.text()).then(text => monitorEl.innerHTML += `<p>${text}</p>`)));
+
+btnbtnShowElArrEl.addEventListener('click', () => (fetch('/getElementArr/?idx=0').then(responce => responce.text()).then(text => monitorEl.innerHTML += `<p>${text}</p>`)));
 
 fetch('/db.json').then(responce => responce.json()).then(dataJson => dataJson.users.map(user => {
   let li = document.createElement('li');
