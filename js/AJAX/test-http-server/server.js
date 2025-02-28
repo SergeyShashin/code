@@ -16,7 +16,11 @@ export default {
     return Number(get.n1) + Number(get.n2)
   },
 
-  '/getElementArr/': function({get}){
+  '/getElementArr/': function ({ get }) {
     return arr[get.idx]
+  },
+
+  '/getSumUsePost/': function ({ post }) {
+    return Number(post.n1) + Number(post.n2)+  Number(post.n3)
   }
 }
