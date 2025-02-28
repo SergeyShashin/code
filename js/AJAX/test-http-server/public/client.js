@@ -13,6 +13,8 @@ let btnShowSumEl = document.getElementById('btnShowSum');
 let btnShowElArrEl = document.getElementById('btnShowElArr');
 let btnShowSumUsePostEl = document.getElementById('btnShowSumUsePost');
 
+let btnShowSumFromInputsEl = document.getElementById('btnShowSumFromInputs');
+
 btnOutputEl.addEventListener('click', () => loadPage('/ajax.html'));
 
 btnAddPage1El.addEventListener('click', () => loadPage('/page1.html'))
@@ -40,6 +42,17 @@ btnShowSumUsePostEl.addEventListener('click', () => (
     }
   }).then(responce => responce.text()).then(text => monitorEl.innerHTML += `<p>${text}</p>`)
 ));
+
+// На клиенте дан див, кнопка и три инпута. 
+// В инпуты вводятся числа. По нажатию на кнопку отпавьте введенные числа на сервер. 
+// Пусть сервер найдет сумму переданных чисел и вернет ее обратно. Результат запишите в див.
+btnShowSumFromInputsEl.addEventListener('click', () => {
+let inputsEls = document.getElementById('sectionWithInputs').querySelectorAll('input');
+let searchParams = new URLSearchParams();
+  for(let i=0;i<inputsEls.length; ){
+    se
+  }
+});
 
 fetch('/db.json').then(responce => responce.json()).then(dataJson => dataJson.users.map(user => {
   let li = document.createElement('li');
