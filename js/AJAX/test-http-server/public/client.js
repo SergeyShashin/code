@@ -17,6 +17,8 @@ let btnShowSumFromInputsEl = document.getElementById('btnShowSumFromInputs');
 
 let sendFormUseFormDataEl = document.getElementById('sendFormUseFormData');
 
+let btnSumUsePostAndJsonEl = document.getElementById('btnSumUsePostAndJson');
+
 btnOutputEl.addEventListener('click', () => loadPage('/ajax.html'));
 
 btnAddPage1El.addEventListener('click', () => loadPage('/page1.html'))
@@ -103,7 +105,17 @@ sendFormUseFormDataEl.addEventListener('submit', (e) => {
     body: new FormData(e.target),
   }).then(responce => responce.text()).then(text => console.log(text))
   e.preventDefault();
-})
+});
+
+btnSumUsePostAndJsonEl.addEventListener('click', () => {
+  fetch('/getSumUsePostAndJson/', {
+    method: 'post',
+    body: JSON.stringify([1, 2, 3, 4, 5, 6, 7, 8, 9]),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }).then(responce => responce.text()).then(text => console.log(text));
+});
 
 fetch('/db.json').then(responce => responce.json()).then(dataJson => dataJson.users.map(user => {
   let li = document.createElement('li');
