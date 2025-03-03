@@ -15,6 +15,8 @@ let btnShowSumUsePostEl = document.getElementById('btnShowSumUsePost');
 
 let btnShowSumFromInputsEl = document.getElementById('btnShowSumFromInputs');
 
+let sendFormUseFormDataEl = document.getElementById('sendFormUseFormData');
+
 btnOutputEl.addEventListener('click', () => loadPage('/ajax.html'));
 
 btnAddPage1El.addEventListener('click', () => loadPage('/page1.html'))
@@ -76,6 +78,7 @@ let obj = {
   b: 2,
   c: 3
 }
+
 btnShowDataUsePostAndFormData.addEventListener('click', () => {
   let formData = new FormData();
 
@@ -88,6 +91,19 @@ btnShowDataUsePostAndFormData.addEventListener('click', () => {
     body: formData,
   }).then(responce => responce.text()).then(text => console.log(text));
 });
+
+/**
+ * Дана форма с пятью инпутами, в которые вводятся числа.
+ * Отправьте эту форму на сервер методом POST.
+ * Пусть сервер найдет среднее арифметическое введенных чисел и отправит результат обратно в браузер.
+ */
+sendFormUseFormDataEl.addEventListener('submit', (e) => {
+  fetch('/sendFormUseFormData/', {
+    method: 'post',
+    body: new FormData(e.target),
+  }).then(responce => responce.text()).then(text => console.log(text))
+  e.preventDefault();
+})
 
 fetch('/db.json').then(responce => responce.json()).then(dataJson => dataJson.users.map(user => {
   let li = document.createElement('li');
