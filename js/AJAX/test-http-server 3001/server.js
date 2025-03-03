@@ -42,4 +42,9 @@ export default {
     return JSON.parse(body).reduce((sum, number) => sum + number, 0)
   },
 
+  '/reciveJsonFromServer3002/': function ({ body }) {
+    console.log(body);
+    return 'success'
+  }
+
 }
