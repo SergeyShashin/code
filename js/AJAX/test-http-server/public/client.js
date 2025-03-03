@@ -62,6 +62,33 @@ btnShowSumFromInputsEl.addEventListener('click', () => {
   }).then(responce => responce.text()).then(text => monitorEl.innerHTML += `<p>${text}</p>`)
 });
 
+/**
+* Дан объект с данными:
+*    let obj = {
+*      a: 1,
+*      b: 2,
+*      c: 3
+*    }
+* C помощью цикла сформируйте из этого объекта объект formData и отправьте его на сервер методом POST.
+* */
+let obj = {
+  a: 1,
+  b: 2,
+  c: 3
+}
+btnShowDataUsePostAndFormData.addEventListener('click', () => {
+  let formData = new FormData();
+
+  for (let key in obj) {
+    formData.set(key, obj[key]);
+  }
+
+  fetch('/getDataFromPost/', {
+    method: 'post',
+    body: formData,
+  }).then(responce => responce.text()).then(text => console.log(text));
+});
+
 fetch('/db.json').then(responce => responce.json()).then(dataJson => dataJson.users.map(user => {
   let li = document.createElement('li');
   li.textContent = user;
