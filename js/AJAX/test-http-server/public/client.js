@@ -44,14 +44,22 @@ btnShowSumUsePostEl.addEventListener('click', () => (
 ));
 
 // На клиенте дан див, кнопка и три инпута. 
-// В инпуты вводятся числа. По нажатию на кнопку отпавьте введенные числа на сервер. 
+// В инпуты вводятся числа. По нажатию на кнопку отправьте введенные числа на сервер. 
 // Пусть сервер найдет сумму переданных чисел и вернет ее обратно. Результат запишите в див.
 btnShowSumFromInputsEl.addEventListener('click', () => {
-let inputsEls = document.getElementById('sectionWithInputs').querySelectorAll('input');
-let searchParams = new URLSearchParams();
-  for(let i=0;i<inputsEls.length; ){
-    se
+  let inputsEls = document.getElementById('sectionWithInputs').querySelectorAll('input');
+  let searchParams = new URLSearchParams();
+  for (let i = 0; i < inputsEls.length; i++) {
+    searchParams.set(`n${i}`, inputsEls[i].value);
   }
+
+  fetch('/getSumUsePostFromInputs/', {
+    method: 'post',
+    body: searchParams,
+    headers: {
+      'Content-type': 'application/x-www-form-urlencoded'
+    }
+  }).then(responce => responce.text()).then(text => monitorEl.innerHTML += `<p>${text}</p>`)
 });
 
 fetch('/db.json').then(responce => responce.json()).then(dataJson => dataJson.users.map(user => {
