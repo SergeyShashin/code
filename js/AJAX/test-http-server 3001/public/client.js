@@ -19,6 +19,8 @@ let sendFormUseFormDataEl = document.getElementById('sendFormUseFormData');
 
 let btnSumUsePostAndJsonEl = document.getElementById('btnSumUsePostAndJson');
 
+let btnSncStyle=document.getElementById('btnSncStyle');
+
 btnOutputEl.addEventListener('click', () => loadPage('/ajax.html'));
 
 btnAddPage1El.addEventListener('click', () => loadPage('/page1.html'))
@@ -115,6 +117,28 @@ btnSumUsePostAndJsonEl.addEventListener('click', () => {
       'Content-Type': 'application/json'
     }
   }).then(responce => responce.text()).then(text => console.log(text));
+});
+
+//Синхронный стиль
+btnSncStyle.addEventListener('click', async function() {
+	let promise = await fetch('/ajax.html')
+	.then(
+		response => {
+			if (response.ok) {
+				return response.text();
+			} else {
+				throw new Error('плохой статус ответа');
+			}
+		},
+	).then(
+		text => {
+			console.log(text);
+		}
+	).catch(
+		error => {
+			console.log(error);
+		}
+	);
 });
 
 fetch('/db.json').then(responce => responce.json()).then(dataJson => dataJson.users.map(user => {
