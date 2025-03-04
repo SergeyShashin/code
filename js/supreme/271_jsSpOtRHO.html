@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>optimization/repeating-heavy-operations</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/supreme/optimization/repeating-heavy-operations/">
+    Оптимизация повторения тяжелых операций в JavaScript
+  </a>
+
+  <script>
+    /*
+      Оптимизируйте приведенный ниже код:
+
+      let num = 1233456789;
+
+      if (getSumSquare(num) >= 10 && getSumSquare(num) <= 100) {
+        console.log('+++');
+      } else {
+        console.log('---');
+      }
+
+      function getSumSquare(num) {
+        let digits = String(num).split('');
+        let sum = 0;
+
+        for (let digit of digits) {
+          sum += digit ** 2;
+        }
+
+        return sum;
+      }
+    */
+
+    (() => {
+      // let num = 1233456789;
+      let num = 123;
+      let sum = getSumSquare(num);
+
+      console.log(sum >= 10 && sum <= 100) ? '+++' : '---';
+
+      function getSumSquare(num) {
+        let digits = String(num).split('');
+        let sum = 0;
+
+        for (let digit of digits) {
+          sum += digit ** 2;
+        }
+
+        return sum;
+      }
+
+    })();
+  </script>
+
+</body>
+
+</html>
