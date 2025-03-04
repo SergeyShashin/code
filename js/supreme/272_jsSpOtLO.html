@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>optimization/loop-operations</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/supreme/optimization/loop-operations/">
+    Оптимизация цикличных операций в JavaScript
+  </a>
+
+  <script>
+
+    // 1. Оптимизируйте следующий код:
+
+    // for (let i = 1900; i <= 2100; i++) {
+    //   let curr = new Date;
+    //   let date = new Date(i, curr.getMonth(), curr.getDate());
+
+    //   if (curr.getDay() === date.getDay()) {
+    //     console.log(date);
+    //   }
+    // }
+
+
+    (() => {
+      let nowDate = new Date();
+      let currMonth = nowDate.getMonth();
+      let currDate = nowDate.getDate();
+      let currDay = nowDate.getDay();
+
+      for (let i = 1900; i <= 2100; i++) {
+        let dateOnI = new Date(i, currMonth, currDate);
+      }
+
+      console.log(`Месяц ${currMonth} + Число ${currDate} + День ${currDay}`);
+
+    })();
+
+  </script>
+</body>
+
+</html>
