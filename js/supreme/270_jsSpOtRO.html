@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>optimization/repeating-operations</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/supreme/optimization/repeating-operations/">
+    Оптимизация повторных операций в JavaScript
+  </a>
+
+  <script>
+    /*
+      1. Оптимизируйте приведенный ниже код:
+        let num = 123;
+
+        if (String(num)[0] === '1' || String(num)[0] === '2') {
+          console.log('+++');
+        } else {
+          console.log('---');
+        }    
+    */
+
+    (() => {
+      let num = 123;
+      let firstSymbol = String(num)[0];
+      console.log(firstSymbol === '1' ? '+++' : '---');
+    })();
+  </script>
+
+  <script>
+    /*
+    2. Оптимизируйте приведенный ниже код:
+    let date = new Date();
+    if (date.getDay() === 0 || date.getDay() === 6) {
+      console.log('выходной');
+    } else {
+      console.log('рабочий');
+    }
+    */
+
+    (() => {
+      let day = new Date().getDay();
+      console.log(day === 0 ? 'выходной' : 'рабочий');
+    })();
+  </script>
+
+  <script>
+    /*
+    3. Оптимизируйте приведенный ниже код:
+    let date = new Date();
+    let res;
+
+    if (date.getFullYear() >= 2020 && date.getFullYear() <= 2030) {
+      res = 'год ' + date.getFullYear() + ' подходит';
+    } else {
+      res = 'год ' + date.getFullYear() + ' не подходит';
+    }
+
+    console.log(res)
+    */
+    (() => {
+      let fullYear = new Date().getFullYear();
+
+      console.log(fullYear >= 2020 && fullYear <= 2030 ? `${fullYear} год подходит.` : `${fullYear} год не подходит.`);
+    })();
+  </script>
+
+</body>
+
+</html>
