@@ -12,7 +12,12 @@
     Оптимизация работы с DOM в JavaScript
   </a>
   <h2>
+    <div id="monitor"></div>
     <input>
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <p>4</p>
   </h2>
   <script>
     (() => {
@@ -37,7 +42,7 @@
 
   <script>
       /*
-      Следующий код ищет сумму целых чисел от единицы до введенного в инпут числа. Выполните оптимизацию:
+      2. Следующий код ищет сумму целых чисел от единицы до введенного в инпут числа. Выполните оптимизацию:
   
       let input = document.querySelector('input');
   
@@ -56,8 +61,61 @@
         let inputEl = document.querySelector('input');
         inputEl.addEventListener('blur', () => {
           let inputContent = Number(inputEl.value);
-          console.log(inputContent*(inputContent+1)/2);
+          console.log(inputContent * (inputContent + 1) / 2);
         })
+      })()
+
+  </script>
+
+  <script>
+      /*
+      3. Следующий код ищет сумму делителей введенного в инпут числа.Выполните оптимизацию:
+  
+      let input = document.querySelector('input');
+  
+      input.addEventListener('blur', function () {
+        let sum = 0;
+  
+        for (let i = 1; i <= +input.value; i++) {
+          if (input.value % i === 0) {
+            sum += i;
+  
+            let div = document.querySelector('div');
+            div.textContent = sum;
+          }
+        }
+      });
+      */
+      (() => {
+        let inputEl = document.querySelector('input');
+        inputEl.addEventListener('blur', () => {
+          let inputContent = Number(inputEl.value);
+          let sum = 0;
+          for (let i = 0; i < inputContent + 1; i++) {
+            if (inputContent % i === 0) {
+              sum += i;
+            }
+          }
+          document.getElementById('monitor').textContent = sum;
+        })
+      })()
+  </script>
+
+  <script>
+      /*
+      4. Следующий код возводит числа из абзацев в квадрат.Выполните оптимизацию:
+  
+      let elems = document.querySelectorAll('p');
+      
+      for (let elem of elems) {
+        elem.textContent = elem.textContent * elem.textContent;
+        }
+        */
+
+      (() => {
+        let pEls = document.querySelectorAll('p');
+
+        console.dir(pEls);
       })()
 
   </script>
