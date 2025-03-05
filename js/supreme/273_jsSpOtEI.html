@@ -14,7 +14,7 @@
 
   <script>
     /*
-    Следующий код подсчитывает, сколько элементов массива нужно сложить, чтобы сумма стала больше 10. Выполните оптимизацию:
+    1. Следующий код подсчитывает, сколько элементов массива нужно сложить, чтобы сумма стала больше 10. Выполните оптимизацию:
 
     let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     let sum = 0;
@@ -46,7 +46,7 @@
 
   <script>
       /*
-      Следующий код выводит четные числа из заданного промежутка. Выполните оптимизацию:
+      2. Следующий код выводит четные числа из заданного промежутка. Выполните оптимизацию:
   
       for (let i = 0; i <= 100; i++) {
         if (i % 2 === 0) {
@@ -62,20 +62,48 @@
   </script>
 
   <script>
-    /*
-    Следующий код выводит числа, делящиеся одновременно на 2 и на 3. Выполните оптимизацию:
+      /*
+      3. Следующий код выводит числа, делящиеся одновременно на 2 и на 3. Выполните оптимизацию:
+  
+      for (let i = 0; i <= 100; i++) {
+        if (i % 2 === 0 && i % 3 === 0) {
+          console.log(i);
+        }
+      }
+      */
+      (() => {
+        for (let i = 0; i < 101; i += 6) {
+          console.log(i);
+        }
+      })()
+  </script>
 
-    for (let i = 0; i <= 100; i++) {
-      if (i % 2 === 0 && i % 3 === 0) {
-        console.log(i);
+  <script>
+    /*
+    4. Следующий код ищет все пятницы 13 - е в текущем году.Выполните оптимизацию:
+
+    for (let i = 0; i <= 11; i++) {
+      let curr = new Date;
+      let last = new Date(curr.getFullYear(), i + 1, 0).getDate();
+
+      for (let j = 1; j <= last; j++) {
+        let date = new Date(curr.getFullYear(), i, j);
+
+        if (date.getDate() === 13 && date.getDay() === 5) {
+          console.log(date);
+        }
       }
     }
     */
-   (()=>{
-    for (let i = 0; i < 101; i+=6) {
-        console.log(i);
+
+    let currentYear = new Date().getFullYear();
+
+    for (let month = 0; month < 12; month++) {
+      let dateFridayInMonth = new Date(currentYear, month, 13);
+      dateFridayInMonth.getDay() === 5 ? console.log(dateFridayInMonth) : '';
     }
-   })()
+
+
   </script>
 </body>
 
