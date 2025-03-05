@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>supreme/optimization/regular</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/supreme/optimization/regular/">
+    Оптимизация использования регулярок в JavaScript
+  </a>
+
+  <script>
+    (() => {
+      // 1. Следующий код проверяет наличие в строке подстроки '33'.Выполните оптимизацию:
+
+      // let str = '123345';
+
+      // if (/33/.test(str)) {
+      //   console.log('+++');
+      // } else {
+      //   console.log('---');
+      // }
+
+      let str = '123345';
+      console.log(str.includes(33) ? '+++' : '---');
+    })()
+  </script>
+
+  <script>
+    /*
+    2. Следующий код проверяет, заканчивается ли строка на '.html'.Выполните оптимизацию:
+    
+    let str = 'index.html';
+    
+    if (/\.html$/.test(str)) {
+      console.log('+++');
+      } else {
+        console.log('---');
+    }
+    */
+
+    let str = 'index.html';
+    console.log(str.endsWith('html') ? '+++' : '---');
+  </script>
+
+  <script>
+    (() => {
+      /*
+      3. Следующий код обрезает концевые пробелы. Выполните оптимизацию:
+      let str = '  text  ';
+      let res = str.replace(/^\s+|\s+$/g, '');
+      console.log(res);
+      */
+
+      let str = '  text  ';
+      console.log(str.trim());
+    })()
+  </script>
+
+</body>
+
+</html>
