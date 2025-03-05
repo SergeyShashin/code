@@ -34,22 +34,26 @@
   </script>
 
   <script>
-    /*
-    Следующий код заполняет массив заданным значением.Выполните оптимизацию:
-
-    let arr = fillArr('x', 5);
-    console.log(arr);
-
-    function fillArr(val, amount) {
-      let arr = [];
-
-      for (let i = 1; i <= amount; i++) {
-        arr.push(val);
+      /*
+      Следующий код заполняет массив заданным значением.Выполните оптимизацию:
+  
+      let arr = fillArr('x', 5);
+      console.log(arr);
+  
+      function fillArr(val, amount) {
+        let arr = [];
+  
+        for (let i = 1; i <= amount; i++) {
+          arr.push(val);
+        }
+  
+        return arr;
       }
-
-      return arr;
-    }
-    */
+      */
+      (() => {
+        let arr = new Array(5).fill('x');
+        console.log(arr);
+      })()
   </script>
 
 </body>
