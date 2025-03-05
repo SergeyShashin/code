@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>optimization/inbuild-functions</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/supreme/optimization/inbuild-functions/">
+    Оптимизация через использование встроенных функций в JavaScript
+  </a>
+
+  <script>
+    /*
+    1. Следующий код проверяет, начинается ли строка на 'http'.Выполните оптимизацию:
+
+    let str = 'http://code.mu';
+
+    if (str[0] + str[1] + str[2] + str[3] === 'http') {
+      console.log('+++');
+    } else {
+      console.log('---');
+    }
+    */
+    (() => {
+      let str = 'http://code.mu';
+      console.log(str.startsWith('http') ? '+++' : '---');
+      // console.log(/^http/.test(str) ? '+++' : '---');
+      // console.log(str.slice(0, 4) === 'http' ? '+++' : '---');
+      // console.log(str.match(/^http/) ? '+++' : '---');
+    })()
+  </script>
+
+  <script>
+    /*
+    Следующий код заполняет массив заданным значением.Выполните оптимизацию:
+
+    let arr = fillArr('x', 5);
+    console.log(arr);
+
+    function fillArr(val, amount) {
+      let arr = [];
+
+      for (let i = 1; i <= amount; i++) {
+        arr.push(val);
+      }
+
+      return arr;
+    }
+    */
+  </script>
+
+</body>
+
+</html>
