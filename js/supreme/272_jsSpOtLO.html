@@ -13,7 +13,6 @@
   </a>
 
   <script>
-
     // 1. Оптимизируйте следующий код:
 
     // for (let i = 1900; i <= 2100; i++) {
@@ -39,9 +38,41 @@
           console.log(dateOnI);
         }
       }
-
     })();
+  </script>
 
+  <script>
+    /* 
+    2.Оптимизируйте следующий код:
+    let obj = { a: 10, b: 20, c: 30, d: 40, e: 50 };
+    let sum = 0;
+
+    for (let key in obj) {
+      if (String(obj[key])[0] === '1' || String(obj[key])[0] === '2') {
+        sum += obj[key];
+      }
+    }
+    console.log(sum);
+   */
+
+    (() => {
+      let obj = { a: 10, b: 20, c: 30, d: 40, e: 50 };
+      let sum = 0;
+      for (let key in obj) {
+        let firstSymbol = String(obj[key])[0]
+        if (firstSymbol === '1' || firstSymbol === '2') {
+          sum += obj[key];
+        }
+      }
+
+      console.log(sum);
+
+      // console.log(Object.values(obj).reduce((acc, el) => {
+      //   let firstSymbol = String(el)[0];
+      //   return firstSymbol === '1' || firstSymbol === '2' ? acc + el : acc
+      // }, 0)
+      // );
+    })()
   </script>
 </body>
 
