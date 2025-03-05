@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>optimization/dom</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/supreme/optimization/dom/">
+    Оптимизация работы с DOM в JavaScript
+  </a>
+  <h2>
+    <input>
+  </h2>
+  <script>
+    (() => {
+      /*
+      1.Следующий код проверяет введенное значение. Выполните оптимизацию:
+      let input = document.querySelector('input');
+      input.addEventListener('blur', function() {
+        if (input.value === '1' || input.value === '2') {
+          console.log('+++');
+        } else {
+          console.log('---');
+        }
+      });      
+      */
+      let inputEl = document.querySelector('input');
+      inputEl.addEventListener('blur', () => {
+        let inputContent = inputEl.value;
+        console.log(inputContent === '1' || inputContent === '2' ? '+++' : '---');
+      })
+    })()
+  </script>
+
+  <script>
+      /*
+      Следующий код ищет сумму целых чисел от единицы до введенного в инпут числа. Выполните оптимизацию:
+  
+      let input = document.querySelector('input');
+  
+      input.addEventListener('blur', function () {
+        let sum = 0;
+  
+        for (let i = 1; i <= +input.value; i++) {
+          sum += i;
+        }
+  
+        console.log(sum);
+      });
+      */
+
+      (() => {
+        let inputEl = document.querySelector('input');
+        inputEl.addEventListener('blur', () => {
+          let inputContent = Number(inputEl.value);
+          console.log(inputContent*(inputContent+1)/2);
+        })
+      })()
+
+  </script>
+</body>
+
+</html>
