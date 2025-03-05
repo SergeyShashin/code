@@ -25,18 +25,20 @@
     //   }
     // }
 
-
     (() => {
       let nowDate = new Date();
       let currMonth = nowDate.getMonth();
       let currDate = nowDate.getDate();
       let currDay = nowDate.getDay();
 
+      let years = [];
+
       for (let i = 1900; i <= 2100; i++) {
         let dateOnI = new Date(i, currMonth, currDate);
+        if (currDay === dateOnI.getDay()) {
+          console.log(dateOnI);
+        }
       }
-
-      console.log(`Месяц ${currMonth} + Число ${currDate} + День ${currDay}`);
 
     })();
 
