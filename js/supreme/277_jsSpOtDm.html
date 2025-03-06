@@ -18,7 +18,8 @@
     <p>2</p>
     <p>3</p>
     <p>4</p>
-    <input data-min="5" data-max="10" id="task5">
+    <!-- <input data-min="5" data-max="10" id="task5"> -->
+    <input data-min="5" maxlength="10" id="task5">
   </h2>
   <script>
     (() => {
@@ -140,11 +141,13 @@
         let inp = document.getElementById('task5');
 
         inp.addEventListener('blur', () => {
-          let inpMinLength = Number(inp.dataset.min);
-          let inpMaxLength = Number(inp.dataset.max);
-          let inpValue = inp.value;
-          let inpValueLength = inpValue.length;
-          console.log(inpMinLength < inpValueLength && inpMaxLength > inpValueLength ? '+++' : '---');
+          // let inpMinLength = Number(inp.dataset.min);
+          // let inpMaxLength = Number(inp.dataset.max);
+          // let inpValue = inp.value;
+          // let inpValueLength = inpValue.length;
+          // console.log(inpMinLength < inpValueLength && inpMaxLength > inpValueLength ? '+++' : '---');
+          // console.log(inpMinLength < inpValueLength ? '+++' : '---');
+          console.log( Number(inp.dataset.min) < inp.value.length ? '+++' : '---');
         });
       })()
 
