@@ -115,7 +115,9 @@
       (() => {
         let pEls = document.querySelectorAll('p');
 
-        console.dir(pEls);
+        for (let elem of pEls) {
+          elem.textContent = elem.textContent ** 2
+        }
       })()
 
   </script>
