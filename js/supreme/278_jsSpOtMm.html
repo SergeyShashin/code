@@ -30,9 +30,55 @@
     */
     (() => {
       let counter = 0;
-      for (let i = 7; i < 1000; counter++, i+= 7) { }
+      for (let i = 7; i < 1000; counter++, i += 7) { }
       console.log(counter);
     })()
+  </script>
+
+  <script>
+    /*
+    2. Перед неким программистом стояла задача найти сумму делителей числа. Он решил ее следующим образом:
+
+    function getDivisors(num) {
+      let res = [];
+
+      for (let i = 1; i <= num; i++) {
+        if (num % i === 0) {
+          res.push(i);
+        }
+      }
+
+      return res;
+    }
+
+    function getSum(arr) {
+      let sum = 0;
+
+      for (let elem of arr) {
+        sum += elem
+      }
+
+      return sum;
+    }
+
+    let sum = getSum(getDivisors(320));
+    console.log(sum);
+    Объясните, что не так с этим кодом. Переделайте код на более оптимальный.
+    */
+    console.log(getSumDivisors(Number(prompt('Найти сумму делителей для числа.'))));
+
+    function getSumDivisors(num) {
+      let sum = 0;
+
+      for (let i = 1; i <= num; i++) {
+        if (num % i === 0) {
+          sum += i;
+        }
+      }
+
+      return sum;
+    }
+
   </script>
 
 </body>
