@@ -17,6 +17,7 @@
 
   <script>
     /*
+    1. Следующий код ищет сумму цифр введенного в инпут числа. Выполните оптимизацию:
     let input = document.querySelector('input');
 
     input.addEventListener('blur', function () {
@@ -40,6 +41,53 @@
       alert(`Сумма числа в инпуте = ${sum}`);
 
     })
+  </script>
+
+  <script>
+      /*
+      2. Следующий код подсчитывает количество букв "a" в строке. Выполните оптимизацию:
+  
+      let str = 'abcaab';
+      let arr = str.split('');
+      
+      let i = 0;
+      
+      for (let elem of arr) {
+        if (elem == 'a') {
+          i++;
+          }
+          }
+          
+      console.log(i);
+      */
+      (() => {
+        alert(getQuantitySymbol(prompt('Напечатайте, пожалуйста, строку', 'abcaab'), prompt('Напечатайте, пожалуйста, букву', 'a')));
+
+        //Возвращает количество букв symbol в строке str
+        function getQuantitySymbol(str, symbol) {
+          let sum = 0;
+          for (let symbolInStr of str) {
+            symbolInStr === symbol ? sum++ : '';
+          }
+          return sum
+        }
+
+      })()
+  </script>
+
+  <script>
+      /*
+      3. Следующий код проверяет наличие символа в строке. Выполните оптимизацию:
+  
+      let str = 'abcaab';
+      let arr = str.split('');
+      
+      console.log(arr.includes('a'));
+      */
+      (() => {
+        let str = 'abcaab';
+        alert(str.includes(prompt('Какой символ проверить на наличие в строке?', 'a')));
+      })()
   </script>
 </body>
 
