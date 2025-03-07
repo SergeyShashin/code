@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>optimization/array-convertion</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/supreme/optimization/array-convertion/">
+    Оптимизация преобразования в массив в JavaScript
+  </a>
+  <br>
+  <br>
+  <input>
+
+  <script>
+    /*
+    let input = document.querySelector('input');
+
+    input.addEventListener('blur', function () {
+      let digits = input.value.split('');
+      let sum = 0;
+
+      for (let digit of digits) {
+        sum += +digit;
+      }
+
+      console.log(sum);
+    });
+    */
+
+    document.querySelector('input').addEventListener('blur', (e) => {
+      let sum = 0;
+      for (let num of e.target.value) {
+        sum += Number(num);
+      }
+
+      alert(`Сумма числа в инпуте = ${sum}`);
+
+    })
+  </script>
+</body>
+
+</html>
