@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>optimization/speed-memory</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/supreme/optimization/speed-memory/">
+    Оптимизация скорости за счет памяти в JavaScript
+  </a>
+
+  <!-- <script>
+    //Найти дружественные числа в заданном промежутке
+    console.log(getFriendly(8));
+    function getFriendly(range) {
+      let res = [];
+      for (let i = 1; i <= range; i++) {
+        for (let j = 1; j <= range; j++) {
+          if (isFrendly(i, j)) {
+            res.push([i, j])
+          }
+        }
+      }
+      return res
+    }
+
+    function isFrendly(num1, num2) {
+      let sum1 = getSum(getOwnDivisors(num1));
+      let sum2 = getSum(getOwnDivisors(num2));
+      // console.log(`num1 = ${num1} sum1 = ${sum1}\nnum2 = ${num2} sum2 = ${sum2}\n ${sum1 === num2 && sum2 === num1}`);
+
+      return sum1 === num2 && sum2 === num1
+    }
+
+    function getOwnDivisors(num) {
+      let res = [];
+
+      for (let i = 1; i < num; i++) {
+        if (num % i === 0) {
+          res.push(i);
+        }
+      }
+
+      return res
+    }
+
+    function getSum(numbersArr) {
+      let sum = 0;
+      for (let number of numbersArr) {
+        sum += number;
+      }
+      return sum
+    } -->
+
+  </script>
+
+  <script>
+
+    // console.log(getFriendly(8));
+    // console.log(getOwnDivisorsSum(12));
+
+    function getOwnDivisorsSum(num) {
+      let sum = 0;
+      for (let i = 1; i < num; i++) {
+        if (num % i === 0) {
+          sum += i;
+        }
+      }
+
+      return sum;
+    }
+
+    function getAllSum(range) {
+      let allSum = [];
+
+      for (let i = 1; i < range; i++) {
+        allSum.push(getOwnDivisorsSum(i));
+      }
+
+      return allSum
+    }
+
+    function getFriendly(range) {
+      let res = [];
+      let sums = getAllSum(range);
+
+      for (let i = 0; i < range; i++) {
+        for (let j = i; j < range; j++) {
+          let sum1 = sums[i];
+          let sum2 = sums[j];
+
+          let num1 = i + 1;
+          let num2 = j + 1;
+
+          if (num1 === sum2 && num2 === sum1) {
+            res.push([num1, num2]);
+          }
+        }
+      }
+
+      return res
+    }
+
+    console.log(getFriendly(9000));
+
+
+  </script>
+
+</body>
+
+</html>
