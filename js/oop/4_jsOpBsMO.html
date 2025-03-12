@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>/oop/many-objects</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/oop/many-objects/">
+    Несколько объектов одного класса в ООП в JavaScript
+  </a>
+
+  <script>
+    /*
+    1. Создайте несколько объектов класса Employee.
+    2. Запишите в свойство каждого работника его имя и зарплату.
+    3. Выведите на экран сумму зарплат созданных вами работников.    
+    */
+
+    class Employee {
+      name;
+      salary;
+      age;
+    };
+
+    let employee1 = new Employee;
+    employee1.name = 'Ivan';
+    employee1.age = '119';
+    employee1.salary = 'EverythingYouNeedForHappyLife';
+
+    let employee2 = new Employee;
+    employee2.name = 'Ivan';
+    employee2.age = '119';
+    employee2.salary = 'EverythingYouNeedForHappyLife';
+    
+    let employee3 = new Employee;
+    employee3.name = 'Ivan';
+    employee3.age = '119';
+    employee3.salary = 'EverythingYouNeedForHappyLife';
+
+    for (let i = 1; i < 4; console.log(`employee${i}.name\nemployee${i}.age\nemployee${i}.salary\n`), i++) { }
+
+  </script>
+
+</body>
+
+</html>
