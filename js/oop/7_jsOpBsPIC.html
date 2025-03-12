@@ -13,7 +13,30 @@
   </a>
 
   <script>
-    
+    /*
+    1. В объект класса Employee запишите свойства name и salary.
+    2. Сделайте метод, который выведет на экран имя работника.
+    3. Сделайте метод, который выведет на экран зарплату работника. 
+    */
+
+    class Employee {
+      name;
+      salary;
+      showName() {
+        console.log(this.name);
+      };
+      showSalary() {
+        console.log(this.salary);
+      }
+    }
+
+    let employee = new Employee;
+    employee.name = 'Ivan';
+    employee.salary = 'EverythingNeedForHappyLife';
+    employee.showName();
+    employee.showSalary();
+
+
   </script>
 
 </body>
