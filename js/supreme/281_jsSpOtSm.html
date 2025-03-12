@@ -118,30 +118,19 @@
 
       for (let i = 2; i <= range; i++) {
         for (let j = 2; j < range; j++) {
-          let divisorsI = divisorsRange[i];
-          let divisorsJ = divisorsRange[j];
-
           if (i === j) {
             continue
           }
-
-          if (divisorsI.length === 0 && divisorsJ.length === 0) {
-            i % j !== 0 && j % i !== 0 ? res.push([i, j]) : '';
-          } else if (divisorsI.length === 0 && !divisorsJ.includes(i)) {
-            res.push([i, j]);
-          } else if (divisorsJ.length === 0 && !divisorsI.includes(j)) {
-            res.push([i, j]);
-          } else if (divisorsI.length > 0 && divisorsJ.length > 0) {
-            for (let divisor of divisorsI) {
-              !divisorsJ.includes(divisor) && i % j !== 0 && j % i !== 0 ? res.push([i, j]) : '';
-            }
-
-          }
+          isRelativelyPrime(i, j, divisorsRange[i], divisorsRange[j]);
         }
       }
 
-
       return res
+    }
+
+    function isRelativelyPrime(i, j, divisorsI, divisorsJ) {
+      console.log([i,j]);
+
     }
 
     function getDivisorsRange(range) {
