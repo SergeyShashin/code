@@ -108,102 +108,125 @@
 
   <script>
     // Следующий код находит взаимно - простые числа из заданного промежутка. Оптимизируйте его:
+    (() => {
+      console.time();
+      console.log(getRelativelyPrime(1000));
+      console.timeEnd();
 
-    console.log(getRelativelyPrime(8));
+      function getRelativelyPrime(range) {
+        let res = [];
 
-    function getRelativelyPrime(range) {
-      let res = [];
+        const divisorsRange = getDivisorsRange(range);
 
-      const divisorsRange = getDivisorsRange(range);
+        for (let i = 2; i <= range; i++) {
+          for (let j = 2; j < range; j++) {
+            if (i === j) {
+              continue
+            }
+            if (i % j === 0 || j % i === 0) {
+              continue
+            }
 
-      for (let i = 2; i <= range; i++) {
-        for (let j = 2; j < range; j++) {
-          if (i === j) {
-            continue
+            if (isRelativelyPrime(i, j, divisorsRange[i], divisorsRange[j])) {
+              res.push([i, j]);
+            }
           }
-          isRelativelyPrime(i, j, divisorsRange[i], divisorsRange[j]);
+        }
+
+        return res
+      }
+
+      function isRelativelyPrime(i, j, divisorsI, divisorsJ) {
+
+        if (divisorsI.length > 0) {
+          for (let divisor of divisorsI) {
+            if (divisorsJ.includes(divisor)) {
+              return false
+            }
+          }
+        }
+
+        return true
+
+      }
+
+      function getDivisorsRange(range) {
+        let divisorsRange = {};
+
+        for (let i = 2; i <= range; i++) {
+          divisorsRange[i] = getDivisors(i);
+        }
+
+        return divisorsRange
+      }
+
+      function getDivisors(num) {
+        let divisors = [];
+
+        for (let i = 2; i < num; i++) {
+          num % i === 0 ? divisors.push(i) : ''
+        }
+
+        return divisors
+
+      }
+    })();
+
+    (() => {
+      console.time();
+      console.log(getRelativelyPrime(1000));
+      console.timeEnd();
+
+      function getRelativelyPrime(range) {
+        let res = [];
+
+        for (let i = 2; i <= range; i++) {
+          for (let j = 2; j < range; j++) {
+            if (isRelativelyPrime(i, j)) {
+              res.push([i, j]);
+            }
+          }
+        }
+
+        return res;
+      }
+
+      function isRelativelyPrime(num1, num2) {
+        let arr1 = getDivisors(num1);
+        let arr2 = getDivisors(num2);
+        let int = getIntersect(arr1, arr2);
+
+        if (int.length === 0) {
+          return true;
+        } else {
+          return false;
         }
       }
 
-      return res
-    }
+      function getIntersect(arr1, arr2) {
+        let result = [];
 
-    function isRelativelyPrime(i, j, divisorsI, divisorsJ) {
-      console.log([i,j]);
+        for (let elem of arr1) {
+          if (arr2.includes(elem)) {
+            result.push(elem);
+          }
+        }
 
-    }
-
-    function getDivisorsRange(range) {
-      let divisorsRange = {};
-
-      for (let i = 2; i <= range; i++) {
-        divisorsRange[i] = getDivisors(i);
+        return result;
       }
 
-      return divisorsRange
-    }
+      function getDivisors(num) {
+        let res = [];
 
-    function getDivisors(num) {
-      let divisors = [];
+        for (let i = 2; i <= num; i++) {
+          if (num % i === 0) {
+            res.push(i);
+          }
+        }
 
-      for (let i = 2; i < num; i++) {
-        num % i === 0 ? divisors.push(i) : ''
+        return res;
       }
-
-      return divisors
-
-    }
-
-    // function getRelativelyPrime(range) {
-    //   let res = [];
-
-    //   for (let i = 2; i <= range; i++) {
-    //     for (let j = 2; j < range; j++) {
-    //       if (isRelativelyPrime(i, j)) {
-    //         res.push([i, j]);
-    //       }
-    //     }
-    //   }
-
-    //   return res;
-    // }
-
-    // function isRelativelyPrime(num1, num2) {
-    //   let arr1 = getDivisors(num1);
-    //   let arr2 = getDivisors(num2);
-    //   let int = getIntersect(arr1, arr2);
-
-    //   if (int.length === 0) {
-    //     return true;
-    //   } else {
-    //     return false;
-    //   }
-    // }
-
-    // function getIntersect(arr1, arr2) {
-    //   let result = [];
-
-    //   for (let elem of arr1) {
-    //     if (arr2.includes(elem)) {
-    //       result.push(elem);
-    //     }
-    //   }
-
-    //   return result;
-    // }
-
-    // function getDivisors(num) {
-    //   let res = [];
-
-    //   for (let i = 2; i <= num; i++) {
-    //     if (num % i === 0) {
-    //       res.push(i);
-    //     }
-    //   }
-
-    //   return res;
-    // }
-
+    })();
   </script>
 
 </body>
