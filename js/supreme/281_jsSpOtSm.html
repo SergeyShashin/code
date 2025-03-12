@@ -117,24 +117,29 @@
       const divisorsRange = getDivisorsRange(range);
 
       for (let i = 2; i <= range; i++) {
-        for (let j = i + 1; j < range; j++) {
+        for (let j = 2; j < range; j++) {
           let divisorsI = divisorsRange[i];
           let divisorsJ = divisorsRange[j];
 
-          console.log(divisorsI);
-          console.log(divisorsJ);
+          if (i === j) {
+            continue
+          }
 
-          if (divisorsI.length > 0 && divisorsJ.length > 0) {
+          if (divisorsI.length === 0 && divisorsJ.length === 0) {
+            i % j !== 0 && j % i !== 0 ? res.push([i, j]) : '';
+          } else if (divisorsI.length === 0 && !divisorsJ.includes(i)) {
+            res.push([i, j]);
+          } else if (divisorsJ.length === 0 && !divisorsI.includes(j)) {
+            res.push([i, j]);
+          } else if (divisorsI.length > 0 && divisorsJ.length > 0) {
             for (let divisor of divisorsI) {
-              !divisorsJ.includes(divisor) ? res.push([i, j]) : '';
+              !divisorsJ.includes(divisor) && i % j !== 0 && j % i !== 0 ? res.push([i, j]) : '';
             }
-          } else {
-            !divisorsJ.includes(i) && !divisorsI.includes(j) ? res.push([i, j]) : '';
+
           }
         }
       }
 
-      // console.log(divisorsRange);
 
       return res
     }
