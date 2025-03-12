@@ -120,12 +120,14 @@
 
         for (let i = 2; i <= range; i++) {
           for (let j = 2; j < range; j++) {
+
             if (i === j) {
               continue
             }
             if (i % j === 0 || j % i === 0) {
               continue
             }
+
 
             if (isRelativelyPrime(i, j, divisorsRange[i], divisorsRange[j])) {
               res.push([i, j]);
@@ -168,9 +170,19 @@
         }
 
         return divisors
+      }
 
+      function getDiv(num) {
+        let divisors = [];
+
+        for (let i = 2; i < num; i++) {
+          num % i === 0 ? divisors.push(i) : ''
+        }
+
+        return divisors
       }
     })();
+
 
     (() => {
       console.time();
