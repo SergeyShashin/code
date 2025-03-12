@@ -28,19 +28,24 @@
     let employee1 = new Employee;
     employee1.name = 'Ivan';
     employee1.age = '119';
-    employee1.salary = 'EverythingYouNeedForHappyLife';
+    employee1.salary = 'EverythingNeedForHappyLife';
 
     let employee2 = new Employee;
     employee2.name = 'Ivan';
     employee2.age = '119';
-    employee2.salary = 'EverythingYouNeedForHappyLife';
-    
+    employee2.salary = 'EverythingNeedForHappyLife';
+
     let employee3 = new Employee;
     employee3.name = 'Ivan';
     employee3.age = '119';
-    employee3.salary = 'EverythingYouNeedForHappyLife';
+    employee3.salary = 'EverythingNeedForHappyLife';
 
-    for (let i = 1; i < 4; console.log(`employee${i}.name\nemployee${i}.age\nemployee${i}.salary\n`), i++) { }
+    let salary = '';
+    salary += employee1.salary;
+    salary += employee2.salary;
+    salary += employee3.salary;
+
+    console.log(salary);
 
   </script>
 
