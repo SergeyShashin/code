@@ -4,17 +4,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>oop/properties-setters</title>
+  <title>oop/getters-setters-advantages</title>
 </head>
 
 <body>
-  <a href="https://code.mu/ru/javascript/book/oop/properties-setters/">
-    Кастомные сеттеры в ООП в JavaScript
+  <a href="https://code.mu/ru/javascript/book/oop/getters-setters-advantages/">
+    Преимущества сеттеров и геттеров в ООП в JavaScript
   </a>
 
   <script>
     /*
-    1. Добавьте сеттеры свойств в ваш класс Employee.
+    1. В классе Employee в сеттере возраста сделайте проверку на то, что возраст должен быть от 0 до 120.
+    2. В классе Employee в геттере зарплаты сделайте так, чтобы при чтении зарплаты в конец ее значения добавлялся знак доллара.
     */
 
     class Employee {
@@ -33,7 +34,11 @@
       }
 
       setAge(age) {
-        this.#age = age
+        if (age >= 0 && age < 121) {
+          this.#age = age
+        } else {
+          throw new Error('Age must between 0 and 120.');
+        }
       }
 
       setSalary(salary) {
@@ -49,7 +54,11 @@
       }
 
       getSalary() {
-        return this.#salary
+        return this.#addChar(this.#salary)
+      }
+
+      #addChar(num) {
+        return num + '*'
       }
     }
 
