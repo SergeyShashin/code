@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>oop/properties-getters</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/oop/properties-getters/">
+    Геттеры свойств в ООП в JavaScript
+  </a>
+
+  <script>
+    /*
+    1. В классе Employee сделайте три приватных свойства: имя, зарплату и возраст.
+    2. Передайте параметром конструктора значения этих свойств.
+    3. Сделайте геттеры, выводящие значения каждого из наших свойств.
+    */
+
+    class Employee {
+      #name;
+      #age;
+      #salary;
+
+      constructor(name, age, salary) {
+        this.#name = name;
+        this.#age = age;
+        this.#salary = salary;
+      }
+
+      getName() {
+        return this.#name
+      }
+
+      getAge() {
+        return this.#age
+      }
+
+      getSalary() {
+        return this.#salary
+      }
+    }
+
+    let employee = new Employee('Ivan', 119, 'EtherythingNeedForHappyLife');
+
+    console.log(employee.getName());
+    console.log(employee.getAge());
+    console.log(employee.getSalary());
+
+  </script>
+
+</body>
+
+</html>
