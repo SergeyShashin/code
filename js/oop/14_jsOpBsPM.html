@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>oop/private-methods</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/oop/private-methods/">
+    Приватные методы в ООП в JavaScript
+  </a>
+
+  <script>
+    // В следующем коде сделайте вспомогательный метод приватным:
+
+    class Employee {
+      constructor(name, salary) {
+        this.name = name;
+        this.salary = salary;
+      }
+
+      getSalary() {
+        return this.#addSign(this.salary);
+      }
+
+      #addSign(num) {
+        return num + '*';
+      }
+    }
+
+    let employee = new Employee('Ivan', 'EtherythingNeedForHappyLife');
+    console.log(employee.getSalary());
+
+  </script>
+</body>
+
+</html>
