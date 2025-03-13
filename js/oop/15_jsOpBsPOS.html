@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>oop/privacy-old-style</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/oop/privacy-old-style/">
+    Приватность в старом стиле в ООП в JavaScript
+  </a>
+
+  <script>
+    //В следующем коде сделайте свойства приватными.
+    //В следующем коде сделайте вспомогательный метод приватным.
+
+    class Employee {
+      constructor(name, salary) {
+        this._name = name;
+        this._salary = salary;
+      }
+
+      getName() {
+        return this._name;
+      }
+      getSalary() {
+        return this._addSign(this._salary);
+      }
+      _addSign(num) {
+        return num + '*';
+      }
+    }
+
+    let employee = new Employee('Ivan', 'EtherythingNeedForHappyLife');
+    console.log(employee.getName());
+    console.log(employee.getSalary());
+  </script>
+
+</body>
+
+</html>
