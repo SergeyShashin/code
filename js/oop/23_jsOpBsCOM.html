@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>oop/class-objects-manipulation</title>
 </head>
+
 <body>
   <a href="https://code.mu/ru/javascript/book/oop/class-objects-manipulation/">
     Манипуляция объектами в классах в ООП в JavaScript
@@ -13,8 +15,105 @@
   <script>
     /*
     1. Сделайте класс EmployeesCollection, который будет содержать массив работников.
+    2. Сделайте в этом классе метод для добавления нового работника.
+    3. Сделайте в этом классе метод для вывода всех работников.
+    4. Сделайте в этом классе метод для расчета суммарной зарплаты всех работников.
     */
+
+    class EmployeesCollection {
+      #employees = [];
+
+      add(employee) {
+        this.#employees.push(employee);
+      }
+
+      show() {
+        for (let employee of this.#employees) {
+          console.log(employee)
+        }
+      }
+
+      sumSalary() {
+        let sum = 0;
+        for (let employee of this.#employees) {
+          sum += employee.getSalary();
+        }
+        return sum
+      }
+
+      avgSalary() {
+        let quantityEmployees = this.#employees.length;
+        let sumSalary = this.sumSalary();
+
+        return quantityEmployees > 0 && Number.isInteger(sumSalary) ? sumSalary / quantityEmployees : 0
+      }
+
+    }
+
+    class Employee {
+      #name;
+      #age;
+      #salary;
+
+      constructor(name, age, salary) {
+        this.#name = name;
+        this.#age = age;
+        this.#salary = salary;
+      }
+
+      setName(name) {
+        this.#name = name
+        return this
+      }
+
+      setAge(age) {
+        if (age >= 0 && age < 121) {
+          this.#age = age
+        } else {
+          throw new Error('Age must between 0 and 120.');
+        }
+        return this
+      }
+
+      setSalary(salary) {
+        this.#salary = salary
+        return this
+      }
+
+      getName() {
+        return this.#name
+      }
+
+      getAge() {
+        return this.#age
+      }
+
+      getSalary() {
+        return this.#addChar(this.#salary)
+      }
+
+      #addChar(num) {
+        return num + '*'
+      }
+    }
+
+    let employeesCollection = new EmployeesCollection;
+
+    let employees = [
+      new Employee('Ivan', 119, 'EtherythingNeedForHappyLife'),
+      new Employee('Ivan', 119, 'EtherythingNeedForHappyLife'),
+      new Employee('Ivan', 119, 'EtherythingNeedForHappyLife'),
+    ];
+
+    for (let employee of employees) {
+      employeesCollection.add(employee);
+    }
+
+    console.log(employeesCollection.show());
+    console.log(employeesCollection.sumSalary());
+    console.log(employeesCollection.avgSalary());
   </script>
-  
+
 </body>
+
 </html>
