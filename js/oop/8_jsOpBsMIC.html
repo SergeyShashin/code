@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>oop/methods-inside-class</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/oop/methods-inside-class/">
+    Обращение к методам внутри классов в ООП в JavaScript
+  </a>
+
+  <script>
+    /*
+    1. Сделайте класс Student со свойствами name и surn.
+    2. Сделайте вспомогательный метод, который будет получать первый символ строки и делать его заглавным.
+    3. Сделайте метод, который вернет инициалы студента, то есть первые буквы его имени и фамилии.
+    */
+
+    class Student {
+      name;
+      surn;
+      firstCharToUpperCase(str) {
+        return str[0].toUpperCase() + str.slice(1)
+      };
+      getAcronimNameAndSurn() {
+        return this.name[0] + '.' + this.surn[0] + '.'
+      }
+    }
+
+    let student = new Student;
+    student.name = 'Ivan';
+    student.surn = 'Ivanov';
+    console.log(student.firstCharToUpperCase('строка'));
+    console.log(student.getAcronimNameAndSurn());
+
+  </script>
+</body>
+
+</html>
