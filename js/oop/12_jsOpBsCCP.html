@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>oop/constructor-parameters-properties</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/oop/constructor-parameters-properties/">
+    Свойства через параметры конструктора в ООП в JavaScript
+  </a>
+
+  <script>
+    /*
+    1. Передайте в конструктор класса Employee имя и зарплату работника и запишите их в соответствующие свойства.
+    2. Сделайте метод, который будет выводить имя работника.
+    3. Сделайте метод, который будет выводить зарплату работника.
+    4. Сделайте метод, который будет увеличивать зарплату работника на 10%.
+    */
+
+    class Employee {
+      constructor(name, salary) {
+        this.name = name;
+        this.salary = salary;
+      }
+
+      showName() {
+        console.log(this.name)
+      }
+
+      showSalary() {
+        console.log(this.salary)
+      }
+
+      upSalary10() {
+        this.salary += '+10%';
+        console.log(this.salary);
+      }
+    }
+
+    let employee = new Employee('Ivan', 'EtherythingNeedForHappyLife');
+    employee.showName();
+    employee.showSalary();
+    employee.upSalary10();
+
+  </script>
+</body>
+
+</html>
