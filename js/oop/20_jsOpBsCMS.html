@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>oop/class-methods-set</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/oop/class-methods-set/">
+    Класс как набор методов в ООП в JavaScript
+  </a>
+
+  <script>
+    /*
+    1. Сделайте класс Validator, который будет выполнять проверку строк на корректность.
+    2. Сделайте в вашем классе метод isEmail, проверяющий строку на то, что она корректный email.
+    */
+
+    class Validator {
+      isStr(data) {
+        return typeof data === 'string'
+      }
+
+      isNumber(data) {
+        return typeof data === 'number'
+      }
+
+      isEmail(email) {
+        return /^[\w\-]+\@\w+\.\w{2,}$/.test(email)
+      }
+
+      isDomain(domain) {
+        return /^(http)|(https):\/\/\w+\.\w{2,5}$/.test(domain)
+      }
+    }
+
+    let validator = new Validator;
+    validator.isStr(123)
+
+    console.log(validator.isStr(123456789));
+    console.log(validator.isStr('123456789'));
+    console.log(validator.isEmail('mail@m.ru'));
+    console.log(validator.isDomain('https://ya.ru/'));
+    console.log(validator.isNumber('123456789'));
+    console.log(validator.isNumber(123456789));
+  </script>
+
+</body>
+
+</html>
