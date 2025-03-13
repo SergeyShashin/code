@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>oop/properties-setters</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/oop/properties-setters/">
+    Кастомные сеттеры в ООП в JavaScript
+  </a>
+
+  <script>
+    /*
+    1. Добавьте сеттеры свойств в ваш класс Employee.
+    */
+
+    class Employee {
+      #name;
+      #age;
+      #salary;
+
+      constructor(name, age, salary) {
+        this.#name = name;
+        this.#age = age;
+        this.#salary = salary;
+      }
+
+      setName(name) {
+        return this.#name = name
+      }
+
+      setAge(age) {
+        return this.#age = age
+      }
+
+      setSalary(salary) {
+        return this.#salary = salary
+      }
+
+      getName() {
+        return this.#name
+      }
+
+      getAge() {
+        return this.#age
+      }
+
+      getSalary() {
+        return this.#salary
+      }
+    }
+
+    let employee = new Employee('Ivan', 119, 'EtherythingNeedForHappyLife');
+
+    employee.setName('Yaroslav');
+    employee.setAge(119.1);
+    employee.setSalary('EtherythingNeedForHappyLife+');
+    console.log(employee.getName());
+    console.log(employee.getAge());
+    console.log(employee.getSalary());
+
+  </script>
+
+</body>
+
+</html>
