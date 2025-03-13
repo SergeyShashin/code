@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>oop/objects-inside-classes</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/oop/objects-inside-classes/">
+    Объекты внутри классов в ООП в JavaScript
+  </a>
+
+  <script>
+    /*
+    1. Сделайте так, чтобы во второй и третий параметры передавались объекты отдельных классов.
+    2. Создайте объект с работником с помощью класса из предыдущей задачи.
+    3. Выведите в консоль имя, должность и отдел для созданного работника.
+    */
+    class Employee {
+      constructor(name, position, department) {
+        this.name = name;
+        this.position = position;
+        this.department = department;
+      }
+    }
+
+    class Position {
+      x = 360;
+      y = 360;
+    }
+
+    class Department {
+      name = 'SoftWare';
+      function = 'Engineer';
+    }
+
+    let employee = new Employee('Ivan', new Position, new Department);
+    console.log(employee.position.x);
+    console.log(employee.position.y);
+    console.log(employee.department.name);
+    console.log(employee.department.function);
+  </script>
+
+</body>
+
+</html>
