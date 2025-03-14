@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>oop/inheritance/intro</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/oop/inheritance/intro/">
+    Наследование классов в ООП в JavaScript
+  </a>
+
+  <script>
+    //1. Сделайте класс Employee, наследующий от класса User.
+    class User {
+      sayWelcome() {
+        console.log('Welcome World)');
+      }
+    }
+    class Employee extends User { }
+    let employee = new Employee
+    console.log(employee instanceof User);
+    employee.sayWelcome();
+  </script>
+</body>
+
+</html>
