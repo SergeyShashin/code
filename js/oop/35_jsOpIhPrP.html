@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>oop/inheritance/private-properties</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/oop/inheritance/private-properties/">
+    Приватные свойства при наследовании в ООП в JavaScript
+  </a>
+
+  <script>
+    /*
+    Дан следующий класс - родитель:
+    1. Сделайте класс Employee, который будет наследовать от этого родителя.
+    2. Создайте объект класса Employee и вызовите унаследованные сеттеры и геттеры.
+    3. В классе Employee сделайте следующий метод:
+    getFull() {
+      return this.#name + ' ' + this.#surn;
+    }
+      Убедитесь, что код метода приведет к ошибке.
+    */
+
+    class User {
+      #name;
+      #surn;
+
+      setName(name) {
+        this.#name = name;
+      }
+
+      getName() {
+        return this.#name;
+      }
+
+      setSurn(surn) {
+        this.#surn = surn;
+      }
+
+      getSurn() {
+        return this.#surn;
+      }
+
+      getFull() {
+        return this.#name + ' ' + this.#surn;
+      }
+    }
+
+    class Employee extends User {
+      // getFull() {
+      //   return this.#name + ' ' + this.#surn;
+      // }
+    }
+
+    let employee = new Employee;
+    employee.setName('Ivan');
+    employee.setSurn('Ivanovich');
+    console.log(employee.getName());
+    console.log(employee.getSurn());
+    console.log(employee.getFull());
+  </script>
+</body>
+
+</html>
