@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>oop/inheritance/private-methods</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/oop/inheritance/private-methods/">
+    Приватные методы при наследовании в ООП в JavaScript
+  </a>
+
+  <script>
+    //1. Попробуйте в классе Employee воспользоваться приватным методом родителя.
+
+    class User {
+      setName(name) {
+        this.name = name;
+      }
+      getName() {
+        return this.#capeFirst(this.name);
+      }
+
+      #capeFirst(str) {
+        return str[0].toUpperCase() + str.slice(1);
+      }
+    }
+
+    class Employee {
+      // upFirstChar(str) {
+      //   return this.#capeFirst(str);
+      // }
+      upFirstCharNew(str) {
+        return str[0].toUpperCase() + str.slice(1);
+      }
+
+    }
+
+    let employee = new Employee;
+    // console.log(employee.upFirstChar('a123456789'));
+    console.log(employee.upFirstCharNew('a123456789'));
+  </script>
+
+</body>
+
+</html>
