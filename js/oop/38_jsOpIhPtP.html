@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>oop/inheritance/protected-properties</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/oop/inheritance/protected-properties/">
+    Защищенные свойства в ООП в JavaScript
+  </a>
+
+  <script>
+    //Перепишите следующий код через защищенное свойство
+
+    class User {
+      _name;
+
+      setName(name) {
+        this._name = name;
+      }
+      getName() {
+        return this._name;
+      }
+    }
+
+    class Employee extends User {
+      setName(name) {
+        if (name.length > 0) {
+          this._name = name;
+        }
+      }
+    }
+
+    let employee = new Employee;
+    employee.setName('Ivan');
+    console.log(employee.getName());
+  </script>
+</body>
+
+</html>
