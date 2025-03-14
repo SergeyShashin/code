@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>oop/inheritance/overriding-parent-methods</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/oop/inheritance/overriding-parent-methods/">
+    Переопределение методов родителя в ООП в JavaScript
+  </a>
+
+  <script>
+    /*
+    1. В классе User сделайте геттер и сеттер возраста.
+    2. В классе Employee переопределите сеттер возраста и сделайте в нем проверку на то, что возраст от 18 до 65 лет.
+    */
+
+    class User {
+      age;
+      setAge(age) {
+        this.age = age;
+        return this
+      }
+      getAge() {
+        return this.age
+      }
+    }
+
+    class Employee extends User {
+      setAge(age) {
+        if (age >= 18 && age <= 65) {
+          this.age = age;
+        } else {
+          throw new Error('Допустимый возраст от 18 до 65 лет.')
+        }
+      }
+    }
+
+    let employee = new Employee;
+    // employee.setAge(119);
+    employee.setAge(65);
+    console.log(employee.getAge());
+
+
+  </script>
+</body>
+
+</html>
