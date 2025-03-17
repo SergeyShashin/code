@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>oop/properties-types</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/oop/properties-types/">
+    Свойства-аксессоры в ООП в JavaScript
+  </a>
+
+  <script>
+    class Employee {
+      get name() {
+        console.log('get');
+      }
+      set name(name) {
+        console.log('set');
+      }
+    }
+
+    let employee = new Employee;
+    employee.name;
+    employee.name = 'Ivan';
+    employee.name;
+  </script>
+
+</body>
+
+</html>
