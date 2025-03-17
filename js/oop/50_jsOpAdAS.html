@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>oop/accessors-setters</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/oop/accessors-setters/">
+    Сеттеры аксессоров в ООП в JavaScript
+  </a>
+
+  <script>
+    /*
+    1.Реализуйте сеттеры для свойств класса Employee.
+    2.Добавьте проверки в сеттеры аксессоров класса Employee.
+    */
+
+    class Employee {
+      something;
+
+      get something() {
+        return this.something;
+      }
+
+      set something(content) {
+        if (content.length > 0) {
+          this.something = content;
+        } else {
+          throw new Error('?');
+        }
+      }
+    }
+
+    let employee = new Employee;
+    employee.something = 'something+';
+    console.log(employee.something);
+
+  </script>
+
+</body>
+
+</html>
