@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>oop/inheritance/hierarchy</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/oop/inheritance/hierarchy/">
+    Иерархия наследования классов в ООП в JavaScript
+  </a>
+
+  <script>
+    /*
+    1. Сделайте класс Employee, который будет наследовать от класса User.
+    2. Сделайте класс Programmer, который будет наследовать от класса Employee.
+    3. Сделайте классы Designer, который будет наследовать от класса Employee.
+    4. Добавьте в созданные вами классы различные методы.
+
+    */
+
+    class User {
+      setName(name) {
+        this._name = name;
+      }
+      getName() {
+        return this._name;
+      }
+    }
+
+    class Employee extends User {
+      setSomething(something) {
+        this.something = something;
+        return this
+      }
+      getSomething(something) {
+        return this.something;
+      }
+    }
+
+    class Programmer extends Employee {
+      stack = [];
+      setExperience(years) {
+        this.experience = years;
+        return this
+      }
+
+      getExperience(years) {
+        return this.experience
+      }
+
+      addStack(stack) {
+        this.stack = this.stack.concat(stack);
+        return this
+      }
+
+      getStack(stack) {
+        return this.stack;
+      }
+    }
+
+    class Designer extends Employee {
+      stack = [];
+      setExperience(years) {
+        this.experience = years;
+        return this
+      }
+
+      getExperience(years) {
+        return this.experience
+      }
+
+      addStack(stack) {
+        this.stack = this.stack.concat(stack);
+        return this
+      }
+
+      getStack(stack) {
+        return this.stack;
+      }
+    }
+
+    let programmer = new Programmer;
+    let designer = new Designer;
+    programmer.setExperience(10).addStack(['Assembler', 'C++', 'JS']);
+    designer.setExperience(10).addStack(['CorelDRAW', 'Adobe Photoshop']);
+
+    console.log(programmer.getStack());
+    console.log(designer.getStack());
+
+  </script>
+</body>
+
+</html>
