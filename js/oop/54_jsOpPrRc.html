@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>oop/class/Rectangle</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/oop/class/Rectangle/">
+    Класс Rectangle в ООП в JavaScript
+  </a>
+
+  <script>
+
+    /*
+    1. Сделайте класс Rectangle, в котором в свойствах будут записаны ширина и высота прямоугольника.
+    2. В классе Rectangle сделайте метод getSquare, который будет возвращать площадь этого прямоугольника.
+    3. В классе Rectangle сделайте метод getRatio, который будет возращать площадь, деленную на периметр.
+    */
+
+    class Rectangle {
+      width;
+      height;
+
+      constructor(width, height) {
+        this.width = width;
+        this.height = height;
+      }
+
+      setWidth(width) {
+        this.width = width;
+        return this
+      }
+
+      setHeight(height) {
+        this.height = height;
+        return this
+      }
+
+      getSquare() {
+        return this.width * this.height
+      }
+
+      getPerimetr() {
+        return 2 * (this.width + this.height)
+      }
+
+      getRatio() {
+        return this.getSquare() / this.getPerimetr()
+      }
+    }
+
+    let rectangle = new Rectangle(1, 1);
+    console.log(rectangle.getSquare());
+    console.log(rectangle.getPerimetr());
+  </script>
+
+</body>
+
+</html>
