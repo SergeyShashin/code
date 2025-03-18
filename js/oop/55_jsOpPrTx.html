@@ -19,6 +19,7 @@
     3. Сделайте метод, который вернет количество пробелов в тексте.
     4. Сделайте метод, который вернет количество символов в тексте за вычетом пробелов.
     5. Сделайте метод, который вернет массив слов.
+    7. Сделайте метод, который вернет массив предложений.
     */
 
     class Text {
@@ -39,16 +40,16 @@
         return this.text.match(/ /ig).length
       }
 
-      getLengthWithoutSpace(){
-        return this.getLength()-this.getQuantitySpace()
+      getLengthWithoutSpace() {
+        return this.getLength() - this.getQuantitySpace()
       }
 
-      getArrWords(){
-        return this.text.match(/(^[a-zа-яё]{2,}\s)|([a-zа-яё]{2,}\s)|([a-zа-яё]{2,}$)|([a-zа-яё]{2,}\.)|([a-zа-яё]{2,}\,)|([a-zа-яё]{2,}\!)|([a-zа-яё]{2,}\?)|(^[[a-zа-яё]{2,}\.\.\.$)/ig)
+      getArrWords() {
+        return this.text.match(/[^\s^?][a-zёа-я-]{1,}[\s\:\,\.\?\!]/ig);
       }
 
-      getArrSentence(){
-        return this.text.match(/^([a-zа-яё]{2,}\.)|([[a-zа-яё]{2,}\!)|([[a-zа-яё]{2,}\?)|([[a-zа-яё]{2,}\.\.\.)$/ig)
+      getArrSentence() {
+        return this.text.match(/^.{2,}[\.\?\!]$/ig);
       }
 
     }
