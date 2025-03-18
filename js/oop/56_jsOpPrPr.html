@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>oop/class/Period</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/oop/class/Period/">
+    Класс Period в ООП в JavaScript
+  </a>
+
+  <script>
+    /*
+    1. Сделайте класс Period, который будет находить разницу между двумя моментами времени. Пусть эти моменты передаются параметрами конструктора.
+    */
+
+    class Period {
+      moment1;
+      moment2;
+
+      constructor(moment1, moment2) {
+        this.moment1 = moment1;
+        this.moment2 = moment2;
+      }
+
+      getDifference() {
+        let difference = '';
+        let date1 = new Date(this.moment1);
+        let date2 = new Date(this.moment2);
+
+        let difYear = date1.getFullYear() - date2.getFullYear();
+        let difMonth = date1.getMonth() - date2.getMonth();
+        difference += `difYear`;
+        return difference
+      }
+    }
+
+    let period = new Period(new Date(2025, 2, 18), new Date(2024, 2, 18));
+    console.log(period.getDifference());
+
+  </script>
+</body>
+
+</html>
