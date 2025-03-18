@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>oop/class/Text</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/oop/class/Text/">
+    Класс Text в ООП в JavaScript
+  </a>
+
+  <script>
+    /*
+    1. Сделайте класс Text, который будет выполнять некоторые манипуляции над текстом. Пусть текст передается параметром конструктора.
+    2. Сделайте метод, который вернет количество букв в тексте.
+    3. Сделайте метод, который вернет количество пробелов в тексте.
+    4. Сделайте метод, который вернет количество символов в тексте за вычетом пробелов.
+    5. Сделайте метод, который вернет массив слов.
+    */
+
+    class Text {
+      text;
+      constructor(text) {
+        this.text = text;
+      }
+
+      getLength() {
+        return this.text.length;
+      }
+
+      getQuantityLetter() {
+        return this.text.match(/[a-zа-яё]/ig).length
+      }
+
+      getQuantitySpace() {
+        return this.text.match(/ /ig).length
+      }
+
+      getLengthWithoutSpace(){
+        return this.getLength()-this.getQuantitySpace()
+      }
+
+      getArrWords(){
+        return this.text.match(/(^[a-zа-яё]{2,}\s)|([a-zа-яё]{2,}\s)|([a-zа-яё]{2,}$)|([a-zа-яё]{2,}\.)|([a-zа-яё]{2,}\,)|([a-zа-яё]{2,}\!)|([a-zа-яё]{2,}\?)|(^[[a-zа-яё]{2,}\.\.\.$)/ig)
+      }
+
+      getArrSentence(){
+        return this.text.match(/^([a-zа-яё]{2,}\.)|([[a-zа-яё]{2,}\!)|([[a-zа-яё]{2,}\?)|([[a-zа-яё]{2,}\.\.\.)$/ig)
+      }
+
+    }
+
+    let text = new Text('Человечество: слово, аёый_ 1 2 3 4 , - = +\/?azюьЪяфц start.');
+    console.log(text.getLength());
+    console.log(text.getQuantityLetter());
+    console.log(text.getQuantitySpace());
+    console.log(text.getLengthWithoutSpace());
+    console.log(text.getArrWords());
+    console.log(text.getArrSentence());
+  </script>
+
+
+
+</body>
+
+</html>
