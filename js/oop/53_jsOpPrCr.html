@@ -27,18 +27,22 @@
         this.#radius = radius;
       }
 
+      getRadius() {
+        return this.#radius;
+      }
+
       getSquare() {
-        return Math.PI * this.#radius ** 2
+        return Math.PI * this.#radius ** 2;
       }
 
       getLength() {
-        return 2 * Math.PI * this.#radius
+        return 2 * Math.PI * this.#radius;
       }
     }
 
-    let circle = new Circle(2);
-    console.log(circle.getSquare().toFixed(2));
-    console.log(circle.getLength().toFixed(2));
+    let circle = new Circle(3);
+    console.log(circle.getSquare().toFixed(1));
+    console.log(circle.getLength().toFixed(1));
 
   </script>
 
