@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>oop/class/Zate</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/oop/class/Zate/">
+    Класс Zate в ООП в JavaScript
+  </a>
+
+  <script>
+    /*
+    1. Сделайте класс Zate, который будет представлять собой дату. Пусть конструктор этого класса параметрами принимает год, месяц и день даты.
+    2. Сделайте метод, который вернет год.
+    3. Сделайте метод, который вернет номер месяца.
+    4. Сделайте метод, который вернет день месяца.
+    5. Сделайте метод, который вернет номер дня недели.
+    6. Сделайте метод, который вернет название дня недели.
+    7. Сделайте метод, который вернет название месяца.
+    */
+
+    class Zate {
+      date;
+      year;
+      numberDay;
+      namesDaysWeekRu = ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'];
+      namesMonthsRu = ['январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'августа', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь'];
+      constructor(year, month, numberDay) {
+        this.date = new Date(year, month, numberDay);
+        this.year = year;
+        this.numberDay = numberDay;
+      }
+
+      getDate() {
+        return this.date;
+      }
+
+      get year() {
+        return this.year
+      }
+
+      getNumberMonth() {
+        return this.date.getMonth()
+      }
+
+      get numberDay() {
+        return this.numberDay
+      }
+
+      getNumberDayWeek() {
+        return this.date.getDay();
+      }
+
+      getNameDayWeek() {
+        return this.namesDaysWeekRu[this.getNumberDayWeek()]
+      }
+
+      getNameMonth() {
+        return this.namesMonthsRu[this.getNumberMonth()]
+      }
+    }
+
+    let zate = new Zate(2025, 2, 19);
+    console.log(zate.getDate());
+    console.log(zate.year);
+    console.log(zate.getNumberMonth());
+    console.log(zate.numberDay);
+    console.log(zate.getNumberDayWeek());
+    console.log(zate.getNameDayWeek());
+    console.log(zate.getNameMonth());
+  </script>
+
+</body>
+
+</html>
