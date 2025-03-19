@@ -15,6 +15,9 @@
   <script>
     /*
     1. Сделайте класс Period, который будет находить разницу между двумя моментами времени. Пусть эти моменты передаются параметрами конструктора.
+    2. Сделайте метод, который вернет разницу между моментами в секундах. Сделайте метод, который вернет разницу между моментами в секундах.
+    3. Сделайте метод, который вернет разницу между моментами в минутах.
+    4. Сделайте метод, который вернет разницу между моментами в часах.
     */
 
     class Period {
@@ -26,20 +29,32 @@
         this.moment2 = moment2;
       }
 
-      getDifference() {
-        let difference = '';
+      getDifferenceInSeconds() {
         let date1 = new Date(this.moment1);
         let date2 = new Date(this.moment2);
 
-        let difYear = date1.getFullYear() - date2.getFullYear();
-        let difMonth = date1.getMonth() - date2.getMonth();
-        difference += `difYear`;
-        return difference
+        return (date1 - date2) / 1000
       }
+
+      getDifferenceInMinutes() {
+        return this.getDifferenceInSeconds() / 60
+      }
+
+      getDifferenceInHours() {
+        return this.getDifferenceInMinutes() / 60
+      }
+
+      getDifferenceInDays() {
+        return this.getDifferenceInHours() / 24
+      }
+
     }
 
     let period = new Period(new Date(2025, 2, 18), new Date(2024, 2, 18));
-    console.log(period.getDifference());
+    console.log(period.getDifferenceInSeconds());
+    console.log(period.getDifferenceInMinutes());
+    console.log(period.getDifferenceInHours());
+    console.log(period.getDifferenceInDays());
 
   </script>
 </body>
