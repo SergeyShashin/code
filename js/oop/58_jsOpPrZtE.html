@@ -13,7 +13,93 @@
   </a>
 
   <script>
-    
+    /*
+    1. Сделайте класс ZateExt, который будет наследовать от класса Zate из предыдущего урока и расширять его некоторыми методами.
+    2. Сделайте метод, который будет прибавлять к дате заданное количество лет.
+    3. Сделайте метод, который будет отнимать от даты заданное количество лет.
+    4. Сделайте метод, который будет прибавлять к дате заданное количество месяцев.
+    5. Сделайте метод, который будет отнимать от даты заданное количество месяцев.
+    6. Сделайте метод, который будет прибавлять к дате заданное количество дней.
+    7. Сделайте метод, который будет отнимать от даты заданное количество дней.
+    */
+
+    class Zate {
+      date;
+      year;
+      numberDay;
+      namesDaysWeekRu = ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'];
+      namesMonthsRu = ['январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'августа', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь'];
+      constructor(year, month, numberDay) {
+        this.date = new Date(year, month, numberDay);
+        this.year = year;
+        this.numberDay = numberDay;
+      }
+
+      getDate() {
+        return this.date;
+      }
+
+      get year() {
+        return this.year
+      }
+
+      getNumberMonth() {
+        return this.date.getMonth()
+      }
+
+      get numberDay() {
+        return this.numberDay
+      }
+
+      getNumberDayWeek() {
+        return this.date.getDay();
+      }
+
+      getNameDayWeek() {
+        return this.namesDaysWeekRu[this.getNumberDayWeek()]
+      }
+
+      getNameMonth() {
+        return this.namesMonthsRu[this.getNumberMonth()]
+      }
+    }
+
+    class ZateExt extends Zate {
+      addYears(years) {
+        this.date = new Date(this.year + years, this.getNumberMonth(), this.numberDay)
+      }
+      minusYears(years) {
+        this.date = new Date(this.year - years, this.getNumberMonth(), this.numberDay)
+      }
+      addMonths(months) {
+        this.date = new Date(this.year, this.getNumberMonth()+months, this.numberDay)
+      }
+      minusMonths(months) {
+        this.date = new Date(this.year, this.getNumberMonth()-months, this.numberDay)
+      }
+      addDays(days) {
+        this.date = new Date(this.year, this.getNumberMonth(), this.numberDay+days)
+      }
+      minusDays(days) {
+        this.date = new Date(this.year, this.getNumberMonth(), this.numberDay-days)
+      }
+    }
+
+    let zateExt = new ZateExt(2025, 2, 19);
+    console.log(zateExt.getDate());
+    zateExt.addYears(2025);
+    console.log(zateExt.getDate());
+    zateExt.minusYears(1);
+    console.log(zateExt.getDate());
+    zateExt.addMonths(10);
+    console.log(zateExt.getDate());
+    zateExt.minusMonths(3);
+    console.log(zateExt.getDate());
+    zateExt.addDays(365);
+    console.log(zateExt.getDate());
+    zateExt.minusDays(365);
+    console.log(zateExt.getDate());
+
   </script>
 
 </body>
