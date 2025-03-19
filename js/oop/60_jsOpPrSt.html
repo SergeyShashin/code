@@ -14,7 +14,9 @@
 
   <script>
     /*
-    1.Реализуйте описанный класс.
+    1. Реализуйте описанный класс.
+    2. Сделайте метод, который будет изменять данные по заданному ключу.
+    3. Сделайте метод, который будет удалять данные по заданному ключу.
     */
     class Store {
       set(key, data) {
@@ -22,13 +24,26 @@
       }
 
       get(key) {
+        if (key.includes('.')) {
+          let [nameObj, keyObj] = key.split('.');
+          return JSON.parse(localStorage.getItem(nameObj))[keyObj]
+        }
         return JSON.parse(localStorage.getItem(key));
+      }
+
+      remove(key) {
+        localStorage.removeItem(key);
       }
     }
 
     let store = new Store;
     store.set('newKey', { a: '123', b: '456', c: '789' });
     console.log(store.get('newKey'));
+    console.log(store.get('newKey.a'));
+    console.log(store.get('newKey.b'));
+    store.set('newKey', { a: '823', b: '456', c: '789' });
+    console.log(store.get('newKey'));
+    store.remove('newKey');
   </script>
 </body>
 
