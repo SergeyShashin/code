@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .slide {
+      margin: 30px 0;
+      width: 50px;
+      height: 50px;
+      border: 1px solid red;
+      animation-duration: 5s;
+      animation-iteration-count: infinite;
+      animation-name: slide;
+    }
+
+    .square {
+      width: 50px;
+      height: 50px;
+      border: 1px solid red;
+      animation-duration: 20s;
+      animation-iteration-count: infinite;
+      animation-name: square;
+    }
+
+    .slide2 {
+      margin-top: 30px;
+      margin-bottom: 30px;
+      margin-left: 80%;
+      width: 50px;
+      height: 50px;
+      border: 1px solid red;
+      animation-duration: 5s;
+      animation-iteration-count: infinite;
+      animation-name: slide2;
+    }
+
+    @keyframes slide {
+      from {
+        margin-left: 0%;
+        /* width: 100%; */
+      }
+
+      to {
+        margin-left: 80%;
+        /* width: 100%; */
+        background: red;
+      }
+    }
+
+    @keyframes square {
+      0% {
+        margin-left: 0;
+        margin-top: 0;
+      }
+
+      25% {
+        margin-left: 80%;
+        margin-top: 0;
+        background: red;
+      }
+
+      35% {
+        background: none;
+      }
+
+      45% {
+        background: red;
+      }
+
+      50% {
+        margin-left: 80%;
+        margin-top: 300px;
+        background: none;
+      }
+
+      60% {
+        background: red;
+      }
+
+      70% {
+        background: none;
+      }
+
+      75% {
+        margin-left: 0;
+        margin-top: 300px;
+        background: red;
+      }
+
+      100% {
+        margin-left: 0;
+        margin-top: 0;
+        background: none;
+      }
+
+    }
+
+    @keyframes slide2 {
+      0% {
+        margin-left: 80%;
+        background: red;
+      }
+
+      50% {
+        margin-left: 0;
+        background: none;
+      }
+
+      100% {
+        margin-left: 80%;
+        background: red;
+      }
+
+    }
+  </style>
+  <title>supreme/effects/animation</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/markup/book/supreme/effects/animation/">
+    Работа с анимацией в CSS
+  </a>
+
+  <div class="slide"></div>
+  <div class="slide2"></div>
+  <div class="square"></div>
+</body>
+
+</html>
