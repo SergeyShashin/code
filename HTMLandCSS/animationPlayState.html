@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    button {
+      margin-top: 30px;
+      border: 1px solid green;
+      width: 100px;
+      height: 100px;
+      background: none;
+    }
+
+    .animation1 {
+      margin-top: 30px;
+      width: 100px;
+      height: 100px;
+      border: 1px solid crimson;
+      animation: slide 3s infinite alternate;
+      animation-play-state: paused;
+    }
+
+    button:hover+.animation1 {
+      animation-play-state: running;
+    }
+
+    .containerForBall {
+      margin-top: 30px;
+      width: 300px;
+      height: 300px;
+      border: 1px solid red;
+    }
+    
+    .ball {
+      background: red;
+      width: 20px;
+      height: 20px;
+      border-radius: 30px;      
+      animation: jumpBall 5s infinite;
+      animation-play-state: paused;
+    }
+
+    .containerForBall:hover+.ball {
+      animation-play-state: running;
+    }
+
+    @keyframes slide {
+      0% {
+        width: 100px;
+      }
+
+      50% {
+        width: 400px;
+      }
+
+      100% {
+        width: 100px;
+      }
+    }
+
+    @keyframes jumpBall {
+      40%,
+      70%,
+      90% {
+        animation-timing-function: ease-out;
+      }
+
+      0% {
+        margin-top: 0;
+        margin-left: 0;
+        animation-timing-function: ease-in;
+      }
+
+      55% {
+        margin-top: 280px;
+        margin-left: 60px;
+        animation-timing-function: ease-in;
+      }
+
+      80% {
+        margin-top: 240px;
+        margin-left: 70px;
+        animation-timing-function: ease-in;
+      }
+
+      90% {
+        margin-top: 280px;
+        margin-left: 80px;
+        animation-timing-function: ease-in;
+      }
+
+      95% {
+        margin-top: 260px;
+        margin-left: 90px;
+        animation-timing-function: ease-in;
+      }
+
+      100% {
+        margin-top: 280px;
+        margin-left: 95px;
+        animation-timing-function: ease-out;
+      }
+
+    }
+  </style>
+  <title>effects/animation-state</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/markup/book/supreme/effects/animation-state/">
+    Состояние анимации в CSS
+  </a>
+  <br>
+  <button></button>
+  <div class="animation1"></div>
+
+  <div class="containerForBall">
+    <div class="ball"></div>
+  </div>
+</body>
+
+</html>
