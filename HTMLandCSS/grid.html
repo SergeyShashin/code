@@ -140,19 +140,58 @@
 
     section {
       margin-top: 50px;
-      width: 800px;
+      /* width: 800px; */
+      /* height: 500px; */
       height: 500px;
+      width: 500px;
       display: grid;
-      grid-template: repeat(2, 1fr) / repeat(3, 100px);
-      justify-content: end;
+      /* justify-content: end; */
+      /* align-content: center; */
+      /* grid-template: repeat(2, 1fr) / repeat(3, 100px); */
+      /* grid-template-columns: repeat(3, 100px); */
+      /* justify-items: center;
+      align-items: center; */
+      place-items: center center;
+      grid-template-columns: 100px 100px;
+      grid-template-rows: repeat(3, 1fr);
+      /* grid-template-rows: 200px 200px; */
       border: 1px solid lightseagreen;
       grid-gap: 10px;
       padding: 10px;
     }
-    
+
     article {
       border: 1px solid lightseagreen;
       color: crimson;
+      box-sizing: border-box;
+      height: 50px;
+      width: 50px;
+      padding: 10px;
+    }
+
+    #el2 {
+      justify-self: start;
+      align-self: center;
+    }
+
+    #el3 {
+      justify-self: center;
+      align-self: end;
+    }
+
+    #el4 {
+      justify-self: end;
+      align-self: end;
+    }
+
+    #el5 {
+      justify-self: start;
+      align-self: start;
+    }
+
+    #el6 {
+      justify-self: end;
+      align-self: center;
     }
   </style>
   <title>Grid</title>
@@ -223,11 +262,11 @@
 
   <section>
     <article>1</article>
-    <article>2</article>
-    <article>3</article>
-    <article>4</article>
-    <article>5</article>
-    <article>6</article>
+    <article id="el2">2</article>
+    <article id="el3">3</article>
+    <article id="el4">4</article>
+    <article id="el5">5</article>
+    <article id="el6">6</article>
   </section>
 </body>
 
