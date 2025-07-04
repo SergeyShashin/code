@@ -1,5 +1,5 @@
 import { square, cube } from './math.js';
-import { open, read, close, readFileSync, writeFileSync, readFile, writeFile } from 'fs';
+import { open, read, close, readFileSync, writeFileSync, readFile, writeFile, promises } from 'fs';
 // import _ from 'underscore';
 // import _ from 'lodash';
 
@@ -93,21 +93,33 @@ import { open, read, close, readFileSync, writeFileSync, readFile, writeFile } f
 // readFile(pathDir + nameFile, fileEnconding, (err, content) =>
 //   err ? console.log(err) : writeFile(pathDir + nameFile, `${content ** 2}`, errWrite => errWrite ? console.log(errWrite) : ''));
 
+// let pathDir = './txt/';
+// readFile(pathDir + '1.txt', 'utf8', (err, data1) => {
+//   if (!err) {
+//     readFile(pathDir + '2.txt', 'utf8', (err, data2) => {
+//       if (!err) {
+//         writeFile(pathDir + '3.txt', data1 + data2, err => {
+//           if (err) {
+//             console.log('ошибка записи файла');
+//           }
+//         });
+//       } else {
+//         console.log('ошибка чтения файла readme2');
+//       }
+//     });
+//   } else {
+//     console.log('ошибка чтения файла readme1');
+//   }
+// });
+
+// let pathDir = './txt/';
+// let fileEnconding = 'utf8';
+
+// promises.readFile(pathDir + 'newFile.txt', fileEnconding).then(res => console.log(res)).catch(err=>console.log(err));
+
 let pathDir = './txt/';
-readFile(pathDir + '1.txt', 'utf8', (err, data1) => {
-  if (!err) {
-    readFile(pathDir + '2.txt', 'utf8', (err, data2) => {
-      if (!err) {
-        writeFile(pathDir + '3.txt', data1 + data2, err => {
-          if (err) {
-            console.log('ошибка записи файла');
-          }
-        });
-      } else {
-        console.log('ошибка чтения файла readme2');
-      }
-    });
-  } else {
-    console.log('ошибка чтения файла readme1');
-  }
-});
+let fileEnconding = 'utf8';
+
+promises.readFile(pathDir + 'numbers.txt', fileEnconding).then(numbers => numbers.split(',').map(number =>
+  promises.writeFile(pathDir + number + '.txt', number).catch(err => console.log(err))
+)).catch(err => console.log(err));
