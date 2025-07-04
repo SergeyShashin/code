@@ -127,16 +127,34 @@ import { open, read, close, readFileSync, writeFileSync, readFile, writeFile, pr
 // )).catch(err => console.log(err));
 
 
-let pathDir = './txt/';
-let fileEnconding = 'utf8';
-let namesFiles = ['a.txt', 'b.txt', 'c.txt', 'a.txt', 'b.txt'];
-let contentFromFiles = [];
-let sum = 0;
+// let pathDir = './txt/';
+// let fileEnconding = 'utf8';
+// let namesFiles = ['a.txt', 'b.txt', 'c.txt', 'a.txt', 'b.txt'];
+// let contentFromFiles = [];
+// let sum = 0;
 
-namesFiles.map(fileName =>
-  contentFromFiles.push(promises.readFile(pathDir + fileName, fileEnconding))
-);
+// namesFiles.map(fileName =>
+//   contentFromFiles.push(promises.readFile(pathDir + fileName, fileEnconding))
+// );
 
-Promise.all(contentFromFiles).then(numbers => { numbers.map(number => sum += Number(number)); console.log(sum/5*111); }).catch(err => console.log(err));
+// Promise.all(contentFromFiles).then(numbers => { numbers.map(number => sum += Number(number)); console.log(sum/5*111); }).catch(err => console.log(err));
 
 
+async function saveSum() {
+  try {
+    let pathDir = './txt/';
+    let fileEnconding = 'utf8';
+    let namesFiles = ['a.txt', 'b.txt'];
+    let sum = 0;
+
+    for (let fileName of namesFiles) {
+      sum += Number(await promises.readFile(pathDir + fileName, fileEnconding));
+    }
+
+    await promises.writeFile(pathDir + 'newFile.txt', String(sum));
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+saveSum();
