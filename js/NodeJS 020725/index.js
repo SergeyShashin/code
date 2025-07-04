@@ -112,14 +112,31 @@ import { open, read, close, readFileSync, writeFileSync, readFile, writeFile, pr
 //   }
 // });
 
+
 // let pathDir = './txt/';
 // let fileEnconding = 'utf8';
 
 // promises.readFile(pathDir + 'newFile.txt', fileEnconding).then(res => console.log(res)).catch(err=>console.log(err));
 
+
+// let pathDir = './txt/';
+// let fileEnconding = 'utf8';
+
+// promises.readFile(pathDir + 'numbers.txt', fileEnconding).then(numbers => numbers.split(',').map(number =>
+//   promises.writeFile(pathDir + number + '.txt', number).catch(err => console.log(err))
+// )).catch(err => console.log(err));
+
+
 let pathDir = './txt/';
 let fileEnconding = 'utf8';
+let namesFiles = ['a.txt', 'b.txt', 'c.txt', 'a.txt', 'b.txt'];
+let contentFromFiles = [];
+let sum = 0;
 
-promises.readFile(pathDir + 'numbers.txt', fileEnconding).then(numbers => numbers.split(',').map(number =>
-  promises.writeFile(pathDir + number + '.txt', number).catch(err => console.log(err))
-)).catch(err => console.log(err));
+namesFiles.map(fileName =>
+  contentFromFiles.push(promises.readFile(pathDir + fileName, fileEnconding))
+);
+
+Promise.all(contentFromFiles).then(numbers => { numbers.map(number => sum += Number(number)); console.log(sum/5*111); }).catch(err => console.log(err));
+
+
