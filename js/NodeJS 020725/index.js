@@ -34,18 +34,16 @@ let pathDir = './txt/';
 let namesFiles = ['a.txt', 'b.txt', 'c.txt'];
 let fileEnconding = 'utf8';
 
-// writeSumNewFile(pathDir, namesFiles, fileEnconding);
+writeSumNewFile(pathDir, namesFiles, fileEnconding);
 
-// function writeSumNewFile(pathDir, namesFiles, fileEnconding) {
-//   let newFileName = pathDir + 'newFile.txt';
-//   let sum = 0;
-  
-//   for (let fileName of namesFiles) {
-//     let pathFile = pathDir + fileName;
-//     sum += Number(readFileSync(pathFile, fileEnconding));
-//   }
+function writeSumNewFile(pathDir, namesFiles, fileEnconding) {
+  let newFileName = pathDir + 'newFile.txt';
+  let sum = 0;
 
-//   console.log(sum);
+  for (let fileName of namesFiles) {
+    let pathFile = pathDir + fileName;
+    sum += Number(readFileSync(pathFile, fileEnconding));
+  }
 
-//   writeFileSync(newFileName, sum);
-// }
+  writeFileSync(newFileName, String(sum));
+}
