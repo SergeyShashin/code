@@ -1,5 +1,5 @@
 import { square, cube } from './math.js';
-import { open, read, close, readFileSync, writeFileSync } from 'fs';
+import { open, read, close, readFileSync, writeFileSync, readFile, writeFile } from 'fs';
 // import _ from 'underscore';
 // import _ from 'lodash';
 
@@ -30,20 +30,35 @@ import { open, read, close, readFileSync, writeFileSync } from 'fs';
 
 // setTimeout(() => clearInterval(numberInterval), 15012);
 
+// let pathDir = './txt/';
+// let namesFiles = ['a.txt', 'b.txt', 'c.txt'];
+// let fileEnconding = 'utf8';
+
+// writeSumNewFile(pathDir, namesFiles, fileEnconding);
+
+// function writeSumNewFile(pathDir, namesFiles, fileEnconding) {
+//   let newFileName = pathDir + 'newFile.txt';
+//   let sum = 0;
+
+//   for (let fileName of namesFiles) {
+//     let pathFile = pathDir + fileName;
+//     sum += Number(readFileSync(pathFile, fileEnconding));
+//   }
+
+//   writeFileSync(newFileName, String(sum));
+// }
+
+// try {
+//   readFileSync('', 'utf8');
+// } catch (e) {
+//   console.log('Вот что случилось. ' + e);
+// }
+
+// readFile('./txt/a.txt', 'utf8', (err, data) => console.log(err ? err : data ** 2));
+// console.log('!!!');
+
 let pathDir = './txt/';
-let namesFiles = ['a.txt', 'b.txt', 'c.txt'];
-let fileEnconding = 'utf8';
 
-writeSumNewFile(pathDir, namesFiles, fileEnconding);
-
-function writeSumNewFile(pathDir, namesFiles, fileEnconding) {
-  let newFileName = pathDir + 'newFile.txt';
-  let sum = 0;
-
-  for (let fileName of namesFiles) {
-    let pathFile = pathDir + fileName;
-    sum += Number(readFileSync(pathFile, fileEnconding));
-  }
-
-  writeFileSync(newFileName, String(sum));
+for (let i = 1; i < 11; i++) {
+  writeFile(pathDir + i + '.txt', String(i), err => console.log(err ? err : ''));
 }
