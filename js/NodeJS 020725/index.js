@@ -219,13 +219,29 @@ import { access, constants } from 'fs/promises';
 // contnent.on('data', chunk => console.log(chunk));
 
 
-let fileName = './txt/big.txt';
+// let fileName = './txt/big.txt';
 
-let fileForWrite = createWriteStream(fileName);
+// let fileForWrite = createWriteStream(fileName);
 
-for (let i = 1; i < 10 ** 6+1; i++) {
-  fileForWrite.write(String(i)+'\n');
-}
+// for (let i = 1; i < 10 ** 6+1; i++) {
+//   fileForWrite.write(String(i)+'\n');
+// }
 
-fileForWrite.end();
+// fileForWrite.end();
+
+let contentFromFile = createReadStream('./txt/big.txt');
+
+let streamWrite1 = createWriteStream('./txt/big1.txt');
+let streamWrite2 = createWriteStream('./txt/big2.txt');
+let streamWrite3 = createWriteStream('./txt/big3.txt');
+
+contentFromFile.on('data', chunk => {
+  streamWrite1.write(chunk);
+  streamWrite2.write(chunk);
+  streamWrite3.write(chunk);
+});
+
+streamWrite1.end();
+streamWrite2.end();
+streamWrite3.end();
 
