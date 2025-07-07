@@ -1,5 +1,5 @@
 import { square, cube } from './math.js';
-import { open, read, close, readFileSync, writeFileSync, readFile, writeFile, promises } from 'fs';
+import { open, read, close, readFileSync, writeFileSync, readFile, writeFile, promises, createReadStream, createWriteStream } from 'fs';
 import __dirname from './__dirname.js';
 import { access, constants } from 'fs/promises';
 
@@ -194,8 +194,38 @@ import { access, constants } from 'fs/promises';
 
 // console.log(__dirname);
 
-let fileName = './txt/newFile.txt';
-let fileEnconding = 'utf8';
+// let fileName = './txt/newFile.txt';
+// let fileEnconding = 'utf8';
 
 // access(fileName, constants.F_OK).then(() => promises.readFile(fileName, fileEnconding).then(res=>console.log(res))).catch(err => console.log(err));
-access(fileName, constants.W_OK).then(() => console.log('Can write.')).catch(err => console.log(err));
+// access(fileName, constants.W_OK).then(() => console.log('Can write.')).catch(err => console.log(err));
+// access(fileName, constants.R_OK|constants.W_OK).then(() => console.log('Can access.')).catch(err => console.log(err));
+
+
+// let contnent = createReadStream(fileName, fileEnconding);
+// contnent.on('data', chunk => console.log(chunk));
+
+// let str = '';
+
+// for (let i = 0; i < 500; i++) {
+//   str += i+'\n';
+// }
+
+// await promises.writeFile('./txt/big.txt', str);
+
+// let fileName = './txt/big.txt';
+// let fileEnconding = 'utf8';
+// let contnent = createReadStream(fileName, fileEnconding);
+// contnent.on('data', chunk => console.log(chunk));
+
+
+let fileName = './txt/big.txt';
+
+let fileForWrite = createWriteStream(fileName);
+
+for (let i = 1; i < 10 ** 6+1; i++) {
+  fileForWrite.write(String(i)+'\n');
+}
+
+fileForWrite.end();
+
