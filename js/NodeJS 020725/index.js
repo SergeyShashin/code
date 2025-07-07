@@ -1,5 +1,9 @@
 import { square, cube } from './math.js';
 import { open, read, close, readFileSync, writeFileSync, readFile, writeFile, promises } from 'fs';
+import __dirname from './__dirname.js';
+import { access, constants } from 'fs/promises';
+
+// import { readFile, writeFile } from 'fs/promises';
 // import _ from 'underscore';
 // import _ from 'lodash';
 
@@ -160,22 +164,38 @@ import { open, read, close, readFileSync, writeFileSync, readFile, writeFile, pr
 // saveSum();
 
 
-async function writeRandomNumAndWriteSumNewFile() {
-  let pathDir = './txt/';
-  let fileEnconding = 'utf8';
-  let namesFiles = ['1.txt', '2.txt', '3.txt', '4.txt', '5.txt', '6.txt', '7.txt', '8.txt', '9.txt', '10.txt'];
-  let sum = 0;
+// async function writeRandomNumAndWriteSumNewFile() {
+//   let pathDir = './txt/';
+//   let fileEnconding = 'utf8';
+//   let namesFiles = ['1.txt', '2.txt', '3.txt', '4.txt', '5.txt', '6.txt', '7.txt', '8.txt', '9.txt', '10.txt'];
+//   let sum = 0;
 
-  for (let fileName of namesFiles) {
-    let randNum = String(Math.floor(Math.random() * 1000));
-    await promises.writeFile(pathDir + fileName, randNum);
-  }
+//   for (let fileName of namesFiles) {
+//     let randNum = String(Math.floor(Math.random() * 1000));
+//     await promises.writeFile(pathDir + fileName, randNum);
+//   }
 
-  for (let fileName of namesFiles) {
-    sum += Number(await promises.readFile(pathDir + fileName, fileEnconding));
-  }
+//   for (let fileName of namesFiles) {
+//     sum += Number(await promises.readFile(pathDir + fileName, fileEnconding));
+//   }
 
-  await promises.writeFile(pathDir + 'newFile.txt', String(sum));
-}
+//   await promises.writeFile(pathDir + 'newFile.txt', String(sum));
+// }
 
-writeRandomNumAndWriteSumNewFile();
+// writeRandomNumAndWriteSumNewFile();
+
+
+// async function func() {
+//   let data = await readFile('./txt/newFile.txt', 'utf8');
+//   console.log(data);
+// }
+
+// func();
+
+// console.log(__dirname);
+
+let fileName = './txt/newFile.txt';
+let fileEnconding = 'utf8';
+
+// access(fileName, constants.F_OK).then(() => promises.readFile(fileName, fileEnconding).then(res=>console.log(res))).catch(err => console.log(err));
+access(fileName, constants.W_OK).then(() => console.log('Can write.')).catch(err => console.log(err));
