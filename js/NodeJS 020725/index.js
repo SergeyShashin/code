@@ -140,21 +140,42 @@ import { open, read, close, readFileSync, writeFileSync, readFile, writeFile, pr
 // Promise.all(contentFromFiles).then(numbers => { numbers.map(number => sum += Number(number)); console.log(sum/5*111); }).catch(err => console.log(err));
 
 
-async function saveSum() {
-  try {
-    let pathDir = './txt/';
-    let fileEnconding = 'utf8';
-    let namesFiles = ['a.txt', 'b.txt'];
-    let sum = 0;
+// async function saveSum() {
+//   try {
+//     let pathDir = './txt/';
+//     let fileEnconding = 'utf8';
+//     let namesFiles = ['a.txt', 'b.txt'];
+//     let sum = 0;
 
-    for (let fileName of namesFiles) {
-      sum += Number(await promises.readFile(pathDir + fileName, fileEnconding));
-    }
+//     for (let fileName of namesFiles) {
+//       sum += Number(await promises.readFile(pathDir + fileName, fileEnconding));
+//     }
 
-    await promises.writeFile(pathDir + 'newFile.txt', String(sum));
-  } catch (err) {
-    console.log(err);
+//     await promises.writeFile(pathDir + 'newFile.txt', String(sum));
+//   } catch (err) {
+//     console.log(err);
+//   }
+// }
+
+// saveSum();
+
+
+async function writeRandomNumAndWriteSumNewFile() {
+  let pathDir = './txt/';
+  let fileEnconding = 'utf8';
+  let namesFiles = ['1.txt', '2.txt', '3.txt', '4.txt', '5.txt', '6.txt', '7.txt', '8.txt', '9.txt', '10.txt'];
+  let sum = 0;
+
+  for (let fileName of namesFiles) {
+    let randNum = String(Math.floor(Math.random() * 1000));
+    await promises.writeFile(pathDir + fileName, randNum);
   }
+
+  for (let fileName of namesFiles) {
+    sum += Number(await promises.readFile(pathDir + fileName, fileEnconding));
+  }
+
+  await promises.writeFile(pathDir + 'newFile.txt', String(sum));
 }
 
-saveSum();
+writeRandomNumAndWriteSumNewFile();
