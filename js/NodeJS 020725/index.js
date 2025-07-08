@@ -3,6 +3,7 @@ import { open, read, close, readFileSync, writeFileSync, readFile, writeFile, pr
 import __dirname from './__dirname.js';
 import { access, constants } from 'fs/promises';
 import { createGzip } from 'zlib';
+import http from 'http';
 
 // import { readFile, writeFile } from 'fs/promises';
 // import _ from 'underscore';
@@ -255,19 +256,24 @@ import { createGzip } from 'zlib';
 // let writestreamBig1 = createWriteStream('./txt/big1.zip');
 // readStreamBig.pipe(createGzip()).pipe(writestreamBig1);
 
-let pathToCatalogTxt = './txt/';
-let pathToCatalogZip = './zip/';
-let fileExtension = '.txt';
-let extensionArchive = '.zip';
-let fileEnconding = 'utf8';
-let fileNames = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+// let pathToCatalogTxt = './txt/';
+// let pathToCatalogZip = './zip/';
+// let fileExtension = '.txt';
+// let extensionArchive = '.zip';
+// let fileEnconding = 'utf8';
+// let fileNames = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-fileNames.map((fileName) => {
-  let pathToSourceFile = pathToCatalogTxt + fileName + fileExtension;
-  let pathToTargetFile = pathToCatalogZip + fileName + extensionArchive;
-  let readStream = createReadStream(pathToSourceFile, fileEnconding);
-  let writeStream = createWriteStream(pathToTargetFile, fileEnconding);
+// fileNames.map((fileName) => {
+//   let pathToSourceFile = pathToCatalogTxt + fileName + fileExtension;
+//   let pathToTargetFile = pathToCatalogZip + fileName + extensionArchive;
+//   let readStream = createReadStream(pathToSourceFile, fileEnconding);
+//   let writeStream = createWriteStream(pathToTargetFile, fileEnconding);
 
-  readStream.pipe(createGzip()).pipe(writeStream);
-});
+//   readStream.pipe(createGzip()).pipe(writeStream);
+// });
 
+
+http.createServer((request, response) => {
+  response.write('Welcome World!');
+  response.end();
+}).listen(3000);
