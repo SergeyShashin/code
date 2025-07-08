@@ -289,8 +289,11 @@ import http from 'http';
 //   response.end();
 // }).listen(3000);
 
+let i = 0;
+
 http.createServer((request, response) => {
+  console.log(request.url, request.method, request.headers);
   response.writeHead(200, { 'Content-Type': 'text/html', 'Content-Language': 'ru' });
-  response.write('{}');
+  response.write(`${++i}`);
   response.end();
 }).listen(3000);
