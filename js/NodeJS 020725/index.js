@@ -255,15 +255,16 @@ import { createGzip } from 'zlib';
 // let writestreamBig1 = createWriteStream('./txt/big1.zip');
 // readStreamBig.pipe(createGzip()).pipe(writestreamBig1);
 
-let pathToCatalog = './txt/';
+let pathToCatalogTxt = './txt/';
+let pathToCatalogZip = './zip/';
 let fileExtension = '.txt';
 let extensionArchive = '.zip';
 let fileEnconding = 'utf8';
 let fileNames = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 fileNames.map((fileName) => {
-  let pathToSourceFile = pathToCatalog + fileName + fileExtension;
-  let pathToTargetFile = pathToCatalog + fileName + extensionArchive;
+  let pathToSourceFile = pathToCatalogTxt + fileName + fileExtension;
+  let pathToTargetFile = pathToCatalogZip + fileName + extensionArchive;
   let readStream = createReadStream(pathToSourceFile, fileEnconding);
   let writeStream = createWriteStream(pathToTargetFile, fileEnconding);
 
