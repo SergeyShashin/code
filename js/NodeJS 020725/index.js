@@ -2,6 +2,7 @@ import { square, cube } from './math.js';
 import { open, read, close, readFileSync, writeFileSync, readFile, writeFile, promises, createReadStream, createWriteStream } from 'fs';
 import __dirname from './__dirname.js';
 import { access, constants } from 'fs/promises';
+import { createGzip } from 'zlib';
 
 // import { readFile, writeFile } from 'fs/promises';
 // import _ from 'underscore';
@@ -229,19 +230,43 @@ import { access, constants } from 'fs/promises';
 
 // fileForWrite.end();
 
-let contentFromFile = createReadStream('./txt/big.txt');
+// let contentFromFile = createReadStream('./txt/big.txt');
 
-let streamWrite1 = createWriteStream('./txt/big1.txt');
-let streamWrite2 = createWriteStream('./txt/big2.txt');
-let streamWrite3 = createWriteStream('./txt/big3.txt');
+// let streamWrite1 = createWriteStream('./txt/big1.txt');
+// let streamWrite2 = createWriteStream('./txt/big2.txt');
+// let streamWrite3 = createWriteStream('./txt/big3.txt');
 
-contentFromFile.on('data', chunk => {
-  streamWrite1.write(chunk);
-  streamWrite2.write(chunk);
-  streamWrite3.write(chunk);
+// contentFromFile.on('data', chunk => {
+//   streamWrite1.write(chunk);
+//   streamWrite2.write(chunk);
+//   streamWrite3.write(chunk);
+// });
+
+// streamWrite1.end();
+// streamWrite2.end();
+// streamWrite3.end();
+
+// let readStreamBig = createReadStream('./txt/big.txt');
+// let writestreamBig1 = createWriteStream('./txt/big1.txt');
+
+// readStreamBig.pipe(writestreamBig1);
+
+// let readStreamBig = createReadStream('./txt/big.txt');
+// let writestreamBig1 = createWriteStream('./txt/big1.zip');
+// readStreamBig.pipe(createGzip()).pipe(writestreamBig1);
+
+let pathToCatalog = './txt/';
+let fileExtension = '.txt';
+let extensionArchive = '.zip';
+let fileEnconding = 'utf8';
+let fileNames = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+fileNames.map((fileName) => {
+  let pathToSourceFile = pathToCatalog + fileName + fileExtension;
+  let pathToTargetFile = pathToCatalog + fileName + extensionArchive;
+  let readStream = createReadStream(pathToSourceFile, fileEnconding);
+  let writeStream = createWriteStream(pathToTargetFile, fileEnconding);
+
+  readStream.pipe(createGzip()).pipe(writeStream);
 });
-
-streamWrite1.end();
-streamWrite2.end();
-streamWrite3.end();
 
