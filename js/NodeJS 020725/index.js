@@ -273,7 +273,24 @@ import http from 'http';
 // });
 
 
+// http.createServer((request, response) => {
+//   response.setHeader('Content-Language', 'ru');
+//   response.setHeader('Cache-Control', 'no-cache');
+//   response.setHeader('Content-Type', 'text/html');
+//   response.write('Welcome World!');
+//   let date = new Date();
+//   response.write(`<time>${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}</time>`);
+//   response.end();
+// }).listen(3000);
+
+// http.createServer((request, response) => {
+//   response.writeHead(404, { 'Content-Type': 'text/plain' })
+//   response.write('page not found');
+//   response.end();
+// }).listen(3000);
+
 http.createServer((request, response) => {
-  response.write('Welcome World!');
+  response.writeHead(200, { 'Content-Type': 'text/html', 'Content-Language': 'ru' });
+  response.write('{}');
   response.end();
 }).listen(3000);
