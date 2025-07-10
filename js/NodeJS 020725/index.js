@@ -422,20 +422,21 @@ import { type } from 'os';
 
 http.createServer(async (request, response) => {
   if (request.url !== '/favicon.ico') {
-    let path = 'root' + request.url;
+    let path;
     let status = 200;
+    let content;
+    let type = 'text/html';
 
     try {
-
+      path = 'root' + request.url;
       if ((await promises.stat(path)).isDirectory()) {
         path += 'index.html';
       }
 
-      let type = 'text/html';
-      let content = await promises.readFile(path, 'utf8');
-    } catch(err) {
-      status=404;
-      content='page not found.'
+      content = await promises.readFile(path, 'utf8');
+    } catch (err) {
+      status = 404;
+      content = await promises.readFile('root/404.html', 'utf8');
     }
 
     response.writeHead(status, { 'Content-type': type });
