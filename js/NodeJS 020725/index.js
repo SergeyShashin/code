@@ -315,8 +315,12 @@ http.createServer((request, response) => {
   if (request.url !== '/favicon.ico') {
     console.log(request.url);
     let text = '/';
+    let status = 200;
 
     switch (request.url) {
+      case '/':
+        text = '/'
+        break;
       case '/page1':
         text = 'page1'
         break;
@@ -326,9 +330,13 @@ http.createServer((request, response) => {
       case '/page3':
         text = 'page3'
         break;
+      default:
+        text = 'page not found';
+        status = 404;
+        break;
     }
 
-    response.writeHead(200, { 'Content-type': 'text/html' });
+    response.writeHead(status, { 'Content-type': 'text/html' });
     response.write('Welcome world!');
     response.write('<br/>');
     response.write(text);
