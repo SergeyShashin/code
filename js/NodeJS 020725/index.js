@@ -311,35 +311,65 @@ import http from 'http';
 // 	}
 // }).listen(3000);
 
-http.createServer((request, response) => {
-  if (request.url !== '/favicon.ico') {
-    console.log(request.url);
-    let text = '/';
+// http.createServer((request, response) => {
+//   if (request.url !== '/favicon.ico') {
+//     console.log(request.url);
+//     let text = '/';
+//     let status = 200;
+
+//     switch (request.url) {
+//       case '/':
+//         text = '/'
+//         break;
+//       case '/page1':
+//         text = 'page1'
+//         break;
+//       case '/page2':
+//         text = 'page2'
+//         break;
+//       case '/page3':
+//         text = 'page3'
+//         break;
+//       default:
+//         text = 'page not found';
+//         status = 404;
+//         break;
+//     }
+
+//     response.writeHead(status, { 'Content-type': 'text/html' });
+//     response.write('Welcome world!');
+//     response.write('<br/>');
+//     response.write(text);
+//     response.end();
+//   }
+// }).listen(3000);
+
+http.createServer(async (request, response) => {
+  if (request.url !== 'favicon.ico') {
     let status = 200;
+    let content = '';
 
     switch (request.url) {
       case '/':
-        text = '/'
-        break;
+        content = 'Welcome world)';
       case '/page1':
-        text = 'page1'
+        content = await promises.readFile('./html/page1.html', 'utf8');
         break;
       case '/page2':
-        text = 'page2'
+        content = await promises.readFile('./html/page2.html', 'utf8');
         break;
       case '/page3':
-        text = 'page3'
+        content = await promises.readFile('./html/page3.html', 'utf8');
         break;
       default:
-        text = 'page not found';
+        content = '<br> Page not found.';
         status = 404;
-        break;
     }
 
     response.writeHead(status, { 'Content-type': 'text/html' });
-    response.write('Welcome world!');
-    response.write('<br/>');
-    response.write(text);
+    response.write(request.url);
+    response.write(content);
     response.end();
   }
+
 }).listen(3000);
