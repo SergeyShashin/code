@@ -4,6 +4,7 @@ import __dirname from './__dirname.js';
 import { access, constants } from 'fs/promises';
 import { createGzip } from 'zlib';
 import http from 'http';
+import { type } from 'os';
 
 // import { readFile, writeFile } from 'fs/promises';
 // import _ from 'underscore';
@@ -344,32 +345,64 @@ import http from 'http';
 //   }
 // }).listen(3000);
 
-http.createServer(async (request, response) => {
+
+
+// http.createServer(async (request, response) => {
+//   if (request.url !== 'favicon.ico') {
+//     let status = 200;
+//     let content = '';
+
+//     switch (request.url) {
+//       case '/':
+//         content = 'Welcome world)';
+//       case '/page1':
+//         content = await promises.readFile('./html/page1.html', 'utf8');
+//         break;
+//       case '/page2':
+//         content = await promises.readFile('./html/page2.html', 'utf8');
+//         break;
+//       case '/page3':
+//         content = await promises.readFile('./html/page3.html', 'utf8');
+//         break;
+//       default:
+//         content = '<br> Page not found.';
+//         status = 404;
+//     }
+
+//     response.writeHead(status, { 'Content-type': 'text/html' });
+//     response.write(request.url);
+//     response.write(content);
+//     response.end();
+//   }
+
+// }).listen(3000);
+
+
+http.createServer(async (request, responce) => {
   if (request.url !== 'favicon.ico') {
-    let status = 200;
-    let content = '';
+    let codeAnswer = 200;
+    let content;
+    let type = 'text/html';
 
     switch (request.url) {
       case '/':
-        content = 'Welcome world)';
-      case '/page1':
-        content = await promises.readFile('./html/page1.html', 'utf8');
+        content = 'Welcome World!';
         break;
-      case '/page2':
-        content = await promises.readFile('./html/page2.html', 'utf8');
+      case '/page':
+        content = await promises.readFile('./html/page888.html')
         break;
-      case '/page3':
-        content = await promises.readFile('./html/page3.html', 'utf8');
+      case '/12':
+        content = await promises.readFile('./img/12.jpg');
+        type = 'image/jpg';
         break;
       default:
-        content = '<br> Page not found.';
-        status = 404;
+        content = 'Page not find.'
+        break;
     }
 
-    response.writeHead(status, { 'Content-type': 'text/html' });
-    response.write(request.url);
-    response.write(content);
-    response.end();
+    responce.writeHead(codeAnswer, { 'Content-type': type });
+    responce.write(content);
+    responce.end();
   }
 
 }).listen(3000);
