@@ -388,15 +388,27 @@ http.createServer(async (request, responce) => {
       case '/':
         content = 'Welcome World!';
         break;
+      case '/favicon':
+        content = await promises.readFile('./ico/favicon.ico');
+        type = 'image/vnd.microsoft.icon';
+        break;
       case '/page':
-        content = await promises.readFile('./html/page888.html')
+        content = await promises.readFile('./html/page888.html');
         break;
       case '/12':
         content = await promises.readFile('./img/12.jpg');
         type = 'image/jpg';
         break;
+      case '/style':
+        content = await promises.readFile('./css/style.css');
+        type = 'text/css';
+        break;
+      case '/welcome':
+        content = await promises.readFile('./js/welcome.js');
+        type = 'text/javascript';
+        break;
       default:
-        content = 'Page not find.'
+        content = 'Page not find.';
         break;
     }
 
