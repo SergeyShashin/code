@@ -378,43 +378,69 @@ import { type } from 'os';
 // }).listen(3000);
 
 
-http.createServer(async (request, responce) => {
-  if (request.url !== 'favicon.ico') {
-    let codeAnswer = 200;
-    let content;
-    let type = 'text/html';
+// http.createServer(async (request, responce) => {
+//   if (request.url !== 'favicon.ico') {
+//     let codeAnswer = 200;
+//     let content;
+//     let type = 'text/html';
 
-    switch (request.url) {
-      case '/':
-        content = 'Welcome World!';
-        break;
-      case '/favicon':
-        content = await promises.readFile('./ico/favicon.ico');
-        type = 'image/vnd.microsoft.icon';
-        break;
-      case '/page':
-        content = await promises.readFile('./html/page888.html');
-        break;
-      case '/12':
-        content = await promises.readFile('./img/12.jpg');
-        type = 'image/jpg';
-        break;
-      case '/style':
-        content = await promises.readFile('./css/style.css');
-        type = 'text/css';
-        break;
-      case '/welcome':
-        content = await promises.readFile('./js/welcome.js');
-        type = 'text/javascript';
-        break;
-      default:
-        content = 'Page not find.';
-        break;
+//     switch (request.url) {
+//       case '/':
+//         content = 'Welcome World!';
+//         break;
+//       case '/favicon':
+//         content = await promises.readFile('./ico/favicon.ico');
+//         type = 'image/vnd.microsoft.icon';
+//         break;
+//       case '/page':
+//         content = await promises.readFile('./html/page888.html');
+//         break;
+//       case '/12':
+//         content = await promises.readFile('./img/12.jpg');
+//         type = 'image/jpg';
+//         break;
+//       case '/style':
+//         content = await promises.readFile('./css/style.css');
+//         type = 'text/css';
+//         break;
+//       case '/welcome':
+//         content = await promises.readFile('./js/welcome.js');
+//         type = 'text/javascript';
+//         break;
+//       default:
+//         content = 'Page not find.';
+//         break;
+//     }
+
+//     responce.writeHead(codeAnswer, { 'Content-type': type });
+//     responce.write(content);
+//     responce.end();
+//   }
+
+// }).listen(3000);
+
+
+http.createServer(async (request, response) => {
+  if (request.url !== '/favicon.ico') {
+    let path = 'root' + request.url;
+    let status = 200;
+
+    try {
+
+      if ((await promises.stat(path)).isDirectory()) {
+        path += 'index.html';
+      }
+
+      let type = 'text/html';
+      let content = await promises.readFile(path, 'utf8');
+    } catch(err) {
+      status=404;
+      content='page not found.'
     }
 
-    responce.writeHead(codeAnswer, { 'Content-type': type });
-    responce.write(content);
-    responce.end();
+    response.writeHead(status, { 'Content-type': type });
+    response.write(content);
+    response.end();
   }
 
 }).listen(3000);
