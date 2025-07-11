@@ -479,14 +479,13 @@ http.createServer(async (request, response) => {
         path += 'index.html';
       }
 
-      text = await readFile(path, fileEnconding);
+      text = await promises.readFile(path, fileEnconding);
 
     } catch (err) {
       status = 404;
       text = 'Page not found.';
     }
     console.log(path);
-
 
     response.writeHead(status, { 'Content-type': getMimeTipe(path) });
     response.write(text);
