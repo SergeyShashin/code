@@ -1,5 +1,5 @@
 import { square, cube } from './math.js';
-import { open, read, close, readFileSync, writeFileSync, readFile, writeFile, promises, createReadStream, createWriteStream } from 'fs';
+import { open, read, close, readFileSync, writeFileSync, readFile, writeFile, promises, createReadStream, createWriteStream, stat } from 'fs';
 import __dirname from './__dirname.js';
 import { access, constants } from 'fs/promises';
 import { createGzip } from 'zlib';
@@ -465,3 +465,32 @@ function getMimeTipe(path) {
 
   return mimes[extension] ? mimes[extension] : 'text/plain'
 }
+
+http.createServer(async (request, response) => {
+  if (request.url !== '/favicon.ico') {
+    let status = 200;
+    let text;
+    let fileEnconding = 'utf8';
+    let path = `root${request.url}`.endsWith('/') ? `root${request.url}` : `root${request.url}/`;
+
+    try {
+
+      if ((await promises.stat(path)).isDirectory()) {
+        path += 'index.html';
+      }
+
+      text = await readFile(path, fileEnconding);
+
+    } catch (err) {
+      status = 404;
+      text = 'Page not found.';
+    }
+    console.log(path);
+
+
+    response.writeHead(status, { 'Content-type': getMimeTipe(path) });
+    response.write(text);
+    response.end();
+  }
+
+}).listen(3000);
