@@ -419,31 +419,49 @@ import { type } from 'os';
 
 // }).listen(3000);
 
-http.createServer(async (request, response) => {
-  if (request.url !== '/favicon.ico') {
-    let path;
-    let status = 200;
-    let content;
-    let type = 'text/html';
+// http.createServer(async (request, response) => {
+//   if (request.url !== '/favicon.ico') {
+//     let path;
+//     let status = 200;
+//     let content;
+//     let type = 'text/html';
 
-    try {
-      let requestURL = `root${request.url}`;
-      path = requestURL.endsWith('/') ? requestURL : requestURL + '/';
+//     try {
+//       let requestURL = `root${request.url}`;
+//       path = requestURL.endsWith('/') ? requestURL : requestURL + '/';
 
-      if ((await promises.stat(path)).isDirectory()) {
-        path += 'index.html';
-      }
+//       if ((await promises.stat(path)).isDirectory()) {
+//         path += 'index.html';
+//       }
 
 
-      content = await promises.readFile(path, 'utf8');
-    } catch (err) {
-      status = 404;
-      content = await promises.readFile('root/404.html', 'utf8');
-    }
+//       content = await promises.readFile(path, 'utf8');
+//     } catch (err) {
+//       status = 404;
+//       content = await promises.readFile('root/404.html', 'utf8');
+//     }
 
-    response.writeHead(status, { 'Content-type': type });
-    response.write(content);
-    response.end();
-  }
+//     response.writeHead(status, { 'Content-type': type });
+//     response.write(content);
+//     response.end();
+//   }
 
-}).listen(3000);
+// }).listen(3000);
+
+function getMimeTipe(path) {
+  let mimes = {
+    html: 'text/html',
+    jpeg: 'image/jpeg',
+    jpg: 'image/jpeg',
+    png: 'image/png',
+    svg: 'image/svg+xml',
+    json: 'application/json',
+    js: 'text/javascript',
+    css: 'text/css',
+    ico: 'image/x-icon',
+  };
+
+  let extension = path.match(/(\.\w+)$/)[0].replace(/./, '');
+
+  return mimes[extension] ? mimes[extension] : 'text/plain'
+}
