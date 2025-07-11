@@ -448,48 +448,65 @@ import { type } from 'os';
 
 // }).listen(3000);
 
-function getMimeTipe(path) {
-  let mimes = {
-    html: 'text/html',
-    jpeg: 'image/jpeg',
-    jpg: 'image/jpeg',
-    png: 'image/png',
-    svg: 'image/svg+xml',
-    json: 'application/json',
-    js: 'text/javascript',
-    css: 'text/css',
-    ico: 'image/x-icon',
-  };
+// function getMimeTipe(path) {
+//   let mimes = {
+//     html: 'text/html',
+//     jpeg: 'image/jpeg',
+//     jpg: 'image/jpeg',
+//     png: 'image/png',
+//     svg: 'image/svg+xml',
+//     json: 'application/json',
+//     js: 'text/javascript',
+//     css: 'text/css',
+//     ico: 'image/x-icon',
+//   };
 
-  let extension = path.match(/(\.\w+)$/)[0].replace(/./, '');
+//   let extension = path.match(/(\.\w+)$/)[0].replace(/./, '');
 
-  return mimes[extension] ? mimes[extension] : 'text/plain'
-}
+//   return mimes[extension] ? mimes[extension] : 'text/plain'
+// }
+
+// http.createServer(async (request, response) => {
+//   if (request.url !== '/favicon.ico') {
+//     let status = 200;
+//     let text;
+//     let fileEnconding = 'utf8';
+//     let path = `root${request.url}`.endsWith('/') ? `root${request.url}` : `root${request.url}/`;
+
+//     try {
+
+//       if ((await promises.stat(path)).isDirectory()) {
+//         path += 'index.html';
+//       }
+
+//       text = await promises.readFile(path, fileEnconding);
+
+//     } catch (err) {
+//       status = 404;
+//       text = 'Page not found.';
+//     }
+//     console.log(path);
+
+//     response.writeHead(status, { 'Content-type': getMimeTipe(path) });
+//     response.write(text);
+//     response.end();
+//   }
+
+// }).listen(3000);
 
 http.createServer(async (request, response) => {
-  if (request.url !== '/favicon.ico') {
-    let status = 200;
-    let text;
-    let fileEnconding = 'utf8';
-    let path = `root${request.url}`.endsWith('/') ? `root${request.url}` : `root${request.url}/`;
-
-    try {
-
-      if ((await promises.stat(path)).isDirectory()) {
-        path += 'index.html';
-      }
-
-      text = await promises.readFile(path, fileEnconding);
-
-    } catch (err) {
-      status = 404;
-      text = 'Page not found.';
-    }
-    console.log(path);
-
-    response.writeHead(status, { 'Content-type': getMimeTipe(path) });
-    response.write(text);
-    response.end();
-  }
-
+	let lpath = 'root/index.html';
+	let cpath = 'root/' + request.url + 'content.html';
+	let tpath = 'root/' + request.url + 'title.html';
+	
+	let layout  = await promises.readFile(lpath, 'utf8');
+	let content = await promises.readFile(cpath, 'utf8');
+	let title   = await promises.readFile(tpath, 'utf8');
+	
+	layout = layout.replace(/\{% get content %\}/, content);
+	layout = layout.replace(/\{% get title %\}/,   title);
+	
+	response.writeHead(200, {'Content-Type': 'text/html'});
+	response.write(layout);
+	response.end();
 }).listen(3000);

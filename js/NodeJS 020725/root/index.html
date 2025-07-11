@@ -2,14 +2,24 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <title>888</title>
+  <title>{% get title %}</title>
 </head>
 
 <body>
-  <p>
-    first page on NodeJS
-  </p>
+  <div id="wrapper">
+    <header>
+      common header
+    </header>
+    <main>
+      {% get content %}
+    </main>
+    <aside>
+      common sidebar
+    </aside>
+    <footer>
+      common footer
+    </footer>
+  </div>
 </body>
 
 </html>
