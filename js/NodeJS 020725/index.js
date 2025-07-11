@@ -419,7 +419,6 @@ import { type } from 'os';
 
 // }).listen(3000);
 
-
 http.createServer(async (request, response) => {
   if (request.url !== '/favicon.ico') {
     let path;
@@ -428,10 +427,13 @@ http.createServer(async (request, response) => {
     let type = 'text/html';
 
     try {
-      path = 'root' + request.url;
+      let requestURL = `root${request.url}`;
+      path = requestURL.endsWith('/') ? requestURL : requestURL + '/';
+
       if ((await promises.stat(path)).isDirectory()) {
         path += 'index.html';
       }
+
 
       content = await promises.readFile(path, 'utf8');
     } catch (err) {
