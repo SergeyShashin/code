@@ -494,22 +494,33 @@ import { type } from 'os';
 
 // }).listen(3000);
 
-http.createServer(async (request, response) => {
+
+
+// http.createServer(async (request, response) => {
+//   if (request.url !== '/favicon.ico') {
+//     console.log(request.url);
+//     let lpath = 'root/index.html';
+//     let cpath = 'root/dir/name/content.html';
+//     let tpath = 'root/dir/name/title.html';
+
+//     let layout = await promises.readFile(lpath, 'utf8');
+//     let content = await promises.readFile(cpath, 'utf8');
+//     let title   = await promises.readFile(tpath, 'utf8');
+
+//     layout = layout.replace(/\{% get content %\}/, content);
+//     layout = layout.replace(/\{% get title %\}/,   title);
+
+//     response.writeHead(200, { 'Content-Type': 'text/html' });
+//     response.write(layout);
+//     response.end();
+//   }
+// }).listen(3000);
+
+
+http.createServer((request, responce) => {
+
   if (request.url !== '/favicon.ico') {
-    console.log(request.url);
-    let lpath = 'root/index.html';
-    let cpath = 'root/dir/name/content.html';
-    let tpath = 'root/dir/name/title.html';
 
-    let layout = await promises.readFile(lpath, 'utf8');
-    let content = await promises.readFile(cpath, 'utf8');
-    let title   = await promises.readFile(tpath, 'utf8');
-
-    layout = layout.replace(/\{% get content %\}/, content);
-    layout = layout.replace(/\{% get title %\}/,   title);
-
-    response.writeHead(200, { 'Content-Type': 'text/html' });
-    response.write(layout);
-    response.end();
   }
 }).listen(3000);
+
