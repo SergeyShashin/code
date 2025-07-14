@@ -545,6 +545,12 @@ http.createServer(async (request, response) => {
       extension = '.css';
       type = 'text/css';
       break;
+    case '/welcome.js':
+      folderName = 'js';
+      fileName = 'welcome';
+      extension = '.js';
+      type = 'application/javascript';
+      break;
     case '/page1':
       folderName = './html';
       fileName = 'page1';
