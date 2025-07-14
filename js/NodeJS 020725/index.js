@@ -517,10 +517,40 @@ import { type } from 'os';
 // }).listen(3000);
 
 
-http.createServer((request, responce) => {
+http.createServer(async (request, response) => {
 
   if (request.url !== '/favicon.ico') {
+    let folderName = './html';
+    let fileName;
+    let extension = '.html';
+    let content;
+    let type = 'text/html';
+    let fileEnconding = 'utf8';
+    let status = 200;
 
+    switch (request.url) {
+      case '/':
+        fileName = 'page888';
+        break;
+      case '/page1':
+        fileName = 'page1';
+        break;
+      case '/page2':
+        fileName = 'page2';
+        break;
+      case '/page3':
+        fileName = 'page3';
+        break;
+      default:
+        fileName = '404';
+        status = 404;
+    }
+
+    content = await promises.readFile(folderName + '/' + fileName + extension, fileEnconding);
+
+    response.writeHead(status, { 'Content-type': type });
+    response.write(content);
+    response.end();
   }
 }).listen(3000);
 
