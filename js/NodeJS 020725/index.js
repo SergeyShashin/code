@@ -448,7 +448,7 @@ import { type } from 'os';
 
 // }).listen(3000);
 
-// function getMimeTipe(path) {
+// function getmimeType(path) {
 //   let mimes = {
 //     html: 'text/html',
 //     jpeg: 'image/jpeg',
@@ -487,7 +487,7 @@ import { type } from 'os';
 //     }
 //     console.log(path);
 
-//     response.writeHead(status, { 'Content-type': getMimeTipe(path) });
+//     response.writeHead(status, { 'Content-type': getmimeType(path) });
 //     response.write(text);
 //     response.end();
 //   }
@@ -517,73 +517,122 @@ import { type } from 'os';
 // }).listen(3000);
 
 
+// http.createServer(async (request, response) => {
+//   console.log(request.url);
+//   let folderName;
+//   let fileName;
+//   let extension;
+//   let content;
+//   let type;
+//   let status = 200;
+
+//   switch (request.url) {
+//     case '/':
+//       folderName = './html';
+//       fileName = 'page888';
+//       extension = '.html';
+//       type = 'text/html';
+//       break;
+//     case '/favicon.ico':
+//       folderName = 'ico';
+//       fileName = 'favicon';
+//       extension = '.ico';
+//       type = 'image/ico';
+//       break;
+//     case '/style':
+//       folderName = 'css';
+//       fileName = 'style';
+//       extension = '.css';
+//       type = 'text/css';
+//       break;
+//     case '/welcome.js':
+//       folderName = 'js';
+//       fileName = 'welcome';
+//       extension = '.js';
+//       type = 'application/javascript';
+//       break;
+//     case '/page1':
+//       folderName = './html';
+//       fileName = 'page1';
+//       extension = '.html';
+//       type = 'text/html';
+//       break;
+//     case '/page2':
+//       folderName = './html';
+//       fileName = 'page2';
+//       extension = '.html';
+//       type = 'text/html';
+//       break;
+//     case '/page3':
+//       folderName = './html';
+//       fileName = 'page3';
+//       extension = '.html';
+//       type = 'text/html';
+//       break;
+//     case '/12':
+//       folderName = 'img';
+//       fileName = '12';
+//       extension = '.jpg';
+//       type = 'image/jpg';
+//       break;
+//     default:
+//       folderName = './html';
+//       fileName = '404';
+//       extension = '.html';
+//       type = 'text/html';
+//       status = 404;
+//   }
+
+//   content = await promises.readFile(folderName + '/' + fileName + extension);
+
+//   response.writeHead(status, { 'Content-type': type });
+//   response.write(content);
+//   response.end();
+// }).listen(3000);
+
+
+function getMimeType(path) {
+  let mimes = {
+    html: 'text/html',
+    jpeg: 'image/jpeg',
+    jpg: 'image/jpeg',
+    png: 'image/png',
+    svg: 'image/svg+xml',
+    json: 'application/json',
+    js: 'text/javascript',
+    css: 'text/css',
+    ico: 'image/x-icon',
+  };
+
+  let mimeType = mimes[path.match(/\.\w+$/)[0].replace(/\./, '')];
+
+  return mimeType ? mimeType : 'text/plane'
+}
+
 http.createServer(async (request, response) => {
   console.log(request.url);
-  let folderName;
-  let fileName;
-  let extension;
   let content;
   let type;
   let status = 200;
+  let path = 'root' + request.url;
 
-  switch (request.url) {
-    case '/':
-      folderName = './html';
-      fileName = 'page888';
-      extension = '.html';
-      type = 'text/html';
-      break;
-    case '/favicon.ico':
-      folderName = 'ico';
-      fileName = 'favicon';
-      extension = '.ico';
+  try {
+    if (request.url === '/favicon.ico') {
       type = 'image/ico';
-      break;
-    case '/style':
-      folderName = 'css';
-      fileName = 'style';
-      extension = '.css';
-      type = 'text/css';
-      break;
-    case '/welcome.js':
-      folderName = 'js';
-      fileName = 'welcome';
-      extension = '.js';
-      type = 'application/javascript';
-      break;
-    case '/page1':
-      folderName = './html';
-      fileName = 'page1';
-      extension = '.html';
-      type = 'text/html';
-      break;
-    case '/page2':
-      folderName = './html';
-      fileName = 'page2';
-      extension = '.html';
-      type = 'text/html';
-      break;
-    case '/page3':
-      folderName = './html';
-      fileName = 'page3';
-      extension = '.html';
-      type = 'text/html';
-      break;
-    case '/12':
-      folderName = 'img';
-      fileName = '12';
-      extension = '.jpg';
-      type = 'image/jpg';
-      break;
-    default:
-      folderName = './html';
-      fileName = '404';
-      extension = '.html';
-      type = 'text/html';
-      status = 404;
+      path = 'root/ico' + request.url;
+    } else {
+      if ((await promises.stat(path)).isDirectory()) {
+        path += (request.url).endsWith('/') ? 'index.html' : '/index.html';
+        type = 'text/html';
+      }
+    }
+  } catch (err) {
+    path = 'root/404.html'
+    status = 404;
+    console.log(err);
   }
 
-  content = await promises.readFile(folderName + '/' + fileName + extension);
+  content = await promises.readFile(path);
 
   response.writeHead(status, { 'Content-type': type });
   response.write(content);
