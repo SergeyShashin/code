@@ -518,39 +518,69 @@ import { type } from 'os';
 
 
 http.createServer(async (request, response) => {
+  console.log(request.url);
+  let folderName;
+  let fileName;
+  let extension;
+  let content;
+  let type;
+  let status = 200;
 
-  if (request.url !== '/favicon.ico') {
-    let folderName = './html';
-    let fileName;
-    let extension = '.html';
-    let content;
-    let type = 'text/html';
-    let fileEnconding = 'utf8';
-    let status = 200;
-
-    switch (request.url) {
-      case '/':
-        fileName = 'page888';
-        break;
-      case '/page1':
-        fileName = 'page1';
-        break;
-      case '/page2':
-        fileName = 'page2';
-        break;
-      case '/page3':
-        fileName = 'page3';
-        break;
-      default:
-        fileName = '404';
-        status = 404;
-    }
-
-    content = await promises.readFile(folderName + '/' + fileName + extension, fileEnconding);
-
-    response.writeHead(status, { 'Content-type': type });
-    response.write(content);
-    response.end();
+  switch (request.url) {
+    case '/':
+      folderName = './html';
+      fileName = 'page888';
+      extension = '.html';
+      type = 'text/html';
+      break;
+    case '/favicon.ico':
+      folderName = 'ico';
+      fileName = 'favicon';
+      extension = '.ico';
+      type = 'image/ico';
+      break;
+    case '/style':
+      folderName = 'css';
+      fileName = 'style';
+      extension = '.css';
+      type = 'text/css';
+      break;
+    case '/page1':
+      folderName = './html';
+      fileName = 'page1';
+      extension = '.html';
+      type = 'text/html';
+      break;
+    case '/page2':
+      folderName = './html';
+      fileName = 'page2';
+      extension = '.html';
+      type = 'text/html';
+      break;
+    case '/page3':
+      folderName = './html';
+      fileName = 'page3';
+      extension = '.html';
+      type = 'text/html';
+      break;
+    case '/12':
+      folderName = 'img';
+      fileName = '12';
+      extension = '.jpg';
+      type = 'image/jpg';
+      break;
+    default:
+      folderName = './html';
+      fileName = '404';
+      extension = '.html';
+      type = 'text/html';
+      status = 404;
   }
+
+  content = await promises.readFile(folderName + '/' + fileName + extension);
+
+  response.writeHead(status, { 'Content-type': type });
+  response.write(content);
+  response.end();
 }).listen(3000);
 
