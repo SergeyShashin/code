@@ -630,6 +630,8 @@ http.createServer(async (request, response) => {
     path = 'root/404.html'
     status = 404;
     console.log(err);
+    type = 'text/html';
+
   }
 
   content = await promises.readFile(path);
