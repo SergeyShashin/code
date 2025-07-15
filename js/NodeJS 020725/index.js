@@ -591,59 +591,62 @@ import { type } from 'os';
 // }).listen(3000);
 
 
-function getMimeType(path) {
-  let mimes = {
-    html: 'text/html',
-    jpeg: 'image/jpeg',
-    jpg: 'image/jpeg',
-    png: 'image/png',
-    svg: 'image/svg+xml',
-    json: 'application/json',
-    js: 'text/javascript',
-    css: 'text/css',
-    ico: 'image/x-icon',
-  };
+// function getMimeType(path) {
+//   let mimes = {
+//     html: 'text/html',
+//     jpeg: 'image/jpeg',
+//     jpg: 'image/jpeg',
+//     png: 'image/png',
+//     svg: 'image/svg+xml',
+//     json: 'application/json',
+//     js: 'text/javascript',
+//     css: 'text/css',
+//     ico: 'image/x-icon',
+//   };
 
-  let mimeType = mimes[path.match(/\.\w+$/)[0].replace(/\./, '')];
+//   let mimeType = mimes[path.match(/\.\w+$/)[0].replace(/\./, '')];
 
-  return mimeType ? mimeType : 'text/plane'
-}
+//   return mimeType ? mimeType : 'text/plane'
+// }
 
-http.createServer(async (request, response) => {
-  console.log(request.url);
-  let content;
-  let type;
-  let status = 200;
-  let path = 'root' + request.url;
+// http.createServer(async (request, response) => {
+//   console.log(request.url);
+//   let layout;
+//   let type;
+//   let status = 200;
+//   let path = 'root' + request.url;
+//   let contentPath = 'root' + request.url;
 
-  try {
-    if (request.url === '/favicon.ico') {
-      type = 'image/ico';
-      path = 'root/ico' + request.url;
-    } else {
-      if ((await promises.stat(path)).isDirectory()) {
-        path += (request.url).endsWith('/') ? 'index.html' : '/index.html';
-        type = 'text/html';
-      }
-    }
-  } catch (err) {
-    path = 'root/404.html'
-    status = 404;
-    console.log(err);
-    type = 'text/html';
+//   try {
+//     if (request.url === '/favicon.ico') {
+//       type = 'image/ico';
+//       path = 'root/ico' + request.url;
+//     } else {
+//       if ((await promises.stat(path)).isDirectory()) {
+//         path += (request.url).endsWith('/') ? 'index.html' : '/index.html';
+//         contentPath += (request.url).endsWith('/') ? 'content.html' : '/content.html';
+//         type = 'text/html';
+//       }
+//     }
+//   } catch (err) {
+//     path = 'root/404.html'
+//     status = 404;
+//     console.log(err);
+//     type = 'text/html';
 
-  }
+//   }
 
 
-  if (type = 'text/html') {
-    content = await promises.readFile(path, 'utf8');
-    content = content.replace(/(\{\% get content \%\})/, 'You can insert some content.');
-  } else {
-    content = await promises.readFile(path);
-  }
+//   if (type = 'text/html') {
+//     layout = await promises.readFile(path, 'utf8');
+//     let content = await promises.readFile(contentPath, 'utf8');
+//     layout = layout.replace(/(\{\% get content \%\})/, content);
+//   } else {
+//     layout = await promises.readFile(path);
+//   }
 
-  response.writeHead(status, { 'Content-type': type });
-  response.write(content);
-  response.end();
-}).listen(3000);
+//   response.writeHead(status, { 'Content-type': type });
+//   response.write(layout);
+//   response.end();
+// }).listen(3000);
 
