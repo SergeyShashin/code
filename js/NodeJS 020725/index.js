@@ -634,7 +634,13 @@ http.createServer(async (request, response) => {
 
   }
 
-  content = await promises.readFile(path);
+
+  if (type = 'text/html') {
+    content = await promises.readFile(path, 'utf8');
+    content = content.replace(/(\{\% get content \%\})/, 'You can insert some content.');
+  } else {
+    content = await promises.readFile(path);
+  }
 
   response.writeHead(status, { 'Content-type': type });
   response.write(content);
