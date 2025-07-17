@@ -1,7 +1,7 @@
-import { daysWeek } from './daysWeek.js';
 import numbers, * as math from './math.js';
 import { chunk, concat } from 'lodash';
 // import { daysWeek } from './daysWeek.js';
+
 
 alert('it works');
 alert('Welcome world)');
