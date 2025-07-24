@@ -28,8 +28,13 @@ export default {
     // let { surname, name, patronymic } = post;
     // return `Welcome, ${surname} ${name} ${patronymic})`
 
-    let date = new Date(post.date);
+    // let date = new Date(post.date);
 
-    return `${date.getDate()}.${date.getMonth()}.${date.getFullYear()}`
+    // return `${date.getDate()}.${date.getMonth()}.${date.getFullYear()}`
+
+    let login = 'login';
+    let password = 'password';
+
+    return post.login === login && post.password === password
   }
 }
