@@ -37,7 +37,7 @@ export default {
 
     // return post.login === login && post.password === password
 
-    return 'sent'
+    // return 'sent'
 
   },
 
