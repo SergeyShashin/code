@@ -19,8 +19,12 @@ export default {
     resp.setHeader('Content-Type', 'text/plane');
     return [1, 2, 3]
   },
-  '/handlerForm/': (data) => {
-    console.log(data.post);
-    return 'form data received.'
+  '/handlerForm/': ({ get, post }) => {
+    // console.log(get);
+    // console.log(post.length);
+
+    // return (Object.values(post).reduce((acc, el) => acc + Number(el), 0)) / Object.values(post).length
+    let { surname, name, patronymic } = post;
+    return `Welcome, ${surname} ${name} ${patronymic})`
   }
 }
