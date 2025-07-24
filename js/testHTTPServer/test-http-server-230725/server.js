@@ -15,5 +15,9 @@ export default {
 
     return div
   },
+  '/getContentType]': (data, resp) => {
+    resp.setHeader('Content-Type', 'text/plane');
+    return [1,2,3]
+  }
 
 }
