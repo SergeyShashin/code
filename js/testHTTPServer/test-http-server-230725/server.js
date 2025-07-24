@@ -20,7 +20,7 @@ export default {
     return [1, 2, 3]
   },
   '/handlerForm/': (data) => {
-    console.log(data);
-    return 'form data receivd.'
+    console.log(data.post);
+    return 'form data received.'
   }
 }
