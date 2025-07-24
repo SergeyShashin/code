@@ -51,7 +51,6 @@ http.createServer(async (request, response) => {
 			text = `Page '${path}' not found`;
 		}
 	}
-	
 	response.statusCode = code;
 	response.write(text ? text : '');
 	response.end();

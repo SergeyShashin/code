@@ -24,7 +24,12 @@ export default {
     // console.log(post.length);
 
     // return (Object.values(post).reduce((acc, el) => acc + Number(el), 0)) / Object.values(post).length
-    let { surname, name, patronymic } = post;
-    return `Welcome, ${surname} ${name} ${patronymic})`
+
+    // let { surname, name, patronymic } = post;
+    // return `Welcome, ${surname} ${name} ${patronymic})`
+
+    let date = new Date(post.date);
+
+    return `${date.getDate()}.${date.getMonth()}.${date.getFullYear()}`
   }
 }
