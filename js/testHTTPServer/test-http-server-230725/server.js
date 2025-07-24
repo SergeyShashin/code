@@ -32,9 +32,25 @@ export default {
 
     // return `${date.getDate()}.${date.getMonth()}.${date.getFullYear()}`
 
-    let login = 'login';
-    let password = 'password';
+    // let login = 'login';
+    // let password = 'password';
 
-    return post.login === login && post.password === password
+    // return post.login === login && post.password === password
+
+    return 'sent'
+
+  },
+
+  '/handlerLink/': ({ get, post }) => {
+    // console.log(get.number ** 2);
+    // console.log(Number(get.number) + Number(get.number2));
+    // return `${get.number ** 2}_${Number(get.number) + Number(get.number2)}`
+
+    // let obj = { 1: 'a', 2: 'b', 3: 'c' };
+    // console.log(get.key);
+    // return obj[get.key]
+
+    // let arr = ['user1', 'user2', 'user3'];
+    // return arr[get.key] ? arr[get.key] : 'Not user.'
   }
 }
