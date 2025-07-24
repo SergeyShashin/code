@@ -17,7 +17,10 @@ export default {
   },
   '/getContentType]': (data, resp) => {
     resp.setHeader('Content-Type', 'text/plane');
-    return [1,2,3]
+    return [1, 2, 3]
+  },
+  '/handlerForm/': (data) => {
+    console.log(data);
+    return 'form data receivd.'
   }
-
 }
