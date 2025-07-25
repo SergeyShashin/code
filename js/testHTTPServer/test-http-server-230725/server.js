@@ -39,9 +39,9 @@ export default {
 
     // return 'sent'
 
-    console.log(post.email);
+    // console.log(post.email);
 
-    return post.email ? 'Data received.' : ''
+    // return post.email ? 'Data received.' : ''
   },
 
   '/handlerLink/': ({ get, post }) => {

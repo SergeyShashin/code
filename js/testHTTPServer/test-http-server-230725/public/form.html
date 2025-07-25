@@ -44,7 +44,7 @@
 	<a type="submit" href="/handlerForm/">Send</a>
 </form> -->
 
-<form action="/handlerForm/" method="post">
+<!-- <form action="/handlerForm/" method="post">
 	<input type="email" name="email" id="email">
 	<input type="submit" id="btnSubmit">
 </form>
@@ -59,4 +59,20 @@
 			console.log('A valid email is expected.');
 		}
 	});
+</script> -->
+
+<form action="/target/" method="POST">
+	<input name="test1" value="123">
+	<input name="test2" value="456">
+	<input name="test3" value="789">
+	<input type="submit">
+</form>
+
+<script>
+	let formEl = document.querySelector('form');
+	formEl.addEventListener('submit', e => {
+		e.preventDefault();
+		let formData = new FormData(formEl);
+		console.log(formData);
+	})
 </script>
