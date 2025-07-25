@@ -82,7 +82,22 @@ alert('welcome');
 //   let promise = fetch('/handler/?num=3').then(response => response.text()).then(response => alert(response));
 // });
 
-document.getElementById('btnOutputSum8+80').addEventListener('click', (e) => fetch('/handlerBtnOutputSum8+80/?num1=8&num2=80').then(response => response.text()).then(response =>
+// document.getElementById('btnOutputSum8+80').addEventListener('click', (e) => fetch('/handlerBtnOutputSum8+80/?num1=8&num2=80').then(response => response.text()).then(response =>
 
+//   document.getElementById('monitor').textContent = response
+// ));
+
+
+// document.getElementById('btnGetElArr').addEventListener('click', (e) => fetch('/getElArr/?num=8').then(response => response.text()).then(response =>
+
+//   document.getElementById('monitor').textContent = response
+// ));
+
+
+document.getElementById('btnGetSum8+80+800').addEventListener('click', (e) => fetch('/GetSum8+80+800/', {
+  method: 'post',
+  body: '?n1=8&n2=80&n3=800',
+  headers: { 'Content-type': 'application/x-www-form-urlencoded' }
+}).then(response => response.text()).then(response =>
   document.getElementById('monitor').textContent = response
 ));
