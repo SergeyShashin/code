@@ -67,12 +67,22 @@ alert('welcome');
 
 // });
 
-fetch('/data.json').then(response => response.json()).then(response => {
-  // let data = JSON.parse(response);
+// fetch('/data.json').then(response => response.json()).then(response => {
+//   // let data = JSON.parse(response);
 
-  for (let el of Object.values(response)) {
-    let liEl = document.createElement('li');
-    liEl.textContent = el;
-    document.body.appendChild(liEl);
-  }
-})
+//   for (let el of Object.values(response)) {
+//     let liEl = document.createElement('li');
+//     liEl.textContent = el;
+//     document.body.appendChild(liEl);
+//   }
+// })
+
+
+// document.querySelector('button').addEventListener('click', function () {
+//   let promise = fetch('/handler/?num=3').then(response => response.text()).then(response => alert(response));
+// });
+
+document.getElementById('btnOutputSum8+80').addEventListener('click', (e) => fetch('/handlerBtnOutputSum8+80/?num1=8&num2=80').then(response => response.text()).then(response =>
+
+  document.getElementById('monitor').textContent = response
+));

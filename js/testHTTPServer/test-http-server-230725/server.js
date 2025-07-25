@@ -55,5 +55,10 @@ export default {
 
     // let arr = ['user1', 'user2', 'user3'];
     // return arr[get.key] ? arr[get.key] : 'Not user.'
-  }
+  },
+
+  // '/handler/': ({ get, post }) => get.num**3
+  
+  
+  '/handlerBtnOutputSum8+80/': ({ get, post }) => Number(get.num1)+Number(get.num2)
 }
