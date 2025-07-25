@@ -45,10 +45,18 @@
 </form> -->
 
 <form action="/handlerForm/" method="post">
-	<input type="email" name="email">
-	<input type="submit">
+	<input type="email" name="email" id="email">
+	<input type="submit" id="btnSubmit">
 </form>
 
 <script>
-	document.querySelector('form')
+	let formEl = document.querySelector('form');
+	formEl.addEventListener('submit', e => {
+		if (/\w+\@\w+\.\w{2,}/.test(e.target.email.value)) {
+			console.log('Send.');
+		} else {
+			e.preventDefault();
+			console.log('A valid email is expected.');
+		}
+	});
 </script>
