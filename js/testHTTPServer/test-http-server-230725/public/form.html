@@ -78,5 +78,15 @@
 		console.log(Array.from(formData));
 		formData.delete('test1');
 		console.log(Array.from(formData));
-	})
+
+		for (let value of formData.values()) {
+			console.log(value);
+		}
+
+		for (let entri of formData.entries()) {
+			console.log(entri);
+		}
+
+	});
+
 </script>
