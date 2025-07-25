@@ -73,6 +73,10 @@
 	formEl.addEventListener('submit', e => {
 		e.preventDefault();
 		let formData = new FormData(formEl);
-		console.log(formData);
+		console.log(Array.from(formData));
+		formData.append('testN', 'nnn');
+		console.log(Array.from(formData));
+		formData.delete('test1');
+		console.log(Array.from(formData));
 	})
 </script>
