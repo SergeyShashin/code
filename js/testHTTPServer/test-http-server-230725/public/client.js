@@ -131,3 +131,8 @@ let obj = {
 
 let formData = new FormData();
 Object.values(obj).map((el, idx) => formData.set(`num${idx}`, el));
+
+fetch('/sendFormData/', {
+  method: 'post',
+  body: formData
+})
