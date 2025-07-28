@@ -123,16 +123,16 @@ alert('welcome');
 //   )
 // });
 
-let obj = {
-  a: 1,
-  b: 2,
-  c: 3
-};
+// let obj = {
+//   a: 1,
+//   b: 2,
+//   c: 3
+// };
 
-let formData = new FormData();
-Object.values(obj).map((el, idx) => formData.set(`num${idx}`, el));
+// let formData = new FormData();
+// Object.values(obj).map((el, idx) => formData.set(`num${idx}`, el));
 
-fetch('/sendFormData/', {
-  method: 'post',
-  body: formData
-})
+// fetch('/sendFormData/', {
+//   method: 'post',
+//   body: formData
+// })
