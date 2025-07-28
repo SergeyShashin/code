@@ -77,5 +77,6 @@ export default {
 
   // '/sendFormData/': ({ get, post }) => console.log(post),
 
+  '/getAvarage/': ({ get, post }) => console.log(get),
 
 }
