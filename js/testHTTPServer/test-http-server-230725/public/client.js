@@ -94,10 +94,34 @@ alert('welcome');
 // ));
 
 
-document.getElementById('btnGetSum8+80+800').addEventListener('click', (e) => fetch('/GetSum8+80+800/', {
-  method: 'post',
-  body: '?n1=8&n2=80&n3=800',
-  headers: { 'Content-type': 'application/x-www-form-urlencoded' }
-}).then(response => response.text()).then(response =>
-  document.getElementById('monitor').textContent = response
-));
+// document.getElementById('btnGetSum8+80+800').addEventListener('click', (e) => fetch('/GetSum8+80+800/', {
+//   method: 'post',
+//   body: '?n1=8&n2=80&n3=800',
+//   headers: { 'Content-type': 'application/x-www-form-urlencoded' }
+// }).then(response => response.text()).then(response =>
+//   document.getElementById('monitor').textContent = response
+// ));
+
+
+document.getElementById('btnGetSum').addEventListener('click', (e) => {
+  let inputsEl = document.querySelectorAll('input');
+  let values = [];
+
+  for (let input of inputsEl) {
+    values.push(Number(input.value));
+  }
+
+  let searchParams = new URLSearchParams();
+  values.map((val, idx) => searchParams.set(`num${idx}`, val));
+
+  console.log(values);
+  console.log(searchParams);
+
+  fetch('/getSum/', {
+    method: 'post',
+    body: searchParams,
+    // headers: { 'Content-type': 'application/x-www-form-urlencoded' }
+  }).then(response => response.text()).then(response =>
+    document.getElementById('monitor').textContent = response
+  )
+});

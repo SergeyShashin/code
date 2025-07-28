@@ -69,9 +69,9 @@ export default {
   // }
 
 
-  '/GetSum8+80+800/': ({ get, post }) => Object.values(post).reduce((acc, el) => acc + Number(el), 0)
+  // '/GetSum8+80+800/': ({ get, post }) => Object.values(post).reduce((acc, el) => acc + Number(el), 0)
 
 
-
+  '/getSum/': ({ get, post }) => Object.values(post).reduce((acc, el) => acc + Number(el), 0);
 
 }
