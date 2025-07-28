@@ -103,25 +103,31 @@ alert('welcome');
 // ));
 
 
-document.getElementById('btnGetSum').addEventListener('click', (e) => {
-  let inputsEl = document.querySelectorAll('input');
-  let values = [];
+// document.getElementById('btnGetSum').addEventListener('click', (e) => {
+//   let inputsEl = document.querySelectorAll('input');
+//   let values = [];
 
-  for (let input of inputsEl) {
-    values.push(Number(input.value));
-  }
+//   for (let input of inputsEl) {
+//     values.push(Number(input.value));
+//   }
 
-  let searchParams = new URLSearchParams();
-  values.map((val, idx) => searchParams.set(`num${idx}`, val));
+//   let searchParams = new URLSearchParams();
+//   values.map((val, idx) => searchParams.set(`num${idx}`, val));
 
-  console.log(values);
-  console.log(searchParams);
+//   fetch('/getSum/', {
+//     method: 'post',
+//     body: searchParams,
+//     // headers: { 'Content-type': 'application/x-www-form-urlencoded' }
+//   }).then(response => response.text()).then(response =>
+//     document.getElementById('monitor').textContent = response
+//   )
+// });
 
-  fetch('/getSum/', {
-    method: 'post',
-    body: searchParams,
-    // headers: { 'Content-type': 'application/x-www-form-urlencoded' }
-  }).then(response => response.text()).then(response =>
-    document.getElementById('monitor').textContent = response
-  )
-});
+let obj = {
+  a: 1,
+  b: 2,
+  c: 3
+};
+
+let formData = new FormData();
+Object.values(obj).map((el, idx) => formData.set(`num${idx}`, el));
