@@ -60,18 +60,18 @@ export default {
   // '/handler/': ({ get, post }) => get.num**3
 
 
-  // '/handlerBtnOutputSum8+80/': ({ get, post }) => Number(get.num1)+Number(get.num2);
+  // '/handlerBtnOutputSum8+80/': ({ get, post }) => Number(get.num1)+Number(get.num2),
 
 
   // '/getElArr/': ({ get, post }) => {
   //   let arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   //   return arr[get.num]
-  // }
+  // },
 
 
-  // '/GetSum8+80+800/': ({ get, post }) => Object.values(post).reduce((acc, el) => acc + Number(el), 0)
+  // '/GetSum8+80+800/': ({ get, post }) => Object.values(post).reduce((acc, el) => acc + Number(el), 0),
 
 
-  '/getSum/': ({ get, post }) => Object.values(post).reduce((acc, el) => acc + Number(el), 0);
+  '/getSum/': ({ get, post }) => Object.values(post).reduce((acc, el) => acc + Number(el), 0),
 
 }
