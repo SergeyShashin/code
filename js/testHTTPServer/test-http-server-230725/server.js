@@ -77,6 +77,6 @@ export default {
 
   // '/sendFormData/': ({ get, post }) => console.log(post),
 
-  '/getAvarage/': ({ get, post }) => console.log(get),
+  '/getAverage/': ({ get, post }) => Object.values(post).reduce((acc, el) => acc + Number(el), 0),
 
 }

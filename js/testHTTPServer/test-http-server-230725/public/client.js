@@ -136,3 +136,15 @@ alert('welcome');
 //   method: 'post',
 //   body: formData
 // })
+
+
+document.getElementById('getAverage').addEventListener('submit', e => {
+  let formData = new FormData(e.target);
+
+  fetch('/getAverage/', {
+    method: 'POST',
+    body: formData
+  }).then(response => response.text()).then(console.log(response));
+
+  e.preventDefault();
+});
