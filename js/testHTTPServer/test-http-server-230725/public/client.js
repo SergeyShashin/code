@@ -144,7 +144,6 @@ document.getElementById('getAverage').addEventListener('submit', e => {
   fetch('/getAverage/', {
     method: 'POST',
     body: formData
-  }).then(response => response.text()).then(console.log(response));
+  }).then(response => response.text()).then(response => alert(response));
 
-  e.preventDefault();
 });
