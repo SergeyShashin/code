@@ -1,0 +1,92 @@
+<!-- <form action="/handlerForm/" method="post">
+	<input name="test1">
+	<input name="test2">
+	<input name="test3">
+	<input name="test4">
+	<input name="test5">
+	<input type="submit">
+</form> -->
+<!-- <form action="/handlerForm/" method="post">
+	<input name="surname">
+	<input name="name">
+	<input name="patronymic">
+	<input type="submit">
+</form> -->
+<!-- <form action="/handlerForm/" method="post">
+	<input type="date" name="date">
+	<input type="submit">
+</form> -->
+
+<!-- <form action="/handlerForm/" method="post">
+	<input name="login">
+	<input type="password" name="password">
+	<input type="submit">
+</form> -->
+
+<!-- <a href="/handlerLink/?test1=1&test2=2">link</a> -->
+
+
+<!-- <a href="/handlerLink/?number=12&number2=8">link</a> -->
+
+<!-- <a href="/handlerLink/?key=1">1</a>
+<a href="/handlerLink/?key=2">2</a>
+<a href="/handlerLink/?key=3">3</a> -->
+
+
+<!-- <a href="/handlerLink/?key=0">user1</a>
+<a href="/handlerLink/?key=1">user2</a>
+<a href="/handlerLink/?key=2">user3</a>
+<a href="/handlerLink/?key=4">user4</a> -->
+
+<!-- <form action="/handlerForm/" method="post">
+	<input name="login">
+	<input type="password" name="password">
+	<a type="submit" href="/handlerForm/">Send</a>
+</form> -->
+
+<!-- <form action="/handlerForm/" method="post">
+	<input type="email" name="email" id="email">
+	<input type="submit" id="btnSubmit">
+</form>
+
+<script>
+	let formEl = document.querySelector('form');
+	formEl.addEventListener('submit', e => {
+		if (/\w+\@\w+\.\w{2,}/.test(e.target.email.value)) {
+			console.log('Send.');
+		} else {
+			e.preventDefault();
+			console.log('A valid email is expected.');
+		}
+	});
+</script> -->
+
+<form action="/target/" method="POST">
+	<input name="test1" value="123">
+	<input name="test2" value="456">
+	<input name="test3" value="789">
+	<input type="submit">
+</form>
+
+<script>
+	let formEl = document.querySelector('form');
+	formEl.addEventListener('submit', e => {
+		e.preventDefault();
+		let formData = new FormData(formEl);
+		console.log(Array.from(formData));
+		formData.append('testN', 'nnn');
+		console.log(Array.from(formData));
+		formData.delete('test1');
+		console.log(Array.from(formData));
+
+		for (let value of formData.values()) {
+			console.log(value);
+		}
+
+		for (let entri of formData.entries()) {
+			console.log(entri);
+		}
+
+	});
+
+</script>
