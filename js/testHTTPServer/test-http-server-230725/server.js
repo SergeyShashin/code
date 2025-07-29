@@ -79,5 +79,8 @@ export default {
 
   // '/getAverage/': ({ get, post }) => { let numbers = Object.values(post); return numbers.reduce((acc, el) => acc + Number(el), 0)/numbers.length },
 
-  '/getSumFromJson/': ({ body }) => JSON.parse(body).split(',').reduce((acc, el) => acc + Number(el), 0)
+  // '/getSumFromJson/': ({ body }) => JSON.parse(body).split(',').reduce((acc, el) => acc + Number(el), 0)
+
+  '/getSumFromJson/': (data) => console.log(data)
+
 }
