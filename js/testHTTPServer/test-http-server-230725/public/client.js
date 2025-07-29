@@ -138,12 +138,19 @@ alert('welcome');
 // })
 
 
-document.getElementById('getAverage').addEventListener('submit', e => {
-  let formData = new FormData(e.target);
+// document.getElementById('getAverage').addEventListener('submit', e => {
+//   let formData = new FormData(e.target);
 
-  fetch('/getAverage/', {
+//   fetch('/getAverage/', {
+//     method: 'POST',
+//     body: formData
+//   }).then(response => response.text()).then(response => alert(response));
+
+// });
+
+
+fetch('/getSumFromJson/', {
     method: 'POST',
-    body: formData
+    body: JSON.stringify('1,2,4,5'),
+     headers: { 'Content-type': 'application/json' }
   }).then(response => response.text()).then(response => alert(response));
-
-});
