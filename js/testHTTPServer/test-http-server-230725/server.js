@@ -81,6 +81,11 @@ export default {
 
   // '/getSumFromJson/': ({ body }) => JSON.parse(body).split(',').reduce((acc, el) => acc + Number(el), 0)
 
-  '/getSumFromJson/': (data) => console.log(data)
+  '/sendFrom3001/': ({ body }, resp) => {
+    resp.setHeader('Access-Control-Allow-Origin', '*');
+    resp.setHeader('Access-Control-Allow-Headers', '*');
+    console.log(body);
+    return 'success'
+  }
 
 }
