@@ -148,10 +148,11 @@ alert('welcome');
 
 // });
 
-document.getElementById('btnSendFrom3001').addEventListener('click', e =>
-  fetch('http://localhost:3000/getSumFromJson/', {
+document.getElementById('btnSendTo3000').addEventListener('click', e =>
+  fetch('http://localhost:3000/sendFrom3001/', {
     method: 'POST',
-    body: JSON.stringify('Привет с 3001'),
+    body: JSON.stringify([1, 2, 3, 4, 5]),
     headers: { 'Content-type': 'application/json' }
   }).then(response => response.text()).then(response => alert(response))
-)
+
+);
