@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>oop/class-methods</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/oop/class-methods/">
+    Методы классов в ООП в JavaScript
+  </a>
+
+  <script>
+    //1.Сделайте в вашем классе Employee какой-нибудь тестовый метод. Вызовите его.
+
+    class Employee {
+      name;
+      age;
+      salary;
+      sayWelcome() {
+        alert('Welcome World!');
+      }
+    }
+
+    const user = new Employee();
+    user.name = 'Ivan';
+    user.age = '119';
+    user.salary = 'EverythingNeedForHappyLife';
+    user.sayWelcome();
+
+  </script>
+</body>
+
+</html>
