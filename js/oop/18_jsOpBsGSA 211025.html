@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>oop/getters-setters-advantages</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/oop/getters-setters-advantages/">
+    Преимущества сеттеров и геттеров в ООП в JavaScript
+  </a>
+
+  <script>
+    /*
+    1. В классе Employee в сеттере возраста сделайте проверку на то, что возраст должен быть от 0 до 120.
+    2. В классе Employee в геттере зарплаты сделайте так, чтобы при чтении зарплаты в конец ее значения добавлялся знак доллара.
+    */
+
+    class Employee {
+      #name;
+      #age;
+      #salary;
+
+      constructor(name, age, salary) {
+        this.#name = name;
+        this.#age = age;
+        this.#salary = salary;
+      }
+
+      setName(name) {
+        this.#name = name
+      }
+
+      setSalary(salary) {
+        this.#salary = salary
+      }
+
+      setAge(age) {
+        if (age >= 0 && age < 121) {
+          this.#age = age
+        } else {
+          throw new Error('Возраст может быть больше 0 или меньше 120');
+        }
+      }
+
+      getName() {
+        return this.#name
+      }
+
+      getAge() {
+        return this.#age
+      }
+
+      getSalary() {
+        return this.#addChar(this.#salary, '*');
+      }
+
+      #addChar(str, char) {
+        return str + char
+      }
+
+    }
+
+    let employee = new Employee('Ivan', 119, 'EtherythingNeedForHappyLife');
+
+    employee.setName('Yaroslav');
+    employee.setAge(119.1);
+    employee.setSalary('EtherythingNeedForHappyLife+');
+    console.log(employee.getName());
+    console.log(employee.getAge());
+    console.log(employee.getSalary());
+
+  </script>
+
+</body>
+
+</html>
