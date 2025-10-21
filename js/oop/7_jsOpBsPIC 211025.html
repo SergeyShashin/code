@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>oop/properties-inside-class</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/oop/properties-inside-class/">
+    Обращение к свойствам внутри классов в ООП в JavaScript
+  </a>
+
+  <script>
+    /*
+    1. В объект класса Employee запишите свойства name и salary.
+    2. Сделайте метод, который выведет на экран имя работника.
+    3. Сделайте метод, который выведет на экран зарплату работника. 
+    */
+
+    class Employee {
+
+      showName() {
+        console.log(this.name)
+      }
+
+      showSalary() {
+        console.log(this.salary)
+      }
+    }
+
+    const user = new Employee();
+
+    user.name = 'Luke';
+    user.salary = 'EverythingNeedForHappyLife';
+
+    console.log(user.showName(), user.showSalary());
+  </script>
+
+</body>
+
+</html>
