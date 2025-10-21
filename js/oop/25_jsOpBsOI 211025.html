@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>oop/operator-instanceof</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/oop/operator-instanceof/">
+    Оператор instanceof в ООП в JavaScript
+  </a>
+
+  <script>
+    // Дан следующий код:
+    // Переберите циклом массив объектов и выведите в консоль только имена работников.
+
+    class Student {
+      constructor(name) {
+        this.name = name;
+      }
+    }
+    class Employee {
+      constructor(name) {
+        this.name = name;
+      }
+    }
+
+    let users = [
+      new Student('user1'),
+      new Employee('user2'),
+      new Student('user3'),
+      new Employee('user4'),
+      new Student('user5'),
+      new Employee('user6'),
+      new Student('user7'),
+    ];
+
+    for (let user of users) {
+      user instanceof Employee ? console.log(user.name) : '';
+    }
+  </script>
+
+</body>
+
+</html>
