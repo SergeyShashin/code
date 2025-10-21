@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>oop/private-properties</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/oop/private-properties/">
+    Приватные свойства в ООП в JavaScript
+  </a>
+
+  <script>
+    /*
+    1. В классе Employee сделайте три приватных свойства: имя, зарплату и возраст.
+    2. Передайте параметром конструктора значения этих свойств.
+    3. Сделайте метод, который выведет данные работника.
+    */
+
+    class Employee {
+      #name;
+      #age;
+      #salary;
+
+      constructor(name, age, salary) {
+        this.#name = name;
+        this.#age = age;
+        this.#salary = salary;
+      }
+
+      showInfoEmployee() {
+        console.log(this.#name, this.#age, this.#salary);
+      }
+    }
+
+    const employee = new Employee('Luke', '119', 'everythingNeedForHappryLify');
+
+    employee.showInfoEmployee();
+
+  </script>
+
+</body>
+
+</html>
