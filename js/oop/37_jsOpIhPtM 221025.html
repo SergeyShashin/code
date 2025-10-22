@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>oop/inheritance/protected-methods</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/oop/inheritance/protected-methods/">
+    Защищенные методы в ООП в JavaScript
+  </a>
+
+  <script>
+    //1. В следующем коде сделайте вспомогательный метод защищенным
+
+    class User {
+      setName(name) {
+        if (this._notEmpty(name)) {
+          this.name = name;
+        }
+      }
+      getName() {
+        return this.name;
+      }
+
+      _notEmpty(str) {
+        return str.length > 0;
+      }
+    }
+
+    class Employee extends User {
+      setSurn(surn) {
+        if (this._notEmpty(surn)) {
+          this.surn = surn;
+        }
+      }
+      getSurn() {
+        return this.surn;
+      }
+    }
+
+    const employee = new Employee();
+    employee.setSurn('Skywalker');
+    console.log(employee.getSurn());
+
+  </script>
+
+</body>
+
+</html>
