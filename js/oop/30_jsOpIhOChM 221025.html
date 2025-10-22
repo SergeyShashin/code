@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>oop/inheritance/own-child-methods</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/oop/inheritance/own-child-methods/">
+    Методы потомка в ООП в JavaScript
+  </a>
+
+  <script>
+    /*
+    1. В классе Employee сделайте геттер и сеттер зарплаты.
+    2. Проверьте, что в классе Employee работают как его родные методы, так и унаследованные. 
+    */
+
+    class User {
+      sayWelcome() {
+        console.log('Welcome World)');
+      }
+    }
+
+
+    class Employee extends User {
+
+      setSalary(salary) {
+        this.salary = salary;
+        return this
+      }
+
+      getSalary() {
+        return this.salary ? this.salary : 'Зарплату не установили).';
+      }
+
+    }
+
+    const employee = new Employee();
+
+    employee.sayWelcome();
+    console.log(employee.getSalary());
+    employee.setSalary('EverythingNeedForHappyLife');
+    console.log(employee.getSalary());
+
+  </script>
+
+</body>
+
+</html>
