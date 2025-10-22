@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>oop/inheritance/constructor</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/oop/inheritance/constructor/">
+    Конструктор при наследовании в ООП в JavaScript
+  </a>
+
+  <script>
+    
+    /*
+    1. Пусть класс Employee наследует от класса User из данного урока.
+    2. Переопределите в классе Employee конструктор родителя, добавив в него параметр с возрастом и зарплатой.
+    3. Сделайте геттеры для возраста и зарплаты.
+    */
+
+    class User {
+
+      constructor(name, surn) {
+        this.name = name;
+        this.surn = surn;
+      }
+
+      getName() {
+        return this.name;
+      }
+
+      getSurn() {
+        return this.surn;
+      }
+
+    }
+
+
+    class Employee extends User {
+
+      constructor(name, surn, age, salary) {
+        super(name, surn);
+        this.age = age;
+        this.salary = salary;
+      }
+
+      getAge() {
+        return this.age;
+      }
+
+      getSalary() {
+        return this.salary;
+      }
+
+    }
+
+    const employee = new Employee('Luke', 'Skywalker', 119, 'everythingNeedForHappyLife');
+    console.log(employee.getName(), employee.getSurn(), employee.getAge(), employee.getSalary());
+
+  </script>
+
+</body>
+
+</html>
