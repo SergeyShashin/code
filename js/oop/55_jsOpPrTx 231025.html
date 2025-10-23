@@ -39,20 +39,24 @@
       getArrWords() {
         return this.text.match(/[\wа-яё]+/ig);
       }
+      // getArrSentences() {
+      //   const res = [];
+      //   const endChars = ['.', '?', '!'];
+      //   const words = this.text.split(' ');
+      //   let sentence = '';
+      //   for (let word of words) {
+      //     sentence += word + ' ';
+      //     if (endChars.includes(word[word.length - 1])) {
+      //       sentence = sentence.trim();
+      //       res.push(sentence);
+      //       sentence = '';
+      //     }
+      //   }
+      //   return res;
+      // }
+
       getArrSentences() {
-        const res = [];
-        const endChars = ['.', '?', '!'];
-        const words = this.text.split(' ');
-        let sentence = '';
-        for (let word of words) {
-          sentence += word + ' ';
-          if (endChars.includes(word[word.length - 1])) {
-            sentence = sentence.trim();
-            res.push(sentence);
-            sentence = '';
-          }
-        }
-        return res;
+        return this.text.split(/[\.\?\!]/g);
       }
     }
 
