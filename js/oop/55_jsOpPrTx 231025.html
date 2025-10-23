@@ -40,11 +40,23 @@
         return this.text.match(/[\wа-яё]+/ig);
       }
       getArrSentences() {
-        return this.text.match(/[\wа-яё]+[\.\!\?]/ig);
+        const res = [];
+        const endChars = ['.', '?', '!'];
+        const words = this.text.split(' ');
+        let sentence = '';
+        for (let word of words) {
+          sentence += word + ' ';
+          if (endChars.includes(word[word.length - 1])) {
+            sentence = sentence.trim();
+            res.push(sentence);
+            sentence = '';
+          }
+        }
+        return res;
       }
     }
 
-    const text = new Text('Сделайте метод, который вернет массив слов. Сделайте метод, который вернет массив предложений.');
+    const text = new Text('Сделайте метод, который вернет массив слов. Сделайте метод, который вернет массив слов! Сделайте метод, который вернет массив слов? Сделайте метод, который вернет массив предложений.');
     console.log(text.getQuantityCharsInText());
     console.log(text.getQuantitySpacesInText());
     console.log(text.getQuantityCharsInTextWithoutSpaces());
