@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>oop/class/Circle</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/oop/class/Circle/">
+    Класс Circle в ООП в JavaScript
+  </a>
+
+  <script>
+    /*
+    1. Сделайте класс Circle, который будет описывать круг.
+    2. Передайте в параметр конструктора радиус круга. Запишите его в приватное свойство.
+    3. Сделайте метод, который будет возвращать площадь круга.
+    4. Сделайте метод, который будет возвращать длину окружности.
+    */
+
+    class Circle {
+      #r;
+      constructor(r) {
+        this.#r = r;
+      }
+      getSquareCircle() {
+        return Math.PI * this.#r ** 2;
+      }
+      getLengthCircle() {
+        return 2 * Math.PI * this.#r;
+      }
+    }
+
+    const circle = new Circle(1);
+    console.log(circle.getSquareCircle(), circle.getLengthCircle());
+
+  </script>
+
+</body>
+
+</html>
