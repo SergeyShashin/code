@@ -56,7 +56,11 @@
       // }
 
       getArrSentences() {
-        return this.text.split(/[\.\?\!]/g);
+        let charForSplit = '*<_|*';
+        this.text = this.text.replace(/\. /g, `.${charForSplit}`);
+        this.text = this.text.replace(/\? /g, `?${charForSplit}`);
+        this.text = this.text.replace(/\! /g, `!${charForSplit}`);
+        return this.text.split('*<_|*');
       }
     }
 
