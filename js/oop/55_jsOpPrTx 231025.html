@@ -39,7 +39,7 @@
       getArrWords() {
         return this.text.match(/[\wа-яё]+/ig);
       }
-      
+
       // getArrSentences() {
       //   const res = [];
       //   const endChars = ['.', '?', '!'];
@@ -64,21 +64,17 @@
         return this.text.split('*<_|*');
       }
     }
-
+    
     const text = new Text('Сделайте метод, который вернет массив слов. Сделайте метод, который вернет массив слов! Сделайте метод, который вернет массив слов? Сделайте метод, который вернет массив предложений.');
     console.log(text.getQuantityCharsInText());
     console.log(text.getQuantitySpacesInText());
     console.log(text.getQuantityCharsInTextWithoutSpaces());
     console.log(text.getArrWords());
+    console.time();
     console.log(text.getArrSentences());
-
-
-
-
+    console.timeEnd();
 
   </script>
-
-
 
 </body>
 
