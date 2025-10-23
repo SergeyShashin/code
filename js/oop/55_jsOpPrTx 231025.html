@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>oop/class/Text</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/oop/class/Text/">
+    Класс Text в ООП в JavaScript
+  </a>
+
+  <script>
+    /*
+    1. Сделайте класс Text, который будет выполнять некоторые манипуляции над текстом. Пусть текст передается параметром конструктора.
+    2. Сделайте метод, который вернет количество букв в тексте.
+    3. Сделайте метод, который вернет количество пробелов в тексте.
+    4. Сделайте метод, который вернет количество символов в тексте за вычетом пробелов.
+    5. Сделайте метод, который вернет массив слов.
+    7. Сделайте метод, который вернет массив предложений.
+    */
+
+    class Text {
+      text;
+      constructor(text) {
+        this.text = text;
+      }
+      getQuantityCharsInText() {
+        return this.text.match(/[\wа-яё]/ig).length;
+      }
+      getQuantitySpacesInText() {
+        return this.text.match(/ /g).length;
+      }
+      getQuantityCharsInTextWithoutSpaces() {
+        return this.getQuantityCharsInText() - this.getQuantitySpacesInText()
+      }
+      getArrWords() {
+        return this.text.match(/[\wа-яё]+/ig);
+      }
+      getArrSentences() {
+        return this.text.match(/([\wа-яё]+[\.\!\?] )/ig);
+      }
+    }
+
+    const text = new Text('Сделайте метод, который вернет массив слов. Сделайте метод, который вернет массив предложений.');
+    console.log(text.getQuantityCharsInText());
+    console.log(text.getQuantitySpacesInText());
+    console.log(text.getQuantityCharsInTextWithoutSpaces());
+    console.log(text.getArrWords());
+    console.log(text.getArrSentences());
+
+
+
+
+
+  </script>
+
+
+
+</body>
+
+</html>
