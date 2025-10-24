@@ -52,6 +52,40 @@
       }
     }
 
+    class ZateExt extends Zate {
+      addQuantityYears(quantityYears) {
+        console.log(this.getYear());
+        return new Date(this.getYear() + quantityYears, this.getMonth(), this.getNumber());
+      }
+      minusQuantityYears(quantityYears) {
+        console.log(this.getYear());
+        return new Date(this.getYear() - quantityYears, this.getMonth(), this.getNumber());
+      }
+      addQuantityMonths(quantityMonths) {
+        console.log(this.getYear());
+        return new Date(this.getYear(), this.getMonth() + quantityMonths, this.getNumber());
+      }
+      minusQuantityMonths(quantityMonths) {
+        console.log(this.getYear());
+        return new Date(this.getYear(), this.getMonth() - quantityMonths, this.getNumber());
+      }
+      addQuantityDays(quantityDays) {
+        console.log(this.getYear());
+        return new Date(this.getYear(), this.getMonth(), this.getNumber() + quantityDays);
+      }
+      minusQuantityDays(quantityDays) {
+        console.log(this.getYear());
+        return new Date(this.getYear(), this.getMonth(), this.getNumber() - quantityDays);
+      }
+    }
+
+    const zateExt = new ZateExt(2025, 9, 24);
+    console.log(zateExt.addQuantityYears(Number(prompt('Какое количество лет добавим?'))));
+    console.log(zateExt.minusQuantityYears(Number(prompt('Какое количество лет убавим?'))));
+    console.log(zateExt.addQuantityMonths(Number(prompt('Какое количество месяцев добавим?'))));
+    console.log(zateExt.minusQuantityMonths(Number(prompt('Какое количество месяцев убавим?'))));
+    console.log(zateExt.addQuantityDays(Number(prompt('Какое количество дней добавим?'))));
+    console.log(zateExt.minusQuantityDays(Number(prompt('Какое количество дней убавим?'))));
 
   </script>
 
