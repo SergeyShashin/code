@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>oop/class/Zate</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/oop/class/Zate/">
+    Класс Zate в ООП в JavaScript
+  </a>
+
+  <script>
+    /*
+    1. Сделайте класс Zate, который будет представлять собой дату. Пусть конструктор этого класса параметрами принимает год, месяц и день даты.
+    2. Сделайте метод, который вернет год.
+    3. Сделайте метод, который вернет номер месяца.
+    4. Сделайте метод, который вернет день месяца.
+    5. Сделайте метод, который вернет номер дня недели.
+    6. Сделайте метод, который вернет название дня недели.
+    7. Сделайте метод, который вернет название месяца.
+    */
+
+    class Zate {
+      daysWeek = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
+      nameMonths = ['январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сенитябрь', 'октябрь', 'ноябрь', 'декабрь'];
+
+      constructor(year, month, day) {
+        this.date = new Date(year, month, day);
+        console.log(this.date);
+      }
+
+      getYear() {
+        return this.date.getFullYear()
+      }
+      getMonth() {
+        return this.date.getMonth()
+      }
+      getNumber() {
+        return this.date.getDate()
+      }
+      getDay() {
+        return this.date.getDay()
+      }
+      getNameDayWeek() {
+        return this.daysWeek[this.getDay()]
+      }
+      getNameMonth() {
+        return this.nameMonths[this.getMonth()]
+      }
+    }
+
+    const zate = new Zate(prompt('Год?'), prompt('Месяц?'), prompt('Число?'));
+    console.log(zate.getYear(), zate.getMonth(), zate.getNumber(), zate.getDay(), zate.getNameDayWeek(), zate.getNameMonth());
+
+  </script>
+
+</body>
+
+</html>
