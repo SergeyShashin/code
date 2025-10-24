@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>oop/class/ZateExt</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/oop/class/ZateExt/">
+    Класс ZateExt в ООП в JavaScript
+  </a>
+
+  <script>
+    /*
+    1. Сделайте класс ZateExt, который будет наследовать от класса Zate из предыдущего урока и расширять его некоторыми методами.
+    2. Сделайте метод, который будет прибавлять к дате заданное количество лет.
+    3. Сделайте метод, который будет отнимать от даты заданное количество лет.
+    4. Сделайте метод, который будет прибавлять к дате заданное количество месяцев.
+    5. Сделайте метод, который будет отнимать от даты заданное количество месяцев.
+    6. Сделайте метод, который будет прибавлять к дате заданное количество дней.
+    7. Сделайте метод, который будет отнимать от даты заданное количество дней.
+    */
+
+    class Zate {
+      daysWeek = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
+      nameMonths = ['январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сенитябрь', 'октябрь', 'ноябрь', 'декабрь'];
+
+      constructor(year, month, day) {
+        this.date = new Date(year, month, day);
+        console.log(this.date);
+      }
+
+      getYear() {
+        return this.date.getFullYear()
+      }
+      getMonth() {
+        return this.date.getMonth()
+      }
+      getNumber() {
+        return this.date.getDate()
+      }
+      getDay() {
+        return this.date.getDay()
+      }
+      getNameDayWeek() {
+        return this.daysWeek[this.getDay()]
+      }
+      getNameMonth() {
+        return this.nameMonths[this.getMonth()]
+      }
+    }
+
+
+  </script>
+
+</body>
+
+</html>
