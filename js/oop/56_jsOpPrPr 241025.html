@@ -43,10 +43,13 @@
       getDifferenceBetweenMomentsInHours() {
         return this.getDifferenceBetweenMomentsInMinutes() / 60
       }
+      getDifferenceBetweenMomentsInDays() {
+        return this.getDifferenceBetweenMomentsInHours() / 24
+      }
     }
 
-    const period = new Period([2025, 9, 10, 11], [2025, 9, 10, 10]);
-    console.log(`Разница в\nсекундах ${period.getDifferenceBetweenMomentsInSeconds()}\nминутах ${period.getDifferenceBetweenMomentsInMinutes()}\nчасах ${period.getDifferenceBetweenMomentsInHours()}`);
+    const period = new Period([2025, 9, 11, 10], [2025, 9, 10, 10]);
+    console.log(`Разница в\nсекундах ${period.getDifferenceBetweenMomentsInSeconds()}\nминутах ${period.getDifferenceBetweenMomentsInMinutes()}\nчасах ${period.getDifferenceBetweenMomentsInHours()}\nднях ${period.getDifferenceBetweenMomentsInDays()}`);
 
   </script>
 </body>
