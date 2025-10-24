@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>oop/class/Period</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/oop/class/Period/">
+    Класс Period в ООП в JavaScript
+  </a>
+
+  <script>
+    /*
+    1. Сделайте класс Period, который будет находить разницу между двумя моментами времени. Пусть эти моменты передаются параметрами конструктора.
+    2. Сделайте метод, который вернет разницу между моментами в секундах. Сделайте метод, который вернет разницу между моментами в секундах.
+    3. Сделайте метод, который вернет разницу между моментами в минутах.
+    4. Сделайте метод, который вернет разницу между моментами в часах.
+    */
+
+    class Period {
+      DifferenceBetweenMomentsInMilliSeconds;
+
+      constructor(moment1, moment2) {
+        this.moment1 = moment1;
+        this.moment2 = moment2;
+        this.date1 = new Date(...this.moment1);
+        this.date2 = new Date(...this.moment2);
+      }
+
+      getDifferenceBetweenMomentsInMilliSeconds() {
+        return this.DifferenceBetweenMomentsInMilliSeconds = (this.date1 - this.date2);
+      }
+
+      getDifferenceBetweenMomentsInSeconds() {
+        return this.getDifferenceBetweenMomentsInMilliSeconds()/1000
+      }
+      getDifferenceBetweenMomentsInMinutes() {
+        return this.getDifferenceBetweenMomentsInSeconds() / 60
+      }
+      getDifferenceBetweenMomentsInHours() {
+        return this.getDifferenceBetweenMomentsInMinutes() / 60
+      }
+    }
+
+    const period = new Period([2025, 9, 10, 11], [2025, 9, 10, 10]);
+    console.log(`Разница в\nсекундах ${period.getDifferenceBetweenMomentsInSeconds()}\nминутах ${period.getDifferenceBetweenMomentsInMinutes()}\nчасах ${period.getDifferenceBetweenMomentsInHours()}`);
+
+  </script>
+</body>
+
+</html>
