@@ -21,10 +21,12 @@
 
     class Store {
       setItem(key, data) {
-        localStorage.setItem(key, data);
+        localStorage.setItem(key, JSON.stringify(data));
       }
-      getItem(key) {
-       return localStorage.getItem(key);
+      getItem(str) {
+        let [keyStorage, keyObj] = str.split('.');
+        let dataFromLocalStorage = JSON.parse(localStorage.getItem(keyStorage));
+        return keyObj ? dataFromLocalStorage[keyObj] : dataFromLocalStorage;
       }
       removeItem(key) {
         localStorage.removeItem(key);
@@ -32,8 +34,12 @@
     }
 
     const store = new Store();
-    store.setItem('key', {a: 1, b: 2, c: 3});
-    Object.getItem('key');
+    store.setItem('key', { a: 1, b: 2, c: 3 });
+    console.log(store.getItem('key'));
+    console.log(store.getItem('key.a'));
+    console.log(store.getItem('key.b'));
+    console.log(store.getItem('key.c'));
+    store.getItem('key');
     store.removeItem('key');
     console.log(store.getItem('key'));
 
