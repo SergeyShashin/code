@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>oop/class/Store</title>
+</head>
+
+<body>
+  <a href="https://code.mu/ru/javascript/book/oop/class/Store/">
+    Класс Store в ООП в JavaScript
+  </a>
+
+  <script>
+    /*
+    1. Реализуйте описанный класс.
+    2. Сделайте метод, который будет изменять данные по заданному ключу.
+    3. Сделайте метод, который будет удалять данные по заданному ключу.
+    */
+
+    class Store {
+      setItem(key, data) {
+        localStorage.setItem(key, data);
+      }
+      getItem(key) {
+       return localStorage.getItem(key);
+      }
+      removeItem(key) {
+        localStorage.removeItem(key);
+      }
+    }
+
+    const store = new Store();
+    store.setItem('key', {a: 1, b: 2, c: 3});
+    Object.getItem('key');
+    store.removeItem('key');
+    console.log(store.getItem('key'));
+
+  </script>
+</body>
+
+</html>
